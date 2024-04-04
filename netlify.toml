@@ -1,6 +1,6 @@
 [build]
-	publish = "_site"
-	command = "npm run build"
+  publish = "_site"
+  command = "npm run build"
 
 # Redirect any URLs with the language code in them already
 [[redirects]]
@@ -24,4 +24,4 @@
 [[redirects]]
   from = "/*"
   to = "/en/:splat"
-  status = 200	
+  status = 200
