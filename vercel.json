@@ -1,0 +1,27 @@
+{
+    "redirects": [
+        {
+            "source": "/en/*",
+            "destination": "/:splat",
+            "status": 301,
+            "permanent": true
+        },
+        {
+            "source": "/:path*",
+            "has": [
+                {
+                    "type": "header",
+                    "key": "Accept-Language",
+                    "value": "es"
+                }
+            ],
+            "destination": "/es/:splat",
+            "status": 302
+        },
+        {
+            "source": "/:path*",
+            "destination": "/en/:splat",
+            "status": 200
+        }
+    ]
+}
