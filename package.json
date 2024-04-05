@@ -3,9 +3,8 @@
     "version": "1.0.0",
     "description": "Reliable listings of online casinos, games, bonuses and affiliate programs, without scams!",
     "scripts": {
-        "build": "npx @11ty/eleventy",
-        "build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
-        "dev": "npx @11ty/eleventy --serve --quiet",
+        "build": "eleventy",
+        "dev": "eleventy --serve --watch --quiet",
         "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
         "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
         "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
