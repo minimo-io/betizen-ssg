@@ -4,23 +4,6 @@
             "source": "/es/:path*",
             "destination": "/:path*",
             "statusCode": 301
-        },
-        {
-            "source": "/:path*",
-            "destination": "/en/:path*",
-            "statusCode": 302,
-            "locale": "en"
-        },
-        {
-            "source": "/:path*",
-            "destination": "/pt-br/:path*",
-            "statusCode": 302,
-            "locale": "pt-br"
-        },
-        {
-            "source": "/:path*",
-            "destination": "/es/:path*",
-            "statusCode": 200
         }
     ]
 }
