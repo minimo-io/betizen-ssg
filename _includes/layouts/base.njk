@@ -5,11 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ title or metadata.title }}</title>
         <meta name="description" content="{{ description or metadata.description }}"> 
+        <meta name="robots" content="index,follow" />
 
         <link rel="alternate" hreflang="{{ page.lang }}" href="{{ metadata.url }}{{ page.url }}" />
         {%- for link in page.url | locale_links %}
             <link rel="alternate" hreflang="{{ link.lang }}" href="{{ metadata.url }}{{ link.url }}" />
         {%- endfor %}
+        <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url | locale_url('es') }}"/>        
         <link rel="canonical" href="{{ metadata.url }}{{ page.url }}"/>         
 
 

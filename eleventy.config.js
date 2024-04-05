@@ -1,3 +1,5 @@
+const inspect = require("util").inspect;
+
 const { DateTime } = require("luxon");
 const markdownItAnchor = require("markdown-it-anchor");
 
@@ -16,7 +18,8 @@ module.exports = function (eleventyConfig) {
     // For example, `./public/css/` ends up in `_site/css/`
     eleventyConfig.addPassthroughCopy({
         "./public/": "/",
-        "./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css",
+        "./node_modules/prismjs/themes/prism-okaidia.css":
+            "/css/prism-okaidia.css",
     });
 
     // Run Eleventy when these files change:
@@ -39,17 +42,27 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginBundle);
     eleventyConfig.addPlugin(EleventyI18nPlugin, {
         defaultLanguage: "es", // Required
+        errorMode: "allow-fallback",
     });
 
     // Filters
+    eleventyConfig.addFilter(
+        "debug",
+        (content) => `<pre>${inspect(content)}</pre>`
+    );
+
     eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
         // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-        return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
+        return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
+            format || "dd LLLL yyyy"
+        );
     });
 
     eleventyConfig.addFilter("htmlDateString", (dateObj) => {
         // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-        return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
+        return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
+            "yyyy-LL-dd"
+        );
     });
 
     // Get the first `n` elements of a collection.
@@ -79,7 +92,9 @@ module.exports = function (eleventyConfig) {
     });
 
     eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-        return (tags || []).filter((tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+        return (tags || []).filter(
+            (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
+        );
     });
 
     // Customize Markdown library settings:
