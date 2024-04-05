@@ -1,27 +1,21 @@
 {
     "redirects": [
         {
-            "source": "/en/*",
-            "destination": "/:splat",
-            "status": 301,
+            "source": "/es/:path*",
+            "destination": "/:path*",
             "permanent": true
         },
         {
             "source": "/:path*",
-            "has": [
-                {
-                    "type": "header",
-                    "key": "Accept-Language",
-                    "value": "es"
-                }
-            ],
-            "destination": "/es/:splat",
+            "destination": "/en/:path*",
+            "locale": "en",
             "status": 302
         },
         {
             "source": "/:path*",
-            "destination": "/en/:splat",
-            "status": 200
+            "destination": "/pt-br/:path*",
+            "locale": "pt-br",
+            "status": 302
         }
     ]
 }

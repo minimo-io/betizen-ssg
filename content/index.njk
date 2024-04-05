@@ -5,6 +5,13 @@ eleventyNavigation:
   order: 1
 numberOfLatestPostsToShow: 3
 ---
+<br>
+<p style="color:red;">
+	This should be an index page for the lang=es.
+	Maybe via redirect.
+</p>
+
+<br>
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 <h1>Latest {{ latestPostsCount }} Post{% if latestPostsCount != 1 %}s{% endif %}</h1>
