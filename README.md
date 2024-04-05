@@ -7,5 +7,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 -   Add rimraf to the flow
 -   Configure Vercel rewrites for the project, https://vercel.com/docs/projects/project-configuration#rewrites
 -   Create a filter to filter tags by language name insted of adding if statements (gameslist)
+-   Configure postcss and new pipeline, https://mxb.dev/blog/eleventy-asset-pipeline/
+-   Create staging repo
 -   Work on the tags/categories page
 -   Default language (es) should not have the lang param in the url, for the homepage
