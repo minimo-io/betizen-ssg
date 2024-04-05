@@ -3,13 +3,31 @@
   command = "npm run build"
 
 # Redirect any URLs with the language code in them already
-/es/*   /:splat     301!
+[[redirects]]
+  from = "/es/*"
+  to = "/:splat"
+  status = 301
+  force = true
 
 # Important: Per shadowing rules, URLs for the
 # _non-default_ language-specific content files
 # are served without redirects.
 
 # Redirect for end-user’s browser preference override
-/*      /en/:splat  302   Language=en
-/*      /pt-br/:splat  302   Language=pt-br
-/*      /es/:splat  200
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 302
+  conditions = {Language = ["en"]}
+[[redirects]]
+  from = "/*"
+  to = "/pt-br/:splat"
+  status = 302
+  conditions = {Language = ["pt-br"]}
+
+
+# Default
+[[redirects]]
+  from = "/*"
+  to = "/es/:splat"
+  status = 200
