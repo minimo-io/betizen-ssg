@@ -3,11 +3,15 @@
     "version": "1.0.0",
     "description": "Reliable listings of online casinos, games, bonuses and affiliate programs, without scams!",
     "scripts": {
-        "build": "eleventy",
-        "dev": "eleventy --serve --watch --quiet",
+        "build": "npm-run-all clean-build build:* minify:*",
+        "build:11ty": "eleventy",
+        "dev": "NODE_ENV=dev npm-run-all clean-build --parallel watch:*",
+        "watch:11ty": "eleventy --serve --watch --quiet",
         "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
         "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
-        "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+        "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
+        "clean-build": "rimraf _site",
+        "minify:html": "html-minifier --input-dir _site --output-dir _site --file-ext html --minify-css --remove-comments --collapse-whitespace"
     },
     "author": {
         "name": "Nicolas Erramuspe",
@@ -19,11 +23,13 @@
     "devDependencies": {
         "@11ty/eleventy": "^2.0.1",
         "@11ty/eleventy-img": "^3.1.1",
-        "@11ty/eleventy-navigation": "^0.3.5",
         "@11ty/eleventy-plugin-bundle": "^1.0.4",
         "@11ty/eleventy-plugin-rss": "^1.2.0",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+        "html-minifier": "^4.0.0",
         "luxon": "^3.3.0",
-        "markdown-it-anchor": "^8.6.7"
+        "markdown-it-anchor": "^8.6.7",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^5.0.5"
     }
 }

@@ -7,6 +7,10 @@
         {
             "text": "Nosotros",
             "url": "/nosotros/"
+        },
+        {
+            "text": "Blog",
+            "url": "/blog/"
         }
     ],
     "en": [
@@ -17,6 +21,10 @@
         {
             "text": "About us",
             "url": "/en/about-us/"
+        },
+        {
+            "text": "Blog",
+            "url": "/en/articles/"
         }
     ],
     "pt-br": [
@@ -27,6 +35,10 @@
         {
             "text": "Sobre nós",
             "url": "/pt-br/sobre-nos/"
+        },
+        {
+            "text": "Colunas",
+            "url": "/pt-br/colunas/"
         }
     ]
 }
