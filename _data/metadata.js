@@ -2,6 +2,10 @@ module.exports = {
     title: "Betizen",
     url: "https://www.betizen.org",
     language: "es",
+    images: {
+        site: "/assets/imgs/site/",
+        casinos: "/assets/imgs/casinos/",
+    },
     description:
         "Listados confiables de casinos en línea, juegos, bonos y programas de afiliados, ¡sin engaños!",
     author: {

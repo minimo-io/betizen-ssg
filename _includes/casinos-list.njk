@@ -1,0 +1,98 @@
+{%- css %}.casinos-list{}{% endcss %} 
+{%- set postsList = collections.casinos %}
+
+{% for post in postsList | reverse %} 
+    {% if post.data.lang == page.lang and post.data.logo %}
+        {# <li
+            class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}"
+        >
+            <a href="{{ post.url }}" class="postlist-link">{{ post.title }}</a>
+            <time
+                class="postlist-date"
+                datetime="{{ post.date | htmlDateString }}"
+                >{{ post.date | readableDate("LLLL yyyy") }}</time
+            >
+        </li> #}
+
+        <tr class="casinoItem postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+            <th scope="row" class="table-ranking-ner">#1</th>
+            <td>
+                <a class="casino-table-image" href="{{ post.url }}"
+                    ><img
+                        width="80"
+                        src="{{ metadata.images.casinos }}{{ post.data.logo }}"
+                        class="theme-card__img wp-post-image"
+                        alt="{{ post.title | slugify }}" /><span class="medal medal-gold"></span
+                ></a>
+            </td>
+            <td
+                style="padding: 0 !important"
+                class="casinos-table-item-name text-left d-none d-md-table-cell"
+            >
+                <div class="text-truncate">
+                    <a
+                        class="opacity-8 dotted-3-grey"
+                        href="{{ post.url }}"
+                        >{{ post.data.title }}</a
+                    >
+                </div>
+            </td>
+            <td class="d-md-table-cell btn-scale" style="width: auto">
+                <div class="rating-display" style="color: black">
+                    <center>
+                        <span class="fa fa-star checked" style="font-size: 24px"></span>{{- post.data.rating.toFixed(1) or "0.0" -}}
+                    </center>
+                </div>
+            </td>
+            <td class style="vertical-align: middle">
+                <div class="table-comments">
+                    <button
+                        data-target="#tc-modal"
+                        data-toggle="modal"
+                        data-hasbutton="0"
+                        data-title="Detalles de la reputación"
+                        data-content='&lt;div class="container"&gt;    &lt;div class="row"&gt;&lt;div class="col text-center"&gt;&lt;img width="80" src=_https_/www.betizen.org/wp-content/uploads/2021/03/20bet-logo.html class="theme-card__img wp-post-image" alt="20Bet-Casino" /&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class="row"&gt;&lt;div class="col text-center mt-4 mb-4"&gt;&lt;button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"&gt;&lt;span class="badge badge-pill btn-info"&gt;&nbsp;&lt;/span&gt;&nbsp;Aceptable&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class="row"&gt;&lt;div class="col"&gt;20bet casino está indudablemente enfocado en las apuestas deportivas sin embargo como muchos sportsbooks tiene una muy buena oferta de tragamonedas y juegos de casino, con mas de 4000 títulos de los proveedores mas destacados del juego online.Desafortunadamente como muchos otros casinos que hemos analizado en Betizen opera bajo una de las licencias menos seguras de Curazao. Un casino interesante, disponible en Latinoamérica, y uno para experimentar con precausión hasta que tengamos suficientes pruebas de su confiabilidad.&lt;strong&gt;Si tienes algunas experiencia con 20Bet casino ¡compartila con la comunidad! &lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class="row"&gt;&lt;div class="col mt-4"&gt;&lt;a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_3899" href=_https_/www.betizen.org/visit/20bet-es/index.html role="button" rel="sponsored" target="_blank"&gt;Visitar casino&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;style&gt;.btn-customcolor_3899{background-color:#051b37 !important;border-color:#051b37 !important;}.btn-customcolor_3899:hover{background-color:#00a542 !important;border-color:#00a542 !important;}&lt;/style&gt;'
+                        type="button"
+                        class="btn btn-info text-uppercase btn-casino-reputation d-none d-md-block btn-scale"
+                    >
+                        Aceptable
+                    </button>
+                    <button
+                        data-target="#tc-modal"
+                        data-toggle="modal"
+                        data-hasbutton="0"
+                        data-title="Detalles de la reputación"
+                        data-content='&lt;div class="container"&gt;    &lt;div class="row"&gt;&lt;div class="col text-center"&gt;&lt;img width="80" src=_https_/www.betizen.org/wp-content/uploads/2021/03/20bet-logo.html class="theme-card__img wp-post-image" alt="20Bet-Casino" /&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class="row"&gt;&lt;div class="col text-center mt-4 mb-4"&gt;&lt;button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"&gt;&lt;span class="badge badge-pill btn-info"&gt;&nbsp;&lt;/span&gt;&nbsp;Aceptable&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class="row"&gt;&lt;div class="col"&gt;20bet casino está indudablemente enfocado en las apuestas deportivas sin embargo como muchos sportsbooks tiene una muy buena oferta de tragamonedas y juegos de casino, con mas de 4000 títulos de los proveedores mas destacados del juego online.Desafortunadamente como muchos otros casinos que hemos analizado en Betizen opera bajo una de las licencias menos seguras de Curazao. Un casino interesante, disponible en Latinoamérica, y uno para experimentar con precausión hasta que tengamos suficientes pruebas de su confiabilidad.&lt;strong&gt;Si tienes algunas experiencia con 20Bet casino ¡compartila con la comunidad! &lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class="row"&gt;&lt;div class="col mt-4"&gt;&lt;a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_3899" href=_https_/www.betizen.org/visit/20bet-es/index.html role="button" rel="sponsored" target="_blank"&gt;Visitar casino&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;style&gt;.btn-customcolor_3899{background-color:#051b37 !important;border-color:#051b37 !important;}.btn-customcolor_3899:hover{background-color:#00a542 !important;border-color:#00a542 !important;}&lt;/style&gt;'
+                        type="button"
+                        class="btn btn-info text-uppercase btn-casino-reputation d-md-none btn-scale"
+                    >
+                        <i
+                            class="fa fa-bullhorn"
+                            aria-hidden="true"
+                            style="font-size: 16px"
+                        ></i>
+                    </button>
+                </div>
+            </td>
+            <td class="casinos-table-lastAction">
+                <a
+                    href="{{ post.data.affiliate }}"
+                    rel="sponsored"
+                    target="_blank"
+                    class="ml-1 btn btn-outline-brand btn-bg btn-table-more btn-table-link mr-1 d-sm-inline-block d-md-none d-lg-inline-block btn-scale"
+                    ><i
+                        class="fa fa-external-link d-none d-md-inline-block mr-2"
+                        aria-hidden="true"
+                    ></i
+                    >Visitar</a
+                ><a
+                    title="Análisis"
+                    href="{{ post.url }}"
+                    class="btn btn-brand btn-bg btn-table-more btn-scale"
+                    style="padding: 10.5px 20px"
+                    ><i class="fa fa-search" aria-hidden="true"></i
+                ></a>
+            </td>
+        </tr>
+    {% endif %} 
+{% endfor %}
