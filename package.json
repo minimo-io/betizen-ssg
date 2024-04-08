@@ -15,9 +15,6 @@
         "url": "https://minimo.io"
     },
     "license": "MIT",
-    "engines": {
-        "node": ">=14"
-    },
     "homepage": "https://www.betizen.org",
     "devDependencies": {
         "@11ty/eleventy": "^2.0.1",
