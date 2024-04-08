@@ -1,16 +1,20 @@
 {
     "es": [
         {
-            "text": "Inicio",
-            "url": "/es/"
-        },
-        {
-            "text": "Nosotros",
-            "url": "/nosotros/"
-        },
-        {
             "text": "Blog",
             "url": "/blog/"
+        },
+        {
+            "text": "Bonos",
+            "url": "/bonos/"
+        },
+        {
+            "text": "Casinos",
+            "url": "/casinos/"
+        },
+        {
+            "text": "Juegos",
+            "url": "/juegos/"
         }
     ],
     "en": [

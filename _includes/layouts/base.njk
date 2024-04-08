@@ -2,10 +2,16 @@
 <html lang="{{ page.lang }}" dir="{{ languages[page.lang].dir or 'ltr' }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
         <title>{{ title or metadata.title }}</title>
         <meta name="description" content="{{ description or metadata.description }}"> 
         <meta name="robots" content="index,follow" />
+
+        <link rel="shortcut icon" href="/assets/favs/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favs/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favs/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favs/favicon-16x16.png">        
 
         <link rel="alternate" hreflang="{{ page.lang }}" href="{{ metadata.url }}{{ page.url }}" />
         {%- for link in page.url | locale_links %}
@@ -18,9 +24,13 @@
         {#- Atom and JSON feeds included by default #}
         <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
         <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+
+        <link rel="dns-prefetch" href="//fonts.googleapis.com/" />
+        <link rel="dns-prefetch" href="//unpkg.com/" />
+        <link rel="dns-prefetch" href="//cdn.jsdelivr.net/" />        
 		
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-        {#- <meta name="generator" content="{{ eleventy.generator }}"> #}
+        <meta name="generator" content="{{ eleventy.generator }}">
 
         {#-
                 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
@@ -34,7 +44,25 @@
         {#- Add the contents of a file to the bundle #}
         {%- css %}
             {% include "public/css/index.css" %}
+            {% include "public/css/block-library.css" %}
+            {% include "public/css/others.css" %}
+            {% include "public/css/flickity.css" %}
+            {% include "public/css/betizen.css" %}
         {% endcss %}
+
+        {%- js %}
+            {% include "public/js/jquery.min.js" %}
+            {% include "public/js/tether.min.js" %}
+            {% include "public/js/popper.min.js" %}
+            {% include "public/js/bootstrap.min.js" %}
+            
+            {% include "public/js/jquery-migrate.min.js" %}
+
+            {% include "public/js/flickity.pkgd.min.js" %}
+            {% include "public/js/js.cookie.min.js" %}
+            {% include "public/js/scripts.js" %}
+            
+        {% endjs %} 
         {#- Or add from node_modules #}
         {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
             {#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
@@ -42,46 +70,42 @@
             {% getBundle "css" %}
         </style>
         {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-        {#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
+        {#- <link rel="stylesheet" href="/{% getBundleFileUrl "css" %}"> #}
+
+        <script>
+            {% getBundle "js" %}
+        </script>
+        {# Schema #}
+        <script type="application/ld+json">
+            [{"@context":"https://schema.org/","@type":"WebSite","@id":"https://www.betizen.org#website","headline":"Betizen","name":"Betizen","description":"{{description}}.","url":"https://www.betizen.org","potentialAction":{"@type":"SearchAction","target":"https://www.betizen.org?s={search_term_string}","query-input":"required name=search_term_string"}}]
+        </script>
     </head>
-    <body>
-        <a href="#skip" class="visually-hidden">Skip to main content</a>
+    <body class="home blog woocommerce dokan-theme-dokan">
+        <a href="/#main" class="visually-hidden">Skip to main content</a>
 
-        <header>
-            <a href="/" class="home-link">{{ metadata.title }}</a>
+        <script type="text/javascript">window.onload = new function(){var hd = document.getElementsByTagName('head').item(0);var js = document.createElement('script'); js.setAttribute('language', 'javascript'); js.setAttribute('src', 'https://certify.gpwa.org/script/betizen.org/'); hd.appendChild(js); return false;}</script>        
 
-            <nav>
-                <h2 class="visually-hidden">Top level navigation menu</h2>
-                <ul class="nav">
-                    {# language menu #}
-                    {% for item in nav[page.lang] %}
-                    <li class="nav-item">
-                        <a href="{{ item.url }}">{{ item.text }}</a>
-                    </li>
-                    {% endfor %}                    
-                </ul>
-            </nav>
-        </header>
 
-        <main id="skip">
+
+
+        {%- include "components/bz-message.njk" %}
+        {%- include "components/bz-nav.njk" %}
+
+
+        <div class="cookiePolicy d-none">
+        <div class="cookieDescription">
+        </div>
+        <div>
+        <button class="MuiButtonBase-root MuiButton-root muiButtonBase MuiButton-contained cookieAction MuiButton-containedSecondary muiButtonContainedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Accept</span><span class="MuiTouchRipple-root"></span></button>
+        </div>
+        </div>
+
+        <main id="main" class="site-main main">
             {{ content | safe }}
         </main>
 
-        <footer>
-            {# Language switcher #}
-            <nav>
-                <a href="{{ page.url }}" lang="{{ page.lang }}" hreflang="{{ page.lang }}">
-                {{ page.lang | upper }}
-                </a>
-
-                {% for link in page.url | locale_links %}
-                <a href="{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
-                {{ link.lang | upper }}</a
-                >
-                {% endfor %}
-            </nav>
-
-        </footer>
+        {%- include "components/bz-modal.njk" %}
+        {%- include "components/bz-footer.njk" %}
 
         <!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
     </body>

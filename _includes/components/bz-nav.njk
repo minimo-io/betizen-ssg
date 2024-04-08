@@ -1,0 +1,324 @@
+<nav
+    id="nav-header"
+    class="navbar navbar-expand-lg bg-white navbar-light fixed-top"
+>
+    <div class="container">
+        <a href="{{ page.url }}" lang="{{ page.lang }}" hreflang="{{ page.lang }}" class="navbar-brand zoom">
+            <img
+                src="/assets/imgs/site/betizen-logo.webp"
+                alt="Betizen"
+                title="Betizen"
+            />
+        </a>
+        <div class="d-flex Xml-auto">
+            <ul class="navbar-nav d-lg-none">
+                <li class="nav-item mr-2 animated shake notificationli">
+                    <a class="nav-notifications-box" href="/bonos/">
+                        <i class="fa fa-bell"></i>
+                        <span class="nav-notifications">37</span>
+                    </a>
+                </li>
+            </ul>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#globalNavbar"
+                aria-controls="globalNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="globalNavbar">
+            <div id="term-id-activity-mobile" class="nav-item d-lg-none">
+                <a
+                    class="nav-link dropdown-toggle flag-icon-background flag-icon-es"
+                    href="/"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Español</a
+                >
+                <div class="dropdown-menu">
+                    {% for link in page.url | locale_links %}
+                        <a class="{{ languages[es].menu.class }}" href="/{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
+                            {{ link.lang | upper }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <ul class="navbar-nav navbar-main ml-auto order-1">
+                {# {% for item in nav[page.lang] %}
+                <li class="nav-item">
+                    <a href="/{{ item.url }}">{{ item.text }}</a>
+                </li> 
+                {% endfor %}
+                #}
+
+                <li
+                    id="term-id-44"
+                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block"
+                >
+                    <a class="nav-link" href="/blog/">Blog</a>
+                </li>
+                <li
+                    id="term-id-44-mobile"
+                    class="nav-item nav-item-mobile Xnav-item-spread d-lg-none"
+                >
+                    <a
+                        class="mt-1 btn btn-lg mb-1 btn-knowledge btn-knowledge-purple btn-round btn-md-block mt-sm-1"
+                        href="/blog/"
+                        >Blog</a
+                    >
+                </li>
+                <li
+                    id="term-id-74"
+                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block"
+                >
+                    <a class="nav-link" href="/bonos/"
+                        >Bonos<sup class="d-none"
+                            ><span
+                                class="badge badge-bonus badge-pill badge-danger"
+                                >37</span
+                            ></sup
+                        ></a
+                    >
+                </li>
+                <li
+                    id="term-id-74-mobile"
+                    class="nav-item nav-item-mobile Xnav-item-spread d-lg-none"
+                >
+                    <a
+                        class="mt-1 btn btn-lg mb-1 btn-knowledge btn-knowledge-purple btn-round btn-md-block mt-sm-1"
+                        href="/bonos/"
+                        >Bonos</a
+                    >
+                </li>
+                <li
+                    id="term-id-5"
+                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block"
+                >
+                    <a class="nav-link" href="/casinos/">Casinos</a>
+                </li>
+                <li
+                    id="term-id-5-mobile"
+                    class="nav-item nav-item-mobile Xnav-item-spread d-lg-none"
+                >
+                    <a
+                        class="mt-1 btn btn-lg mb-1 btn-knowledge btn-knowledge-purple btn-round btn-md-block mt-sm-1"
+                        href="/casinos/"
+                        >Casinos</a
+                    >
+                </li>
+                <li
+                    id="term-id-4"
+                    class="nav-item nav-item-lg nav-item-spread dropdown d-none d-lg-block"
+                >
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="/juegos/"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Juegos</a
+                    >
+                    <div class="dropdown-menu">
+                        <div class="navbar-collapse navbar-top-collapse">
+                            <ul id="menu-top-menu" class="nav navbar-nav">
+                                <li
+                                    id="term-id-408"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/video-bingo/"
+                                        >Vídeo-Bingo</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-404"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/video-poker/"
+                                        >Video Poker</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-6"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/tragamonedas/"
+                                        >Tragamonedas</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-389"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a title href="/juegos/ruleta/"
+                                        >Ruleta</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-488"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/premios-instantaneos/"
+                                        >Premios Instantáneos</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-385"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a title href="/juegos/blackjack/"
+                                        >Blackjack</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-387"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a title href="/juegos/baccarat/"
+                                        >Baccarat</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li
+                    id="term-id-4-mobile"
+                    class="nav-item nav-item-mobile Xnav-item-spread dropdown d-lg-none mb-3"
+                >
+                    <a
+                        class="btn btn-lg mt-1 mb-1 btn-knowledge btn-knowledge btn-round btn-md-block mt-sm-1 dropdown-toggle"
+                        href="/juegos"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Juegos</a
+                    >
+                    <div class="dropdown-menu">
+                        <div class="navbar-collapse navbar-top-collapse">
+                            <ul id="menu-top-menu" class="nav navbar-nav">
+                                <li
+                                    id="term-id-408"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/video-bingo/"
+                                        >Vídeo-Bingo</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-404"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/video-poker/"
+                                        >Video Poker</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-6"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/tragamonedas/"
+                                        >Tragamonedas</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-389"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a title href="/juegos/ruleta/"
+                                        >Ruleta</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-488"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a
+                                        title
+                                        href="/juegos/premios-instantaneos/"
+                                        >Premios Instantáneos</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-385"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a title href="/juegos/blackjack/"
+                                        >Blackjack</a
+                                    >
+                                </li>
+                                <li
+                                    id="term-id-387"
+                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
+                                >
+                                    <a title href="/juegos/baccarat/"
+                                        >Baccarat</a
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li
+                    id="term-id-activity"
+                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block dropdown"
+                    Xstyle="padding-right:30px;"
+                >
+                    <a
+                        class="nav-link dropdown-toggle flag-icon-background flag-icon-es"
+                        href="/"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >Español</a
+                    >
+                    <div class="dropdown-menu">
+                        <a
+                            class="dropdown-item font-weight-bold flag-icon-background flag-icon-es"
+                            href="/"
+                            >Español</a
+                        ><a
+                            class="dropdown-item flag-icon-background flag-icon-br"
+                            href="/pt-br/"
+                            >Português</a
+                        ><a
+                            class="dropdown-item flag-icon-background flag-icon-gb"
+                            href="/en/"
+                            >English</a
+                        >
+                    </div>
+                </li>
+                <li
+                    class="d-none d-md-block nav-item mr-2 animated shake notificationli"
+                >
+                    <a class="nav-notifications-box" href="/bonos/">
+                        <i class="fa fa-bell"></i>
+                        <span class="nav-notifications">37</span>
+                    </a>
+                </li>
+                <li class="d-lg-none nav-item nav-item-lg"></li>
+            </ul>
+        </div>
+    </div>
+</nav>

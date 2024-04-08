@@ -11,7 +11,7 @@
         "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
         "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
         "clean-build": "rimraf _site",
-        "minify:html": "html-minifier --input-dir _site --output-dir _site --file-ext html --minify-css --remove-comments --collapse-whitespace"
+        "minify:html": "html-minifier --input-dir _site --output-dir _site --file-ext html --minify-js --minify-css --remove-comments --collapse-whitespace"
     },
     "author": {
         "name": "Nicolas Erramuspe",
