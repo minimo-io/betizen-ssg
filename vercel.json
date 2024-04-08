@@ -1,9 +1,8 @@
 {
-    "redirects": [
+    "rewrites": [
         {
             "source": "/es/:path*",
-            "destination": "/:path*",
-            "statusCode": 301
+            "destination": "/:path*"
         }
     ]
 }
