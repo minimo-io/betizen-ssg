@@ -4,7 +4,6 @@ const { DateTime } = require("luxon");
 const markdownItAnchor = require("markdown-it-anchor");
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const { EleventyI18nPlugin } = require("@11ty/eleventy");
@@ -17,8 +16,6 @@ module.exports = function (eleventyConfig) {
     // For example, `./public/css/` ends up in `_site/css/`
     eleventyConfig.addPassthroughCopy({
         "./public/": "/assets/",
-        "./node_modules/prismjs/themes/prism-okaidia.css":
-            "/assets/css/prism-okaidia.css",
     });
 
     // Run Eleventy when these files change:
@@ -33,9 +30,6 @@ module.exports = function (eleventyConfig) {
 
     // Official plugins
     eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addPlugin(pluginSyntaxHighlight, {
-        preAttributes: { tabindex: 0 },
-    });
     eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
     eleventyConfig.addPlugin(pluginBundle);
     eleventyConfig.addPlugin(EleventyI18nPlugin, {
