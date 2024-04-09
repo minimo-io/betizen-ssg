@@ -1,9 +1,17 @@
+{%- set currentLangClass = "flag-icon-es" %}
+{% if page.lang == "pt-br" %}
+     {%- set currentLangClass = "flag-icon-br" %}
+{% elif page.lang == "en" %}
+     {%- set currentLangClass = "flag-icon-gb" %}
+{% endif %}
+
+{% from "locale-fix.njk" import localeUrlFix with context %}
 <nav
     id="nav-header"
     class="navbar navbar-expand-lg bg-white navbar-light fixed-top"
 >
     <div class="container">
-        <a href="{{ page.url }}" lang="{{ page.lang }}" hreflang="{{ page.lang }}" class="navbar-brand zoom">
+        <a href="{{ "/" | locale_url }}" lang="{{ page.lang }}" hreflang="{{ page.lang }}" class="navbar-brand zoom">
             <img
                 src="/assets/imgs/site/betizen-logo.webp"
                 alt="Betizen"
@@ -31,21 +39,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
+
         <div class="collapse navbar-collapse" id="globalNavbar">
+            {# mobile menu #}
             <div id="term-id-activity-mobile" class="nav-item d-lg-none">
                 <a
-                    class="nav-link dropdown-toggle flag-icon-background flag-icon-es"
+                    class="nav-link dropdown-toggle flag-icon-background {{ currentLangClass }}"
                     href="/"
                     data-toggle="dropdown"
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    >Español</a
+                    > {{ languages[page.lang].menu.name }}</a
                 >
                 <div class="dropdown-menu">
                     {% for link in page.url | locale_links %}
-                        <a class="{{ languages[es].menu.class }}" href="/{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
-                            {{ link.lang | upper }}
+                        <a class="{{ languages[link.lang].menu.class }}" href="{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
+                            {{ languages[link.lang].menu.name }}
                         </a>
                     {% endfor %}
                 </div>
@@ -281,32 +291,21 @@
                 </li>
                 <li
                     id="term-id-activity"
-                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block dropdown"
-                    Xstyle="padding-right:30px;"
-                >
+                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block dropdown">
+
                     <a
-                        class="nav-link dropdown-toggle flag-icon-background flag-icon-es"
+                        class="nav-link dropdown-toggle flag-icon-background {{ currentLangClass }}"
                         href="/"
                         data-toggle="dropdown"
                         role="button"
                         aria-haspopup="true"
                         aria-expanded="false"
-                        >Español</a
+                        >{{ languages[page.lang].menu.name }}</a
                     >
                     <div class="dropdown-menu">
-                        <a
-                            class="dropdown-item font-weight-bold flag-icon-background flag-icon-es"
-                            href="/"
-                            >Español</a
-                        ><a
-                            class="dropdown-item flag-icon-background flag-icon-br"
-                            href="/pt-br/"
-                            >Português</a
-                        ><a
-                            class="dropdown-item flag-icon-background flag-icon-gb"
-                            href="/en/"
-                            >English</a
-                        >
+                        {{ localeUrlFix(fixLang="es") }}
+                        {{ localeUrlFix(fixLang="pt-br") }}
+                        {{ localeUrlFix(fixLang="en") }}
                     </div>
                 </li>
                 <li

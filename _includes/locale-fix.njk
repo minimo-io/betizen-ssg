@@ -1,0 +1,16 @@
+{% macro localeUrlFix(fixLang="es") %}
+    {%- for link in page.url | locale_links %}
+        {% if link.lang == fixLang %}
+            {%- set currentLangClass = "flag-icon-es" %}
+            {% if fixLang == "pt-br" %}
+                {%- set currentLangClass = "flag-icon-br" %}
+            {% elif fixLang == "en" %}
+                {%- set currentLangClass = "flag-icon-gb" %}
+            {% endif %}      
+            <a
+                class="dropdown-item flag-icon-background {{ currentLangClass }}"
+                href='{{ link.url }}'
+                >{{ languages[link.lang].menu.name }}</a>
+        {%endif%}
+    {%- endfor %}
+{%endmacro%}
