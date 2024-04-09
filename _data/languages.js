@@ -7,6 +7,16 @@ module.exports = {
             flagClass: "flag-icon-es",
         },
         availableText: "Esta página también está disponible en:",
+        categories: {
+            slot: {
+                name: "Tragamonedas",
+                plural: "Tragamonedas",
+            },
+            bingo: {
+                name: "Bingo",
+                plural: "Bingos",
+            },
+        },
     },
     "pt-br": {
         menu: {
@@ -15,6 +25,16 @@ module.exports = {
             flagClass: "flag-icon-br",
         },
         availableText: "Também disponivel em: ",
+        categories: {
+            slot: {
+                name: "Caça níquel",
+                plural: "Caça níqueis",
+            },
+            bingo: {
+                name: "Vídeo bingo",
+                plural: "Vídeo-Bingos",
+            },
+        },
     },
     en: {
         menu: {
@@ -23,5 +43,15 @@ module.exports = {
             flagClass: "flag-icon-gb",
         },
         availableText: "This page is also available in:",
+        categories: {
+            slot: {
+                name: "Slot",
+                plural: "Slots",
+            },
+            bingo: {
+                name: "Bingo",
+                plural: "Bingos",
+            },
+        },
     },
 };
