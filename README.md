@@ -8,6 +8,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 -   Create staging repo
 -   Work on the tags/categories page
 -   Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
+-   Branch testing
 
 ### v2
 
