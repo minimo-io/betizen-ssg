@@ -4,8 +4,8 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
+-   Work on the tags/categories page (now from top menu being ready -and links being defined!)
 -   Translate common texts
--   Work on the tags/categories page
 -   Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
 
 ### v2
