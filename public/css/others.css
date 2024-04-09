@@ -6930,8 +6930,8 @@ a.wpcr_inline span.wpcr_averageStars {
     z-index: 99;
 }
 .wpcr_aggregate {
+    /* display: inline-block; */
     float: left;
-    display: inline-block;
     width: 100%;
     line-height: 20px;
 }
@@ -6980,7 +6980,6 @@ a.wpcr_inline span.wpcr_averageStars {
     .games-icon:before,
     .bonus-icon:before {
         font-family: "casino";
-        speak: none;
         font-style: normal;
         font-weight: normal;
         font-variant: normal;
