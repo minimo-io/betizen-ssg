@@ -1,9 +1,4 @@
-{%- set currentLangClass = "flag-icon-es" %}
-{% if page.lang == "pt-br" %}
-     {%- set currentLangClass = "flag-icon-br" %}
-{% elif page.lang == "en" %}
-     {%- set currentLangClass = "flag-icon-gb" %}
-{% endif %}
+{%- set currentLangClass = languages[page.lang].menu.flagClass %}
 
 {% from "locale-fix.njk" import localeUrlFix with context %}
 <nav

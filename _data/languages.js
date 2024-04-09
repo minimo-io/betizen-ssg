@@ -4,6 +4,7 @@ module.exports = {
         menu: {
             class: "dropdown-item font-weight-bold flag-icon-background flag-icon-es",
             name: "Español",
+            flagClass: "flag-icon-es",
         },
         availableText: "Esta página también está disponible en:",
     },
@@ -11,6 +12,7 @@ module.exports = {
         menu: {
             class: "dropdown-item flag-icon-background flag-icon-br",
             name: "Português",
+            flagClass: "flag-icon-br",
         },
         availableText: "Também disponivel em: ",
     },
@@ -18,6 +20,7 @@ module.exports = {
         menu: {
             class: "dropdown-item flag-icon-background flag-icon-gb",
             name: "English",
+            flagClass: "flag-icon-gb",
         },
         availableText: "This page is also available in:",
     },
