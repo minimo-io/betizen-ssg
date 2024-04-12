@@ -1,0 +1,25 @@
+{%- from "macros/details.njk" import fieldScore with context -%}
+
+<div class="list-index list-group mt-1 mb-4">
+    <a
+        href="#premios"
+        class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+    >
+        Premios, RTP y volatilidad
+        {{ fieldScore(areas.prizes) }}
+    </a>
+    <a
+        href="#funciones-y-mecanica"
+        class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+    >
+        Funciones y mecánica
+        {{ fieldScore(areas.functions) }}
+    </a>
+    <a
+        href="#tematica"
+        class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+    >
+        Temática y diseño
+        {{ fieldScore(areas.theme) }}
+    </a>
+</div>

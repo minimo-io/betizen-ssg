@@ -5,6 +5,8 @@ module.exports = {
     images: {
         site: "/assets/imgs/site/",
         casinos: "/assets/imgs/casinos/",
+        games: "/assets/imgs/games/",
+        banners: "/assets/imgs/banners/",
     },
     description:
         "Listados confiables de casinos en línea, juegos, bonos y programas de afiliados, ¡sin engaños!",

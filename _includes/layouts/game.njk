@@ -10,7 +10,7 @@ layout: layouts/base.njk
 <section
     class="profile__hero profile__hero_game"
     style="
-        background-image: url(/assets/imgs/games/{{ page.fileSlug }}-hero.webp);
+        background-image: url({{ metadata.images.games }}{{ page.fileSlug }}-hero.webp);
     "
     alt="{{ page.fileSlug }} Top Image"
 ></section>
@@ -23,7 +23,7 @@ layout: layouts/base.njk
                     <div class="d-flex">
                         <div class="profile__avatar">
                             <img
-                                src="/assets/imgs/games/{{ page.fileSlug }}-logo.webp"
+                                src="{{ metadata.images.games }}{{ page.fileSlug }}-logo.webp"
                                 class="attachment-square_crop size-square_crop"
                                 alt="{{ page.fileSlug }}"
                                 width="300"
@@ -98,40 +98,8 @@ layout: layouts/base.njk
                                                         </div>
                                                     </div>                                                
                                             </div>
-                                            <div
-                                                class="list-index list-group mt-1 mb-4"
-                                            >
-                                                <a
-                                                    href="#premios"
-                                                    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-                                                >
-                                                    Premios, RTP y volatilidad
-                                                    <span
-                                                        class="badge badge-success badge-pill"
-                                                        >✓ Bueno</span
-                                                    >
-                                                </a>
-                                                <a
-                                                    href="#funciones-y-mecanica"
-                                                    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-                                                >
-                                                    Funciones y mecánica
-                                                    <span
-                                                        class="badge badge-success badge-pill"
-                                                        >✓ Bueno</span
-                                                    >
-                                                </a>
-                                                <a
-                                                    href="#tematica"
-                                                    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-                                                >
-                                                    Temática y diseño
-                                                    <span
-                                                        class="badge badge-warning badge-pill font-weight-bold"
-                                                        >∼ Medio</span
-                                                    >
-                                                </a>
-                                            </div>
+                                            
+                                            {%- include "components/games/details-list.njk" -%}
 
                                             {%- include "components/games/key-props.njk" -%}
 
@@ -158,7 +126,7 @@ layout: layouts/base.njk
                                                         <img
                                                             width="1200"
                                                             height="900"
-                                                            src="/assets/imgs/games/{{ page.fileSlug }}-splash.webp"
+                                                            src="{{ metadata.images.games }}{{ page.fileSlug }}-splash.webp"
                                                             class="attachment-large_crop size-large_crop"
                                                             alt="{{ title | slugify }}"
                                                         />

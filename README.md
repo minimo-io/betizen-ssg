@@ -4,6 +4,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
+-   Make the carrousel
 -   Top casinos for games section (commented)
 -   Work on the tags/categories page (now from top menu being ready -and links being defined!)
 -   Translate common texts

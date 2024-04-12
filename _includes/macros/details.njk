@@ -1,0 +1,11 @@
+{% macro fieldScore(detail=bad) %}
+    {% set detailText = languages[page.lang].texts[detail] %}
+
+    {% if detail == "bad" %}
+        <span class="badge badge-danger badge-pill">x {{ detailText }}</span>
+    {% elif detail == "average" %}
+        <span class="badge badge-warning badge-pill">∼{{ detailText }}</span>
+    {% elif detail == "good" %}
+        <span class="badge badge-success badge-pill">✓ {{ detailText }}</span>
+    {% endif %}
+{% endmacro %}
