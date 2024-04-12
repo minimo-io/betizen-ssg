@@ -43,11 +43,12 @@ module.exports = function (eleventyConfig) {
         (content) => `<pre>${inspect(content)}</pre>`
     );
 
-    eleventyConfig.addFilter("providerFilter", function (collection, category) {
-        if (!category) return collection;
-        const filtered = collection.filter(
-            (item) => item.data.category == category
-        );
+    eleventyConfig.addFilter("forProvider", function (collection, providerUrl) {
+        if (!providerUrl) return collection;
+        const filtered = collection.filter((item) => {
+            if (!item.data.provider) return false;
+            return item.data.provider.url == providerUrl;
+        });
         return filtered;
     });
 
