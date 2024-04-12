@@ -19,7 +19,7 @@
             <div class="card border-light card-promo">
                 <div class="card-body">
                     <p class="card-text">
-                        {{ languages[page.lang].promo.casino.title }}
+                        {{ languages[page.lang].promo.casino.title | safe }}
                     </p>
                     <a
                         class="btn btn-light btn-block"

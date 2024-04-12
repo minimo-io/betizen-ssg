@@ -12,8 +12,8 @@ module.exports = {
             image: "/assets/imgs/banners/banner-bc-game-es.webp",
             casino: {
                 logo: "/assets/imgs/casinos/888starz-logo.webp",
-                title: "200% SOBRE EL DEPÓSITO Y 150 GIROS 🤯 ¡PROMO IMPERDIBLE!",
-                cta: "PROBAR SUERTE AHORA!",
+                title: "200% SOBRE EL DEPÓSITO Y 150 GIROS 🤯 ¡PROMO LIMITADA!",
+                cta: "¡PROBAR SUERTE AHORA!",
             },
             external_250x250:
                 '<script type="text/javascript" src="https://js.revenuenetwork.com/javascript.php?prefix=V-ibMvK6zZs5uATr4YanjGNd7ZgqdRLk&amp;media=4014&amp;campaign=1"></script>',
@@ -41,6 +41,11 @@ module.exports = {
             url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
             cta: "👉 Bônus de R$65 para testar?",
             image: "/assets/imgs/banners/casino-banner-2-pt-br.webp",
+            casino: {
+                logo: "/assets/imgs/casinos/888starz-logo.webp",
+                title: "200% NO DEPÓSITO E 150 GIROS GRATUITOS 🤯 PROMOÇÃO LIMITADA!",
+                cta: "TENTE SUA SORTE AGORA!",
+            },
             external_250x250:
                 '<script type="text/javascript" src="https://js.ppincome.net/javascript.php?prefix=FJLgBR3akX5-2Obre52AsGNd7ZgqdRLk&amp;media=5118&amp;campaign=1"></script>',
         },
@@ -65,6 +70,11 @@ module.exports = {
             url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
             cta: "👉 $10 bonus to try?",
             image: "/assets/imgs/banners/casino-banner-2-en.webp",
+            casino: {
+                logo: "/assets/imgs/casinos/888starz-logo.webp",
+                title: "200% TO DEPOSIT AND 150 FS! 🤯 <br>CANNOT MISS THIS ONE!",
+                cta: "TRY YOUR LUCK NOW!",
+            },
             external_250x250:
                 '<script type="text/javascript" src="https://media.toxtren.com/ad.aspx?pid=101348&bid=1709"></script>',
         },

@@ -12,8 +12,7 @@ layout: layouts/base.njk
     style="
         background-image: url(/assets/imgs/games/{{ page.fileSlug }}-hero.webp);
     "
-    alt="Jack y las habichuelas mágicas"
-    title="Jack y las habichuelas mágicas"
+    alt="{{ page.fileSlug }} Top Image"
 ></section>
 
 <section class="section section--pt-0" style="padding: 0">
@@ -36,45 +35,10 @@ layout: layouts/base.njk
                                 {{ title }}
                             </h1>
                             <p>
-                                Creado por
-                                <strong
-                                    ><a
-                                        href="https://www.betizen.org/proveedor/netent/"
-                                        >Netent</a
-                                    ></strong
-                                >
+                                Creado por <strong><a href="{{ provider.url }}">
+                                    {{ provider.name }}</a></strong>
                             </p>
                         </div>
-                    </div>
-                </div>
-                <div
-                    class="col-lg-4 align-items-sm-center justify-content-sm-start justify-content-lg-end mt-2 d-none d-lg-flex"
-                    style="display: none !important"
-                >
-                    <div
-                        class="d-flex justify-content-between align-items-center mb-2"
-                    >
-                        <a
-                            class="link--dark ranking-dropdown"
-                            js-price-dropdown="true"
-                            href="/rankings/"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            >Ranking</a
-                        >
-                        <h2
-                            class="d-flex align-items-center"
-                            js-price-value="main_price_div"
-                        >
-                            <span
-                                class="woocommerce-Price-amount amount ranking-big"
-                                ><span
-                                    class="woocommerce-Price-currencySymbol"
-                                ></span
-                                >#205</span
-                            >
-                        </h2>
                     </div>
                 </div>
             </div>
@@ -174,7 +138,7 @@ layout: layouts/base.njk
                                             <div class="mb-3 card">
                                                 <div class="card-body">
                                                     <div class="text-center">
-                                                        {{ excerpt }}
+                                                        {{ excerpt or description }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,6 +216,10 @@ layout: layouts/base.njk
                                                 {% include "components/games/top-casinos.njk" %}
                                             </div>
                                             <div class="card-text mt-5 px-2 general-description">
+                                                <h2 class="card-title text-truncate ml-1">
+                                                    Mas sobre 
+                                                    {{ title }}
+                                                </h2>                                                
                                                 {{ content | safe }}
                                             </div>
                                         </div>
