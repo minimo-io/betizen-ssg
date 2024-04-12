@@ -201,6 +201,9 @@
     font-size: 14px;
     color: #1e1e1e;
 }
+.game-excerpt {
+    font-size: 20px;
+}
 @media (max-width: 576px) {
     .bz-search-bar input {
         font-size: 20px;
@@ -224,5 +227,8 @@
         margin-top: 0.6rem;
         margin-left: 0 !important;
         display: block !important;
+    }
+    .game-excerpt {
+        font-size: 13px;
     }
 }

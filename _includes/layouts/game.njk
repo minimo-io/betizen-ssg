@@ -135,11 +135,9 @@ layout: layouts/base.njk
 
                                             {%- include "components/games/key-props.njk" -%}
 
-                                            <div class="mb-3 card">
-                                                <div class="card-body">
-                                                    <div class="text-center">
-                                                        {{ excerpt or description }}
-                                                    </div>
+                                            <div class="mb-3 card game-excerpt">
+                                                <div class="card-body text-center">
+                                                    {{ excerpt or description }}
                                                 </div>
                                             </div>
                                             <div class="mt-1 mb-4"></div>
