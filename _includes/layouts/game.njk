@@ -98,7 +98,7 @@ layout: layouts/base.njk
                                                         </div>
                                                     </div>                                                
                                             </div>
-                                            
+
                                             {%- include "components/games/details-list.njk" -%}
 
                                             {%- include "components/games/key-props.njk" -%}
@@ -139,16 +139,14 @@ layout: layouts/base.njk
                                                         class="game-play-button-for-real-box"
                                                     >
                                                         <a
-                                                            data-toggle="modal"
-                                                            data-target="#gameWideModal"
-                                                            class="game-play-button"
+                                                            data-micromodal-trigger="modal-1"
+                                                            class="game-play-button btn-play-now"
                                                             ><span></span
                                                         ></a>
                                                         <a
-                                                            data-toggle="modal"
-                                                            data-target="#gameWideModal"
+                                                            data-micromodal-trigger="modal-1"
                                                             role="button"
-                                                            class="btn btn-brand btn-block btn-checkout up btn-customcolor game-play-button-for-free"
+                                                            class="btn btn-brand btn-block btn-checkout up btn-customcolor game-play-button-for-free btn-play-now"
                                                         >
                                                             <span
                                                                 class="btn-text"
@@ -161,7 +159,6 @@ layout: layouts/base.njk
                                                             target="_blank"
                                                             role="button"
                                                             class="btn btn-outline-brand btn-block up btn-customcolor-outline game-play-button-for-real"
-                                                            title="Tusk Casino ES"
                                                             data-linkid="4707"
                                                         >
                                                             <span
@@ -245,9 +242,8 @@ layout: layouts/base.njk
                             <button
                                 id="btn-opinion-right"
                                 type="button"
-                                class="btn btn-brand btn-block btn-checkout up btn-customcolor Xmb-3"
-                                data-toggle="modal"
-                                data-target="#gameWideModal"
+                                class="btn btn-brand btn-play-now btn-block btn-checkout up btn-customcolor Xmb-3"
+                                data-micromodal-trigger="modal-1"
                             >
                                 <span class="btn-text">Jugar gratis</span>
                             </button>
@@ -264,3 +260,5 @@ layout: layouts/base.njk
         </div>
     </div>
 </div>
+{# modals for games #}
+{%- include "components/games/modal.njk" -%}

@@ -4,8 +4,10 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   Make the carrousel
--   Top casinos for games section (commented)
+-   Add iframe codes for free games
+    -   Modify game_codes all around, are hardcoded into code
+-   Games: Play button not working.
+-   Make the carrousel.
 -   Work on the tags/categories page (now from top menu being ready -and links being defined!)
 -   Translate common texts
 -   Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
@@ -13,6 +15,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ### v2
 
 -   Create a filter to filter tags by language name insted of adding if statements (gameslist)
+-   Top casinos for games section (commented)
 
 ### Conventions
 
