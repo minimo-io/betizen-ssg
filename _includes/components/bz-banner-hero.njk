@@ -1,0 +1,11 @@
+{% if languages[page.lang].promo.image and languages[page.lang].promo.url %}
+<div class="bz-img-banner mb-2 mt-1">
+    <a href="{{languages[page.lang].promo.url}}"
+    target="_blank"
+    rel="nofollow noopener noreferrer">
+        <img
+            src="{{ languages[page.lang].promo.image }}"
+        />
+    </a>
+</div>
+{% endif %}

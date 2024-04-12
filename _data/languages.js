@@ -6,15 +6,28 @@ module.exports = {
             name: "Español",
             flagClass: "flag-icon-es",
         },
-        availableText: "Esta página también está disponible en:",
+        promo: {
+            url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
+            cta: "👉 ¿Bono de $10 para probar?",
+            image: "/assets/imgs/banners/banner-bc-game-es.webp",
+            casino: {
+                logo: "/assets/imgs/casinos/888starz-logo.webp",
+                title: "200% SOBRE EL DEPÓSITO Y 150 GIROS 🤯 ¡PROMO IMPERDIBLE!",
+                cta: "PROBAR SUERTE AHORA!",
+            },
+            external_250x250:
+                '<script type="text/javascript" src="https://js.revenuenetwork.com/javascript.php?prefix=V-ibMvK6zZs5uATr4YanjGNd7ZgqdRLk&amp;media=4014&amp;campaign=1"></script>',
+        },
         categories: {
             slot: {
                 name: "Tragamonedas",
                 plural: "Tragamonedas",
+                url: "/juego/tragamonedas/",
             },
             bingo: {
                 name: "Bingo",
                 plural: "Bingos",
+                url: "/juegos/video-bingo//",
             },
         },
     },
@@ -24,7 +37,13 @@ module.exports = {
             name: "Português",
             flagClass: "flag-icon-br",
         },
-        availableText: "Também disponivel em: ",
+        promo: {
+            url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
+            cta: "👉 Bônus de R$65 para testar?",
+            image: "/assets/imgs/banners/casino-banner-2-pt-br.webp",
+            external_250x250:
+                '<script type="text/javascript" src="https://js.ppincome.net/javascript.php?prefix=FJLgBR3akX5-2Obre52AsGNd7ZgqdRLk&amp;media=5118&amp;campaign=1"></script>',
+        },
         categories: {
             slot: {
                 name: "Caça níquel",
@@ -42,7 +61,13 @@ module.exports = {
             name: "English",
             flagClass: "flag-icon-gb",
         },
-        availableText: "This page is also available in:",
+        promo: {
+            url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
+            cta: "👉 $10 bonus to try?",
+            image: "/assets/imgs/banners/casino-banner-2-en.webp",
+            external_250x250:
+                '<script type="text/javascript" src="https://media.toxtren.com/ad.aspx?pid=101348&bid=1709"></script>',
+        },
         categories: {
             slot: {
                 name: "Slot",

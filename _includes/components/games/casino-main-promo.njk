@@ -1,0 +1,39 @@
+{# This goes below the list casinos for that game #}
+<div class="container mt-4">
+    <div class="row" style="border: 1px solid #eef1f1; border-radius: 10px">
+        <div
+            class="col-sm-3 text-center game-casino-suggestion align-middle"
+            style="background-color: #eef1f1; padding: 2%"
+        >
+            <img
+                width="200"
+                height="200"
+                src="{{ languages[page.lang].promo.casino.logo }}"
+                class="profile-author__img wp-post-image"
+                alt="{{ languages[page.lang].promo.casino.cta | slugify }}"
+                decoding="async"
+                fetchpriority="high"
+            />
+        </div>
+        <div class="col-sm">
+            <div class="card border-light card-promo">
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ languages[page.lang].promo.casino.title }}
+                    </p>
+                    <a
+                        class="btn btn-light btn-block"
+                        href="{{ languages[page.lang].promo.url }}"
+                        rel="nofollow noopener noreferrer"
+                        role="button"
+                        title="{{ languages[page.lang].promo.casino.cta | slugify }}"
+                        target="_blank"
+                        data-linkid="4707"
+                        ><i class="fa fa-external-link" aria-hidden="true"></i
+                        >&nbsp;{{ languages[page.lang].promo.casino.cta }}</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

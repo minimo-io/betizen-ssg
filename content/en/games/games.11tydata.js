@@ -1,7 +1,7 @@
 module.exports = {
     tags: ["games"],
     lang: "en",
-    layout: "layouts/base.njk",
+    layout: "layouts/game.njk",
     permalink: function (data) {
         // Slug override for localized URL slugs
         if (data.slugOverride) {
