@@ -9,9 +9,7 @@ layout: layouts/base.njk
 
 <section
     class="profile__hero profile__hero_game"
-    style="
-        background-image: url({{ metadata.images.games }}{{ page.fileSlug }}-hero.webp);
-    "
+    style="background-image: url({{ metadata.images.games }}{{ page.fileSlug }}-hero.webp);"
     alt="{{ page.fileSlug }} Top Image"
 ></section>
 
@@ -98,7 +96,19 @@ layout: layouts/base.njk
 
                                             {%- include "components/games/details-list.njk" -%}
 
-                                            {%- include "components/games/key-props.njk" -%}
+                                            {% if tags.includes("bingo") %}
+                                                {%- include "components/games/key-props-bingo.njk" -%}
+                                            {% elif tags.includes("roulette") %}
+                                                {%- include "components/games/key-props-roulette.njk" -%}
+                                            {% elif tags.includes("poker") %}
+                                                {%- include "components/games/key-props-poker.njk"-%}
+                                            {% elif tags.includes("blackjack") %}
+                                                {%- include "components/games/key-props-blackjack.njk"-%}    
+                                            {% elif tags.includes("baccarat") %}
+                                                {%- include "components/games/key-props-baccarat.njk"-%}                                                                                                                                      
+                                            {% else %}
+                                                {%- include "components/games/key-props.njk" -%}
+                                            {% endif %}
 
                                             <div class="mb-3 card game-excerpt">
                                                 <div class="card-body text-center">
