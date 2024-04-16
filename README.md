@@ -4,9 +4,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   Add iframe codes for free games
-    -   Modify game_codes all around, are hardcoded into code
--   Games: Play button not working.
+-   Start creating the importing feature from WPGraph QL
 -   Make the carrousel.
 -   Work on the tags/categories page (now from top menu being ready -and links being defined!)
 -   Translate common texts
