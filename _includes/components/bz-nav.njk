@@ -57,10 +57,7 @@
             </div>
             <ul class="navbar-nav navbar-main ml-auto order-1">
                 {% for item in nav[page.lang] %}
-                    {# <li id="term-id-44" class="nav-item">
-                        <a href="/{{ item.url }}">{{ item.text }}</a>
-                        
-                    </li>  #}
+
                     {%- set hasChildren = not not item.children -%}
 
                     {% if hasChildren === false %}
@@ -144,47 +141,6 @@
                 {% endfor %}
                
 
-
-
-                {# <li
-                    id="term-id-74"
-                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block"
-                >
-                    <a class="nav-link" href="/bonos/"
-                        >Bonos<sup class="d-none"
-                            ><span
-                                class="badge badge-bonus badge-pill badge-danger"
-                                >37</span
-                            ></sup
-                        ></a
-                    >
-                </li>
-                <li
-                    id="term-id-74-mobile"
-                    class="nav-item nav-item-mobile d-lg-none"
-                >
-                    <a
-                        class="mt-1 btn btn-lg mb-1 btn-knowledge btn-knowledge-purple btn-round btn-md-block mt-sm-1"
-                        href="/bonos/"
-                        >Bonos</a
-                    >
-                </li>
-                <li
-                    id="term-id-5"
-                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block"
-                >
-                    <a class="nav-link" href="/casinos/">Casinos</a>
-                </li>
-                <li
-                    id="term-id-5-mobile"
-                    class="nav-item nav-item-mobile d-lg-none"
-                >
-                    <a
-                        class="mt-1 btn btn-lg mb-1 btn-knowledge btn-knowledge-purple btn-round btn-md-block mt-sm-1"
-                        href="/casinos/"
-                        >Casinos</a
-                    >
-                </li> #}
                 <li
                     id="term-id-activity"
                     class="nav-item nav-item-spread nav-item-lg d-none d-lg-block dropdown">

@@ -2,26 +2,54 @@
     <!-- Flickity HTML init -->
     <div class="carousel mx-2 mt-3 mt-md-1 mb-5 Xmb-md-0">
         <a
-            href="https://www.betizen.org/juego/bingo-online-crazy-monkey-neko-games/"
+            href="{{ languages[page.lang].promo.url }}"
             target="_blank"
             rel="noreferrer"
             class="carousel-cell carousel-cell-smaller"
         >
             <div
-                class="carousel-image-small"
+                class="carousel-image-small carousel-casino"
                 style="
-                    background-image: url('https://www.betizen.org/wp-content/uploads/2024/04/crazy-monkey-logo-180x180.webp');
+                    background-image: url('{{ languages[page.lang].promo.casino.logo }}');
                 "
             ></div>
             <div class="featured-text featured-gold">
-                <i class="fa fa-bullhorn mr-1" aria-hidden="true"></i>¡Nuevo!
+                🥇 Featured
             </div>
             <span class="carousel-button featured-gold btn btn-scale"
-                >Jugar gratis</span
+                >Play</span
             >
         </a>
         <a
-            href="/juego/tragamonedas-jack-y-las-habichuelas-magicas/"
+            href="{{ languages[page.lang].promo.url }}"
+            target="_blank"
+            rel="noreferrer nofollow noopener"
+            class="carousel-cell carousel-cell-big"
+        >
+            <div class="carousel-cell-image-overlay"></div>
+            <div
+                class="carousel-image"
+                style="
+                    background-image: url('{{ metadata.images.site }}bonus-bg-1.webp');
+                "
+            ></div>
+            <h3 class="carousel-cell-big-title">
+                {{ languages[page.lang].promo.cta }}
+                {# <span class="carousel-cell-subtitle mb-0 mt-2 ml-2">
+                    <span class="carousel-subtitle-image mr-1"
+                        ><img
+                            width="20"
+                            src="{{ languages[page.lang].promo.casino.logo }}"
+                    /></span>
+                    31Bet
+                </span>#}
+            </h3>
+
+            <div class="featured-text featured-black">Bono</div>
+            <span class="carousel-button btn btn-scale featured-black">Utilizar este bono</span>
+        </a>           
+        <a
+            href="{{ "/juego/tragamonedas-jack-y-las-habichuelas-magicas/" | locale_url }}"
             target="_blank"
             rel="noreferrer"
             class="carousel-cell carousel-cell-smaller"
@@ -38,7 +66,7 @@
             <span class="carousel-button btn btn-scale">Jugar gratis</span>
         </a>
         <a
-            href="https://www.betizen.org/juego/catrina-video-bingo-online/"
+            href="{{ "/juego/catrina-video-bingo-online/" | locale_url }}"
             target="_blank"
             rel="noreferrer"
             class="carousel-cell carousel-cell-smaller"
@@ -46,7 +74,7 @@
             <div
                 class="carousel-image-small"
                 style="
-                    background-image: url('https://www.betizen.org/wp-content/uploads/2023/09/catrina-neko-games-logo-180x180.png');
+                    background-image: url('/assets/imgs/games/bingo-catrina-logo.webp');
                 "
             ></div>
             <div class="featured-text">
@@ -55,7 +83,7 @@
             <span class="carousel-button btn btn-scale">Jugar gratis</span>
         </a>
         <a
-            href="https://www.betizen.org/juego/tragamonedas-monopoly-megaways/"
+            href="{{ "/juego/tragamonedas-monopoly-megaways/" | locale_url }}"
             target="_blank"
             rel="noreferrer"
             class="carousel-cell carousel-cell-smaller"
@@ -63,7 +91,7 @@
             <div
                 class="carousel-image-small"
                 style="
-                    background-image: url('https://www.betizen.org/wp-content/uploads/2021/05/slot-monopoly-megaways-logo-180x180.png');
+                    background-image: url('/assets/imgs/games/monopoly-megaways-logo.webp');
                 "
             ></div>
             <div class="featured-text">
@@ -72,7 +100,7 @@
             <span class="carousel-button btn btn-scale">Jugar gratis</span>
         </a>
         <a
-            href="https://www.betizen.org/juego/pachinko-bingo/"
+            href="{{ "/juego/slot-fortune-tiger/" | locale_url }}"
             target="_blank"
             rel="noreferrer"
             class="carousel-cell carousel-cell-smaller"
@@ -80,50 +108,37 @@
             <div
                 class="carousel-image-small"
                 style="
-                    background-image: url('https://www.betizen.org/wp-content/uploads/2021/12/pachinko-bingo-microgaming-logo-180x180.png');
+                    background-image: url('/assets/imgs/games/slot-fortune-tiger-logo.webp');
                 "
             ></div>
             <div class="featured-text">
                 <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
             </div>
             <span class="carousel-button btn btn-scale">Jugar gratis</span>
-        </a>
+        </a>           
         <a
-            href="https://www.betizen.org/bonus/bono-de-bienvenida-en-bc-games/"
+            href="{{ "/juego/pachinko-bingo/" | locale_url }}"
             target="_blank"
             rel="noreferrer"
-            class="carousel-cell carousel-cell-big"
+            class="carousel-cell carousel-cell-smaller"
         >
-            <div class="carousel-cell-image-overlay"></div>
             <div
-                class="carousel-image"
+                class="carousel-image-small"
                 style="
-                    background-image: url('https://www.betizen.org/wp-content/uploads/2023/12/bonus-bc-games-150x150.webp');
+                    background-image: url('/assets/imgs/games/bingo-packinko-neko-logo.webp');
                 "
             ></div>
-            <h3 class="carousel-cell-big-title">
-                ¡Bono del 180% para tu primer depósito!
-            </h3>
-
-            <p class="carousel-cell-subtitle mb-0 mt-2 ml-2">
-                <span class="carousel-subtitle-image mr-1"
-                    ><img
-                        width="20"
-                        src="https://www.betizen.org/wp-content/uploads/2023/12/bg-game-logo-150x150.webp"
-                /></span>
-                Bc.Game
-            </p>
-            <p class="d-none carousel-cell-title mb-0 mt-0 ml-2">
-                $10 depósito mínimo
-            </p>
-            <div class="featured-text featured-blue">Bono</div>
-        </a>
-        <a
+            <div class="featured-text">
+                <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
+            </div>
+            <span class="carousel-button btn btn-scale">Jugar gratis</span>
+        </a>     
+     
+        {# <a
             href="https://www.betizen.org/bonus/bono-de-bienvenida-en-31bet/"
             target="_blank"
             rel="noreferrer"
-            class="carousel-cell carousel-cell-big"
-        >
+            class="carousel-cell carousel-cell-big">
             <div class="carousel-cell-image-overlay"></div>
             <div
                 class="carousel-image"
@@ -145,7 +160,7 @@
                 $20 depósito mínimo
             </p>
             <div class="featured-text featured-blue">Bono</div>
-        </a>
+        </a> #}
     </div>
 </div>
 

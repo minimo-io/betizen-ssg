@@ -9,11 +9,17 @@
         
     {% endif %} 
 </div>
+
+{%- set gameCategoryBaseName = tags[tags.length - 1] -%}
+{%- set gameCategoryUrl = "/" -%}
+{% if languages[page.lang]["categories"][gameCategoryBaseName] %}
+    {%- set gameCategoryUrl = languages[page.lang]["categories"][gameCategoryBaseName].url -%}
+    {%- set gameCategoryName = languages[page.lang]["categories"][gameCategoryBaseName].name -%}
+{% endif %}
+
 <div class="theme-description__list__item">
     <span class="theme-description__item__title">Categoría</span>
-    <a href="/juegos/tragamonedas/">{{
-        languages[page.lang].categories[tags[tags.length - 1]].name
-    }}</a>
+    <a href="{{ gameCategoryUrl }}">{{ gameCategoryName or gameCategoryBaseName }}</a>
 </div>
 <div class="theme-description__list__item">
     <span class="theme-description__item__title">Proveedor</span>

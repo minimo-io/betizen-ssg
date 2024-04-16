@@ -4,10 +4,11 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   Bingo games shoud have a different set of `key-props.njk`
 -   We are not being able to configure a page title different than the game title name.
--   Start creating the importing feature from WPGraph QL, https://www.youtube.com/watch?v=Z9iEqOCvMpM and https://www.wpgraphql.com/docs/custom-post-types
--   Make the carrousel.
+-   Start creating the importing feature from WPGraph QL:
+    -   https://www.youtube.com/watch?v=Z9iEqOCvMpM
+    -   https://www.wpgraphql.com/docs/custom-post-types
+    -   https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs
 -   Work on the tags/categories page (now from top menu being ready -and links being defined!)
 -   Translate common texts
 -   Create provider page
@@ -15,13 +16,13 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+-   Have one carrousel for each language
 -   Create a filter to filter tags by language name insted of adding if statements (gameslist)
 -   Top casinos for games section (commented)
 -   `subcats-carrousel.njk` not being used for games categories page at the moment. This could be useful for tagging games like "featured" or "Hold&Win", etc
 
 ### Bugs
 
--   In game screen the "Category" right info is empty.
 -   Modal keeps rolling iframe when closed
 -   When a game is available in just one language, the lang switches goes bezerk
 

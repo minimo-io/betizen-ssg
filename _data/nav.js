@@ -18,18 +18,7 @@ module.exports = function () {
                 text: "Juegos",
                 url: "/juegos/",
                 id: "term-id-4",
-                children: [
-                    { text: "Tragamonedas", url: "/juegos/tragamonedas/" },
-                    { text: "Bingo electrónico", url: "/juegos/video-bingo/" },
-                    { text: "Ruleta", url: "/juegos/ruleta/" },
-                    { text: "Blackjack", url: "/juegos/blackjack/" },
-                    {
-                        text: "Premios instantáneos",
-                        url: "/juegos/premios-instantaneos/",
-                    },
-                    { text: "Baccarat", url: "/juegos/baccarat/" },
-                    { text: "Video poker", url: "/juegos/video-poker/" },
-                ],
+                children: buildGameCategoriesFromLanguage("es"),
             },
             {
                 text: "Blog",
@@ -53,10 +42,7 @@ module.exports = function () {
                 text: "Games",
                 url: "/en/games/",
                 id: "term-id-4",
-                children: [
-                    { text: "Online Slots", url: "/en/games/free-slots/" },
-                    { text: "Online Bingo", url: "/en/games/online-bingo/" },
-                ],
+                children: buildGameCategoriesFromLanguage("en"),
             },
             {
                 text: "Blog",
@@ -80,28 +66,7 @@ module.exports = function () {
                 text: "Jogos",
                 url: "/pt-br/jogos/",
                 id: "term-id-4",
-                children: [
-                    {
-                        text: "Caça níqueis",
-                        url: "/pt-br/jogos/caca-niqueis/",
-                    },
-                    {
-                        text: "Vídeo-Bingo",
-                        url: "/pt-br/jogos/video-bingo-pt/",
-                    },
-                    {
-                        text: "Prêmios imediatos",
-                        url: "/pt-br/jogos/premios-imediatos/",
-                    },
-                    {
-                        text: "Vídeo Póker",
-                        url: "/pt-br/jogos/video-poker-pt/",
-                    },
-                    { text: "Roleta", url: "/pt-br/jogos/roleta/" },
-
-                    { text: "Blackjack", url: "/pt-br/jogos/blackjack-br/" },
-                    { text: "Baccarat", url: "/pt-br/jogos/baccarat-br/" },
-                ],
+                children: buildGameCategoriesFromLanguage("pt-br"),
             },
             {
                 text: "Colunas",
@@ -110,4 +75,16 @@ module.exports = function () {
             },
         ],
     };
+};
+
+const buildGameCategoriesFromLanguage = (lang) => {
+    if (!languages[lang].categories) return [];
+    let menuItems = [];
+    for (const item in languages[lang].categories) {
+        menuItems.push({
+            text: languages[lang].categories[item].name,
+            url: languages[lang].categories[item].url,
+        });
+    }
+    return menuItems;
 };

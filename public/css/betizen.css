@@ -7,6 +7,7 @@
     --bz-grey-dark-text: rgba(128, 128, 128);
     --carousel-image-height: 136px;
     --bz-blue: blue;
+    --bz-black: black;
     --bz-red: #dc3545;
     --bz-yellow: #f9c733;
     --bz-gold: #cba627;
@@ -86,7 +87,12 @@
     z-index: 100;
 }
 .featured-blue {
-    background-color: var(--bz-blue);
+    background-color: var(--bz-blue) !important;
+    border-color: var(--bz-blue) !important;
+}
+.featured-black {
+    background-color: var(--bz-black) !important;
+    border-color: var(--bz-black) !important;
 }
 .featured-gold {
     background-color: var(--bz-gold) !important;
@@ -170,6 +176,9 @@
     height: 136px;
     width: 100%;
     background-size: 136px !important;
+}
+.carousel .carousel-casino {
+    border-radius: 100%;
 }
 .carousel-cell.is-selected {
 }
