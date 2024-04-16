@@ -24,6 +24,8 @@ module.exports = {
             bad: "Malo",
             average: "Medio",
             good: "Bueno",
+            readMore: "Ver más",
+            readLess: "Ver menos",
         },
     },
     "pt-br": {
@@ -48,6 +50,8 @@ module.exports = {
             bad: "Ruim",
             average: "Médio",
             good: "Bom",
+            readMore: "Ver mais",
+            readLess: "Ver menos",
         },
     },
     en: {
@@ -59,9 +63,9 @@ module.exports = {
         promo: {
             url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
             cta: "👉 $10 bonus to try?",
-            image: "/assets/imgs/banners/casino-banner-2-en.webp",
+            image: metadata.images.banners + "casino-banner-2-en.webp",
             casino: {
-                logo: metadata.images.banners + "888starz-logo.webp",
+                logo: metadata.images.casinos + "888starz-logo.webp",
                 title: "200% TO DEPOSIT AND 150 FS! 🤯 <br>CANNOT MISS THIS ONE!",
                 cta: "TRY YOUR LUCK NOW!",
             },
@@ -72,6 +76,8 @@ module.exports = {
             bad: "Bad",
             average: "Average",
             good: "Good",
+            readMore: "Read more",
+            readLess: "Read less",
         },
     },
 };

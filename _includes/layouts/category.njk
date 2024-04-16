@@ -3,172 +3,126 @@ layout: layouts/base.njk
 ---
 
 <section class="section games pt-3">
-<div class="container">
-<div class="archive-title mb-0 mb-md-2 pb-0 pb-md-4 clearfix border-0">
-<div class="row align-items-end">
-<div class="col-md-8">
-<h1 class="page-title mb-2 mb-md-0">{{ title }} <span class="badge badge-dark"></h1>
-<div class="catalog-description mt-2 ml-1 mb-2 minimo-read-more" style="height:50px;">
-    {{ content | safe }}
-</div>
-<button id="btn-minimo-readmore" data-original-height data-status="off" data-text-more="Leer más" data-text-less="Leer menos" class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0">Leer más</button>
-</div>
-<div class="col-md-4">
-<form action method="GET">
-<div class="d-flex justify-content-md-end">
-<select id="category_order_by" name="metaorderby" class="form-control text-gray-soft" id="inlineFormCustomSelect">
-<option value="date-DESC">Recientes</option>
-
-<option value="Launched-DESC">Recientes según lanzamiento oficial</option>
-<option value="ranking-ASC">Mas votados</option>
-<option value="ranking-DESC">Menos votados</option>
-<option value="HighestExposition-DESC">Alta ganancias</option>
-<option value="rtp-DESC">Alto RTP</option>
-<option value="HighestVolatility-DESC">Alta volatilidad</option>
-<option value="LowestVolatility-DESC">Baja volatilidad</option>
-<option value="name-ASC">A -> Z</option>
-<option value="name-DESC">Z -> A</option>
-</select>
-</div>
-<input id="orderby" name="orderby" type="hidden" value />
-<input id="order" name="order" type="hidden" value />
-</form>
-<script>
-        jQuery(document).ready(function () {
-            jQuery("#category_order_by").change(function () {
-                var orderVal = jQuery(this).val();
-                var aOrderVal = orderVal.split("-");
-                jQuery("#orderby").val( aOrderVal[0] );
-                jQuery("#order").val( aOrderVal[1] );
-                console.log( jQuery("#orderby").val() );
-                if (jQuery("#orderby").val() && jQuery("#order").val()){
-                  jQuery(this).closest("form").submit();
-                }
-            });
-        });
-
-    </script>
-</div>
-</div>
-
-<div class="container position-relative mt-4 px-0"><div class="tag-carrousel-gradient d-none d-md-block"></div>
-<div class="tag-carrousel disable-scrollbars"><a href="../../ingreso/index0ddc.html?action=register" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-<i class="fa fa-fire" aria-hidden="true" style="color:#f10031;"></i>&nbsp;Top
-</a><a href="../../tag/recomendados/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-<i class="fa fa-star" aria-hidden="true" style="color:#f1c100;"></i>&nbsp;
-Recomendadas
-</a><a href="../../tag/tragamonedas-3d/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-3D
-</a><a href="../../tag/altas-ganancias/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Altas ganancias
-</a><a href="../../tag/clasico/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Clásicos
-</a><a href="../../tag/classico/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Clássico
-</a><a href="../../tag/clusters/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Clusters
-</a><a href="../../tag/comics/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Comics
-</a><a href="../../tag/deuses/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Deuses
-</a><a href="../../tag/dioses/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Dioses
-</a><a href="../../tag/egipto/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Egipto
-</a><a href="../../tag/egito/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Egito
-</a><a href="../../tag/frutas/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Frutas
-</a><a href="../../tag/jackpot/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Jackpot
-</a><a href="../../tag/lejano-oeste/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Lejano Oeste
-</a><a href="../../tag/lucros-elevados/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Lucros elevados
-</a><a href="../../tag/megaways/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Megaways
-</a><a href="../../tag/selva/index.html" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
-Selva
-</a><a href="../../index.html#tag-cloud-title" role="button" class="btn btn-dark btn-sm mb-4 mb-md-0">
-Todas las categorias
-</a> </div></div> </div>
-<div class="theme-cards-holder mt-3" style="border-bottom:0;">
-<ul class="row pl-3 pl-md-0">
-
-<li class="col-6 col-md-3 pl-0 pl-md-1">
-    <div class="theme-card">
-        <div class="theme-card__body">
-            <a class="d-block" href="../../juego/analisis-goblin-cave-slot/index.html">
-                <img
-                    width="400"
-                    height="300"
-                    src="https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=400%2C300&amp;ssl=1"
-                    class="theme-card__img wp-post-image"
-                    alt="jogo-1"
-                    srcset="
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=400%2C300&ssl=1  400w,
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=300%2C225&ssl=1  300w,
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=768%2C576&ssl=1  768w,
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=795%2C595&ssl=1 1024w,
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=200%2C150&ssl=1  200w,
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=600%2C450&ssl=1  600w,
-                        https://i0.wp.com/www.betizen.org/wp-content/uploads/2023/10/goblins-cave-slot.webp?resize=795%2C595&ssl=1 1200w
-                    "
-                    sizes="(max-width: 400px) 100vw, 400px"
-                />
-            </a>
-            <a
-                class="theme-card__body__overlay btn btn-brand btn-sm"
-                href="/juego/analisis-goblin-cave-slot/"
-            >
-                Jugar gratis
-            </a>
-            <div class="rtp-content d-none d-md-block">
-                <p>RTP</p>
-                <h6>99.32%</h6>
-            </div>
-        </div>
-        <div class="theme-card__footer">
-            <div class="theme-card__footer__item">
-                <a class="theme-card__title mr-1" href="/juego/analisis-goblin-cave-slot/">
-                    Goblin Cave Slot
-                </a>
-                <div class="theme-card__info">
-                    <ul class="prod_cats_list">
-                        <li><a href="/proveedor/playtech/">Playtech</a></li>
-                        <li style="color: #838e95" title="Volatilidad" data-toggle="tooltip" data-placement="top">
-                            <i class="fa fa-thermometer-2" aria-hidden="true"></i> Media
-                        </li>
-                    </ul>
+    <div class="container">
+        <div class="archive-title mb-0 mb-md-2 pb-0 pb-md-4 clearfix border-0">
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <h1 class="page-title mb-2 mb-md-0">
+                        {{ title }} <span class="badge badge-dark">{{ (collections.games | forCategory( gamesFrom, page.lang )).length }}</span>
+                    </h1>
+                    <div
+                        class="catalog-description mt-2 ml-1 mb-2 minimo-read-more"
+                        style="height: 50px"
+                    >
+                        {{ content | safe }}
+                    </div>
+                    <button
+                        id="btn-minimo-readmore"
+                        data-original-height
+                        data-status="off"
+                        data-text-more="{{ languages[page.lang].texts.readMore }}"
+                        data-text-less="{{ languages[page.lang].texts.readLess }}"
+                        class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0"
+                    >
+                        {{ languages[page.lang].texts.readMore }}
+                    </button>
                 </div>
+                {# <div class="col-md-4">
+
+                        <!-- Adspace? -->
+                        
+                </div> #}
             </div>
-            <div class="theme-card__footer__item">
-                <p class="theme-card__price">
-                    <span class="woocommerce-Price-amount amount">
-                        <span class="woocommerce-Price-currencySymbol">#</span>1
-                    </span>
-                </p>
-            </div>
+
+            {% include "components/games/subcats-carrousel.njk" %}
+        </div>
+
+        <div class="theme-cards-holder mt-3" style="border-bottom: 0">
+            <ul class="row pl-3 pl-md-0">
+                {% if gamesFrom %} {% for game in collections.games | forCategory( gamesFrom, page.lang ) %}
+
+                    <li class="col-6 col-md-3 pl-0 pl-md-1">
+                        <div class="theme-card">
+                            <div class="theme-card__body">
+                                <a class="d-block" href="{{ game.url }}">
+                                    <img
+                                        width="400"
+                                        height="300"
+                                        src="{{ metadata.images.games }}{{
+                                            game.fileSlug
+                                        }}-splash.webp"
+                                        class="theme-card__img wp-post-image"
+                                        alt="{{ game.data.title | slugify }}"
+                                    />
+                                </a>
+                                <a
+                                    class="theme-card__body__overlay btn btn-brand btn-sm"
+                                    href="{{ game.url }}"
+                                >
+                                    Jugar gratis
+                                </a>
+                                <div class="rtp-content d-none d-md-block">
+                                    <p>RTP</p>
+                                    <h6>{{ game.data.game.rtp }}</h6>
+                                </div>
+                            </div>
+                            <div class="theme-card__footer">
+                                <div class="theme-card__footer__item">
+                                    <a
+                                        class="theme-card__title mr-1"
+                                        href="/juego/analisis-goblin-cave-slot/"
+                                    >
+                                        {{ game.data.title }}
+                                    </a>
+                                    <div class="theme-card__info">
+                                        <ul class="prod_cats_list">
+                                            <li>
+                                                <a
+                                                    href="{{
+                                                        game.data.provider.url
+                                                    }}"
+                                                    >{{
+                                                        game.data.provider.name
+                                                    }}</a
+                                                >
+                                            </li>
+                                            <li
+                                                style="color: #838e95"
+                                                title="Volatilidad"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                            >
+                                                <i
+                                                    class="fa fa-thermometer-2"
+                                                    aria-hidden="true"
+                                                ></i>
+                                                {{ game.data.game.volatility }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="theme-card__footer__item">
+                                    <p class="theme-card__price">
+                                        <span
+                                            class="woocommerce-Price-amount amount"
+                                        >
+                                            <span
+                                                class="woocommerce-Price-currencySymbol"
+                                                >#</span
+                                            >{{ game.data.game.ranking }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %} {%else%}
+                    <div class="alert alert-danger d-block w-100">
+                        Define a category tag with name "category_{name}" for this
+                        category.
+                    </div>
+                {% endif %}
+            </ul>
         </div>
     </div>
-</li>
-
-{% include "games-list.njk" %}
-
-
-</ul>
-
-</div>
-</div>
 </section>
-
-{# <h1>{{ title }}</h1>
-
-<ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="/{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-	{%- endfor %}
-</ul> #}
-

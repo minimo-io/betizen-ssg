@@ -42,15 +42,31 @@ module.exports = function (eleventyConfig) {
         "debug",
         (content) => `<pre>${inspect(content)}</pre>`
     );
-
-    eleventyConfig.addFilter("forProvider", function (collection, providerUrl) {
-        if (!providerUrl) return collection;
-        const filtered = collection.filter((item) => {
-            if (!item.data.provider) return false;
-            return item.data.provider.url == providerUrl;
-        });
-        return filtered;
-    });
+    // Filter all games for provider
+    eleventyConfig.addFilter(
+        "forProvider",
+        function (collection, providerUrl, pageLang) {
+            if (!providerUrl) return collection;
+            const filtered = collection.filter((item) => {
+                if (!item.data.provider) return false;
+                if (pageLang != item.data.lang) return false;
+                return item.data.provider.url == providerUrl;
+            });
+            return filtered;
+        }
+    );
+    // Filter all games for category
+    eleventyConfig.addFilter(
+        "forCategory",
+        function (collection, category, pageLang) {
+            if (!category) return collection;
+            const filtered = collection.filter((item) => {
+                if (pageLang != item.data.lang) return false;
+                return item.data.tags.includes(category);
+            });
+            return filtered;
+        }
+    );
 
     eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
         // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
