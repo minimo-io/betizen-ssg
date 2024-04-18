@@ -8,8 +8,6 @@ module.exports = {
         games: "/assets/imgs/games/",
         banners: "/assets/imgs/banners/",
     },
-    description:
-        "Listados confiables de casinos en línea, juegos, bonos y programas de afiliados, ¡sin engaños!",
     author: {
         name: "Mínimo",
         email: "nicolas@minimo.io",
