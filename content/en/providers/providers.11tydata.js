@@ -1,3 +1,4 @@
+const metadata = require("../../../_data/metadata.js");
 module.exports = {
     lang: "en",
     tags: ["provider"],
@@ -9,5 +10,10 @@ module.exports = {
                 data.slugOverride
             )}/`;
         }
+    },
+    eleventyComputed: {
+        pageTitle: (data) => {
+            return "Free slots from " + data.title + " - " + metadata.title;
+        },
     },
 };

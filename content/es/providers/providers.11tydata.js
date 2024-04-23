@@ -1,3 +1,5 @@
+const metadata = require("../../../_data/metadata.js");
+
 module.exports = {
     lang: "es",
     tags: ["provider"],
@@ -7,5 +9,10 @@ module.exports = {
         if (data.slugOverride) {
             return `/proveedor/${this.slugify(data.slugOverride)}/`;
         }
+    },
+    eleventyComputed: {
+        pageTitle: (data) => {
+            return "Slots gratis de " + data.title + " - " + metadata.title;
+        },
     },
 };

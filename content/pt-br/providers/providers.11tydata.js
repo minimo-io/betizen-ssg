@@ -1,3 +1,5 @@
+const metadata = require("../../../_data/metadata.js");
+
 module.exports = {
     lang: "pt-br",
     tags: ["provider"],
@@ -9,5 +11,10 @@ module.exports = {
                 data.slugOverride
             )}/`;
         }
+    },
+    eleventyComputed: {
+        pageTitle: (data) => {
+            return "Slots grátis para " + data.title + " - " + metadata.title;
+        },
     },
 };
