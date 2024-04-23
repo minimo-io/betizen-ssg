@@ -1,0 +1,71 @@
+{%- css %}.games-list{}{% endcss %} 
+
+{% for game in gamesList %}
+
+    <li class="col-6 col-md-3 pl-0 pl-md-1">
+        <div class="theme-card">
+            <div class="theme-card__body">
+                <a class="d-block" href="{{ game.url }}">
+                    <img
+                        width="400"
+                        height="300"
+                        src="{{ metadata.images.games }}{{
+                            game.fileSlug
+                        }}-splash.webp"
+                        class="theme-card__img wp-post-image"
+                        alt="{{ game.data.title | slugify }}"
+                    />
+                </a>
+                <a
+                    class="theme-card__body__overlay btn btn-brand btn-sm"
+                    href="{{ game.url }}"
+                >
+                    Jugar gratis
+                </a>
+                <div class="rtp-content d-none d-md-block">
+                    <p>RTP</p>
+                    <h6>{{ game.data.game.rtp }}</h6>
+                </div>
+            </div>
+            <div class="theme-card__footer">
+                <div class="theme-card__footer__item">
+                    <a
+                        class="theme-card__title mr-1"
+                        href="/juego/analisis-goblin-cave-slot/"
+                    >
+                        {{ game.data.title }}
+                    </a>
+                    <div class="theme-card__info">
+                        <ul class="prod_cats_list">
+                            <li>
+                                <a href="{{ game.data.provider.url }}">{{
+                                    game.data.provider.name
+                                }}</a>
+                            </li>
+                            <li
+                                style="color: #838e95"
+                                title="Volatilidad"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                            >
+                                <i
+                                    class="fa fa-thermometer-2"
+                                    aria-hidden="true"
+                                ></i>
+                                {{ game.data.game.volatility }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="theme-card__footer__item">
+                    <p class="theme-card__price">
+                        <span class="woocommerce-Price-amount amount">
+                            <span class="woocommerce-Price-currencySymbol">#</span
+                            >{{ game.data.game.ranking }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </li>
+{% endfor %}

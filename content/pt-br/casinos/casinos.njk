@@ -150,7 +150,8 @@ permalink: /pt-br/cassinos/
                 
                 <table class="table table-striped table-responsive">
                     <tbody>
-                        {% include "casinos-list.njk" %}
+                        {%- set postsList = collections.casinos %}
+                        {% include "components/casinos/casinos-list.njk" %}
                     </tbody>
                 </table>
             </div>

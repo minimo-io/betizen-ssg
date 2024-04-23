@@ -4,8 +4,8 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   We are not being able to configure a page title different than the game title name.
 -   Homepage in other languages
+-   Casinos reputation `casinos-list.njk` is hardcoded.
 -   Start creating the importing feature from WPGraph QL:
     -   https://www.youtube.com/watch?v=Z9iEqOCvMpM
     -   https://www.wpgraphql.com/docs/custom-post-types
@@ -21,6 +21,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 -   Create a filter to filter tags by language name insted of adding if statements (gameslist)
 -   Top casinos for games section (commented)
 -   `subcats-carrousel.njk` not being used for games categories page at the moment. This could be useful for tagging games like "featured" or "Hold&Win", etc
+-   Create the `casinos-filter.njk` specially for crypto.
 
 ### Bugs
 

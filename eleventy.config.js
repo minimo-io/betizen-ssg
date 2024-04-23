@@ -67,6 +67,14 @@ module.exports = function (eleventyConfig) {
             return filtered;
         }
     );
+    // Filter by language
+    eleventyConfig.addFilter("forLang", function (collection, pageLang) {
+        const filtered = collection.filter((item) => {
+            if (pageLang != item.data.lang) return false;
+            return true;
+        });
+        return filtered;
+    });
 
     eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
         // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens

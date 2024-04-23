@@ -11,7 +11,7 @@ module.exports = {
         promo: {
             url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
             cta: "👉 ¿Bono de $10 para probar?",
-            image: metadata.images.banners + "banner-bc-game-es.webp",
+            image: metadata.images.banners + "casino-banner-3-es.webp",
             casino: {
                 logo: "/assets/imgs/casinos/888starz-logo.webp",
                 name: "888Starz",
@@ -50,7 +50,7 @@ module.exports = {
         promo: {
             url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
             cta: "👉 Bônus de R$65 para testar?",
-            image: metadata.images.banners + "casino-banner-2-pt-br.webp",
+            image: metadata.images.banners + "casino-banner-3-pt-br.webp",
             casino: {
                 logo: "/assets/imgs/casinos/888starz-logo.webp",
                 name: "888Starz",
@@ -91,7 +91,7 @@ module.exports = {
         promo: {
             url: "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513",
             cta: "👉 $10 bonus to try this out?",
-            image: metadata.images.banners + "casino-banner-2-en.webp",
+            image: metadata.images.banners + "casino-banner-3-en.webp",
             casino: {
                 logo: metadata.images.casinos + "888starz-logo.webp",
                 name: "888Starz",

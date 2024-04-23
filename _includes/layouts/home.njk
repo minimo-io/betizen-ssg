@@ -1,0 +1,130 @@
+---
+layout: layouts/base.njk
+eleventyComputed:
+    pageTitle: "{{metadata.title}} - {{ title }}"
+---
+<section class="section pt-0">
+    <div class="container">
+        {%- include "components/bz-carrousel.njk" -%} 
+        {%- include "components/bz-banner-hero.njk" -%}
+
+        <div class="theme-cards-holder">
+            <div class="theme-cards__heading mb-2 mb-md-4">
+                <div>
+                    <h5
+                        id="top-casinos"
+                        class="home-titles bz-title mt-2 theme-cards__title"
+                    >
+                        Principales casinos online
+                    </h5>
+                    <p class="home-subtitles bz-subtitle">
+                        Según las últimas estadísticas y las votaciones de los
+                        usuarios. <br class="d-none d-md-block" />
+                        Conoce mas sobre nuestros rankings imparciales
+                        <a href="/rankings/"
+                            ><i><strong>aquí</strong></i></a
+                        >.
+                    </p>
+                </div>
+
+                <a
+                    class="theme-cards__heading__button btn btn-brand btn-heading-suggest-casino text-uppercase bz-btn-shadow"
+                    href="https://bit.ly/add_casino_to_betizen"
+                    target="_blank"
+                    rel="noopener nofollow"
+                >
+                    <i class="fa fa-plus Xfa-lg mr-1" aria-hidden="true"></i>
+                    Agregar casino
+                </a>
+            </div>
+            <div class="casinos-table row pt-0">
+                <div class="container mx-2 px-0">
+                    {# {%- include "casinos-filter.njk" -%} #}
+                </div>
+
+                <table class="table table-striped table-responsive mx-2">
+                    <tbody class="casinos-table-body">
+                        {%- set postsList = collections.casinos %}
+                        {% include "components/casinos/casinos-list.njk" %}
+                    </tbody>
+                </table>
+
+                <div class="mx-3 mb-3 w-100">
+                    <a
+                        href="{{ '/casinos/' | locale_url }}"
+                        class="btn btn-light btn-loadmore loadmore-casinos-button btn-block"
+                        ><i class="fa fa-plus fa-2x fa-fw"></i
+                    ></a>
+                </div>
+            </div>
+            <a
+                class="btn btn-brand btn-block d-md-none"
+                href="{{ '/casinos/' | locale_url }}"
+                >Ver todos los casinos</a
+            >
+        </div>
+
+        {%- include "components/bz-subscribe.njk" -%}
+
+        <br />
+
+        <div class="theme-cards-holder" style="border-bottom: 0">
+            <div class="theme-cards__heading mt-4">
+                <div>
+                    <h5
+                        id="top-games"
+                        class="home-titles bz-title theme-cards__title"
+                    >
+                        Los últimos juegos
+                    </h5>
+                    <p class="home-subtitles bz-subtitle">
+                        Los últimos slots, bingos y juegos de mesa lanzados!
+                    </p>
+                </div>
+                 <a
+                    class="theme-cards__heading__button btn btn-outline-brand btn-sm"
+                    href="{{ '/juegos/tragamonedas/' | locale_url }}"
+                    >Ver todos</a>
+            </div>
+            <ul class="row games-table-body mb-0 pl-3 pl-md-0">
+                {%- set gamesList = collections.games.slice(0,100) | forLang( page.lang ) -%}
+                {%- include "components/games/games-list.njk" -%}
+            </ul>
+
+            <br />
+
+            <a
+                class="btn btn-light btn-loadmore loadmore-games-button btn-block"
+                ><i class="fa fa-plus fa-2x fa-fw"></i
+            ></a>
+            <div class="theme-cards-holder" style="border-bottom: 0">
+                <div class="theme-cards__heading mt-4">
+                    <div>
+                        <h5
+                            id="top-games"
+                            class="home-titles bz-title theme-cards__title"
+                        >
+                            Proveedores destacados
+                        </h5>
+                        <p class="home-subtitles bz-subtitle">
+                            Principales proveedores según sus prácticas de
+                            transparencia.
+                        </p>
+                    </div>
+                    <a
+                        class="theme-cards__heading__button btn btn-outline-brand btn-sm"
+                        href="/proveedores"
+                        >Ver todos</a
+                    >
+                </div>
+            </div>
+            <br />
+
+            <br />
+
+            <div class="betizen-foot-text post-content">
+                {{ content | safe }}
+            </div>
+        </div>
+    </div>
+</section>
