@@ -4,15 +4,15 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   Homepage in other languages
+-   Create provider page
+-   Create blog page and posts
+-   Fix the sitemap, /feed/feed.xml
+-   Create a better schema for games and casinos
 -   Casinos reputation `casinos-list.njk` is hardcoded.
--   Start creating the importing feature from WPGraph QL:
-    -   https://www.youtube.com/watch?v=Z9iEqOCvMpM
-    -   https://www.wpgraphql.com/docs/custom-post-types
-    -   https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs
+-   Start creating the importing.
 -   Work on the tags/categories page (now from top menu being ready -and links being defined!)
 -   Translate common texts
--   Create provider page
+
 -   Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
 
 ### v2

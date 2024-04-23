@@ -1,0 +1,142 @@
+---
+layout: layouts/base.njk
+---
+
+<section
+    class="profile__hero"
+    style="background-image: linear-gradient(to right, #0095ff, #ffffff)"
+></section>
+<section class="section section--pt-0" style="padding: 0">
+    <div class="container">
+        <div class="profile">
+            <div class="row">
+                <div class="col-lg-8 mb-2">
+                    <div class="d-flex">
+                        <div class="profile__avatar">
+                            <img
+                                src="https://i0.wp.com/www.betizen.org/wp-content/uploads/2020/09/elk-studio-logo.png?fit=400%2C300&amp;ssl=1"
+                                class="rounded d-inline-block"
+                                alt="logo-proveedor"
+                                width="300"
+                            />
+                        </div>
+                        <div class="profile__description">
+                            <h1 class="profile__description__title">
+                                ELK Studio
+                            </h1>
+                            <p class="d-none d-sm-block">Desde el 2013</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# Games and Casinos #}
+<section class="section pt-1 section-provider">
+    <div class="container">
+        <div class="archive-title border-0 clearfix pb-0 pb-md-5">
+            <div class="row Xalign-items-end">
+                <div class="col-md-8">
+                    <div class="catalog-description mt-2 ml-1 minimo-read-more">
+                        {{ content | safe }}
+                    </div>
+                    <div class="tax-btns d-inline-block">
+                        <button
+                            id="btn-minimo-readmore"
+                            data-original-height=""
+                            data-status="off"
+                            data-text-more="Leer más"
+                            data-text-less="Leer menos"
+                            class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0"
+                        >
+                            Leer más
+                        </button>
+                        <a
+                            href="#providersGames"
+                            role="button"
+                            class="btn btn-dark btn-sm ml-1 mb-2 mb-md-0 mt-md-3 opacity-7"
+                        >
+                            9 juegos
+                        </a>
+                        <a
+                            href="#casinosWithProvider"
+                            role="button"
+                            class="btn btn-dark btn-sm ml-1 mb-2 mb-md-0 mt-md-3 opacity-7"
+                        >
+                            25 casinos
+                        </a>
+                    </div>
+                    <span
+                        class="provider-meta pull-right mt-0 mt-md-4 mb-3 mb-md-0"
+                    >
+                        <a
+                            class="opacity-7 d-inline-block"
+                            href="/proveedores/"
+                        >
+                            <i
+                                class="fa fa-reply mr-1"
+                                aria-hidden="true"
+                            ></i> </a
+                        ><span class="d-inline-block">‧</span>
+                        <a
+                            class="opacity-7"
+                            href="https://www.youtube.com/channel/UCa8s0lGXQaBXUeh-qx3GXUg"
+                            target="_blank"
+                            rel="nofollow"
+                        >
+                            <i
+                                class="fa fa-youtube-play mr-1"
+                                aria-hidden="true"
+                            ></i
+                            >Youtube
+                        </a>
+                        ‧
+                        <a
+                            class="opacity-7"
+                            href="https://www.elk-studios.com/"
+                            target="_blank"
+                            rel="nofollow"
+                        >
+                            <i class="fa fa-link mr-1" aria-hidden="true"></i
+                            >Web
+                        </a>
+                        ‧
+                        <a
+                            class="opacity-7"
+                            href="https://goo.gl/maps/fUQwLJgAMpNELUBw6"
+                            target="_blank"
+                            rel="nofollow"
+                        >
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            Suecia
+                        </a>
+                    </span>
+                </div>
+                <div class="col-md-4">
+                    <div class="tax-sticky text-center d-none d-md-block">
+                        <img
+                            src="https://i0.wp.com/www.betizen.org/wp-content/uploads/2021/05/elk-character-4.png?fit=242%2C300&amp;ssl=1"
+                            class="rounded mb-2"
+                            alt="character-proveedor"
+                            width="200"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div
+            id="providersGames"
+            class="theme-cards-holder"
+            style="border-bottom: 0"
+        >
+            <ul class="row pl-3 pl-md-0">
+                
+            </ul>
+        </div>
+        <div id="casinosWithProvider">
+            {%- include "components/bz-banner-hero.njk" -%}
+        </div>
+    </div>
+</section>
