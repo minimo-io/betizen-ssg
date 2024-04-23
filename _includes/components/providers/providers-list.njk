@@ -9,9 +9,9 @@
             data-image="{{ metadata.images.providers }}{{ provider.fileSlug }}-logo.webp"
         >
             <div class="theme-card">
-                <span class="featured-text"
-                    ><i class="fa fa-bell mr-1" aria-hidden="true"></i>destacado</span
-                >
+                {% if provider.data.featured %}
+                    <span class="featured-text"><i class="fa fa-bell mr-1" aria-hidden="true"></i>destacado</span>
+                {% endif %}
                 <div class="theme-card__body">
                     <a
                         class="d-block"

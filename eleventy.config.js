@@ -67,11 +67,34 @@ module.exports = function (eleventyConfig) {
             return filtered;
         }
     );
+    // Filter games by provider
+    eleventyConfig.addFilter(
+        "gamesForProvider",
+        function (collection, providerUrl) {
+            const filtered = collection.filter((item) => {
+                if (item.data.provider.url) {
+                    if (providerUrl == item.data.provider.url) return true;
+                }
+                return false;
+            });
+            return filtered;
+        }
+    );
+
     // Filter by language
     eleventyConfig.addFilter("forLang", function (collection, pageLang) {
         const filtered = collection.filter((item) => {
             if (pageLang != item.data.lang) return false;
             return true;
+        });
+        return filtered;
+    });
+
+    // Filter by featured post
+    eleventyConfig.addFilter("featured", function (collection) {
+        const filtered = collection.filter((item) => {
+            if (item.data.featured) return true;
+            return false;
         });
         return filtered;
     });

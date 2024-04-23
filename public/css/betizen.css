@@ -240,4 +240,7 @@
     .game-excerpt {
         font-size: 13px;
     }
+    .provider-btns {
+        display: block !important;
+    }
 }

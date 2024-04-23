@@ -87,7 +87,7 @@ eleventyComputed:
                     >Ver todos</a>
             </div>
             <ul class="row games-table-body mb-0 pl-3 pl-md-0">
-                {%- set gamesList = collections.games.slice(0,100) | forLang( page.lang ) -%}
+                {%- set gamesList = collections.games.slice(0,100) | reverse | forLang( page.lang ) -%}
                 {%- include "components/games/games-list.njk" -%}
             </ul>
 
@@ -117,6 +117,10 @@ eleventyComputed:
                         >Ver todos</a
                     >
                 </div>
+                <ul class="row providers-table-body mb-0">
+                    {%- set providersList = collections.provider | featured | forLang(page.lang)  -%}
+                    {%- include "components/providers/providers-list.njk" -%}
+                </ul>
             </div>
             <br />
 

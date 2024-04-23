@@ -23,6 +23,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 -   Top casinos for games section (commented)
 -   `subcats-carrousel.njk` not being used for games categories page at the moment. This could be useful for tagging games like "featured" or "Hold&Win", etc
 -   Create the `casinos-filter.njk` specially for crypto.
+-   Add again the count of casinos where the provider is (in providers game screen)
 
 ### Bugs
 
