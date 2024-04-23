@@ -18,8 +18,7 @@ module.exports = {
                 title: "200% SOBRE EL DEPÓSITO Y 150 GIROS 🤯 ¡PROMO LIMITADA!",
                 cta: "¡PROBAR SUERTE AHORA!",
             },
-            external_250x250:
-                '<script src="https://js.revenuenetwork.com/javascript.php?prefix=V-ibMvK6zZs5uATr4YanjGNd7ZgqdRLk&amp;media=4014&amp;campaign=1"></script>',
+            external_250x250: metadata.images.banners + "banner_250x250-es.png",
         },
         categories: {
             slot: { name: "Tragamonedas", url: "/juegos/tragamonedas/" },
@@ -59,7 +58,7 @@ module.exports = {
                 cta: "TENTE SUA SORTE AGORA!",
             },
             external_250x250:
-                '<script src="https://js.ppincome.net/javascript.php?prefix=FJLgBR3akX5-2Obre52AsGNd7ZgqdRLk&amp;media=5118&amp;campaign=1"></script>',
+                metadata.images.banners + "banner_250x250-pt-br.png",
         },
         categories: {
             slot: { name: "Caça níqueis", url: "/pt-br/jogos/caca-niqueis/" },
@@ -99,8 +98,7 @@ module.exports = {
                 title: "200% TO DEPOSIT AND 150 FS! 🤯 <br>CANNOT MISS THIS ONE!",
                 cta: "TRY YOUR LUCK NOW!",
             },
-            external_250x250:
-                '<script src="https://media.toxtren.com/ad.aspx?pid=101348&bid=1709"></script>',
+            external_250x250: metadata.images.banners + "banner_250x250-en.png",
         },
         categories: {
             slot: { name: "Online Slots", url: "/en/games/free-slots/" },

@@ -5,6 +5,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 -   We are not being able to configure a page title different than the game title name.
+-   Homepage in other languages
 -   Start creating the importing feature from WPGraph QL:
     -   https://www.youtube.com/watch?v=Z9iEqOCvMpM
     -   https://www.wpgraphql.com/docs/custom-post-types

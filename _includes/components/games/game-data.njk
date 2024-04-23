@@ -40,6 +40,9 @@
 </div> #}
 <div class="banner-side mt-3 text-center">
     <center>
-        {{ languages[page.lang].promo.external_250x250 | safe }}
+        <a href="{{ languages[page.lang].promo.url }}" target="_blank" rel="nofollow noopener noreferrer">
+            <img alt="banner-250x250" src="{{ languages[page.lang].promo.external_250x250 | safe }}" />
+        </a>
+        
     </center>
 </div>
