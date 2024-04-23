@@ -4,16 +4,15 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   Create provider page
 -   Create blog page and posts
 -   Casino screen
 -   Fix the sitemap, /feed/feed.xml
 -   Create a better schema for games and casinos
 -   Casinos reputation `casinos-list.njk` is hardcoded.
--   Start creating the importing.
--   Work on the tags/categories page (now from top menu being ready -and links being defined!)
+-   Create the importing tool.
 -   Translate common texts
 
+-   Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 -   Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
 
 ### v2
