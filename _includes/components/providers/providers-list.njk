@@ -1,0 +1,61 @@
+{% for provider in providersList %}
+    {% if provider.data.color %}
+        <li
+            class="col-6 col-md-3 galleryview-item featured-provider"
+            data-buttontext="Juegos"
+            data-gamescount="8 juegos"
+            data-title="1x2 Gaming"
+            data-url="{{ provider.url }}"
+            data-image="{{ metadata.images.providers }}{{ provider.fileSlug }}-logo.webp"
+        >
+            <div class="theme-card">
+                <span class="featured-text"
+                    ><i class="fa fa-bell mr-1" aria-hidden="true"></i>destacado</span
+                >
+                <div class="theme-card__body">
+                    <a
+                        class="d-block"
+                        href="{{ provider.url }}"
+                    >
+                        <img
+                            fetchpriority="high"
+                            decoding="async"
+                            width="400"
+                            height="300"
+                            src="{{ metadata.images.providers }}{{ provider.fileSlug }}-logo.webp"
+                            class="theme-card__img wp-post-image"
+                            alt="{{page.fileSlug}}"
+                        />
+                    </a>
+                    <a
+                        class="theme-card__body__overlay btn btn-brand btn-sm"
+                        href="{{ provider.url }}"
+                        >Ver juegos</a
+                    >
+                </div>
+                <div class="theme-card__footer">
+                    <div class="theme-card__footer__item">
+                        <a
+                            class="theme-card__title mr-1"
+                            href="{{ provider.url }}"
+                            >{{ provider.data.title }}</a
+                        >
+                        <p class="theme-card__info"></p>
+                        <ul class="prod_cats_list">
+                            <li><a href="#">? juegos</a></li>
+                        </ul>
+                        <p></p>
+                    </div>
+                    <div class="theme-card__footer__item">
+                        <p class="theme-card__price">
+                            <span class="woocommerce-Price-amount amount"
+                                ><span class="woocommerce-Price-currencySymbol"></span
+                                >&nbsp;</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    {% endif %}
+{% endfor %}

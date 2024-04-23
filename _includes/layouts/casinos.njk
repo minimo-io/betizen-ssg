@@ -1,0 +1,48 @@
+---
+layout: "layouts/base.njk"
+---
+
+<section class="section casinos">
+    <div class="container">
+        <div class="archive-title mb-0 pb-0 clearfix" style="border-bottom: 0">
+            <div class="row align-items-end">
+                <div class="col Xcol-md-8">
+                    <h1 class="page-title mb-2 mb-md-0">
+                        {{title}} <span class="badge badge-dark"></span>
+                    </h1>
+                    <div
+                        class="catalog-description mt-2 ml-1 minimo-read-more"
+                        style="height: 50px">
+                        {{ content | safe }}
+                    </div>
+                    <button
+                        id="btn-minimo-readmore"
+                        data-original-height
+                        data-status="off"
+                        data-text-more="Leer más"
+                        data-text-less="Leer menos"
+                        class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0"
+                    >
+                        Leer más
+                    </button>
+                </div>
+            </div>
+            
+            {%- include "components/bz-subscribe.njk" -%}
+            {%- include "components/casinos/casinos-filter.njk" -%}
+
+
+        </div>
+        <div class="theme-cards-holder" style="border-bottom: 0">
+            <div id="casinos-table" class="row">
+                
+                <table class="table table-striped table-responsive">
+                    <tbody>
+                        {%- set postsList = collections.casinos %}
+                        {% include "components/casinos/casinos-list.njk" %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

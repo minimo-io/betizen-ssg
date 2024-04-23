@@ -6,6 +6,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 -   Create provider page
 -   Create blog page and posts
+-   Casino screen
 -   Fix the sitemap, /feed/feed.xml
 -   Create a better schema for games and casinos
 -   Casinos reputation `casinos-list.njk` is hardcoded.
@@ -32,5 +33,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 In case you live in this online iGaming underworld and are trying to use this Eleventy template setup for your affiliate site, please consider:
 
--   Game images are being loaded by slug name, {slug}-hero.webp, {slug}-logo.webp and {slug}-splash.webp
+-   Game images are being loaded by slug name, {{fileSlug}}-hero.webp, {{fileSlug}}-logo.webp and {{fileSlug}}-splash.webp
+-   Same for provider images, they will use: {{fileSlug}}-logo.webp, and {{fileSlug}}-character.webp
 -   Game categories should include a front matter pointing to the category game slug `gamesFrom: slot`

@@ -7,6 +7,7 @@ module.exports = {
         casinos: "/assets/imgs/casinos/",
         games: "/assets/imgs/games/",
         banners: "/assets/imgs/banners/",
+        providers: "/assets/imgs/providers/",
     },
     author: {
         name: "Mínimo",
