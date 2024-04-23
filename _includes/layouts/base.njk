@@ -4,11 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        {%- if page.url == "/" -%}
-             <title>{{ metadata.title }} - {{ title }}</title>
-        {%- else-%}
-            <title>{{ pageTitle or title }}</title>
-        {%- endif -%}
+
+        <title>{{ pageTitle or title }}</title>
+
         {%- if description -%}<meta name="description" content="{{ description }}">{% endif %}
         {# <meta name="robots" content="index,follow" /> #}
 
