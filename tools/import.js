@@ -15,13 +15,14 @@ try {
     // });
 
     let filename = "test.html";
-    // filename = "test-slot-broken.html";
+    filename = "test-slot-broken.html";
     // filename = "test-blackjack.html";
     // filename = "test-instant.html";
+    // filename = "test-slot-pt.html";
     // filename = "test-baccarat-es.html";
     // filename = "test-roulette.html";
     // filename = "test-poker.html";
-    filename = "test-slot-en.html";
+    // filename = "test-slot-en.html";
 
     fs.readFile("./tools/" + filename, "utf8", (err, data) => {
         if (err) {
