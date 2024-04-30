@@ -24,9 +24,11 @@ try {
                         let frontMatterData = processFile(subFileCompletePath);
                         if (frontMatterData != {}) {
                             console.log(`Processing... ${subFileCompletePath}`);
-                            let creationResult =
-                                createFrontMatter(frontMatterData);
-                            // console.log(creationResult);
+                            let creationResult = createFrontMatter(
+                                frontMatterData,
+                                filesOutput
+                            );
+                            console.log(creationResult);
                         }
                     }
                 }

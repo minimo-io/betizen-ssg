@@ -99,7 +99,7 @@ function processFile(filePath) {
         ""
     );
 
-    frontMatterData.score = 4; // lets fix this since this worked via comments and never got implemented in Wordpress
+    frontMatterData.game.score = 4; // lets fix this since this worked via comments and never got implemented in Wordpress
 
     // info boxes =======================================================
 

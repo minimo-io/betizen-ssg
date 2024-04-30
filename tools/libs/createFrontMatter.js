@@ -7,13 +7,16 @@ module.exports = function (frontMatterData, output) {
     frontMatterContent += "---\n";
     frontMatterContent += frontMatterData.content;
 
-    // try {
-    //     fs.writeFileSync(`${output}${fileOutputName}`, content);
-    //     return true;
-    // } catch (err) {
-    //     console.error(err);
-    //     return false;
-    // }
+    try {
+        let outputFile = `${output}${fileOutputName}.njk`;
+        if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+        fs.writeFileSync(outputFile, frontMatterContent);
+
+        return true;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
 };
 
 function parseFrontMatter(frontMatterObject) {
@@ -26,7 +29,7 @@ function parseFrontMatter(frontMatterObject) {
         ) {
             ret += `${k}:\n`;
             for (let kk in frontMatterObject[k]) {
-                ret += `\t${kk}: ${frontMatterObject[k][kk] || "-"}\n`;
+                ret += `    ${kk}: ${frontMatterObject[k][kk] || "'-'"}\n`;
             }
         } else {
             ret += `${k}: ${frontMatterObject[k]}\n`;
