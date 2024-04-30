@@ -4,12 +4,16 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
+-   Create the importing tool.
+    -   Detect category
+    -   Images extraction
+    -   Create front matter
+    -   Remove last line from games content `<p class="mb-3 bz-text-small"><i>(Jugado 0 veces en las últimas 24 horas)</i></p>`
 -   Create blog page and posts
 -   Casino screen
 -   Fix the sitemap, /feed/feed.xml
 -   Create a better schema for games and casinos
 -   Casinos reputation `casinos-list.njk` is hardcoded.
--   Create the importing tool.
 -   Translate common texts
 
 -   Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
@@ -23,6 +27,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 -   `subcats-carrousel.njk` not being used for games categories page at the moment. This could be useful for tagging games like "featured" or "Hold&Win", etc
 -   Create the `casinos-filter.njk` specially for crypto.
 -   Add again the count of casinos where the provider is (in providers game screen)
+-   For parsing FrontMatter (in the future, I want to bulk edit stuff), https://www.npmjs.com/package/front-matter
 
 ### Bugs
 

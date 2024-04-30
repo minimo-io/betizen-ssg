@@ -1,26 +1,40 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const processFile = require("./libs/scrapping.js").processFile;
+const createFrontMatter = require("./libs/createFrontMatter.js");
 
 try {
-    // fs.readFile("./tools/simple.html", "utf8", (err, data) => {
+    const filePath = "./tools/juego/";
+    const filesOutput = "./content/es/games/";
 
-    const filePath = "./tools/games-test/";
-    const fileName = "test-slot-broken.html";
-
-    // const isFile = (fileName) => {
-    //     return fs.lstatSync(fileName).isFile();
-    // };
-
+    // start processing
     fs.readdirSync(filePath).map((fileName) => {
         const fileCompletePath = path.join(filePath, fileName);
-        console.log(fileCompletePath);
+        const fileStat = fs.statSync(fileCompletePath);
+        if (fileStat.isDirectory()) {
+            //console.log(`Is a directory: ${fileCompletePath}`);
+            // read the subdirectory (eg. for games and process the index.html file)
+            let fileNames = fs.readdirSync(fileCompletePath);
+            fileNames.forEach((subFile) => {
+                const subFileCompletePath = fileCompletePath + "/" + subFile;
 
-        let jsonString = processFile(fileCompletePath);
-        console.log(jsonString);
+                const subFileStat = fs.statSync(subFileCompletePath);
+                if (subFileStat.isFile()) {
+                    if (subFile == "index.html") {
+                        let frontMatterData = processFile(subFileCompletePath);
+                        if (frontMatterData != {}) {
+                            console.log(`Processing... ${subFileCompletePath}`);
+                            let creationResult =
+                                createFrontMatter(frontMatterData);
+                            // console.log(creationResult);
+                        }
+                    }
+                }
+            });
+        } else {
+            //console.log(`NOT a directory: ${fileCompletePath}`);
+        }
     });
-
-    // fs.writeFileSync("./tools/test.txt", content);
 } catch (err) {
     console.error(err);
 }
