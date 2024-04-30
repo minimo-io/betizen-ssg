@@ -2,6 +2,18 @@ const fs = require("node:fs");
 const parser = require("node-html-parser").default;
 const sanitizeFrontMatter = require("./utils.js").sanitizeFrontMatter;
 
+module.exports = {
+    removeSpecialChars,
+    getSlug,
+    sanitize,
+    sanitizeHttrack,
+    extractUrlFromText,
+    removeNonNumericChars,
+    translateToCode,
+    extractIframeSrc,
+    processFile,
+};
+
 function processFile(filePath) {
     let frontMatterData = {};
     let data = fs.readFileSync(filePath, "utf8", (err, data) => {});
@@ -59,6 +71,12 @@ function processFile(filePath) {
         console.error("\x1b[41m> ERROR:\x1b[0m No slug, or url founded");
         process.exit();
     }
+
+    let alternateLanguagesToProcess = buildAlternateLangs(
+        nodes.querySelectorAll("link[rel='alternate']"),
+        frontMatterData.slugOverride
+    );
+    console.log(alternateLanguagesToProcess);
 
     let localizedCategortyName = nodes.querySelectorAll(
         ".theme-description__list__item a"
@@ -368,14 +386,36 @@ const isValidUrl = (s) => {
     }
 };
 
-module.exports = {
-    removeSpecialChars,
-    getSlug,
-    sanitize,
-    sanitizeHttrack,
-    extractUrlFromText,
-    removeNonNumericChars,
-    translateToCode,
-    extractIframeSrc,
-    processFile,
-};
+function buildAlternateLangs(nodes, forThisOriginalSlug) {
+    let langs = [];
+    for (node of nodes) {
+        if (node.attrs.hreflang) {
+            let cleanSlug = node.attrs.href;
+            let finalSlug = cleanSlug
+                .replace("/index.html", "")
+                .replace("index.html", "")
+                .split("/")
+                .filter(function (item) {
+                    return item !== "";
+                })
+                .slice(-1);
+
+            //console.log(finalSlug);
+            langs.push({
+                // original: forThisOriginalSlug,
+                hreflang: node.attrs.hreflang,
+                slug: finalSlug,
+            });
+            if (node.attrs.hreflang == "pt" && finalSlug[0] == "") {
+                console.error(
+                    "\x1b[41m> ERROR:\x1b[0m No slug, or url founded for present alternate"
+                );
+                console.error(node.attrs.href);
+                console.error(finalSlug);
+                console.error(cleanSlug.split("/"));
+                process.exit();
+            }
+        }
+    }
+    return langs;
+}
