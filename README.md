@@ -4,10 +4,13 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
--   Create the importing tool.
+-   Create the importing tool for games
     -   Images extraction
--   Create blog page and posts
+    -   I will have to process games for all languages, the file name creation must change as this must be the same for all langs (I could make use of the "alternate" meta tag).
 -   Casino screen
+    -   Casinos importing
+-   Create blog page and posts
+
 -   Fix the sitemap, /feed/feed.xml
 -   Create a better schema for games and casinos
 -   Casinos reputation `casinos-list.njk` is hardcoded.
