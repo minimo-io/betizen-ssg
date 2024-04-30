@@ -1,3 +1,4 @@
+const fs = require("node:fs");
 const path = require("node:path");
 const processFile = require("./libs/scrapping.js").processFile;
 
@@ -7,17 +8,17 @@ try {
     const filePath = "./tools/games-test/";
     const fileName = "test-slot-broken.html";
 
-    processFile(path.join(filePath, fileName));
-
     // const isFile = (fileName) => {
     //     return fs.lstatSync(fileName).isFile();
     // };
 
-    // fs.readdirSync(filePath).map((fileName) => {
-    //     console.log(filePath + fileName);
-    // });
+    fs.readdirSync(filePath).map((fileName) => {
+        const fileCompletePath = path.join(filePath, fileName);
+        console.log(fileCompletePath);
 
-    // process.exit();
+        let jsonString = processFile(fileCompletePath);
+        console.log(jsonString);
+    });
 
     // fs.writeFileSync("./tools/test.txt", content);
 } catch (err) {

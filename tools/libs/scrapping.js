@@ -2,14 +2,14 @@ const fs = require("node:fs");
 const parser = require("node-html-parser").default;
 
 function processFile(filePath) {
-    fs.readFile(filePath, "utf8", (err, data) => {
+    let frontMatterData = {};
+    fs.readFileSync(filePath, "utf8", (err, data) => {
         if (err) {
             console.error(err);
             return;
         }
         let nodes = parser(data, { comment: true });
 
-        let frontMatterData = {};
         frontMatterData.slugOverride = "";
         frontMatterData.tags = "";
         frontMatterData.title = "";
@@ -171,7 +171,7 @@ function processFile(filePath) {
 
         frontMatterData.iframe = iframeScript;
 
-        console.log(frontMatterData);
+        return frontMatterData;
     });
 }
 function extractIframeSrc(htmlString) {
