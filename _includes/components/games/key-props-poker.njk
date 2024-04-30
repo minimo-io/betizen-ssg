@@ -24,7 +24,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title">
-                        Volatilidad
+                        Manos
                         <a
                             href="/blog/que-es-la-volatilidad-de-las-tragamonedas/"
                             ><sup
@@ -35,7 +35,7 @@
                         ></a>
                     </h5>
                     <p class="card-text display-4 text-truncate">
-                        {{ game.volatility or "-" }}
+                        {{ game.hands or "-" }}
                     </p>
                 </div>
             </div>
@@ -51,14 +51,15 @@
             </div>
         </div>
 
-
-        <div class="col-6 col-sm-12 mt-sm-0">
-            <div class="card mt-3 mt-md-3">
-                <div class="card-body text-center">
-                    <h5 class="card-title text-truncate">Ganancia max.</h5>
-                    <p class="card-text display-4">x{{ game.maxWin or "-" }}</p>
+        {% if game.maxWin and game.maxWin != "-" %}
+            <div class="col-6 col-sm-12 mt-sm-0">
+                <div class="card mt-3 mt-md-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-truncate">Ganancia max.</h5>
+                        <p class="card-text display-4">{{ 'x' + game.maxWin }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endif %}
     </div>
 </div>

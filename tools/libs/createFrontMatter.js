@@ -1,4 +1,6 @@
 const fs = require("node:fs");
+const sanitizeFrontMatter = require("./utils.js").sanitizeFrontMatter;
+
 module.exports = function (frontMatterData, output) {
     const fileOutputName = frontMatterData.slugOverride;
     let frontMatterContent = "";
@@ -9,10 +11,17 @@ module.exports = function (frontMatterData, output) {
 
     try {
         let outputFile = `${output}${fileOutputName}.njk`;
-        if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
-        fs.writeFileSync(outputFile, frontMatterContent);
+        if (fileOutputName != "") {
+            if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+            fs.writeFileSync(outputFile, frontMatterContent);
 
-        return true;
+            return true;
+        } else {
+            console.error(
+                `\x1b[41m> ERROR:\x1b[0m Filename empty '${outputFile}'`
+            );
+            return false;
+        }
     } catch (err) {
         console.error(err);
         return false;
@@ -29,7 +38,11 @@ function parseFrontMatter(frontMatterObject) {
         ) {
             ret += `${k}:\n`;
             for (let kk in frontMatterObject[k]) {
-                ret += `    ${kk}: ${frontMatterObject[k][kk] || "'-'"}\n`;
+                if (frontMatterObject[k][kk]) {
+                    ret += `    ${kk}: ${sanitizeFrontMatter(
+                        frontMatterObject[k][kk]
+                    )}\n`;
+                }
             }
         } else {
             ret += `${k}: ${frontMatterObject[k]}\n`;

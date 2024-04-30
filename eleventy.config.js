@@ -34,7 +34,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(pluginBundle);
     eleventyConfig.addPlugin(EleventyI18nPlugin, {
         defaultLanguage: "es", // Required
-        errorMode: "allow-fallback",
+        errorMode: "never",
     });
 
     // Filters

@@ -19,17 +19,21 @@ try {
                 const subFileCompletePath = fileCompletePath + "/" + subFile;
 
                 const subFileStat = fs.statSync(subFileCompletePath);
+
                 if (subFileStat.isFile()) {
                     if (subFile == "index.html") {
                         let frontMatterData = processFile(subFileCompletePath);
+
                         if (frontMatterData != {}) {
-                            console.log(`Processing... ${subFileCompletePath}`);
+                            //console.log(`Processing... ${subFileCompletePath}`);
                             let creationResult = createFrontMatter(
                                 frontMatterData,
                                 filesOutput
                             );
-                            console.log(creationResult);
+                            //console.log(creationResult);
                         }
+                    } else {
+                        //console.log("DASDA: " + subFile);
                     }
                 }
             });

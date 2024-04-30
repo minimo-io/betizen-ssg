@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const parser = require("node-html-parser").default;
+const sanitizeFrontMatter = require("./utils.js").sanitizeFrontMatter;
 
 function processFile(filePath) {
     let frontMatterData = {};
@@ -59,20 +60,53 @@ function processFile(filePath) {
         process.exit();
     }
 
-    frontMatterData.tags = "[slot]"; // <<<<<<<<< this is key, pending
+    let localizedCategortyName = nodes.querySelectorAll(
+        ".theme-description__list__item a"
+    )[1].rawText;
+
+    let universalCategoryName = translateCategoryToUniversalSlug(
+        localizedCategortyName
+    );
+    if (!universalCategoryName) {
+        // then try the other element in the index
+        let secondTryUniversalCategoryName = translateCategoryToUniversalSlug(
+            nodes.querySelectorAll(".theme-description__list__item a")[2]
+                .rawText
+        );
+        if (!secondTryUniversalCategoryName) {
+            console.error(
+                "\x1b[41m> ERROR:\x1b[0m Category Name not founded: " + filePath
+            );
+            process.exit();
+        }
+    }
+    frontMatterData.tags = `[${universalCategoryName}]`; // <<<<<<<<< this is key, pending
+
     frontMatterData.title = nodes.querySelector(
         ".profile__description__title"
     ).rawText;
+    frontMatterData.title = sanitizeFrontMatter(frontMatterData.title);
+
+    // description
     frontMatterData.description = nodes.querySelector(
         "meta[name='description']"
     ).attrs.content;
-
+    frontMatterData.description = sanitizeFrontMatter(
+        frontMatterData.description
+    );
+    //frontMatterData.description = `"${frontMatterData.description}"`;
+    // content
     let gameContent = nodes.querySelector(".general-description");
     gameContent.lastChild.remove();
     gameContent.lastChild.remove();
 
     frontMatterData.content = gameContent.innerHTML;
-
+    frontMatterData.content = frontMatterData.content
+        .replace(/index.html/g, "")
+        .replace(/href="\.\.\/\.\.\//g, 'href="/')
+        .replace(/href="\.\.\//g, 'href="/juego/');
+    //.replace(/href="(?:\.{0,2}\/)+/g, 'href="');
+    //
     frontMatterData.launch = nodes.querySelector(
         ".profile__description p"
     ).rawText;
@@ -99,7 +133,7 @@ function processFile(filePath) {
         ""
     );
 
-    frontMatterData.game.score = 4; // lets fix this since this worked via comments and never got implemented in Wordpress
+    frontMatterData.game.score = 4; // this worked via comments and never got implemented in Wordpress, so fixed
 
     // info boxes =======================================================
 
@@ -162,15 +196,18 @@ function processFile(filePath) {
         ".casino-single-featured .card-title"
     )[2].rawText;
     thirdDataBox = sanitize(thirdDataBox);
-
+    let thirdDataBoxValue = nodes.querySelectorAll(
+        ".casino-single-featured .card-text"
+    )[2].rawText;
+    thirdDataBoxValue = sanitize(thirdDataBoxValue);
     if (thirdDataBox == "Min/Max") {
-        frontMatterData.game.minMaxBet = thirdDataBox;
+        frontMatterData.game.minMaxBet = thirdDataBoxValue;
     }
     if (
         thirdDataBox == "Líneas de pago" ||
         thirdDataBox == "Linhas de pagamento"
     ) {
-        frontMatterData.game.paylines = thirdDataBox;
+        frontMatterData.game.paylines = thirdDataBoxValue;
     }
 
     // AREAS LISTS =========================================================
@@ -218,6 +255,44 @@ function extractIframeSrc(htmlString) {
     const regex = /<iframe[^>]*src="(.*?)"/i;
     const match = htmlString.match(regex);
     return match ? match[1] : null;
+}
+function translateCategoryToUniversalSlug(categoryLocaleName) {
+    let ret = "";
+    categoryLocaleName = categoryLocaleName.trim();
+    switch (categoryLocaleName) {
+        case "Video Poker":
+        case "Vídeo-Póker":
+        case "Poker":
+            ret = "poker";
+            break;
+        case "Ruleta":
+        case "Roleta":
+        case "Roulette":
+            ret = "roulette";
+            break;
+        case "Blackjack":
+            ret = "blackjack";
+            break;
+        case "Video-Bingo":
+        case "Vídeo-Bingo":
+        case "Bingo":
+            ret = "bingo";
+            break;
+        case "Tragamonedas":
+        case "Caça níqueis":
+        case "Slots":
+            ret = "slot";
+            break;
+        case "Prêmios imediatos":
+        case "Premios Instantáneos":
+        case "Instant Win":
+            ret = "instant";
+            break;
+        case "Baccarat":
+            ret = "baccarat";
+            break;
+    }
+    return ret;
 }
 function translateToCode(s) {
     let ret = "";
