@@ -5,7 +5,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 -   Create the importing tool for games
-    -   Images extraction
+    -   Script to convert png images to webp
     -   I will have to process games for all languages, the file name creation must change as this must be the same for all langs (I could make use of the "alternate" meta tag).
 -   Casino screen
     -   Casinos importing
@@ -39,6 +39,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 In case you live in this online iGaming underworld and are trying to use this Eleventy template setup for your affiliate site, please consider:
 
--   Game images are being loaded by slug name, {{fileSlug}}-hero.webp, {{fileSlug}}-logo.webp and {{fileSlug}}-splash.webp
+-   Game images are being loaded by slug name, {{fileSlug}}-hero.webp, {{fileSlug}}-logo.webp and {{fileSlug}}-splash.webp. Same images are used for all languages.
 -   Same for provider images, they will use: {{fileSlug}}-logo.webp, and {{fileSlug}}-character.webp
 -   Game categories should include a front matter pointing to the category game slug `gamesFrom: slot`

@@ -1,6 +1,8 @@
 const fs = require("node:fs");
+const path = require("node:path");
 const parser = require("node-html-parser").default;
-const sanitizeFrontMatter = require("./utils.js").sanitizeFrontMatter;
+const download = require("image-downloader");
+const { getFileExtension, sanitizeFrontMatter } = require("./utils.js");
 
 module.exports = {
     removeSpecialChars,
@@ -14,11 +16,18 @@ module.exports = {
     processFile,
 };
 
-function processFile(filePath) {
+async function processFile(filePath, imagesOutputDir, langCode) {
     let frontMatterData = {};
+    let postImages = {};
+
     let data = fs.readFileSync(filePath, "utf8", (err, data) => {});
 
     let nodes = parser(data, { comment: true });
+
+    // images for a later getter
+    postImages.logo = "";
+    postImages.hero = "";
+    postImages.splash = "";
 
     frontMatterData.slugOverride = "";
     frontMatterData.tags = "";
@@ -72,11 +81,36 @@ function processFile(filePath) {
         process.exit();
     }
 
+    // get other languages
     let alternateLanguagesToProcess = buildAlternateLangs(
         nodes.querySelectorAll("link[rel='alternate']"),
         frontMatterData.slugOverride
     );
     console.log(alternateLanguagesToProcess);
+
+    // process images
+    postImages = getImages(nodes);
+    if (postImages.logo)
+        await downloadImage(
+            "logo",
+            postImages.logo,
+            frontMatterData.slugOverride,
+            imagesOutputDir
+        );
+    if (postImages.hero)
+        await downloadImage(
+            "hero",
+            postImages.hero,
+            frontMatterData.slugOverride,
+            imagesOutputDir
+        );
+    if (postImages.splash)
+        await downloadImage(
+            "splash",
+            postImages.splash,
+            frontMatterData.slugOverride,
+            imagesOutputDir
+        );
 
     let localizedCategortyName = nodes.querySelectorAll(
         ".theme-description__list__item a"
@@ -345,10 +379,10 @@ function removeNonNumericChars(str) {
     return str.replace(/\D/g, "");
 }
 
-function extractUrlFromText(s) {
+function extractUrlFromText(s, useHttps) {
     let regex = /www\.[^\s]+/;
     let match = s.match(regex);
-    if (match) {
+    if (match || useHttps) {
         return match[0];
     } else {
         regex = /https?:\/\/[^\s]+/;
@@ -357,7 +391,7 @@ function extractUrlFromText(s) {
     }
 }
 function sanitizeHttrack(s) {
-    s = extractUrlFromText(s);
+    s = extractUrlFromText(s, true);
     s = sanitize(s);
     s = s.replace("www.betizen.org/", "");
     let as = s.split("/").slice(-2, -1);
@@ -418,4 +452,55 @@ function buildAlternateLangs(nodes, forThisOriginalSlug) {
         }
     }
     return langs;
+}
+async function downloadImage(type, url, fileBaseName, output) {
+    // url: https://i0.wp.com/www.betizen.org/wp-content/uploads/2022/11/conquestera-gamebeat-logo.png?resize=180%2C180&ssl=1
+    // dest: __dirname + "/"
+
+    let fileExtension = getFileExtension(url);
+    if (fileExtension) {
+        let destinationDir = `${output}${fileBaseName}-${type}.${fileExtension}`;
+        const options = {
+            url: url,
+            dest: destinationDir,
+        };
+
+        console.log("> Downloading: ");
+
+        await download
+            .image(options)
+            .then(({ filename }) => {
+                console.log(`Downloaded: ${filename}`);
+                // convert to webp if needed
+                // DELETED: Convert images to webp in another script
+            })
+            .catch((err) => {
+                console.log(
+                    "\x1b[43m> WARNING:\x1b[0m Error downloading image: " + url
+                );
+                console.error(err);
+            });
+    }
+}
+
+function getImages(node) {
+    // get logo
+    let postLogo = node.querySelector(".profile__avatar img");
+    // get hero
+    let postHero = node.querySelector(".profile__hero");
+    postHeroString = "";
+    if (postHero.attrs.style) {
+        postHeroString = "https://" + extractUrlFromText(postHero.attrs.style);
+        if (postHeroString.slice(-2) == ");") {
+            postHeroString = postHeroString.slice(0, -2);
+        }
+    }
+    // get splash
+    let postSplash = node.querySelector(".feature-screenshot img");
+
+    return {
+        logo: postLogo.attrs.src || "",
+        hero: postHeroString,
+        splash: postSplash.attrs.src || "",
+    };
 }
