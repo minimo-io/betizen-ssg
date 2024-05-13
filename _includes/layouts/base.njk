@@ -44,8 +44,9 @@
 
         {#- Add an arbitrary string to the bundle #}{%- css %} * { box-sizing: border-box; }{% endcss %}
         {#- Add the contents of a file to the bundle #}
+
         {%- css %}
-            {% include "public/css/index.css" %}
+            {% include "public/css/base.css" %}
             {% include "public/css/block-library.css" %}
             {% include "public/css/others.css" %}
             {% include "public/css/flickity.css" %}
@@ -53,6 +54,7 @@
             {% include "public/css/modal.css" %}
         {% endcss %}
 
+    
         {%- js %}
             {% include "public/js/jquery.min.js" %}
             {% include "public/js/tether.min.js" %}
@@ -70,15 +72,18 @@
         {#- Or add from node_modules #}
         {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
             {#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-        <style>
+        {# <style>
             {% getBundle "css" %}
-        </style>
+        </style> #}
+        <link href='{% getBundleFileUrl "css" %}' rel="stylesheet" />
+
         {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
         {#- <link rel="stylesheet" href="/{% getBundleFileUrl "css" %}"> #}
-
-        <script>
+        {# <script>
             {% getBundle "js" %}
-        </script>
+        </script> #}
+        <script src="{% getBundleFileUrl "js" %}"></script>
+
         {# Schema #}
         <script type="application/ld+json">
             [{"@context":"https://schema.org/","@type":"WebSite","@id":"https://www.betizen.org#website","headline":"Betizen","name":"Betizen","description":"{{description}}.","url":"https://www.betizen.org","potentialAction":{"@type":"SearchAction","target":"https://www.betizen.org?s={search_term_string}","query-input":"required name=search_term_string"}}]

@@ -1,4 +1,5 @@
 const path = require("node:path");
+const fs = require("node:fs");
 const webp = require("webp-converter");
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
 function sanitizeFrontMatter(s) {
     if (typeof s == "string") {
         s = s.trim();
-        if (s == "-") s = `'${s}'`;
+        if (s == "-") s = `${s}`;
         s = s.replace(/\"/g, "'");
         if (isNaN(s)) {
             s = `"${s}"`;
@@ -27,7 +28,7 @@ function getFileExtension(fileOrUrl) {
     }
     return fileExtension;
 }
-function convertImageToWebp(imagePath, destinationPath) {
+async function convertImageToWebp(imagePath, destinationPath) {
     // convert
     let webpGenResult = webp.cwebp(
         imagePath,
@@ -35,13 +36,23 @@ function convertImageToWebp(imagePath, destinationPath) {
         "-q 80"
         // (logging = "-v")
     );
+
     webpGenResult.then((response) => {
-        fs.unlink(originalImage, (err) => {
-            if (err) {
-                throw err;
-            } else {
-                //console.log(`> Image converted: ${newWebpImage}`);
-            }
-        });
+        if (typeof response == "string" && response == "") {
+            fs.unlink(imagePath, (err) => {
+                if (err) {
+                    throw err;
+                } else {
+                    //console.log(`> Image converted: ${newWebpImage}`);
+                    console.log(
+                        `> Image converted to webp: ${destinationPath}`
+                    );
+                    return true;
+                }
+            });
+        } else {
+            console.log(response);
+            return false;
+        }
     });
 }

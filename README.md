@@ -5,14 +5,13 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 -   Create the importing tool for games
-    -   Script to convert png images to webp
-    -   I will have to process games for all languages, the file name creation must change as this must be the same for all langs (I could make use of the "alternate" meta tag).
+    -   Import games that are NOT in the main language
 -   Casino screen
     -   Casinos importing
 -   Create blog page and posts
 
 -   Fix the sitemap, /feed/feed.xml
--   Create a better schema for games and casinos
+-   Create a better schema for games and casinos, and edit the one at base.njk
 -   Casinos reputation `casinos-list.njk` is hardcoded.
 -   Translate common texts
 -   Add new content added after the export.
@@ -42,3 +41,5 @@ In case you live in this online iGaming underworld and are trying to use this El
 -   Game images are being loaded by slug name, {{fileSlug}}-hero.webp, {{fileSlug}}-logo.webp and {{fileSlug}}-splash.webp. Same images are used for all languages.
 -   Same for provider images, they will use: {{fileSlug}}-logo.webp, and {{fileSlug}}-character.webp
 -   Game categories should include a front matter pointing to the category game slug `gamesFrom: slot`
+
+-   For big sites, considering increasing NodeJs memory limit: export NODE_OPTIONS=--max_old_space_size=4096

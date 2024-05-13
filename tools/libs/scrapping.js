@@ -2,7 +2,12 @@ const fs = require("node:fs");
 const path = require("node:path");
 const parser = require("node-html-parser").default;
 const download = require("image-downloader");
-const { getFileExtension, sanitizeFrontMatter } = require("./utils.js");
+const {
+    getFileExtension,
+    sanitizeFrontMatter,
+    convertImageToWebp,
+} = require("./utils.js");
+const delay = async (time) => new Promise((res) => setTimeout(res, time));
 
 module.exports = {
     removeSpecialChars,
@@ -14,15 +19,24 @@ module.exports = {
     translateToCode,
     extractIframeSrc,
     processFile,
+    delay,
 };
 
-async function processFile(filePath, imagesOutputDir, langCode) {
+async function processFile(
+    filePath,
+    imagesOutputDir,
+    processImages,
+    processExtraLangs,
+    currentLang
+) {
     let frontMatterData = {};
     let postImages = {};
 
     let data = fs.readFileSync(filePath, "utf8", (err, data) => {});
 
     let nodes = parser(data, { comment: true });
+
+    let alternateLanguagesToProcess = [];
 
     // images for a later getter
     postImages.logo = "";
@@ -81,36 +95,47 @@ async function processFile(filePath, imagesOutputDir, langCode) {
         process.exit();
     }
 
-    // get other languages
-    let alternateLanguagesToProcess = buildAlternateLangs(
-        nodes.querySelectorAll("link[rel='alternate']"),
-        frontMatterData.slugOverride
-    );
-    console.log(alternateLanguagesToProcess);
+    // get other languages to process
+    if (processExtraLangs) {
+        alternateLanguagesToProcess = buildAlternateLangs(
+            nodes.querySelectorAll("link[rel='alternate']"),
+            frontMatterData.slugOverride
+        );
+    }
 
     // process images
-    postImages = getImages(nodes);
-    if (postImages.logo)
-        await downloadImage(
-            "logo",
-            postImages.logo,
-            frontMatterData.slugOverride,
-            imagesOutputDir
-        );
-    if (postImages.hero)
-        await downloadImage(
-            "hero",
-            postImages.hero,
-            frontMatterData.slugOverride,
-            imagesOutputDir
-        );
-    if (postImages.splash)
-        await downloadImage(
-            "splash",
-            postImages.splash,
-            frontMatterData.slugOverride,
-            imagesOutputDir
-        );
+    if (processImages == true) {
+        postImages = getImages(nodes);
+        if (postImages.logo) {
+            await downloadImage(
+                "logo",
+                postImages.logo,
+                frontMatterData.slugOverride,
+                imagesOutputDir
+            );
+        }
+
+        if (postImages.hero) {
+            await downloadImage(
+                "hero",
+                postImages.hero,
+                frontMatterData.slugOverride,
+                imagesOutputDir
+            );
+        }
+
+        if (postImages.splash) {
+            await downloadImage(
+                "splash",
+                postImages.splash,
+                frontMatterData.slugOverride,
+                imagesOutputDir
+            );
+        }
+
+        await delay(2000);
+    }
+    // create a delay after downloading image set
 
     let localizedCategortyName = nodes.querySelectorAll(
         ".theme-description__list__item a"
@@ -126,13 +151,16 @@ async function processFile(filePath, imagesOutputDir, langCode) {
                 .rawText
         );
         if (!secondTryUniversalCategoryName) {
+            // if no way to find the category then choose a default
+            universalCategoryName = "slot";
             console.error(
-                "\x1b[41m> ERROR:\x1b[0m Category Name not founded: " + filePath
+                "\x1b[41m> ERROR:\x1b[0m Category Name not founded (default added): " +
+                    filePath
             );
-            process.exit();
+            // process.exit();
         }
     }
-    frontMatterData.tags = `[${universalCategoryName}]`; // <<<<<<<<< this is key, pending
+    frontMatterData.tags = `[${universalCategoryName}]`; // <<<<<<<<< this is key, use for listings
 
     frontMatterData.title = nodes.querySelector(
         ".profile__description__title"
@@ -167,17 +195,34 @@ async function processFile(filePath, imagesOutputDir, langCode) {
     if (frontMatterData.launch.length > 4) {
         frontMatterData.launch = frontMatterData.launch.slice(-4);
     }
-
-    frontMatterData.provider.name = nodes.querySelector(
-        ".profile__description a"
-    ).firstChild.rawText;
-    frontMatterData.provider.url = nodes.querySelector(
-        ".profile__description a"
-    ).firstChild.parentNode.attrs.href;
-    frontMatterData.provider.url = frontMatterData.provider.url
-        .replace("https://www.betizen.org", "")
-        .replace("index.html", "")
-        .replace("../..", "");
+    if (nodes.querySelector(".profile__description a").firstChild) {
+        frontMatterData.provider.name = nodes.querySelector(
+            ".profile__description a"
+        ).firstChild.rawText;
+    } else {
+        frontMatterData.provider.name = "Neko Games";
+    }
+    if (
+        (frontMatterData.provider.url = nodes.querySelector(
+            ".profile__description a"
+        ).firstChild)
+    ) {
+        frontMatterData.provider.url = nodes.querySelector(
+            ".profile__description a"
+        ).firstChild.parentNode.attrs.href;
+        frontMatterData.provider.url = frontMatterData.provider.url
+            .replace("https://www.betizen.org", "")
+            .replace("index.html", "")
+            .replace("../..", "");
+    } else {
+        if (currentLang == "es") {
+            frontMatterData.provider.url = "/proveedor/neko-games-2/";
+        } else if (currentLang == "pt" || currentLang == "pt-br") {
+            frontMatterData.provider.url = "/pt-br/fornecedor/neko-games-br/";
+        } else if (currentLang == "en") {
+            frontMatterData.provider.url = "/en/game-provider/neko-games/";
+        }
+    }
 
     frontMatterData.game.ranking = nodes.querySelector(".ranking-big").rawText;
     frontMatterData.game.ranking = frontMatterData.game.ranking.replace(
@@ -300,7 +345,10 @@ async function processFile(filePath, imagesOutputDir, langCode) {
 
     frontMatterData.iframe = iframeScript;
 
-    return frontMatterData;
+    return {
+        frontMatter: frontMatterData,
+        alternateLangs: alternateLanguagesToProcess,
+    };
 }
 
 function extractIframeSrc(htmlString) {
@@ -348,8 +396,11 @@ function translateCategoryToUniversalSlug(categoryLocaleName) {
 }
 function translateToCode(s) {
     let ret = "";
-    s = removeSpecialChars(s);
-
+    //s = removeSpecialChars(s);
+    s = s.replace("∼ ", "");
+    s = s.replace("✓ ", "");
+    s = s.replace("&#10003; ", "");
+    s = s.replace("- ", "");
     switch (s) {
         case "Medio":
         case "Média":
@@ -423,7 +474,8 @@ const isValidUrl = (s) => {
 function buildAlternateLangs(nodes, forThisOriginalSlug) {
     let langs = [];
     for (node of nodes) {
-        if (node.attrs.hreflang) {
+        // avoid es hreflang when importing
+        if (node.attrs.hreflang && node.attrs.hreflang != "es") {
             let cleanSlug = node.attrs.href;
             let finalSlug = cleanSlug
                 .replace("/index.html", "")
@@ -453,33 +505,62 @@ function buildAlternateLangs(nodes, forThisOriginalSlug) {
     }
     return langs;
 }
+
 async function downloadImage(type, url, fileBaseName, output) {
     // url: https://i0.wp.com/www.betizen.org/wp-content/uploads/2022/11/conquestera-gamebeat-logo.png?resize=180%2C180&ssl=1
     // dest: __dirname + "/"
 
     let fileExtension = getFileExtension(url);
+
     if (fileExtension) {
-        let destinationDir = `${output}${fileBaseName}-${type}.${fileExtension}`;
+        let destinationFile = `${output}${fileBaseName}-${type}.${fileExtension}`;
         const options = {
             url: url,
-            dest: destinationDir,
+            dest: destinationFile,
         };
-
-        console.log("> Downloading: ");
-
-        await download
-            .image(options)
-            .then(({ filename }) => {
-                console.log(`Downloaded: ${filename}`);
-                // convert to webp if needed
-                // DELETED: Convert images to webp in another script
-            })
-            .catch((err) => {
-                console.log(
-                    "\x1b[43m> WARNING:\x1b[0m Error downloading image: " + url
+        // before downloading the image check that it is not already downloaded
+        let triggerDownload = true;
+        let newFinalFile = destinationFile
+            .replace(".png", ".webp")
+            .replace(".jpg", ".webp")
+            .replace(".jpeg", ".webp");
+        // console.log(fs.existsSync(newFinalFile));
+        if (fs.existsSync(newFinalFile)) {
+            // webp image already exists
+            triggerDownload = false;
+        } else if (fs.existsSync(destinationFile)) {
+            // now check if its ok, trying to catch error on conversion
+            console.log("> Image already exists, convert it");
+            try {
+                let convertResult = await convertImageToWebp(
+                    destinationFile,
+                    newFinalFile
                 );
-                console.error(err);
-            });
+                triggerDownload = false;
+            } catch (error) {
+                // remove old image and download again
+                console.log("\x1b[43m> COULD NOT CONVERT IMAGE\x1b[0m ");
+                fs.unlinkSync(destinationFile);
+                triggerDownload = true;
+            }
+        }
+        // if we need to download then do it
+        if (triggerDownload) {
+            await download
+                .image(options)
+                .then(({ filename }) => {
+                    console.log(`Downloaded: ${filename}`);
+                    // convert to webp if needed
+                    // DELETED: Convert images to webp in another script
+                })
+                .catch((err) => {
+                    console.log(
+                        "\x1b[43m> WARNING:\x1b[0m Error downloading image: " +
+                            url
+                    );
+                    console.error(err);
+                });
+        }
     }
 }
 
