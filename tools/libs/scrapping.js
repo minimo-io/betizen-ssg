@@ -19,6 +19,7 @@ module.exports = {
   translateToCode,
   extractIframeSrc,
   processFile,
+  processProvidersFile,
   delay,
 };
 
@@ -348,6 +349,41 @@ async function processFile(
   };
 }
 
+async function processProvidersFile(
+  filePath,
+  imagesOutputDir,
+  processImages,
+  processExtraLangs,
+  currentLang
+) {
+  let frontMatterData = {};
+  let postImages = {};
+
+  let data = fs.readFileSync(filePath, "utf8", (err, data) => {});
+
+  let nodes = parser(data, { comment: true });
+
+  let alternateLanguagesToProcess = [];
+
+  // images for a later getter
+  postImages.logo = "";
+  postImages.character = "";
+
+  frontMatterData.slugOverride = "";
+  frontMatterData.title = "";
+  frontMatterData.description = "";
+
+  frontMatterData.color = ""; // #eb5d33
+  frontMatterData.site = ""; // https://neko.games/
+  frontMatterData.featured = ""; // true || false, frontmatter boolean
+  frontMatterData.founded = "";
+  frontMatterData.headquarters = "";
+
+  return {
+    frontMatter: frontMatterData,
+    alternateLangs: alternateLanguagesToProcess,
+  };
+}
 function extractIframeSrc(htmlString) {
   const regex = /<iframe[^>]*src="(.*?)"/i;
   const match = htmlString.match(regex);

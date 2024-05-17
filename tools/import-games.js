@@ -1,7 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const processFile = require("./libs/scrapping.js").processFile;
-const delay = require("./libs/scrapping.js").delay;
 const createFrontMatter = require("./libs/createFrontMatter.js");
 
 try {
