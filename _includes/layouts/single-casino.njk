@@ -1,0 +1,618 @@
+---
+layout: layouts/base.njk
+---
+
+{%- from "macros/reputation-button.njk" import reputationButton with context -%}
+{%- include "components/casinos/casino-header.njk" -%}
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div id="container">
+        <div id="content" role="main">
+          <div class="row">
+            <div class="col-lg-8 mb-md-0 mb-3">
+              <div
+                id="casino-110"
+                class="product type-product status-publish has-post-thumbnail product_cat-landing-corporate first casino-single"
+              >
+                <div class="row box-did-u-know">
+                  <div class="container-fluid">
+                    <div class="card border-0">
+                      <div class="card-body pb-0 px-0">
+                        <h2 class="card-title ml-1">
+                          Reseña del casino {{ title }}
+                        </h2>
+
+                        {%- include "components/casinos/casino-bonus.njk" -%}
+
+                        {%- include "components/casinos/casino-details.njk" -%}
+                        
+                        {%- include "components/casinos/casino-featured.njk" -%}
+
+                        <br />
+                        <p class="mb-3">
+                          {{ excerpt }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                {%- include "components/casinos/casino-gallery.njk" -%}
+
+                <div class="card-text general-description Xminimo-read-more Xminimo-read-more-short px-1">
+                  <br />
+                  {{ content | safe }}
+                </div>
+
+                {%- include "components/casinos/casino-providers.njk" -%}
+
+                <div class="d-lg-none">
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <div>
+                      <h4 class="mt-3 mb-1">Vera&amp;John</h4>
+                      Reputación&nbsp;
+                      <span class="casino-reputation-box">
+                        {%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+                        {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link) }}
+                      </span>
+                    </div>
+                    <h3
+                      class="d-flex align-items-center"
+                      js-price-value="main_price_div"
+                    >
+                      <span
+                        class="woocommerce-Price-amount amount ranking-small mr-1"
+                        ><span class="woocommerce-Price-currencySymbol">#</span
+                        >5</span
+                      ><a href="../../rankings/index.html"
+                        ><sup
+                          ><i
+                            class="fa fa-info-circle"
+                            aria-hidden="true"
+                          ></i></sup
+                      ></a>
+                    </h3>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <form action="" method="POST" class="d-block w-100">
+                      <a
+                        class="btn btn-brand btn-block up btn-customcolor"
+                        rel="nofollow"
+                        href="../../visit/verajohnes/index.html"
+                      >
+                        <span class="btn-text">Visitar</span></a
+                      >
+                    </form>
+                  </div>
+
+                  <div class="theme-purchases">
+                    <div class="theme-purchases__item">
+                      <a
+                        class="theme-purchases__item__inner text-center"
+                        data-toggle="tab"
+                        href="#reviews-tab"
+                        role="tab"
+                        js-handle="review-toggler"
+                      >
+                        <div
+                          class="rating-display"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="4"
+                        >
+                          <span
+                            class="fa fa-star checked"
+                            style="font-size: 35px"
+                          ></span
+                          ><span
+                            class="fa fa-star checked"
+                            style="font-size: 35px"
+                          ></span
+                          ><span
+                            class="fa fa-star checked"
+                            style="font-size: 35px"
+                          ></span
+                          ><span
+                            class="fa fa-star checked"
+                            style="font-size: 35px"
+                          ></span
+                          ><span
+                            class="fa fa-star"
+                            style="font-size: 35px"
+                          ></span>
+                        </div>
+                        {# <span class="avg-inline">1 opiniones</span> #}
+                      </a>
+                      <div
+                        class="theme-purchases__item__inner text-center am-favorite"
+                        style="display: none"
+                      >
+                        <a
+                          href="https://www.facebook.com/sharer/sharer.php?u=https://www.betizen.org/casino/vera-john/"
+                          rel="nofollow"
+                          target="_blank"
+                          ><i
+                            class="fa fa-facebook-square fa-4x"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-description__list d-lg-none mb-4">
+                    <div class="theme-description__list__item">
+                      <ul class="casino-pros-box theme-purchases">
+                        <ul>
+                          <li>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i
+                            >Billeteras de bonos y dinero real separadas
+                          </li>
+                          <li>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i
+                            >Herramientas para autocontrol de juego
+                          </li>
+                          <li>
+                            <i class="fa fa-check-circle" aria-hidden="true"></i
+                            >Transparencia de sus T&amp;C (en español)
+                          </li>
+                        </ul>
+                      </ul>
+                    </div>
+                    <div class="theme-description__list__item">
+                      <ul class="casino-cons-box theme-purchases">
+                        <ul>
+                          <li>
+                            <i class="fa fa-times-circle" aria-hidden="true"></i
+                            >No cuenta con chat en vivo para español
+                          </li>
+                          <li>
+                            <i class="fa fa-times-circle" aria-hidden="true"></i
+                            >Bono de bienvenida con rollover alto
+                          </li>
+                        </ul>
+                      </ul>
+                    </div>
+                    <div class="theme-description__list__item">
+                      <span class="theme-description__item__title">Fundado</span
+                      ><span>2011</span>
+                    </div>
+                    <div class="theme-description__list__item">
+                      <span class="theme-description__item__title"
+                        >Licencia(s)</span
+                      ><span>Malta, UKGC, Dinamarca</span>
+                    </div>
+                    <div class="theme-description__list__item">
+                      <span class="theme-description__item__title"
+                        >Tiempos de retiro</span
+                      ><span
+                        >Billetera electrónica: Instantánea<br />
+                        Credito/Débito: 3-5 días<br />
+                        Transferencia: 0-3 días</span
+                      >
+                    </div>
+                    <div
+                      class="theme-description__list__item align-items-center"
+                    >
+                      <span class="theme-description__item__title"
+                        >¿Preguntas?</span
+                      ><a
+                        class="btn btn-xs btn-outline-brand btn-customcolor-outline"
+                        href="../../cdn-cgi/l/email-protection.html#87eae6eeebc7e5e2f3eefde2e9a9e8f5e0"
+                        >Contáctanos</a
+                      >
+                    </div>
+                    <center>
+                      <script
+                        src="https://c.bannerflow.net/a/644bd050e1c2cea0da35a5b7?did=5cf6638e8e4e100001a17710&amp;deeplink=on&amp;redirecturl=https%3A%2F%2Frecord.ppincome.net%2F_FJLgBR3akX6m-csjK3xWe_3RvVJgod5X%2F1%2F"
+                        async=""
+                        data-rendered="true"
+                      ></script>
+                    </center>
+                  </div>
+                </div>
+                <div
+                  class="d-flex justify-content-between align-items-center has-border"
+                >
+                  <ul class="nav sub-nav sub-nav--has-border" role="tablist">
+                    <li class="nav-item">
+                      <a
+                        class="nav-link sub-nav-link active"
+                        data-toggle="tab"
+                        href="#promotions-tab"
+                        role="tab"
+                      >
+                        Promociones <span class="badge badge-secondary">1</span>
+                      </a>
+                    </li>
+                    <li class="nav-item" style="visibility: hidden">
+                      <a
+                        class="nav-link sub-nav-link"
+                        data-toggle="tab"
+                        href="#reviews-tab"
+                        role="tab"
+                      >
+                        Reseñas&nbsp;
+                        <span class="badge badge-secondary"> 1 </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active mt-2 mt-lg-4"
+                    id="promotions-tab"
+                    role="tabpanel"
+                  >
+                    <div class="theme-description">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-sm-4 m-0 p-1">
+                            <div class="card card-multibonus mt-2">
+                              <div>
+                                <img
+                                  src="https://i0.wp.com/www.betizen.org/wp-content/uploads/2020/05/bonus-casino-verajohn.png?resize=400%2C246&amp;ssl=1"
+                                  class="card-img-top"
+                                  alt="imagen-de-bono"
+                                />
+                                <a
+                                  href="../../bonus/bono-de-bienvenida-en-verajohn/index.html"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Más información"
+                                  class="card-bonus-moreinfo knowmore-icon-link"
+                                  ><sup
+                                    ><i
+                                      class="fa fa-info-circle"
+                                      aria-hidden="true"
+                                    ></i></sup
+                                ></a>
+                              </div>
+                              <div class="card-body">
+                                <h5 class="card-title">
+                                  Bono de bienvenida en Vera&amp;John
+                                </h5>
+                                <p class="card-text">
+                                  100% hasta $100, x40&nbsp;<span
+                                    class="badge badge-success"
+                                    >activo</span
+                                  >
+                                </p>
+                                <a
+                                  rel="nofollow"
+                                  target="_blank"
+                                  role="button"
+                                  href="../../visit/verajohnes/index.html"
+                                  class="btn btn-bonus btn-outline-brand btn-block mb-1 ml-0 btn-customcolor-outline text-uppercase"
+                                >
+                                  <i
+                                    class="fa fa-thumbs-up"
+                                    aria-hidden="true"
+                                  ></i>
+                                  Obtener bono
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="reviews-tab"
+                    role="tabpanel"
+                    style="visibility: hidden"
+                  >
+                    <div class="theme-review">
+                      <div
+                        class="alert alert-info mt-0 mb-3 text-left"
+                        role="alert"
+                      >
+                        Debes estar registrado para dejar una opinión.
+                        <p class="text-gray fs-14">
+                          Si ya tienes un registro
+                          <a
+                            rel="nofollow"
+                            href="../../ingreso/index1804.html?redirect_to=https%3A%2F%2Fwww.betizen.org%2Fcasino%2Fvera-john%2F"
+                            >accede con tu usuario</a
+                          >
+                          para compartir tu opinión.
+                        </p>
+                      </div>
+                      <div id="review_list" class="mt-4">
+                        <div
+                          class="theme-review Xcomment Xdepth-1"
+                          id="comment-84"
+                        >
+                          <div class="theme_review_item">
+                            <div class="theme-review__reply media">
+                              <div class="profile-author__logo d-flex mr-3">
+                                <img
+                                  src="https://secure.gravatar.com/avatar/1a5cff8096aeebbb382886932b598df4?s=96&amp;d=mm&amp;r=g"
+                                  alt="user-image"
+                                  width="96"
+                                  height="96"
+                                  class="avatar photo"
+                                />
+                              </div>
+                              <div class="media-body">
+                                <div
+                                  class="theme-review__reply__heading mt-0 d-block"
+                                >
+                                  pepebotella
+                                </div>
+                                <ul class="list-dotted mb-2">
+                                  <li class="list-dotted__item">4 años</li>
+                                </ul>
+                                <div class="comm_reply_body">
+                                  <p class="theme-review__reply__body"></p>
+                                  <div class="review-positive-box">
+                                    Buen casino, transparente y enfocado en las
+                                    máquinas tragamonedas.
+                                  </div>
+                                  <br />
+                                  <div class="review-negative-box">
+                                    Faltan mejores promociones en español.
+                                  </div>
+                                  <p></p>
+                                </div>
+                              </div>
+                              <div class="theme-review__heading">
+                                <div class="theme-review__heading__item">
+                                  <ul xclass="rating">
+                                    <div
+                                      class="rating-display"
+                                      data-toggle="tooltip"
+                                      data-placement="top"
+                                      title="4"
+                                    >
+                                      <span
+                                        class="fa fa-star checked"
+                                        style="font-size: 18px"
+                                      ></span
+                                      ><span
+                                        class="fa fa-star checked"
+                                        style="font-size: 18px"
+                                      ></span
+                                      ><span
+                                        class="fa fa-star checked"
+                                        style="font-size: 18px"
+                                      ></span
+                                      ><span
+                                        class="fa fa-star checked"
+                                        style="font-size: 18px"
+                                      ></span
+                                      ><span
+                                        class="fa fa-star"
+                                        style="font-size: 18px"
+                                      ></span>
+                                    </div>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <script type="application/ld+json">
+                      {
+                        "@context": "http://schema.org",
+                        "@type": "Product",
+                        "aggregateRating": {
+                          "@type": "AggregateRating",
+                          "bestRating": "5",
+                          "ratingCount": "1",
+                          "ratingValue": "4"
+                        },
+                        "mpn": "110",
+                        "brand": {
+                          "@type": "Brand",
+                          "name": "Jackpotjoy Group"
+                        },
+                        "name": "Vera&#038;John",
+                        "image": "https://i0.wp.com/www.betizen.org/wp-content/uploads/2018/10/vera-john-logo-6.png?resize=200%2C200&ssl=1",
+                        "description": "Vera&Jonn te permite controlar el limite de juego configurando en tu cuenta el máximo de depósitos que quieres hacer en un mes, cuánto estas dispuesto a perder y cuánto quieres jugar. Esto respeta al jugador permitiéndole la autoexclusión y habla bien de un casino que desde que desembarcó en Latinoamérica ha demostrado una buena conducta y una buena disposición respecto al pago de ganancias y a la atención de sus clientes.    Vera&John es un casino con una excelente selección de tragamonedas, clásicos, modernos y con jackpots. Con un sistema de torneos para todos los días de la semana que además de disfrutar de los juegos no nos dejan aburrirnos, y un programa de fidelidad. Y principalmente un casino que da a sus jugadores las herramientras de transparencia cada vez mas fundamentales para que podamos decir que Vera&John es un casino en el que podemos confiar."
+                      }
+                    </script>
+                    <script>
+                      $(function () {
+                        $(".acf-input:eq(0)").addClass("positive");
+                        $(".acf-input:eq(1)").addClass("negative");
+
+                        $(".positive textarea").attr(
+                          "placeholder",
+                          "¿Qué es lo que te agrada?"
+                        );
+                        $(".negative textarea").attr(
+                          "placeholder",
+                          "¿Qué es lo que te desagrada?"
+                        );
+                      });
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-4 d-none d-lg-block pl-xs-0 pl-lg-5 casino-sidebar"
+            >
+              <div class="sidebar-lg">
+                <div class="theme-purchases">
+                  <div
+                    class="text-center Xd-flex Xjustify-content-between align-items-center mb-1"
+                  >
+                    <h2 class="Xd-flex align-items-center">
+                      <span class="woocommerce-Price-amount amount ranking-big"
+                        ><span class="woocommerce-Price-currencySymbol"></span
+                        >#5</span
+                      ><a
+                        class="knowmore-icon-main"
+                        href="../../rankings/index.html"
+                        ><i class="fa fa-info-circle" aria-hidden="true"></i
+                      ></a>
+                    </h2>
+                  </div>
+                  <div class="theme-purchases__item" style="border-top: 0">
+                    <a
+                      class="theme-purchases__item__inner text-center pt-0"
+                      data-toggle="tab"
+                      href="#reviews-tab"
+                      role="tab"
+                      js-handle="review-toggler"
+                      aria-expanded="true"
+                    >
+                      <div
+                        class="rating-display"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="4"
+                      >
+                        <span
+                          class="fa fa-star checked"
+                          style="font-size: 35px"
+                        ></span
+                        ><span
+                          class="fa fa-star checked"
+                          style="font-size: 35px"
+                        ></span
+                        ><span
+                          class="fa fa-star checked"
+                          style="font-size: 35px"
+                        ></span
+                        ><span
+                          class="fa fa-star checked"
+                          style="font-size: 35px"
+                        ></span
+                        ><span
+                          class="fa fa-star"
+                          style="font-size: 35px"
+                        ></span>
+                      </div>
+                      {# <span class="avg-inline">1 opiniones</span> #}
+                    </a>
+                    <div
+                      class="theme-purchases__item__inner text-center am-favorite"
+                      style="display: none"
+                    >
+                      <a
+                        href="https://www.facebook.com/sharer/sharer.php?u=https://www.betizen.org/casino/vera-john/"
+                        rel="nofollow"
+                        target="_blank"
+                        ><i
+                          class="fa fa-facebook-square fa-4x"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href="../../visit/verajohnes/index.html"
+                  rel="nofollow"
+                  class="btn btn-brand btn-block btn-checkout up btn-customcolor"
+                  >Visitar</a
+                >
+
+                <div class="theme-description__list pt-2">
+                  <div
+                    class="theme-description__list__item casino-reputation-box"
+                    style="font-size: 20px; padding-bottom: 26px"
+                  >
+                    <span class="theme-description__item__title"
+                      >Reputación</span
+                    >
+                    <button
+                      data-target="#tc-modal"
+                      data-toggle="modal"
+                      data-hasbutton="0"
+                      data-title="Detalles de la reputación"
+                      data-content='<div class="container">    <div class="row"><div class="col text-center"><img src=_https_/i0.wp.com/www.betizen.org/wp-content/uploads/2018/10/vera-john-logo-670e0.html?resize=180%2C180&amp;ssl=1%22 alt="Vera&amp;John" width="100"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;Justo</button></div></div>    <div class="row"><div class="col"><p>El casino Vera&amp;John cuenta con Términos y condiciones claros y transparentes, ¡y en español! Donde se aclaran las fechas de actualización de los mismos.</p><p>Sumado a esto Vera&amp;John permite a los usuarios controlar su juego, con funcionalidades de auto-exclusión para cuando los jugadores deciden que deben parar de jugar por un tiempo.</p><p>El casino Vera&amp;John tiene un sistema de bonos transparente, donde los valores de bonos y de dinero real está guardados en billeteras separadas, permitiendo un mejor control de nuestro juego.</p></div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href=_https_/www.betizen.org/visit/verajohnes/index.html role="button" rel="sponsored" target="_blank">Visitar casino</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:#29aee7 !important;border-color:#29aee7 !important;}</style>'
+                      type="button"
+                      class="btn btn-success text-uppercase btn-casino-reputation"
+                    >
+                      <i class="fa fa-info-circle" aria-hidden="true"></i
+                      >&nbsp;Justo
+                    </button>
+                  </div>
+                  <div class="theme-description__list__item">
+                    <ul class="casino-pros-box theme-purchases">
+                      <ul>
+                        <li>
+                          <i class="fa fa-check-circle" aria-hidden="true"></i
+                          >Billeteras de bonos y dinero real separadas
+                        </li>
+                        <li>
+                          <i class="fa fa-check-circle" aria-hidden="true"></i
+                          >Herramientas para autocontrol de juego
+                        </li>
+                        <li>
+                          <i class="fa fa-check-circle" aria-hidden="true"></i
+                          >Transparencia de sus T&amp;C (en español)
+                        </li>
+                      </ul>
+                    </ul>
+                  </div>
+                  <div class="theme-description__list__item">
+                    <ul class="casino-cons-box theme-purchases">
+                      <ul>
+                        <li>
+                          <i class="fa fa-times-circle" aria-hidden="true"></i
+                          >No cuenta con chat en vivo para español
+                        </li>
+                        <li>
+                          <i class="fa fa-times-circle" aria-hidden="true"></i
+                          >Bono de bienvenida con rollover alto
+                        </li>
+                      </ul>
+                    </ul>
+                  </div>
+                  <div class="theme-description__list__item">
+                    <span class="theme-description__item__title">Fundado</span
+                    ><span>2011</span>
+                  </div>
+                  <div class="theme-description__list__item">
+                    <span class="theme-description__item__title"
+                      >Licencia(s)</span
+                    ><span>Malta, UKGC, Dinamarca</span>
+                  </div>
+                  <div class="theme-description__list__item">
+                    <span class="theme-description__item__title"
+                      >Tiempos de retiro</span
+                    ><span
+                      >Billetera electrónica: Instantánea<br />
+                      Credito/Débito: 3-5 días<br />
+                      Transferencia: 0-3 días</span
+                    >
+                  </div>
+                  <div class="theme-description__list__item align-items-center">
+                    <span class="theme-description__item__title"
+                      >¿Preguntas?</span
+                    ><a
+                      class="btn btn-xs btn-outline-brand btn-customcolor-outline"
+                      href="../../cdn-cgi/l/email-protection.html#c8a5a9a1a488aaadbca1b2ada6e6a7baaf"
+                      >Contáctanos</a
+                    >
+                  </div>
+                  <center>
+                    <script
+                      src="https://c.bannerflow.net/a/644bd050e1c2cea0da35a5b7?did=5cf6638e8e4e100001a17710&amp;deeplink=on&amp;redirecturl=https%3A%2F%2Frecord.ppincome.net%2F_FJLgBR3akX6m-csjK3xWe_3RvVJgod5X%2F1%2F"
+                      async=""
+                      data-rendered="true"
+                    ></script>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<section
+  class="profile__hero"
+  style="background-image: linear-gradient(to right, {{ gradient.start }}, {{ gradient.end }})"
+  alt="{{ title }}"
+  title="{{ title }}"
+></section>
+
+<section class="section section--pt-0" style="padding: 0">
+  <div class="container">
+    <div class="profile">
+      <div class="row">
+        <div class="col-lg-8 mb-2">
+          <div class="d-flex">
+            <div class="profile__avatar">
+              <img
+                src="{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp"
+                class="attachment-square_crop size-square_crop"
+                alt="{{ slugOverride }}"
+                width="300"
+                height="300"
+              />
+            </div>
+            <div class="profile__description">
+              <h1 class="profile__description__title">{{ title }}</h1>
+              <p class="d-none d-sm-block">
+                Operado por {{ operator }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4 align-items-sm-center justify-content-sm-start justify-content-lg-end mt-2 d-none d-lg-flex"
+          style="display: none !important"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <a
+              class="link--dark ranking-dropdown"
+              js-price-dropdown="true"
+              href="/rankings/"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Ranking</a
+            >
+            <h2
+              class="d-flex align-items-center"
+              js-price-value="main_price_div"
+            >
+              <span class="woocommerce-Price-amount amount ranking-big"
+                ><span class="woocommerce-Price-currencySymbol"></span>#{{
+                  ranking
+                }}</span
+              >
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

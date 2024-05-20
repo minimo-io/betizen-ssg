@@ -1,0 +1,45 @@
+{%- from "macros/details.njk" import fieldScore with context -%}
+<div class="list-index list-group mt-1 mb-4">
+  <a
+    href="#juegos"
+    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+  >
+    Juegos
+    {{ fieldScore(details.games) }}
+  </a>
+  <a
+    href="#bonos"
+    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+  >
+    Promociones y pagos
+    {{ fieldScore(details.promotions) }}
+  </a>
+  <a
+    href="#atencion-al-cliente"
+    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+  >
+    Atención al cliente
+    {{ fieldScore(details.customerSupport) }}
+  </a>
+  <a
+    href="#usabilidad"
+    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+  >
+    Diseño y usabilidad
+    {{ fieldScore(details.design) }}
+  </a>
+  <a
+    href="#licenses"
+    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+  >
+    Licencias
+    {{ fieldScore(details.license) }}
+  </a>
+  <a
+    href="#affiliateprogram"
+    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
+  >
+    Programa de Afiliados
+    {{ fieldScore(details.affiliateProgram) }}
+  </a>
+</div>

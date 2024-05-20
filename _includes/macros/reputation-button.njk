@@ -1,0 +1,17 @@
+{% macro reputationButton(text, description, logo, title, gradient, link) %}
+
+    <button
+        data-target="#tc-modal"
+        data-toggle="modal"
+        data-hasbutton="0"
+        data-title="Detalles de la reputación"
+        data-content='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp" alt="{{ title }}" width="100"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ text }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">Visitar casino</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
+        type="button"
+        class="btn btn-success text-uppercase btn-casino-reputation"
+        style="padding: 6px"
+    >
+        <i class="fa fa-info-circle" aria-hidden="true"></i
+        >&nbsp;{{text}}
+    </button>
+
+{% endmacro %}

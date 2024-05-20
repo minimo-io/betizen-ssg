@@ -20,6 +20,7 @@ module.exports = {
   extractIframeSrc,
   processFile,
   processProvidersFile,
+  processCasinosFile,
   delay,
 };
 
@@ -494,6 +495,59 @@ async function processProvidersFile(
       /href\=\"..\//,
       'href="/en/game-provider/'
     );
+  }
+
+  return {
+    frontMatter: frontMatterData,
+    alternateLangs: alternateLanguagesToProcess,
+  };
+}
+
+async function processCasinosFile(
+  filePath,
+  imagesOutputDir,
+  processImages,
+  processExtraLangs,
+  currentLang
+) {
+  let frontMatterData = {};
+  let postImages = {};
+
+  let data = fs.readFileSync(filePath, "utf8", (err, data) => {});
+
+  let nodes = parser(data, { comment: true });
+
+  let alternateLanguagesToProcess = [];
+
+  // images for a later getter
+  postImages.logo = "";
+  postImages.splash = "";
+
+  frontMatterData.slugOverride = "";
+  frontMatterData.title = "";
+  frontMatterData.description = "";
+
+  frontMatterData.content = "";
+
+  // first check that it is not a redirect html
+  // META HTTP-EQUIV="Refresh"
+  if ((isRedirectHtml = nodes.querySelector("meta[http-equiv='Refresh']"))) {
+    console.log(
+      `\x1b[43m> WARNING:\x1b[0m HTML Redirect for ${filePath} (not processing)`
+    );
+    return frontMatterData;
+  }
+
+  // cannot trust canonical for httrack files (would work for curl gets)
+  // let canonical = nodes.querySelector("link[rel='canonical']");
+  // frontMatterData.slugOverride = getSlug(canonical.attrs.href);
+  // as an alternative to hhtrack comments would be to use meta OpenGraph property="og:url"
+
+  if ((firstComment = nodes.querySelector("html !--"))) {
+    frontMatterData.slugOverride = sanitizeHttrack(firstComment.rawText);
+  } else {
+    console.error("\x1b[41m> ERROR:\x1b[0m No slug, or url founded");
+    process.exit();
   }
 
   return {

@@ -1,16 +1,16 @@
 {%- css %}.casinos-list{}{% endcss %} 
 
 {% for post in postsList | reverse %} 
-    {% if post.data.lang == page.lang and post.data.logo %}
+    {% if post.data.lang == page.lang and post.data.details %}
         <tr class="casinoItem postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
             <th scope="row" class="table-ranking-ner">#1</th>
             <td>
                 <a class="casino-table-image" href="{{ post.url }}"
                     ><img
                         width="80"
-                        src="{{ metadata.images.casinos }}{{ post.data.logo }}"
+                        src="{{ metadata.images.casinos }}{{ post.fileSlug }}-logo.webp"
                         class="theme-card__img wp-post-image"
-                        alt="{{ post.title | slugify }}" /><span class="medal medal-gold"></span
+                        alt="{{ post.data.slugOverride | slugify }}" /><span class="medal medal-gold"></span
                 ></a>
             </td>
             <td

@@ -5,6 +5,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 - Casino screen
+  - Continue with reputation button macro.
   - Casinos importing
 - Create blog page and posts
 
