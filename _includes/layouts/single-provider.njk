@@ -15,8 +15,10 @@ layout: layouts/base.njk
                 <div class="col-lg-8 mb-2">
                     <div class="d-flex">
                         <div class="profile__avatar">
+                            {%- set imagePath -%}{{ provider.fileSlug }}-logo.webp{%- endset -%}
+
                             <img
-                                src="{{ metadata.images.providers }}{{ page.fileSlug }}-logo.webp"
+                                src="{%- providerImageExists imagePath, metadata.images.providers -%}"
                                 class="rounded d-inline-block"
                                 alt="logo-proveedor"
                                 width="300"

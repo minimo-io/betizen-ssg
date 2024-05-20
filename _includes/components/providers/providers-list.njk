@@ -16,13 +16,14 @@
                     <a
                         class="d-block"
                         href="{{ provider.url }}"
-                    >
+                    >   
+                        {%- set imagePath -%}{{ provider.fileSlug }}-logo.webp{%- endset -%}
                         <img
                             fetchpriority="high"
                             decoding="async"
                             width="400"
                             height="300"
-                            src="{{ metadata.images.providers }}{{ provider.fileSlug }}-logo.webp"
+                            src="{%- providerImageExists imagePath, metadata.images.providers -%}"
                             class="theme-card__img wp-post-image"
                             alt="{{page.fileSlug}}"
                         />
@@ -41,9 +42,9 @@
                             >{{ provider.data.title }}</a
                         >
                         <p class="theme-card__info"></p>
-                        <ul class="prod_cats_list">
+                        {# <ul class="prod_cats_list">
                             <li><a href="#">? juegos</a></li>
-                        </ul>
+                        </ul> #}
                         <p></p>
                     </div>
                     <div class="theme-card__footer__item">

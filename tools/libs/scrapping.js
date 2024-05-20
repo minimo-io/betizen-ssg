@@ -190,8 +190,7 @@ async function processFile(
     frontMatterData.content.replace(/href="\.\.\//g, 'href="/pt-br/jogo/');
   if (currentLang == "en")
     frontMatterData.content.replace(/href="\.\.\//g, 'href="/en/game/');
-  //.replace(/href="(?:\.{0,2}\/)+/g, 'href="');
-  //
+
   frontMatterData.launch = nodes.querySelector(
     ".profile__description p"
   ).rawText;
@@ -374,10 +373,128 @@ async function processProvidersFile(
   frontMatterData.description = "";
 
   frontMatterData.color = ""; // #eb5d33
-  frontMatterData.site = ""; // https://neko.games/
+  // frontMatterData.site = ""; // https://neko.games/
   frontMatterData.featured = ""; // true || false, frontmatter boolean
   frontMatterData.founded = "";
-  frontMatterData.headquarters = "";
+  //frontMatterData.headquarters = "";
+
+  frontMatterData.content = "";
+
+  // first check that it is not a redirect html
+  // META HTTP-EQUIV="Refresh"
+  if ((isRedirectHtml = nodes.querySelector("meta[http-equiv='Refresh']"))) {
+    console.log(
+      `\x1b[43m> WARNING:\x1b[0m HTML Redirect for ${filePath} (not processing)`
+    );
+    return frontMatterData;
+  }
+
+  // cannot trust canonical for httrack files (would work for curl gets)
+  // let canonical = nodes.querySelector("link[rel='canonical']");
+  // frontMatterData.slugOverride = getSlug(canonical.attrs.href);
+  // as an alternative to hhtrack comments would be to use meta OpenGraph property="og:url"
+
+  if ((firstComment = nodes.querySelector("html !--"))) {
+    frontMatterData.slugOverride = sanitizeHttrack(firstComment.rawText);
+  } else {
+    console.error("\x1b[41m> ERROR:\x1b[0m No slug, or url founded");
+    process.exit();
+  }
+
+  // get other languages to process
+  if (processExtraLangs) {
+    alternateLanguagesToProcess = buildAlternateLangs(
+      nodes.querySelectorAll("link[rel='alternate']"),
+      frontMatterData.slugOverride
+    );
+  }
+
+  // process images
+  if (processImages == true) {
+    postImages = getProviderImages(nodes);
+    if (postImages.logo) {
+      await downloadImage(
+        "logo",
+        postImages.logo,
+        frontMatterData.slugOverride,
+        imagesOutputDir
+      );
+    }
+
+    if (postImages.hero) {
+      await downloadImage(
+        "char",
+        postImages.hero,
+        frontMatterData.slugOverride,
+        imagesOutputDir
+      );
+    }
+    await delay(2000);
+  }
+
+  // title
+  frontMatterData.title = nodes.querySelector(
+    ".profile__description__title"
+  ).rawText;
+  frontMatterData.title = sanitizeFrontMatter(frontMatterData.title);
+
+  // description
+  if (nodes.querySelector("meta[name='description']")) {
+    frontMatterData.description = nodes.querySelector(
+      "meta[name='description']"
+    ).attrs.content;
+    if (frontMatterData.description.length > 155) {
+      frontMatterData.description =
+        frontMatterData.description.substr(0, 150) + "...";
+    }
+    frontMatterData.description = sanitizeFrontMatter(
+      frontMatterData.description
+    );
+  }
+
+  // get color code
+  let hexColor = getHexCodes(nodes.querySelector(".profile__hero").attrs.style);
+  frontMatterData.color = `'${hexColor}'`;
+
+  // featured
+  frontMatterData.featured = "false"; // true || false, frontmatter boolean
+
+  // founded year
+  frontMatterData.founded = nodes.querySelector(
+    ".profile__description p"
+  ).innerText;
+  frontMatterData.founded = removeNonNumericChars(frontMatterData.founded);
+
+  // content
+  frontMatterData.content = nodes.querySelector(
+    ".catalog-description"
+  ).innerHTML;
+  frontMatterData.content = frontMatterData.content
+    .replace(/index.html/g, "")
+    .replace(/href="\.\.\/\.\.\//g, 'href="/');
+  if (currentLang == "es") {
+    frontMatterData.content.replace(/href="\.\.\//g, 'href="/juego/');
+    frontMatterData.content = frontMatterData.content.replace(
+      /href\=\"..\//,
+      'href="/proveedor/'
+    );
+  }
+
+  if (currentLang == "pt") {
+    frontMatterData.content.replace(/href="\.\.\//g, 'href="/pt-br/jogo/');
+    frontMatterData.content = frontMatterData.content.replace(
+      /href\=\"..\//,
+      'href="/pt-br/fornecedor/'
+    );
+  }
+
+  if (currentLang == "en") {
+    frontMatterData.content.replace(/href="\.\.\//g, 'href="/en/game/');
+    frontMatterData.content = frontMatterData.content.replace(
+      /href\=\"..\//,
+      'href="/en/game-provider/'
+    );
+  }
 
   return {
     frontMatter: frontMatterData,
@@ -616,4 +733,27 @@ function getImages(node) {
     hero: postHeroString,
     splash: postSplash.attrs.src || "",
   };
+}
+
+function getProviderImages(node) {
+  // get logo
+  let postLogo = node.querySelector(".profile__avatar img");
+  // get hero
+  let postChar = node.querySelector(".tax-sticky img");
+
+  return {
+    logo: postLogo ? postLogo.attrs.src : "",
+    hero: postChar ? postChar.attrs.src : "",
+  };
+}
+
+function getHexCodes(str) {
+  const regex = /(?<=background-image:.*?)#[0-9a-f]{6}/i;
+  const match = str.match(regex);
+
+  if (match) {
+    return match[0];
+  } else {
+    return false;
+  }
 }
