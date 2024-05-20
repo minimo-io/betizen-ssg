@@ -15,8 +15,7 @@ layout: layouts/base.njk
                 <div class="col-lg-8 mb-2">
                     <div class="d-flex">
                         <div class="profile__avatar">
-                            {%- set imagePath -%}{{ provider.fileSlug }}-logo.webp{%- endset -%}
-
+                            {%- set imagePath -%}{{ page.fileSlug }}-logo.webp{%- endset -%}
                             <img
                                 src="{%- providerImageExists imagePath, metadata.images.providers -%}"
                                 class="rounded d-inline-block"
@@ -28,7 +27,9 @@ layout: layouts/base.njk
                             <h1 class="profile__description__title">
                                 {{ title }}
                             </h1>
-                            <p class="d-none d-sm-block">Desde el {{ founded }}</p>
+                            {% if founded %}
+                                <p class="d-none d-sm-block">Desde el {{ founded }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

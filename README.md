@@ -4,7 +4,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Providers importer
 - Casino screen
   - Casinos importing
 - Create blog page and posts

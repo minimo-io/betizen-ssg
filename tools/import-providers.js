@@ -5,12 +5,12 @@ const { processProvidersFile, delay } = require("./libs/scrapping.js");
 const createFrontMatter = require("./libs/createFrontMatter.js");
 
 try {
-  const filePath = "./tools/proveedor/";
-  const filesOutput = "./content/es/providers/";
+  const filePath = "./tools/fornecedor/";
+  const filesOutput = "./content/pt-br/providers/";
   const imagesFilesOutput = `${__dirname}/../public/imgs/providers/`;
-  const processExtraLangs = true;
+  const processExtraLangs = false;
   let processImages = true;
-  let currentLang = "es"; // for now: es, pt, en
+  let currentLang = "pt"; // for now: es, pt, en
 
   // start processing
   fs.readdirSync(filePath).map(async (fileName) => {
