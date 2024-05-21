@@ -4,8 +4,9 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Casino screen
-  - Casinos importing
+- Casinos importing
+  - Casinos images
+  - Reputation text, must not be the whole html, rather me must only put the text (maybe encoding what we are currently scraping)
 - Create blog page and posts
 
 - Corret carrousel Fortune Tiger error.

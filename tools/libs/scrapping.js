@@ -6,6 +6,7 @@ const {
   getFileExtension,
   sanitizeFrontMatter,
   convertImageToWebp,
+  getFirstRedirectLink,
 } = require("./utils.js");
 const delay = async (time) => new Promise((res) => setTimeout(res, time));
 
@@ -527,6 +528,38 @@ async function processCasinosFile(
   frontMatterData.title = "";
   frontMatterData.description = "";
 
+  frontMatterData.excerpt = "";
+  frontMatterData.operator = "";
+
+  frontMatterData.gradient = {};
+  frontMatterData.gradient.start = "";
+  frontMatterData.gradient.end = "";
+
+  frontMatterData.bonus = {};
+  frontMatterData.bonus.title = "";
+  frontMatterData.bonus.text = "";
+  frontMatterData.bonus.link =
+    "https://bonusme.fun/L?tag=d_3370224m_37513c_BR_CL_CA_MX_PE&site=3370224&ad=37513"; // add default in case there no one to parse from html
+
+  // details: good, average, bad
+  frontMatterData.details = {};
+  frontMatterData.details.games = "";
+  frontMatterData.details.promotions = "";
+  frontMatterData.details.customerSupport = "";
+  frontMatterData.details.design = "";
+  frontMatterData.details.license = "";
+  frontMatterData.details.affiliateProgram = "";
+
+  frontMatterData.maxWidthdrawal = ""; // "$10.000"
+  frontMatterData.minDeposit = ""; // "$10"
+  frontMatterData.minWidthdrawal = ""; // "$10"
+  frontMatterData.license = ""; // Malta
+  frontMatterData.reputation = {};
+  frontMatterData.reputation.code = ""; //"fair"
+  frontMatterData.reputation.text = ""; //"<p>Test</p>"
+  frontMatterData.ranking = 0; //5
+  frontMatterData.score = 0; // 4
+
   frontMatterData.content = "";
 
   // first check that it is not a redirect html
@@ -549,6 +582,141 @@ async function processCasinosFile(
     console.error("\x1b[41m> ERROR:\x1b[0m No slug, or url founded");
     process.exit();
   }
+
+  frontMatterData.title = `"${nodes
+    .querySelector(".profile__description__title")
+    .innerText.replace("&#038;", "&")}"`;
+
+  if (nodes.querySelector("meta[name='description']")) {
+    frontMatterData.description = nodes.querySelector(
+      "meta[name='description']"
+    ).attrs.content;
+    if (frontMatterData.description.length > 155) {
+      frontMatterData.description =
+        frontMatterData.description.substr(0, 150) + "...";
+    }
+    frontMatterData.description = sanitizeFrontMatter(
+      frontMatterData.description
+    );
+  }
+
+  frontMatterData.excerpt = `"${nodes
+    .querySelector(".product p.mb-3")
+    .innerHTML.replace(/\"/g, "'")
+    .replace(/(\r\n|\n|\r)/gm, "")}"`;
+
+  if (nodes.querySelector(".profile__description p.d-sm-block")) {
+    frontMatterData.operator = nodes.querySelector(
+      ".profile__description p.d-sm-block"
+    ).innerText;
+    frontMatterData.operator = frontMatterData.operator
+      .replace("Operado por ", "")
+      .replace("Operated by ", "")
+      .replace(",", "");
+    frontMatterData.operator = `"${frontMatterData.operator}"`;
+  }
+
+  frontMatterData.gradient = {};
+  let hexColors = extractHexColors(
+    nodes.querySelector(".profile__hero").attrs.style
+  );
+  frontMatterData.gradient.start = `#${hexColors[0]}`;
+  frontMatterData.gradient.end = `#${hexColors[1]}`;
+
+  if (nodes.querySelector(".card-bonus")) {
+    frontMatterData.bonus.title = nodes
+      .querySelector(".card-bonus .card-title")
+      .innerText.replace("&nbsp;", "")
+      .trim();
+    frontMatterData.bonus.text = nodes
+      .querySelector(".card-bonus .card-text")
+      .innerText.trim();
+
+    frontMatterData.bonus.link = nodes
+      .querySelector(".card-bonus .btn-bonus")
+      .attrs.href.replace("index.html", "")
+      .replace("../..", "https://www.betizen.org");
+
+    // if internal affiliate link, get the first redirect
+    if (frontMatterData.bonus.link.includes("https://www.betizen.org")) {
+      console.log("> Scanning first link from redirect...");
+      frontMatterData.bonus.link = await getFirstRedirectLink(
+        frontMatterData.bonus.link
+      );
+    }
+  }
+
+  // details: good, average, bad
+  let allDetails;
+  if ((allDetails = nodes.querySelectorAll(".list-index a"))) {
+    frontMatterData.details.games = translateToCode(
+      allDetails[0].querySelector(".badge").innerText
+    );
+    frontMatterData.details.promotions = translateToCode(
+      allDetails[1].querySelector(".badge").innerText
+    );
+    frontMatterData.details.customerSupport = translateToCode(
+      allDetails[2].querySelector(".badge").innerText
+    );
+    frontMatterData.details.design = translateToCode(
+      allDetails[3].querySelector(".badge").innerText
+    );
+    frontMatterData.details.license = translateToCode(
+      allDetails[4].querySelector(".badge").innerText
+    );
+    // some casinos do not have an affiliate program menu index
+    if (allDetails[5]) {
+      frontMatterData.details.affiliateProgram = translateToCode(
+        allDetails[5].querySelector(".badge").innerText
+      );
+    }
+  }
+
+  // cards
+  let allCards;
+  if ((allCards = nodes.querySelectorAll(".casino-single-featured .col-6"))) {
+    console.log(allCards);
+    frontMatterData.maxWidthdrawal = allCards[0]
+      .querySelector(".card-text")
+      .innerText.replace("\n", "")
+      .trim(); // "$10.000"
+    frontMatterData.maxWidthdrawal = `"${frontMatterData.maxWidthdrawal}"`;
+    frontMatterData.minDeposit = allCards[1]
+      .querySelector(".card-text")
+      .innerText.replace("\n", "")
+      .trim(); // "$10"
+    frontMatterData.minDeposit = `"${frontMatterData.minDeposit}"`;
+    frontMatterData.minWidthdrawal = allCards[2]
+      .querySelector(".card-text")
+      .innerText.replace("\n", "")
+      .trim(); // "$10"
+    frontMatterData.minWidthdrawal = `"${frontMatterData.minWidthdrawal}"`;
+    frontMatterData.license = allCards[3]
+      .querySelector(".card-text")
+      .innerText.replace("\n", "")
+      .replace("&nbsp;", "")
+      .trim(); // Malta
+    frontMatterData.license = `"${frontMatterData.license}"`;
+  }
+
+  // reputation
+  frontMatterData.reputation.code = getReputationCode(
+    nodes.querySelector(".btn-casino-reputation").attrs.class
+  ); //"fair"
+  frontMatterData.reputation.text = nodes.querySelector(
+    ".btn-casino-reputation"
+  ).attrs["data-content"]; //"<p>Test</p>"
+
+  frontMatterData.ranking = nodes.querySelector(".ranking-big").innerText; // 5
+  frontMatterData.ranking = removeNonNumericChars(frontMatterData.ranking) * 1;
+  frontMatterData.score =
+    nodes.querySelector(".rating-display").attrs.title * 1; // 4
+
+  frontMatterData.content = nodes
+    .querySelector(".general-description")
+    .innerHTML.replace(/\.\.\/\.\./g, "/")
+    .replace(/href\=\"\/\//g, 'href="/')
+    .replace(/index\.html/g, "");
 
   return {
     frontMatter: frontMatterData,
@@ -809,5 +977,29 @@ function getHexCodes(str) {
     return match[0];
   } else {
     return false;
+  }
+}
+function extractHexColors(str) {
+  const regex = /#([0-9A-Fa-f]{6})/g; // Regex for 6-digit hex codes
+  const colors = [];
+  let match;
+  while ((match = regex.exec(str)) !== null) {
+    colors.push(match[1]); // Capture group 1 (hex code)
+  }
+  return colors;
+}
+function getReputationCode(s) {
+  // fair, acceptable, caution, dangerous
+  if (s.includes("btn-success")) {
+    return "fair";
+  }
+  if (s.includes("btn-info")) {
+    return "acceptable";
+  }
+  if (s.includes("btn-warning")) {
+    return "caution";
+  }
+  if (s.includes("btn-danger")) {
+    return "dangerous";
   }
 }

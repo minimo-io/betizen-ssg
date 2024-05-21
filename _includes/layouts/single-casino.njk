@@ -93,42 +93,16 @@ layout: layouts/base.njk
 
                   <div class="theme-purchases">
                     <div class="theme-purchases__item">
-                      <a
-                        class="theme-purchases__item__inner text-center"
-                        data-toggle="tab"
-                        href="#reviews-tab"
-                        role="tab"
-                        js-handle="review-toggler"
-                      >
-                        <div
-                          class="rating-display"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="4"
-                        >
-                          <span
-                            class="fa fa-star checked"
-                            style="font-size: 35px"
-                          ></span
-                          ><span
-                            class="fa fa-star checked"
-                            style="font-size: 35px"
-                          ></span
-                          ><span
-                            class="fa fa-star checked"
-                            style="font-size: 35px"
-                          ></span
-                          ><span
-                            class="fa fa-star checked"
-                            style="font-size: 35px"
-                          ></span
-                          ><span
-                            class="fa fa-star"
-                            style="font-size: 35px"
-                          ></span>
-                        </div>
-                        {# <span class="avg-inline">1 opiniones</span> #}
-                      </a>
+                      <div
+                        class="theme-purchases__item__inner text-center Xpt-0">
+                        {%- set starSize = "font-size: 35px" -%}
+                        {%- set score = score -%}
+                        {%- set paddingBottom = "pb-0" -%}
+                        {% include "components/bz-score.njk" %}
+                        
+                        <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">Rate on Instagram!</a></span>
+
+                      </div>
                     </div>
                   </div>
                   <div class="theme-description__list d-lg-none mb-4">
@@ -193,20 +167,16 @@ layout: layouts/base.njk
                     </h2>
                   </div>
                   <div class="theme-purchases__item" style="border-top: 0">
-                    <a
-                      class="theme-purchases__item__inner text-center pt-0"
-                      data-toggle="tab"
-                      href="#reviews-tab"
-                      role="tab"
-                      js-handle="review-toggler"
-                      aria-expanded="true"
-                    >
+                    <div
+                      class="theme-purchases__item__inner text-center pt-0">
                       {%- set starSize = "font-size: 35px" -%}
                       {%- set score = score -%}
+                      {%- set paddingBottom = "pb-0" -%}
                       {% include "components/bz-score.njk" %}
                       
-                      {# <span class="avg-inline">1 opiniones</span> #}
-                    </a>
+                      <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">Rate on Instagram!</a></span>
+
+                    </div>
                   </div>
                 </div>
                 <a
