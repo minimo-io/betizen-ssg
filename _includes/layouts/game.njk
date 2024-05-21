@@ -83,6 +83,7 @@ layout: layouts/base.njk
                                                         <div class="theme-purchases">
                                                             <div class="mt-3 text-center">
                                                                 {%- set starSize = "35px" -%}
+                                                                {%- set score = game.score -%}
                                                                 {% include "components/bz-score.njk" %}
                                                             </div>
                                                         </div>
@@ -237,6 +238,7 @@ layout: layouts/base.njk
                                     class="theme-purchases__item" style="border-top: 0">
 
                                     {%- set starSize = "font-size: 35px" -%}
+                                    {%- set score = game.score -%}
                                     {% include "components/bz-score.njk" %}
 
                                 </div>

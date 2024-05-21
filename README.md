@@ -5,8 +5,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 - Casino screen
-  - Stars are hardcoded (must be in relation to score)
-  - Single casinos bonuses (bottom)
   - Casinos importing
 - Create blog page and posts
 
@@ -31,6 +29,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 - For parsing FrontMatter (in the future, I want to bulk edit stuff), https://www.npmjs.com/package/front-matter
 - Add more casino metadata (now commented, like Withdrawal time, etc)
 - Add popup subscription
+- Casino bottom promotions are hidden, maybe add a CTA.
 
 ### Bugs
 

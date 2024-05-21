@@ -168,94 +168,9 @@ layout: layouts/base.njk
                     </div>
                   </div>
                 </div>
-                <div
-                  class="d-flex justify-content-between align-items-center has-border"
-                >
-                  <ul class="nav sub-nav sub-nav--has-border" role="tablist">
-                    <li class="nav-item">
-                      <a
-                        class="nav-link sub-nav-link active"
-                        data-toggle="tab"
-                        href="#promotions-tab"
-                        role="tab"
-                      >
-                        Promociones <span class="badge badge-secondary">1</span>
-                      </a>
-                    </li>
-                    <li class="nav-item" style="visibility: hidden">
-                      <a
-                        class="nav-link sub-nav-link"
-                        data-toggle="tab"
-                        href="#reviews-tab"
-                        role="tab"
-                      >
-                        Reseñas&nbsp;
-                        <span class="badge badge-secondary"> 1 </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="tab-content">
-                  <div
-                    class="tab-pane fade show active mt-2 mt-lg-4"
-                    id="promotions-tab"
-                    role="tabpanel"
-                  >
-                    <div class="theme-description">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-sm-4 m-0 p-1">
-                            <div class="card card-multibonus mt-2">
-                              <div>
-                                <img
-                                  src="https://i0.wp.com/www.betizen.org/wp-content/uploads/2020/05/bonus-casino-verajohn.png?resize=400%2C246&amp;ssl=1"
-                                  class="card-img-top"
-                                  alt="imagen-de-bono"
-                                />
-                                <a
-                                  href="../../bonus/bono-de-bienvenida-en-verajohn/index.html"
-                                  data-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Más información"
-                                  class="card-bonus-moreinfo knowmore-icon-link"
-                                  ><sup
-                                    ><i
-                                      class="fa fa-info-circle"
-                                      aria-hidden="true"
-                                    ></i></sup
-                                ></a>
-                              </div>
-                              <div class="card-body">
-                                <h5 class="card-title">
-                                  Bono de bienvenida en Vera&amp;John
-                                </h5>
-                                <p class="card-text">
-                                  100% hasta $100, x40&nbsp;<span
-                                    class="badge badge-success"
-                                    >activo</span
-                                  >
-                                </p>
-                                <a
-                                  rel="nofollow"
-                                  target="_blank"
-                                  role="button"
-                                  href="../../visit/verajohnes/index.html"
-                                  class="btn btn-bonus btn-outline-brand btn-block mb-1 ml-0 btn-customcolor-outline text-uppercase"
-                                >
-                                  <i
-                                    class="fa fa-thumbs-up"
-                                    aria-hidden="true"
-                                  ></i>
-                                  Obtener bono
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
+                {%- include "components/casinos/casino-bottom-bonuses.njk" -%}
+
               </div>
             </div>
             <div
@@ -286,49 +201,12 @@ layout: layouts/base.njk
                       js-handle="review-toggler"
                       aria-expanded="true"
                     >
-                      <div
-                        class="rating-display"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="4"
-                      >
-                        <span
-                          class="fa fa-star checked"
-                          style="font-size: 35px"
-                        ></span
-                        ><span
-                          class="fa fa-star checked"
-                          style="font-size: 35px"
-                        ></span
-                        ><span
-                          class="fa fa-star checked"
-                          style="font-size: 35px"
-                        ></span
-                        ><span
-                          class="fa fa-star checked"
-                          style="font-size: 35px"
-                        ></span
-                        ><span
-                          class="fa fa-star"
-                          style="font-size: 35px"
-                        ></span>
-                      </div>
+                      {%- set starSize = "font-size: 35px" -%}
+                      {%- set score = score -%}
+                      {% include "components/bz-score.njk" %}
+                      
                       {# <span class="avg-inline">1 opiniones</span> #}
                     </a>
-                    <div
-                      class="theme-purchases__item__inner text-center am-favorite"
-                      style="display: none"
-                    >
-                      <a
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://www.betizen.org/casino/vera-john/"
-                        rel="nofollow"
-                        target="_blank"
-                        ><i
-                          class="fa fa-facebook-square fa-4x"
-                          aria-hidden="true"
-                        ></i
-                      ></a>
-                    </div>
                   </div>
                 </div>
                 <a
@@ -348,38 +226,6 @@ layout: layouts/base.njk
                     >
                     {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, false) }}
                   </div>
-                  {# <div class="theme-description__list__item">
-                    <ul class="casino-pros-box theme-purchases">
-                      <ul>
-                        <li>
-                          <i class="fa fa-check-circle" aria-hidden="true"></i
-                          >Billeteras de bonos y dinero real separadas
-                        </li>
-                        <li>
-                          <i class="fa fa-check-circle" aria-hidden="true"></i
-                          >Herramientas para autocontrol de juego
-                        </li>
-                        <li>
-                          <i class="fa fa-check-circle" aria-hidden="true"></i
-                          >Transparencia de sus T&amp;C (en español)
-                        </li>
-                      </ul>
-                    </ul>
-                  </div> #}
-                  {# <div class="theme-description__list__item">
-                    <ul class="casino-cons-box theme-purchases">
-                      <ul>
-                        <li>
-                          <i class="fa fa-times-circle" aria-hidden="true"></i
-                          >No cuenta con chat en vivo para español
-                        </li>
-                        <li>
-                          <i class="fa fa-times-circle" aria-hidden="true"></i
-                          >Bono de bienvenida con rollover alto
-                        </li>
-                      </ul>
-                    </ul>
-                  </div> #}
                   {% if founded %}
                     <div class="theme-description__list__item">
                       <span class="theme-description__item__title">Fundado</span
