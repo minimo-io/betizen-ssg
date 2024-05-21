@@ -1,17 +1,28 @@
-{% macro reputationButton(text, description, logo, title, gradient, link) %}
-
+{% macro reputationButton(buttonCode, description, logo, title, gradient, link, small=false, extraClasses="") %}
+    {# fair, acceptable, caution, dangerous #}
+    {%- set buttonClass = "-" -%}
+    {%- set buttonText = languages[page.lang].texts.reputation[buttonCode] -%}
+    {% if buttonCode == "fair" %}
+        {%- set buttonClass = "btn-success" -%}
+    {% elif buttonCode == "acceptable" %}
+        {%- set buttonClass = "btn-info" -%}
+    {% elif buttonCode == "caution" %}
+        {%- set buttonClass = "btn-warning" -%}
+    {% elif buttonCode == "dangerous" %}
+        {%- set buttonClass = "btn-danger" -%}
+    {% endif %}
     <button
         data-target="#tc-modal"
         data-toggle="modal"
         data-hasbutton="0"
         data-title="Detalles de la reputación"
-        data-content='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp" alt="{{ title }}" width="100"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ text }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">Visitar casino</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
+        data-content='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ logo }}" alt="{{ title }}" width="100"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ buttonText }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">Visitar casino</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
         type="button"
-        class="btn btn-success text-uppercase btn-casino-reputation"
-        style="padding: 6px"
+        class="btn {{ buttonClass }} text-uppercase btn-casino-reputation {{ extraClasses }}"
+        style="{%- if small -%}padding: 6px{%- endif -%}"
     >
         <i class="fa fa-info-circle" aria-hidden="true"></i
-        >&nbsp;{{text}}
+        >&nbsp;{{ buttonText }}
     </button>
 
 {% endmacro %}

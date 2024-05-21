@@ -5,7 +5,8 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 - Casino screen
-  - Continue with reputation button macro.
+  - Stars are hardcoded (must be in relation to score)
+  - Single casinos bonuses (bottom)
   - Casinos importing
 - Create blog page and posts
 
@@ -28,6 +29,8 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 - Create the `casinos-filter.njk` specially for crypto.
 - Add again the count of casinos where the provider is (in providers game screen)
 - For parsing FrontMatter (in the future, I want to bulk edit stuff), https://www.npmjs.com/package/front-matter
+- Add more casino metadata (now commented, like Withdrawal time, etc)
+- Add popup subscription
 
 ### Bugs
 
