@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const parser = require("node-html-parser").default;
 const download = require("image-downloader");
+
 const {
   getFileExtension,
   sanitizeFrontMatter,
@@ -703,9 +704,8 @@ async function processCasinosFile(
   frontMatterData.reputation.code = getReputationCode(
     nodes.querySelector(".btn-casino-reputation").attrs.class
   ); //"fair"
-  frontMatterData.reputation.text = nodes.querySelector(
-    ".btn-casino-reputation"
-  ).attrs["data-content"]; //"<p>Test</p>"
+
+  frontMatterData.reputation.text = frontMatterData.excerpt;
 
   frontMatterData.ranking = nodes.querySelector(".ranking-big").innerText; // 5
   frontMatterData.ranking = removeNonNumericChars(frontMatterData.ranking) * 1;
