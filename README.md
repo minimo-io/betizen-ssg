@@ -4,10 +4,8 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Casinos importing
-  - Casinos images
 - Create blog page and posts
-
+- Create a way to order casinos by some index.
 - Corret carrousel Fortune Tiger error.
 - Fix the sitemap, /feed/feed.xml
 - Create a better schema for games and casinos, and edit the one at base.njk
@@ -20,6 +18,9 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+- Create one landing page as the end of funnel to complement adboxes, where the bell and bonus page will be. Maybe in the same url.
+- Add main casino promo to the casino reputation popup
+- Add front-matter for blacklisted casinos
 - Have one carrousel for each language
 - Create a filter to filter tags by language name insted of adding if statements (gameslist)
 - Top casinos for games section (commented)
@@ -45,3 +46,5 @@ In case you live in this online iGaming underworld and are trying to use this El
 - Game categories should include a front matter pointing to the category game slug `gamesFrom: slot`
 
 - For big sites, considering increasing NodeJs memory limit: export NODE_OPTIONS=--max_old_space_size=5012
+
+- Two conversion boxes: `"components/bz-banner-hero.njk"`, `"components/bz-subscribe.njk"` and one landing page as end-of-funnel.
