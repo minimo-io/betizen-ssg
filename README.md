@@ -4,6 +4,8 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
+- Continue with single articles and blog
+- Casinos list page, has a title with error
 - Create blog page and posts
 - Create a way to order casinos by some index.
 - Corret carrousel Fortune Tiger error.
@@ -42,6 +44,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 In case you live in this online iGaming underworld and are trying to use this Eleventy template setup for your affiliate site, please consider:
 
 - Game images are being loaded by slug name, {{fileSlug}}-hero.webp, {{fileSlug}}-logo.webp and {{fileSlug}}-splash.webp. Same images are used for all languages.
+- Some games can be highlighted using the front-matter property: `gameListFeatured: true`
 - Same for provider images, they will use: {{fileSlug}}-logo.webp, and {{fileSlug}}-character.webp
 - Game categories should include a front matter pointing to the category game slug `gamesFrom: slot`
 

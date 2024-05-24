@@ -3,8 +3,11 @@
 {% for game in gamesList %}
 
     <li class="col-6 col-md-3 pl-0 pl-md-1">
-        <div class="theme-card">
+        <div class="theme-card {% if game.data.featured -%}gameListFeatured{%-endif-%}">
             <div class="theme-card__body">
+                {%- if game.data.featured -%}
+                    <span class="featured-text animated infinite pulse"><i class="fa fa-bell mr-1" aria-hidden="true"></i>destacado</span>
+                {%- endif -%}
                 <a class="d-block" href="{{ game.url }}">
                     <img
                         width="400"

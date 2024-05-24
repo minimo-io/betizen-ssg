@@ -2,9 +2,10 @@
 title: O primeiro post em portugues
 description: This is a post on My Blog about agile frameworks.
 date: 2018-05-01
+gradientColor: "#81d742"
 slugOverride: O primeiro post em portugues
 tags:
-    - another tag
+  - another tag
 ---
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.

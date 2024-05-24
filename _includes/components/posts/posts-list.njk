@@ -1,0 +1,52 @@
+{% for post in postsList %}
+    {% if post.data.gradientColor %}
+        <div
+        class="card blog-card mt-4 p-2"
+        style="background: linear-gradient(to bottom left, transparent 20%, {{ post.data.gradientColor }} 100%);">
+        <div class="card-body">
+            <div class="post-preview">
+            <a
+                class="post-preview-link"
+                href="../sin-categorizar/tragamonedas-gratis-con-bonos-20bet/index.html"
+            >
+                <h2
+                class="catalog-blog-title post-title hero-h1 bd-text-purple-bright display-4"
+                >
+                {{ post.data.title }}
+                </h2>
+                <h3 class="post-subtitle">
+                <p>
+                    20Bet Casino te ofrece la emoción de las tragamonedas gratis con
+                    bonos generosos. Con una amplia selección de tragamonedas gratuitas
+                    y un bono de bienvenida tentador …
+                </p>
+                </h3>
+            </a>
+            <p class="post-meta">
+                <small>
+                <a href="#">
+                    <time datetime="2023-09-23T18:10:00+00:00"
+                    >23 septiembre, 2023</time
+                    >
+                </a></small
+                >
+            </p>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
+{# 
+{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
+<ol reversed class="postlist">
+{% for post in postslist | reverse %}
+	{% if post.data.lang == page.lang %}
+		<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+			<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+			<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+		</li>
+	{% endif %}
+{% endfor %}
+</ol>
+#}

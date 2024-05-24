@@ -2,12 +2,13 @@
 title: O segundo artigo em portugues
 description: This is a post on My Blog about leveraging agile frameworks.
 date: 2018-07-04
+gradientColor: "#f8c90a"
 slugOverride: O segundo artigo em portugues
 tags:
-    - number 2
+  - number 2
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+WAAsa. Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
 
 ## Section Header
 

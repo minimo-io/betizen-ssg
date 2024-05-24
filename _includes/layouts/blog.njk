@@ -1,0 +1,83 @@
+---
+layout: "layouts/base.njk"
+---
+
+<section class="hero hero--xs w-100 pt-0" style="margin-bottom: 3%">
+  <div class="container">
+    <h1 class="display-2 text-bold" style="margin-top: 5%">
+      {{ title }}<span class="text-purple">.</span>
+    </h1>
+    <h4 class="text-gray-soft text-regular col-lg-8 col-md-10 mx-auto">
+      <p>
+        {{ description }}
+      </p>
+    </h4>
+    {# <a
+      href="aprender-a-jugar/index.html"
+      class="btn btn-light btn-lg btn-sm mr-1 mt-1 text-uppercase sm-btn-block"
+      role="button"
+      aria-pressed="true"
+    >
+      <i class="fa fa-tag mr-1" aria-hidden="true"></i>Aprender
+      <span class="badge badge-secondary">26</span> </a
+    ><a
+      href="historias/index.html"
+      class="btn btn-light btn-lg btn-sm mr-1 mt-1 text-uppercase sm-btn-block"
+      role="button"
+      aria-pressed="true"
+    >
+      <i class="fa fa-tag mr-1" aria-hidden="true"></i>Historias
+      <span class="badge badge-secondary">0</span> </a
+    ><a
+      href="noticias/index.html"
+      class="btn btn-light btn-lg btn-sm mr-1 mt-1 text-uppercase sm-btn-block"
+      role="button"
+      aria-pressed="true"
+    >
+      <i class="fa fa-tag mr-1" aria-hidden="true"></i>Noticias
+      <span class="badge badge-secondary">1</span>
+    </a> #}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {# Filters #}
+    <div class="row d-none d-lg-block">
+      <div
+        class="col-lg-8 col-md-10 mx-auto text-right blog-list-view-selector">
+        <div class="btn-group" role="group" aria-label="Tipo de visualización">
+          <button
+            type="button"
+            class="btn btn-light btn-galleryview active"
+            data-toggle="tooltip"
+            data-placement="top"
+            data-original-title="Vista de galería"
+          >
+            <i class="fa fa-th" aria-hidden="true"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-light btn-listview"
+            data-toggle="tooltip"
+            data-placement="top"
+            data-original-title="Vista de lista"
+          >
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-lg-8 col-md-10 mx-auto blog-cards card-deck blog-card-grid">
+
+        {% set postsList = collections.posts | forLang( page.lang ) %}
+        {% include "components/posts/posts-list.njk" %}
+        
+      </div>
+    </div>
+  </div>
+</section>
