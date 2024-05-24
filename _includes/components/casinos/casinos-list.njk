@@ -1,12 +1,12 @@
 {%- from "macros/reputation-button.njk" import reputationButton with context -%}
 {%- css %}.casinos-list{}{% endcss %} 
-
+{% set counter = 0 -%}
 {% for post in postsList | reverse %} 
     {% if post.data.lang == page.lang and post.data.details %}
-
+        {% set counter = counter + 1 -%}
         {%- set logoPath -%}{{ metadata.images.casinos }}{{ post.fileSlug }}-logo.webp{%- endset -%}
         <tr class="casinoItem postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-            <th scope="row" class="table-ranking-ner">#1</th>
+            <th scope="row" class="table-ranking-ner">#{{ counter }}</th>
             <td style="vertical-align:middle;">
                 <a class="casino-table-image" href="{{ post.url }}"
                     ><img
@@ -60,5 +60,7 @@
                 ></a>
             </td>
         </tr>
+
+        
     {% endif %} 
 {% endfor %}

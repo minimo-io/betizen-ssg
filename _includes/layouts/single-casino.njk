@@ -24,8 +24,12 @@ layout: layouts/base.njk
                         <h2 class="card-title ml-1">
                           Reseña del casino {{ title }}
                         </h2>
-
-                        {%- include "components/casinos/casino-bonus.njk" -%}
+                        {% if not bonus.title %}
+                          {%- include "components/bz-banner-hero.njk" -%}
+                        {% else %}
+                          {%- include "components/casinos/casino-bonus.njk" -%}
+                        {% endif %}
+                        
 
                         {%- include "components/casinos/casino-details.njk" -%}
                         
@@ -33,7 +37,7 @@ layout: layouts/base.njk
 
                         <br />
                         <p class="mb-3">
-                          {{ excerpt }}
+                          {{ excerpt | safe }}
                         </p>
                       </div>
                     </div>

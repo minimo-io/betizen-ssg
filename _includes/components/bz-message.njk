@@ -1,12 +1,15 @@
 <div class="god-message text-truncate">
-    <strong style="color: #014a43; display: none"
-        >🎁&nbsp;&nbsp;¿Bonos sin depósito?
-        <a href="/bonos">¡Obtenerlos ahora!</a></strong
+    <strong style="color: #014a43; display: none">
+        {# 🎁&nbsp;&nbsp;{{ languages[page.lang].promo.cta }} #}
+        👉 <a target="_blank" rel="nofollow noopener" href="{{ languages[page.lang].promo.url }}">
+            {{ languages[page.lang].promo.casino.cta }}
+        </a>
+    </strong
     >
-    <span class="d-none Xd-md-inline-block">y solicítalos todos ¡gratis!</span>
-    <strong style="color: #014a43"
-        >🎁&nbsp;&nbsp;¿Bonos sin depósito?
-        <a href="/bonos">¡Obtenerlos ahora!</a></strong
+    {# <span class="d-none Xd-md-inline-block">y solicítalos todos ¡gratis!</span> #}
+    <strong style="color: #014a43">
+        {# 🎁&nbsp;&nbsp;{{ languages[page.lang].promo.cta }} #}
+        👉 <a href="{{ languages[page.lang].promo.url }}">{{ languages[page.lang].promo.casino.cta }}</a></strong
     >
-    <span class="d-none Xd-md-inline-block">y solicítalos todos ¡gratis!</span>
+    {# <span class="d-none Xd-md-inline-block">y solicítalos todos ¡gratis!</span> #}
 </div>

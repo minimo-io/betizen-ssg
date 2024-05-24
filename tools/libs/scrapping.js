@@ -584,6 +584,14 @@ async function processCasinosFile(
     process.exit();
   }
 
+  // get other languages to process
+  if (processExtraLangs) {
+    alternateLanguagesToProcess = buildAlternateLangs(
+      nodes.querySelectorAll("link[rel='alternate']"),
+      frontMatterData.slugOverride
+    );
+  }
+
   frontMatterData.title = `"${nodes
     .querySelector(".profile__description__title")
     .innerText.replace("&#038;", "&")}"`;
@@ -662,11 +670,13 @@ async function processCasinosFile(
     frontMatterData.details.design = translateToCode(
       allDetails[3].querySelector(".badge").innerText
     );
-    frontMatterData.details.license = translateToCode(
-      allDetails[4].querySelector(".badge").innerText
-    );
+    if (allDetails[4] && allDetails[4].querySelector(".badge")) {
+      frontMatterData.details.license = translateToCode(
+        allDetails[4].querySelector(".badge").innerText
+      );
+    }
     // some casinos do not have an affiliate program menu index
-    if (allDetails[5]) {
+    if (allDetails[5] && allDetails[5].querySelector(".badge")) {
       frontMatterData.details.affiliateProgram = translateToCode(
         allDetails[5].querySelector(".badge").innerText
       );
@@ -676,7 +686,6 @@ async function processCasinosFile(
   // cards
   let allCards;
   if ((allCards = nodes.querySelectorAll(".casino-single-featured .col-6"))) {
-    console.log(allCards);
     frontMatterData.maxWidthdrawal = allCards[0]
       .querySelector(".card-text")
       .innerText.replace("\n", "")
@@ -705,18 +714,56 @@ async function processCasinosFile(
     nodes.querySelector(".btn-casino-reputation").attrs.class
   ); //"fair"
 
-  frontMatterData.reputation.text = frontMatterData.excerpt;
+  frontMatterData.reputation.text = frontMatterData.excerpt
+    .replace(/\"/g, "")
+    .replace(/\'/g, "");
 
   frontMatterData.ranking = nodes.querySelector(".ranking-big").innerText; // 5
   frontMatterData.ranking = removeNonNumericChars(frontMatterData.ranking) * 1;
   frontMatterData.score =
     nodes.querySelector(".rating-display").attrs.title * 1; // 4
 
-  frontMatterData.content = nodes
-    .querySelector(".general-description")
-    .innerHTML.replace(/\.\.\/\.\./g, "/")
-    .replace(/href\=\"\/\//g, 'href="/')
-    .replace(/index\.html/g, "");
+  if (processImages == true) {
+    postImages = getImages(nodes);
+
+    if (postImages.logo) {
+      await downloadImage(
+        "logo",
+        postImages.logo,
+        frontMatterData.slugOverride,
+        imagesOutputDir
+      );
+    }
+    if (postImages.splash) {
+      await downloadImage(
+        "splash",
+        postImages.splash,
+        frontMatterData.slugOverride,
+        imagesOutputDir
+      );
+    }
+    await delay(2000);
+  }
+  // lang
+  if (currentLang == "es") {
+    frontMatterData.content = nodes
+      .querySelector(".general-description")
+      .innerHTML.replace(/\.\.\/\.\./g, "/")
+      .replace(/href\=\"\/\//g, 'href="/')
+      .replace(/index\.html/g, "");
+  } else if (currentLang == "pt-br" || currentLang == "pt") {
+    frontMatterData.content = nodes
+      .querySelector(".general-description")
+      .innerHTML.replace(/\.\.\/\.\./g, "/")
+      .replace(/href\=\"\/\//g, 'href="/pt-br/')
+      .replace(/index\.html/g, "");
+  } else if (currentLang == "en") {
+    frontMatterData.content = nodes
+      .querySelector(".general-description")
+      .innerHTML.replace(/\.\.\/\.\./g, "/")
+      .replace(/href\=\"\/\//g, 'href="/en/')
+      .replace(/index\.html/g, "");
+  }
 
   return {
     frontMatter: frontMatterData,
