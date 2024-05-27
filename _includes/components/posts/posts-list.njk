@@ -7,7 +7,7 @@
             <div class="post-preview">
             <a
                 class="post-preview-link"
-                href="../sin-categorizar/tragamonedas-gratis-con-bonos-20bet/index.html"
+                href="{{ post.url }}"
             >
                 <h2
                 class="catalog-blog-title post-title hero-h1 bd-text-purple-bright display-4"
@@ -16,9 +16,7 @@
                 </h2>
                 <h3 class="post-subtitle">
                 <p>
-                    20Bet Casino te ofrece la emoción de las tragamonedas gratis con
-                    bonos generosos. Con una amplia selección de tragamonedas gratuitas
-                    y un bono de bienvenida tentador …
+                    {{ post.data.description }}
                 </p>
                 </h3>
             </a>
@@ -26,8 +24,9 @@
                 <small>
                 <a href="#">
                     <time datetime="2023-09-23T18:10:00+00:00"
-                    >23 septiembre, 2023</time
+                    >{{ post.data.date | postDate }}</time
                     >
+                    {# 23 septiembre, 2023 #}
                 </a></small
                 >
             </p>

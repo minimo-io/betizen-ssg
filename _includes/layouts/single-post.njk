@@ -1,16 +1,69 @@
 ---
 layout: layouts/base.njk
 ---
-{# Only include the syntax highlighter CSS on blog posts #}
-<h1>{{ title }}</h1>
 
-<ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="/{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
-	{%- endfor %}
-</ul>
-
-{{ content | safe }}
-
+<section class="section">
+  <div class="container">
+    <h1
+      id="blog-post-title"
+      class="post-title hero-h1 bd-text-purple-bright display-4 mt-4"
+    >
+      {{ title }}
+    </h1>
+    <p class="c-entry-summary p-dek text-left">
+      {{ description }}
+    </p>
+    <p class="blog-post-meta"></p>
+    <div class="c-byline Xtext-center">
+      <span class="c-byline__item">
+        <time
+          class="c-byline__item"
+          data-ui="timestamp"
+          datetime="{{ date }}"
+        >
+          {{ date | postDate }}
+        </time>
+      </span>
+    </div>
+    <p></p>
+    <p class="c-share">
+      <a
+        class="c-share-item c-share-facebook"
+        target="_blank"
+        rel="nofollow"
+        href="https://www.facebook.com/sharer/sharer.php?text={{ title | url }}&amp;u={{ metadata.url | url }}{{ page.url | url }}"
+        data-analytics-social="facebook"
+      ></a>
+      <a
+        class="c-share-item c-share-twitter ml-1"
+        target="_blank"
+        rel="nofollow"
+        href="https://twitter.com/intent/tweet?text={{ title | url }}&amp;url={{ metadata.url | url }}{{ page.url | url }}"
+        data-analytics-social="twitter"
+      ></a>
+    </p>
+    <span class="clearfix"></span>
+    <div class="row">
+      <div class="col-lg mb-md-0 mb-3">
+          <div class="post-content">
+            <style>
+              .post-content {
+                margin-top: 2%;
+              }
+            </style>
+            <figure class="figure">
+              <img
+                src="{{ image }}"
+                class="figure-img img-fluid rounded"
+                alt="post-image"
+              />
+              <figcaption class="figure-caption text-right"></figcaption>
+            </figure>
+            {{ content | safe }}
+			{%- include "components/bz-banner-hero.njk" -%}			
+          </div>
+      </div>
+	  
+    </div>
+  </div>
+</section>

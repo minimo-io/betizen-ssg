@@ -5,8 +5,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ## To Do
 
 - Continue with single articles and blog
-- Casinos list page, has a title with error
-- Create blog page and posts
+- Casinos list page, has a page title with error
 - Create a way to order casinos by some index.
 - Corret carrousel Fortune Tiger error.
 - Fix the sitemap, /feed/feed.xml
@@ -18,8 +17,21 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 - Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
 
+- Correct links:
+  http://localhost:8080/promocoes/
+  http://localhost:8080/colunas/bankroll-o-que-e-e-como-gerencia-lo-em-nossas-apostas/
+  href="/cassino/
+  /jogo/
+
+> > Same in english and portuguse
+
+> > Define what to do with tags links.
+
+> > Do sth with this: http://localhost:8080/tags/
+
 ### v2
 
+- Blog articles have their date in english. Eg. June 14, 2018
 - Create one landing page as the end of funnel to complement adboxes, where the bell and bonus page will be. Maybe in the same url.
 - Add main casino promo to the casino reputation popup
 - Add front-matter for blacklisted casinos

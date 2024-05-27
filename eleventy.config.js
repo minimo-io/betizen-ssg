@@ -125,6 +125,15 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // get formatted post date
+  eleventyConfig.addFilter("postDate", (dateString) => {
+    dateObj = new Date(dateString);
+    let monthName = dateObj.toLocaleString("en", { month: "long" });
+    let dayNumber = dateObj.getDate();
+    let yearNumber = dateObj.getFullYear();
+    return `${monthName} ${dayNumber}, ${yearNumber}`;
+  });
+
   // Return the smallest number argument
   eleventyConfig.addFilter("min", (...numbers) => {
     return Math.min.apply(null, numbers);
