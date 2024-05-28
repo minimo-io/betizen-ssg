@@ -8,6 +8,7 @@ const {
   sanitizeFrontMatter,
   convertImageToWebp,
   getFirstRedirectLink,
+  generateRandomHexColor,
 } = require("./utils.js");
 const delay = async (time) => new Promise((res) => setTimeout(res, time));
 
@@ -23,6 +24,7 @@ module.exports = {
   processFile,
   processProvidersFile,
   processCasinosFile,
+  processPostsFile,
   delay,
 };
 
@@ -770,6 +772,135 @@ async function processCasinosFile(
     alternateLangs: alternateLanguagesToProcess,
   };
 }
+
+async function processPostsFile(
+  filePath,
+  imagesOutputDir,
+  processImages,
+  processExtraLangs,
+  currentLang
+) {
+  let frontMatterData = {};
+  let postImages = {};
+
+  let data = fs.readFileSync(filePath, "utf8", (err, data) => {});
+
+  let nodes = parser(data, { comment: true });
+
+  let alternateLanguagesToProcess = [];
+
+  // images for a later getter
+  postImages.featured = "";
+
+  frontMatterData.slugOverride = "";
+  frontMatterData.title = "";
+  frontMatterData.description = "";
+
+  frontMatterData.gradientColor = ""; // #eb5d33
+  frontMatterData.date = ""; // 2018-05-01
+  frontMatterData.permalink = "";
+
+  frontMatterData.content = "";
+
+  // first check that it is not a redirect html
+  // META HTTP-EQUIV="Refresh"
+  if ((isRedirectHtml = nodes.querySelector("meta[http-equiv='Refresh']"))) {
+    console.log(
+      `\x1b[43m> WARNING:\x1b[0m HTML Redirect for ${filePath} (not processing)`
+    );
+    return frontMatterData;
+  }
+
+  frontMatterData.permalink = nodes
+    .querySelector("meta[property='og:url']")
+    .attrs.content.replace("https://www.betizen.org", "");
+
+  frontMatterData.slugOverride = frontMatterData.permalink
+    .split("/")
+    .slice(-2, -1);
+  frontMatterData.slugOverride = frontMatterData.slugOverride[0];
+
+  // get other languages to process
+  if (processExtraLangs) {
+    alternateLanguagesToProcess = buildAlternateLangs(
+      nodes.querySelectorAll("link[rel='alternate']"),
+      frontMatterData.slugOverride
+    );
+  }
+
+  let postTitle = nodes.querySelector(".post-title");
+  if (postTitle) {
+    frontMatterData.title = postTitle.innerText.replace("&#038;", "&");
+    frontMatterData.title = frontMatterData.title.trim();
+    frontMatterData.title = `"${frontMatterData.title}"`;
+  } else {
+    console.log("> Error in: " + filePath);
+    process.exit();
+  }
+
+  frontMatterData.description = nodes
+    .querySelector(".c-entry-summary")
+    .innerText.trim();
+  frontMatterData.description = `"${frontMatterData.description.replace(
+    /\"/g,
+    "'"
+  )}"`;
+
+  frontMatterData.gradientColor = `"${generateRandomHexColor()}"`;
+
+  let imageUrl = nodes.querySelector("meta[property='og:image']");
+  if (imageUrl) {
+    // console.log(imageUrl.attrs.content);
+    // download image
+    if (processImages == true) {
+      postImages.featured = imageUrl.attrs.content;
+
+      if (postImages.featured) {
+        await downloadImage(
+          "featured",
+          postImages.featured,
+          frontMatterData.slugOverride,
+          imagesOutputDir
+        );
+      }
+      await delay(2000);
+    }
+  }
+
+  frontMatterData.date = nodes.querySelector(
+    "meta[property='article:published_time']"
+  ).attrs.content;
+
+  if (nodes.querySelector(".post-content")) {
+    let postContent = nodes.querySelector(".post-content").innerHTML;
+    // change content by language
+    if (currentLang == "es") {
+      postContent = postContent
+        .replace(/\.\.\/\.\./g, "/")
+        .replace(/href\=\"\/\//g, 'href="/')
+        .replace(/index\.html/g, "");
+    } else if (currentLang == "pt-br" || currentLang == "pt") {
+      frontMatterData.content = postContent
+        .replace(/\.\.\/\.\./g, "/")
+        .replace(/href\=\"\/\//g, 'href="/pt-br/')
+        .replace(/index\.html/g, "");
+    } else if (currentLang == "en") {
+      frontMatterData.content = postContent
+        .replace(/\.\.\/\.\./g, "/")
+        .replace(/href\=\"\/\//g, 'href="/en/')
+        .replace(/index\.html/g, "");
+    }
+    frontMatterData.content = postContent;
+  } else {
+    console.log("ERRROR NO CONTENT: " + filePath);
+    process.exit();
+  }
+
+  return {
+    frontMatter: frontMatterData,
+    alternateLangs: alternateLanguagesToProcess,
+  };
+}
 function extractIframeSrc(htmlString) {
   const regex = /<iframe[^>]*src="(.*?)"/i;
   const match = htmlString.match(regex);
@@ -860,13 +991,16 @@ function extractUrlFromText(s, useHttps) {
     return match ? match[0] : null;
   }
 }
-function sanitizeHttrack(s) {
+function sanitizeHttrack(s, fullUrl) {
   s = extractUrlFromText(s, true);
   s = sanitize(s);
-  s = s.replace("www.betizen.org/", "");
-  let as = s.split("/").slice(-2, -1);
-
-  return as[0];
+  if (fullUrl === true) {
+    return s;
+  } else {
+    s = s.replace("www.betizen.org/", "");
+    let as = s.split("/").slice(-2, -1);
+    return as[0];
+  }
 }
 
 function sanitize(s) {

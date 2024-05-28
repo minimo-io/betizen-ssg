@@ -4,7 +4,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Continue with single articles and blog
+- Continue with articles from other languages
 - Casinos list page, has a page title with error
 - Create a way to order casinos by some index.
 - Corret carrousel Fortune Tiger error.
@@ -18,6 +18,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 - Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
 
 - Correct links:
+  /visit/ links all along articles and posts...
   http://localhost:8080/promocoes/
   http://localhost:8080/colunas/bankroll-o-que-e-e-como-gerencia-lo-em-nossas-apostas/
   href="/cassino/

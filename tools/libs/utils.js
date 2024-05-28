@@ -8,6 +8,7 @@ module.exports = {
   convertImageToWebp,
   getFileExtension,
   getFirstRedirectLink,
+  generateRandomHexColor,
 };
 
 function sanitizeFrontMatter(s) {
@@ -73,4 +74,12 @@ async function getFirstRedirectLink(url) {
   //   .catch(function (no200) {
   //     return no200.request.res.headers.location;
   //   });
+}
+
+function generateRandomHexColor() {
+  // Generate a random integer between 0 and 0xffffff (inclusive)
+  const randomColor = Math.floor(Math.random() * 16777215);
+
+  // Convert the random number to a hexadecimal string with padding
+  return "#" + randomColor.toString(16).padStart(6, "0");
 }

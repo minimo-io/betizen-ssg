@@ -6,8 +6,7 @@ layout: layouts/base.njk
   <div class="container">
     <h1
       id="blog-post-title"
-      class="post-title hero-h1 bd-text-purple-bright display-4 mt-4"
-    >
+      class="post-title hero-h1 bd-text-purple-bright display-4 mt-4">
       {{ title }}
     </h1>
     <p class="c-entry-summary p-dek text-left">
@@ -53,9 +52,9 @@ layout: layouts/base.njk
             </style>
             <figure class="figure">
               <img
-                src="{{ image }}"
+                src="{{ metadata.images.posts }}{{ page.fileSlug }}-featured.webp"
                 class="figure-img img-fluid rounded"
-                alt="post-image"
+                alt="post-image-{{ slugOverride }}"
               />
               <figcaption class="figure-caption text-right"></figcaption>
             </figure>
