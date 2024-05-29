@@ -4,7 +4,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Continue with articles from other languages
+- Corret posts links and secondary images
 - Casinos list page, has a page title with error
 - Create a way to order casinos by some index.
 - Corret carrousel Fortune Tiger error.
@@ -27,6 +27,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 > > Same in english and portuguse
 
 > > Define what to do with tags links.
+> > /pt-br/tag/
 
 > > Do sth with this: http://localhost:8080/tags/
 
