@@ -4,15 +4,12 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Corret posts links and secondary images
-- Casinos list page, has a page title with error
+- Add new content added after the export.
 - Create a way to order casinos by some index.
-- Corret carrousel Fortune Tiger error.
 - Fix the sitemap, /feed/feed.xml
 - Create a better schema for games and casinos, and edit the one at base.njk
-- Casinos reputation `casinos-list.njk` is hardcoded.
 - Translate common texts
-- Add new content added after the export.
+
 - Remove errorMode: "never" for "allow-fallback" and create content needed
 - Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.

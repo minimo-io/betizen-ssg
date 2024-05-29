@@ -5,12 +5,12 @@ const { processCasinosFile, delay } = require("./libs/scrapping.js");
 const createFrontMatter = require("./libs/createFrontMatter.js");
 
 try {
-  const filePath = "./tools/online-casino/";
-  const filesOutput = "./content/en/casinos/";
+  const filePath = "./tools/casino/";
+  const filesOutput = "./content/es/casinos/";
   const imagesFilesOutput = `${__dirname}/../public/imgs/casinos/`;
-  const processExtraLangs = false;
+  const processExtraLangs = true;
   let processImages = true;
-  let currentLang = "en"; // for now: es, pt, en
+  let currentLang = "es"; // for now: es, pt, en
 
   // start processing
   fs.readdirSync(filePath).map(async (fileName) => {
