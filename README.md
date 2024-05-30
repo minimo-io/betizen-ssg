@@ -4,7 +4,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Continue sorting casinos.
 - Fix the sitemap, /feed/feed.xml
 - Create a better schema for games and casinos, and edit the one at base.njk
 - Translate common texts
@@ -29,6 +28,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+- Content: National Casino is setup as an Argentinian casino but it works great for Brazil (it seems)
 - Blog articles have their date in english. Eg. June 14, 2018
 - Create one landing page as the end of funnel to complement adboxes, where the bell and bonus page will be. Maybe in the same url.
 - Add main casino promo to the casino reputation popup
@@ -61,3 +61,4 @@ In case you live in this online iGaming underworld and are trying to use this El
 - For big sites, considering increasing NodeJs memory limit: export NODE_OPTIONS=--max_old_space_size=5012
 
 - Two conversion boxes: `"components/bz-banner-hero.njk"`, `"components/bz-subscribe.njk"` and one landing page as end-of-funnel.
+- For casinos without the bonus.link front-matter then the theme will grab the link from languages[page.lang].promo.url

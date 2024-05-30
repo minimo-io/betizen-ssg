@@ -35,14 +35,14 @@
                     </center>
                 </div>
             </td>
-            <td class style="vertical-align: middle">
+            <td class style="vertical-align: middle;text-align:center;">
                 <div class="table-comments">
                     {{ reputationButton(post.data.reputation.code, post.data.reputation.text, logoPath, post.data.title, post.data.gradient, post.data.bonus.link, false, "Xd-none Xd-md-block btn-scale") }}
                 </div>
             </td>
             <td class="casinos-table-lastAction">
                 <a
-                    href="{{ post.data.affiliate }}"
+                    href="{{ post.data.bonus.link }}"
                     rel="sponsored"
                     target="_blank"
                     class="ml-1 btn btn-outline-brand btn-bg btn-table-more btn-table-link mr-1 d-sm-inline-block d-md-none d-lg-inline-block btn-scale"
@@ -54,7 +54,7 @@
                 ><a
                     title="Análisis"
                     href="{{ post.url }}"
-                    class="btn btn-brand btn-bg btn-table-more btn-scale"
+                    class="btn btn-brand btn-bg btn-table-more btn-scale d-none d-md-inline-block"
                     style="padding: 10.5px 20px"
                     ><i class="fa fa-search" aria-hidden="true"></i
                 ></a>

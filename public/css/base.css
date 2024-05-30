@@ -30650,7 +30650,9 @@ a.button-join-small {
   }
   .casinos-table .table th:not(.table-ranking-ner),
   .table td {
-    padding: 0.4rem !important;
+    /* padding: 0.4rem !important; */
+    padding-top: 0.4rem !important;
+    padding-bottom: 0.4rem !important;
   }
   .table-ranking-ner {
     font-size: 16px !important;

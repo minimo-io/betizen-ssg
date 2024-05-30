@@ -1,4 +1,5 @@
 const metadata = require("../../../_data/metadata.js");
+const languages = require("../../../_data/languages.js");
 module.exports = {
   lang: "en",
   tags: ["casinos"],
@@ -13,6 +14,15 @@ module.exports = {
   eleventyComputed: {
     pageTitle: (data) => {
       return data.title + " | Honest review - " + metadata.title;
+    },
+    bonus: {
+      link: (data) => {
+        if (!data.bonus.link && data.page.lang) {
+          return languages[data.page.lang].promo.url;
+        } else {
+          return data.bonus.link;
+        }
+      },
     },
   },
 };
