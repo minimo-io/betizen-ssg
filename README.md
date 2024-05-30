@@ -4,8 +4,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Add new content added after the export.
-- Create a way to order casinos by some index.
+- Continue sorting casinos.
 - Fix the sitemap, /feed/feed.xml
 - Create a better schema for games and casinos, and edit the one at base.njk
 - Translate common texts

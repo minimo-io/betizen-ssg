@@ -1,8 +1,8 @@
 {%- from "macros/reputation-button.njk" import reputationButton with context -%}
 {%- css %}.casinos-list{}{% endcss %} 
 {% set counter = 0 -%}
-{% for post in postsList | reverse %} 
-    {% if post.data.lang == page.lang and post.data.details %}
+{% for post in postsList | sortByOrder %} 
+    {% if post.data.details %}
         {% set counter = counter + 1 -%}
         {%- set logoPath -%}{{ metadata.images.casinos }}{{ post.fileSlug }}-logo.webp{%- endset -%}
         <tr class="casinoItem postlist-item{% if post.url == url %} postlist-item-active{% endif %}">

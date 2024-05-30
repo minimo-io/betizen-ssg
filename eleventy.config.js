@@ -148,6 +148,15 @@ module.exports = function (eleventyConfig) {
     return Array.from(tagSet);
   });
 
+  // sort casinos by score
+  // credit: @noelforte - https://github.com/11ty/eleventy/issues/898
+  eleventyConfig.addFilter("sortByOrder", function (values) {
+    {
+      let vals = [...values]; // this *seems* to prevent collection mutation...
+      return vals.sort((a, b) => Math.sign(b.data.score - a.data.score));
+    }
+  });
+
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
     return (tags || []).filter(
       (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
