@@ -30,7 +30,7 @@ layout: layouts/base.njk
                         </div>
                         <div class="profile__description">
                             <h1 class="profile__description__title">
-                                {{ title }}
+                                {{ title | safe }}
                             </h1>
                             <p>
                                 {{ languages[page.lang].texts.createdBy }} <strong><a href="{{ provider.url }}">
@@ -153,8 +153,7 @@ layout: layouts/base.njk
                                                         >
                                                             <span
                                                                 class="btn-text"
-                                                                >Jugar
-                                                                gratis</span
+                                                                >{{ languages[page.lang].texts.freePlay }}</span
                                                             >
                                                         </a>
                                                         <a href="{{ languages[page.lang].promo.url }}"
@@ -170,7 +169,7 @@ layout: layouts/base.njk
                                                                     class="fa fa-external-link mr-1"
                                                                     aria-hidden="true"
                                                                 ></i
-                                                                >Jugar de verdad</span
+                                                                >{{ languages[page.lang].texts.realPlay }}</span
                                                             >
                                                         </a>
                                                     </div>
@@ -183,8 +182,8 @@ layout: layouts/base.njk
                                             </div>
                                             <div class="card-text mt-5 px-2 general-description">
                                                 <h2 class="card-title text-truncate ml-1">
-                                                    Mas sobre 
-                                                    {{ title }}
+                                                    {{ languages[page.lang].texts.moreAbout }}
+                                                    {{ title | safe }}
                                                 </h2>                                                
                                                 {{ content | safe }}
                                             </div>
@@ -226,7 +225,7 @@ layout: layouts/base.njk
                                             >#{{ game.ranking }}</span
                                         ><a
                                             class="knowmore-icon-main"
-                                            href="/rankings/"
+                                            href="{{ '/rankings/' | locale_url }}"
                                             ><i
                                                 class="fa fa-info-circle"
                                                 aria-hidden="true"

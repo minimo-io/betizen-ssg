@@ -22,7 +22,7 @@ layout: layouts/base.njk
                     <div class="card border-0">
                       <div class="card-body pb-0 px-0">
                         <h2 class="card-title ml-1">
-                          Reseña del casino {{ title }}
+                          {{ languages[page.lang].texts.reviewOf }} {{ title }}
                         </h2>
                         {% if not bonus.title %}
                           {%- include "components/bz-banner-hero.njk" -%}
@@ -58,8 +58,8 @@ layout: layouts/base.njk
                     class="d-flex justify-content-between align-items-center mb-3"
                   >
                     <div>
-                      <h4 class="mt-3 mb-1">Vera&amp;John</h4>
-                      Reputación&nbsp;
+                      <h4 class="mt-3 mb-1">{{ title | safe }}</h4>
+                      {{ languages[page.lang].texts.reputationText }}&nbsp;
                       <span class="casino-reputation-box">
                         {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, true) }}
                       </span>
@@ -72,7 +72,7 @@ layout: layouts/base.njk
                         class="woocommerce-Price-amount amount ranking-small mr-1"
                         ><span class="woocommerce-Price-currencySymbol">#</span
                         >{{ ranking }}</span
-                      ><a href="{{ "/rankings/" | locale_url }}"
+                      ><a href="{{ '/rankings/' | locale_url }}"
                         ><sup
                           ><i
                             class="fa fa-info-circle"
@@ -104,7 +104,7 @@ layout: layouts/base.njk
                         {%- set paddingBottom = "pb-0" -%}
                         {% include "components/bz-score.njk" %}
                         
-                        <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">Rate on Instagram!</a></span>
+                        <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">{{ languages[page.lang].texts.rateOnInstagram }}</a></span>
 
                       </div>
                     </div>
@@ -132,11 +132,11 @@ layout: layouts/base.njk
                       class="theme-description__list__item align-items-center"
                     >
                       <span class="theme-description__item__title"
-                        >¿Preguntas?</span
+                        >{{ languages[page.lang].texts.questions }}</span
                       ><a
                         class="btn btn-xs btn-outline-brand btn-customcolor-outline"
                         href="https://www.instagram.com/betizen_org/"
-                        >Contáctanos</a
+                        >{{ languages[page.lang].texts.contactUs }}</a
                       >
                     </div>
                     <div class="mt-2 text-center">
@@ -178,7 +178,7 @@ layout: layouts/base.njk
                       {%- set paddingBottom = "pb-0" -%}
                       {% include "components/bz-score.njk" %}
                       
-                      <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">Rate on Instagram!</a></span>
+                      <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">{{ languages[page.lang].texts.rateOnInstagram }}</a></span>
 
                     </div>
                   </div>
@@ -196,13 +196,13 @@ layout: layouts/base.njk
                     style="font-size: 20px; padding-bottom: 26px"
                   >
                     <span class="theme-description__item__title"
-                      >Reputación</span
+                      >{{ languages[page.lang].texts.reputationText }}</span
                     >
                     {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, false) }}
                   </div>
                   {% if founded %}
                     <div class="theme-description__list__item">
-                      <span class="theme-description__item__title">Fundado</span
+                      <span class="theme-description__item__title">{{ languages[page.lang].texts.founded }}</span
                       ><span>{{ founded }}</span>
                     </div>
                   {% endif %}
@@ -217,11 +217,11 @@ layout: layouts/base.njk
                   </div> #}
                   <div class="theme-description__list__item align-items-center">
                     <span class="theme-description__item__title"
-                      >¿Preguntas?</span
+                      >{{ languages[page.lang].texts.questions }}</span
                     ><a
                       class="btn btn-xs btn-outline-brand btn-customcolor-outline"
                       href="https://www.instagram.com/betizen_org/"
-                      >Contáctanos</a
+                      >{{ languages[page.lang].texts.contactUs }}</a
                     >
                   </div>
                   <div class="mt-2 text-center">

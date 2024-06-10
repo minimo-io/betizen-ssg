@@ -8,7 +8,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">
                         RTP
-                        <a href="/blog/que-es-el-rtp-en-las-tragamonedas/"
+                        <a href="{{ '/blog/que-es-el-rtp-en-las-tragamonedas/'  | locale_url }}"
                             ><sup
                                 ><i
                                     class="fa fa-info-circle"
@@ -24,15 +24,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title">
-                        Type
-                        <a
-                            href="/blog/que-es-la-volatilidad-de-las-tragamonedas/"
-                            ><sup
-                                ><i
-                                    class="fa fa-info-circle"
-                                    aria-hidden="true"
-                                ></i></sup
-                        ></a>
+                        {{ languages[page.lang].texts.type }}
                     </h5>
                     <p class="card-text display-4 text-truncate">
                         {{ game.type or "-" }}
@@ -45,7 +37,7 @@
         <div class="col-6 col-sm mt-3 mt-sm-0">
             <div class="card">
                 <div class="card-body text-center">
-                    <h5 class="card-title text-truncate">Min/Max Bets</h5>
+                    <h5 class="card-title text-truncate">{{ languages[page.lang].texts.minMaxBets }}</h5>
                     <p class="card-text display-4">{{ game.minMaxBet or "-" }}</p>
                 </div>
             </div>
@@ -56,7 +48,7 @@
             <div class="col-6 col-sm-12 mt-sm-0">
                 <div class="card mt-3 mt-md-3">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">Ganancia max.</h5>
+                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.maxWin }}</h5>
                         <p class="card-text display-4">{{ 'x' + game.maxWin }}</p>
                     </div>
                 </div>

@@ -5,21 +5,21 @@
         href="#premios"
         class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
     >
-        Premios, RTP y volatilidad
+        {{ languages[page.lang].texts.details.prizes}}
         {{ fieldScore(areas.prizes) }}
     </a>
     <a
         href="#funciones-y-mecanica"
         class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
     >
-        Funciones y mecánica
+        {{ languages[page.lang].texts.details.functions }}
         {{ fieldScore(areas.functions) }}
     </a>
     <a
         href="#tematica"
         class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
     >
-        Temática y diseño
+        {{ languages[page.lang].texts.details.theme }}
         {{ fieldScore(areas.theme) }}
     </a>
 </div>

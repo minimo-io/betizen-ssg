@@ -1,5 +1,5 @@
 <h2 class="relatedGamesBoxTitle globalH2">
-    Otros juegos gratuitos de
+    {{ languages[page.lang].texts.otherFreeGamesBy }}
     <a class="opacity-8 dotted-3" href="{{ provider.url }}">{{
         provider.name
     }}</a>
@@ -10,7 +10,7 @@
             <a
                 title="{{ providerGame.data.title | slugify }}"
                 href="{{ providerGame.data.slug }}"
-                >{{ providerGame.data.title }}</a>
+                >{{ providerGame.data.title | safe }}</a>
         </li>
     {% endfor %}
 </ul>

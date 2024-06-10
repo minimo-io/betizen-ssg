@@ -22,7 +22,7 @@
             type="button"
             class="btn btn-secondary button-inactive btn-footer-mobile"
         >
-            <a href="/juegos/">
+            <a href="{{ '/juegos/' | locale_url }}">
                 <div class="selector-holder">
                     <i class="games-icon fa-ax" aria-hidden="true"></i>
                     <span>{{ languages[page.lang].texts.games }}</span>
@@ -143,16 +143,9 @@
                 />
                 <a
                     class="mt-0 pt-0"
-                    href="/https://www.begambleaware.org/"
+                    href="https://www.begambleaware.org/"
                     target="_blank"
                     rel="nofollow"
-                    Xdata-target="#tc-modal"
-                    Xdata-toggle="modal"
-                    Xdata-hasbutton="0"
-                    Xdata-title="Juega responsablemente"
-                    data-content="&lt;div class=&#039;container disclaimersModal&#039;&gt;&lt;center&gt;&lt;img src=https_/www.betizen.org/wp-content/uploads/2020/10/betizen-typo.html /&gt;&lt;/center&gt;&lt;br&gt;&lt;p class=&#039;text-uppercase&#039;&gt;&lt;strong&gt;Jugar responsablemente se trata de conocer tus límites y jugar dentro de tus posibilidades.&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;Recuerde que es contra la ley que los menores de 18 años apuesten. Betizen es un producto para adultos que juegan de forma responsable. Queremos brindar transparencia a la industria de los juegos de azar (para jugadores, operadores y afiliados), y por eso nos tomamos muy en serio los problemas de juego. &lt;br&gt;
-Si desea tomar un breve descanso de los juegos, puede hacerlo tomándose un tiempo por un período de 24 horas, 48 horas, 7 días o 30 días.
-Si necesita ayuda, tenemos un artículo para usted en el blog, o puede ponerse en contacto con nosotros para recibir ayuda de profesionales externos.&lt;/p&gt;&lt;button class=&#039;btn btn-brand btn-block btn-checkout text-uppercase&#039; onclick=&#039;aipimOpenContactBox();&#039;&gt;Obtener ayuda&lt;/button&gt;&lt;/div&gt;"
                 >
                     <img
                         class="disclaimers-bga"
@@ -160,7 +153,7 @@ Si necesita ayuda, tenemos un artículo para usted en el blog, o puede ponerse e
                     />
                 </a>
                 <a
-                    href="/https://certify.gpwa.org/verify/betizen.org/"
+                    href="https://certify.gpwa.org/verify/betizen.org/"
                     onclick="return GPWAVerificationPopup(this)"
                     id="GPWASeal"
                     style="padding-top: 0; margin-right: 10px"
@@ -178,8 +171,8 @@ Si necesita ayuda, tenemos un artículo para usted en el blog, o puede ponerse e
     /* <![CDATA[ */
     var bzTranslation = {
         acceptCookie:
-            "Utilizamos cookies para mejorar su experiencia en Betizen, al continuar utilizando este sitio web, acepta dicho uso como se describe en nuestra pol\u00edtica de cookies.",
-        acceptCookieBtnText: "Aceptar",
+            "{{ languages[page.lang].texts.cookiesMessage }}",
+        acceptCookieBtnText: "{{ languages[page.lang].texts.accept }}",
     };
     /* ]]> */
 </script>

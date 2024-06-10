@@ -8,7 +8,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">
                         RTP
-                        <a href="/blog/que-es-el-rtp-en-las-tragamonedas/"
+                        <a href="{{ '/blog/que-es-el-rtp-en-las-tragamonedas/'  | locale_url }}"
                             ><sup
                                 ><i
                                     class="fa fa-info-circle"
@@ -24,9 +24,9 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="card-title">
-                        Volatilidad
+                        {{ languages[page.lang].texts.volatility }}
                         <a
-                            href="/blog/que-es-la-volatilidad-de-las-tragamonedas/"
+                            href="{{ '/blog/que-es-la-volatilidad-de-las-tragamonedas/' | locale_url }}"
                             ><sup
                                 ><i
                                     class="fa fa-info-circle"
@@ -45,7 +45,7 @@
             <div class="col-6 col-sm mt-3 mt-sm-0">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">Min/Max Bets</h5>
+                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.minMaxBets }}</h5>
                         <p class="card-text display-4">{{ game.minMaxBet or "-" }}</p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
             <div class="col-6 col-sm mt-3 mt-sm-0">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">Líneas de pago</h5>
+                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.paylines }}</h5>
                         <p class="card-text display-4">{{ game.paylines or "-" }}</p>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
             <div class="col-6 col-sm-12 mt-sm-0">
                 <div class="card mt-3 mt-md-3">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">Ganancia max.</h5>
+                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.maxWin }}</h5>
                         <p class="card-text display-4">{{ 'x' + game.maxWin }}</p>
                     </div>
                 </div>

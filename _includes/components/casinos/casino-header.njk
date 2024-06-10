@@ -23,7 +23,7 @@
             <div class="profile__description">
               <h1 class="profile__description__title">{{ title }}</h1>
               <p class="d-none d-sm-block">
-                Operado por {{ operator }}
+                {{ languages[page.lang].texts.operatedBy }} {{ operator }}
               </p>
             </div>
           </div>
@@ -36,11 +36,11 @@
             <a
               class="link--dark ranking-dropdown"
               js-price-dropdown="true"
-              href="/rankings/"
+              href="{{ '/rankings/' | locale_url }}"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              >Ranking</a
+              >{{ languages[page.lang].texts.ranking }}</a
             >
             <h2
               class="d-flex align-items-center"

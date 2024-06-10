@@ -18,16 +18,16 @@
 {% endif %}
 
 <div class="theme-description__list__item">
-    <span class="theme-description__item__title">Categoría</span>
+    <span class="theme-description__item__title">{{ languages[page.lang].texts.category }}</span>
     <a href="{{ gameCategoryUrl }}">{{ gameCategoryName or gameCategoryBaseName }}</a>
 </div>
 <div class="theme-description__list__item">
-    <span class="theme-description__item__title">Proveedor</span>
+    <span class="theme-description__item__title">{{ languages[page.lang].texts.provider }}</span>
     <span
         ><a href="{{ provider.url }}">{{ provider.name }}</a></span>
 </div>
 <div class="theme-description__list__item">
-    <span class="theme-description__item__title">Lanzamiento</span>
+    <span class="theme-description__item__title">{{ languages[page.lang].texts.launch }}</span>
     <span>{{ launch }}</span>
 </div>
 {# <div class="theme-description__list__item align-items-center">
