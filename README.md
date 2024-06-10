@@ -4,8 +4,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Fix the sitemap, /feed/feed.xml
-- Create a better schema for games and casinos, and edit the one at base.njk
 - Translate common texts
 
 - Remove errorMode: "never" for "allow-fallback" and create content needed
@@ -28,6 +26,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+- Bonus at the bonus page should be of our top/paid partners only.
 - Content: National Casino is setup as an Argentinian casino but it works great for Brazil (it seems)
 - Blog articles have their date in english. Eg. June 14, 2018
 - Create one landing page as the end of funnel to complement adboxes, where the bell and bonus page will be. Maybe in the same url.

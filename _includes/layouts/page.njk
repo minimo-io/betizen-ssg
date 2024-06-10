@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+---
+
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div id="container">
+        <div id="content" role="main">
+          {%if hideNormalTitle === false%}<h1 class="page-title mb-2 mb-md-0 mb-3">{{ title }}</h1>{% endif %}
+          <div class="row">
+            <div class="col">
+              <div
+                class="product type-product status-publish has-post-thumbnail product_cat-landing-corporate first instock downloadable shipping-taxable purchasable product-type-simple"
+              >
+                <div class="theme-description catalog-description pt-2">
+                  {{ content | safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

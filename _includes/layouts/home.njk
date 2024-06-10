@@ -15,10 +15,10 @@ eleventyComputed:
                         id="top-casinos"
                         class="home-titles bz-title mt-3 theme-cards__title"
                     >
-                       Cutting through the BS in online betting
+                       {{ languages[page.lang].texts.slogan.firstLine }}
                     </h5>
                     <p class="home-subtitles bz-subtitle">
-                        And still being zen about it 🤣
+                        {{ languages[page.lang].texts.slogan.secondLine }}
                     </p>
                 </div>
 
@@ -29,7 +29,7 @@ eleventyComputed:
                     rel="noopener nofollow"
                 >
                     <i class="fa fa-plus Xfa-lg mr-1" aria-hidden="true"></i>
-                    Agregar casino
+                    {{ languages[page.lang].texts.addCasino }}
                 </a>
             </div>
             <div class="casinos-table row pt-0">
@@ -70,16 +70,16 @@ eleventyComputed:
                         id="top-games"
                         class="home-titles bz-title theme-cards__title"
                     >
-                        Los últimos juegos
+                        {{ languages[page.lang].texts.latestGames }}
                     </h5>
                     <p class="home-subtitles bz-subtitle">
-                        Los últimos slots, bingos y juegos de mesa lanzados!
+                         {{ languages[page.lang].texts.latestGamesTeaser }}
                     </p>
                 </div>
                  <a
                     class="theme-cards__heading__button btn btn-outline-brand btn-sm"
                     href="{{ '/juegos/tragamonedas/' | locale_url }}"
-                    >Ver todos</a>
+                    >{{ languages[page.lang].texts.seeAll }}</a>
             </div>
             <ul class="row games-table-body mb-0 pl-3 pl-md-0">
                 {%- set gamesList = collections.games.slice(0,98) | reverse | forLang( page.lang ) -%}
@@ -99,17 +99,17 @@ eleventyComputed:
                             id="top-games"
                             class="home-titles bz-title theme-cards__title"
                         >
-                            Proveedores destacados
+                            {{ languages[page.lang].texts.featuredProviders }}
                         </h5>
                         <p class="home-subtitles bz-subtitle">
-                            Principales proveedores según sus prácticas de
-                            transparencia.
+                            {{ languages[page.lang].texts.featuredProvidersText }}
+                            
                         </p>
                     </div>
                     <a
                         class="theme-cards__heading__button btn btn-outline-brand btn-sm"
                         href="{{ '/proveedores/' | locale_url }}"
-                        >Ver todos</a
+                        >{{ languages[page.lang].texts.seeAll }}</a
                     >
                 </div>
                 <ul class="row providers-table-body mb-0">

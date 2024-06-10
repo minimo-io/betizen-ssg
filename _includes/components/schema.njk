@@ -1,0 +1,95 @@
+<!-- {{ tags }} -->
+
+{% if tags and tags.includes("casinos") %}
+    {%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "url": "{{ page.url | htmlBaseUrl(metadata.url) }}",
+        "mainEntity": {
+            "@type": "CriticReview",
+            "name": "{{ pageTitle }}",
+            "reviewBody": "{{ description }}",
+            "itemReviewed": {
+                "@type": "Organization",
+                "name": "{{ title }}",
+                "logo": {
+                    "@type": "imageObject",
+                    "url": "{{ logoPath | htmlBaseUrl(metadata.url)  }}"
+                    }
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "Betizen",
+                "url": "{{ metadata.url }}",
+                "knowsAbout": [
+                    "Online Casinos",
+                    "Casino Games",
+                    "Gambling Industry",
+                    "Slots"
+                    ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Betizen",
+                "url": "{{ metadata.url }}",
+                "publishingPrinciples": "{{ '/nosotros/' | locale_url | htmlBaseUrl(metadata.url) }}",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ '/assets/favs/apple-touch-icon.png' | htmlBaseUrl(metadata.url) }}"
+                    },
+                "contactPoint": {
+                    "@type" : "ContactPoint",
+                    "email" : "{{ metadata.author.email }}",
+                    "contactType" : "customer service"
+                    }
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "worstRating": 0,
+                "bestRating": 10,
+                "ratingValue": {{ score or "0.0" }}
+            }
+        }
+    }
+    </script>
+{% endif %}
+
+{% if tags and tags.includes("games") %}
+    {%- set logoPath -%}{{ metadata.images.games }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "VideoGame",
+        "name": "{{ title }}",
+        "url": "{{ page.url | htmlBaseUrl(metadata.url) }}",
+        "image": "{{ logoPath | htmlBaseUrl(metadata.url)  }}",     
+        "description" : "{{ description }}",
+        "applicationCategory": "Game",
+        "operatingSystem" : "Multi-platform",
+        "aggregateRating":{
+            "@type":"AggregateRating",
+            "ratingValue":"{{ game.score }}"
+        },
+        "author":{
+            "@type" : "Organization",
+            "name" : "Betizen",
+            "url" : "{{ metadata.url }}"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "{{ provider.name }}",
+            "url": "{{ provider.url | htmlBaseUrl(metadata.url) }}"
+        },
+        "genre": "slot",
+        "gamePlatform": ["Laptop", "Tablet", "Mobile"],
+        "playMode": "SinglePlayer",
+        "audience": {
+            "@type": "PeopleAudience",
+            "requiredMinAge": "18"
+        }
+    }
+    </script>  
+{% endif %}

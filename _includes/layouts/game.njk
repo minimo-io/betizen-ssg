@@ -33,7 +33,7 @@ layout: layouts/base.njk
                                 {{ title }}
                             </h1>
                             <p>
-                                Creado por <strong><a href="{{ provider.url }}">
+                                {{ languages[page.lang].texts.createdBy }} <strong><a href="{{ provider.url }}">
                                     {{ provider.name }}</a></strong>
                             </p>
                         </div>
@@ -76,7 +76,7 @@ layout: layouts/base.njk
                                                     {# mobile top free play button #}
                                                     <a
                                                         class="mb-2 d-block d-lg-none btn btn-brand btn-block btn-sm btn-customcolor-outline text-center btn-block btn-play-now" style="color:white;"
-                                                        >Jugar gratis</a>
+                                                        >{{ languages[page.lang].texts.freePlay }}</a>
 
                                                 </div>
                                                     <div class="d-lg-none">
@@ -249,7 +249,7 @@ layout: layouts/base.njk
                                 class="btn btn-brand btn-play-now btn-block btn-checkout up btn-customcolor Xmb-3"
                                 data-micromodal-trigger="modal-1"
                             >
-                                <span class="btn-text">Jugar gratis</span>
+                                <span class="btn-text">{{ languages[page.lang].texts.freePlay }}</span>
                             </button>
                              
 

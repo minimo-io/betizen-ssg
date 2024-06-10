@@ -6,7 +6,7 @@
         <div class="theme-card {% if game.data.featured -%}gameListFeatured{%-endif-%}">
             <div class="theme-card__body">
                 {%- if game.data.featured -%}
-                    <span class="featured-text animated infinite pulse"><i class="fa fa-bell mr-1" aria-hidden="true"></i>destacado</span>
+                    <span class="featured-text animated infinite pulse"><i class="fa fa-bell mr-1" aria-hidden="true"></i>{{ languages[page.lang].texts.featured }}</span>
                 {%- endif -%}
                 <a class="d-block" href="{{ game.url }}">
                     <img
@@ -23,7 +23,7 @@
                     class="theme-card__body__overlay btn btn-brand btn-sm"
                     href="{{ game.url }}"
                 >
-                    Jugar gratis
+                    {{ languages[page.lang].texts.freePlay }}
                 </a>
                 <div class="rtp-content d-none d-md-block">
                     <p>RTP</p>
@@ -36,7 +36,7 @@
                         class="theme-card__title mr-1"
                         href="/juego/analisis-goblin-cave-slot/"
                     >
-                        {{ game.data.title }}
+                        {{ game.data.title | safe }}
                     </a>
                     <div class="theme-card__info">
                         <ul class="prod_cats_list">
@@ -47,7 +47,7 @@
                             </li>
                             <li
                                 style="color: #838e95"
-                                title="Volatilidad"
+                                title="{{ languages[page.lang].texts.volatility }}"
                                 data-toggle="tooltip"
                                 data-placement="top"
                             >

@@ -2,6 +2,7 @@ const path = require("node:path");
 const fs = require("node:fs");
 const webp = require("webp-converter");
 const axios = require("axios");
+const frontMatter = require("front-matter");
 
 module.exports = {
   sanitizeFrontMatter,
@@ -9,6 +10,7 @@ module.exports = {
   getFileExtension,
   getFirstRedirectLink,
   generateRandomHexColor,
+  openFrontMatterFile,
 };
 
 function sanitizeFrontMatter(s) {
@@ -82,4 +84,16 @@ function generateRandomHexColor() {
 
   // Convert the random number to a hexadecimal string with padding
   return "#" + randomColor.toString(16).padStart(6, "0");
+}
+
+function openFrontMatterFile(file) {
+  try {
+    let dataNjk = fs.readFileSync(file, "utf8", (err, data) => {});
+
+    // add the date to the front matter to the string and re-save the file
+    // only in case it does not exists
+    return { content: dataNjk, frontMatter: frontMatter(dataNjk) };
+  } catch (error) {
+    return false;
+  }
 }

@@ -20,6 +20,7 @@ module.exports = function (eleventyConfig) {
     "./public/": "/assets/",
   });
 
+  eleventyConfig.addPassthroughCopy({ "public/robots.txt": "robots.txt" });
   // Run Eleventy when these files change:
   // https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
