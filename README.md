@@ -4,7 +4,20 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Translate common texts
+- Create /juegos page.
+- Las páginas no tienen el carrousel
+- Create special bonus page for indexed bonuses:
+
+  - https://www.betizen.org/bonus/20-giros-gratis-en-slotvibe/
+  - https://www.betizen.org/pt-br/bonus/codigo-de-bonus-no-slotvibe/
+  - https://www.betizen.org/bonus/bono-de-bienvenida-en-dafabet/
+  - https://www.betizen.org/bonus/bono-de-bienvenida-en-slottica/
+  - https://www.betizen.org/bonus/promos-de-halloween-en-lucky-elektra/
+  - https://www.betizen.org/pt-br/bonus/bonus-de-boas-vindas-na-netbet/
+  - https://www.betizen.org/pt-br/bonus/bonus-de-boas-vindas-no-twin/
+  - https://www.betizen.org/bonus/bono-de-bienvenida-en-betwinner/
+  - https://www.betizen.org/bonus/bono-de-bienvenida-en-royal-panda/
+  - https://www.betizen.org/bonus/bono-de-bienvenida-en-somos-casino/
 
 - Remove errorMode: "never" for "allow-fallback" and create content needed
 - Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
@@ -26,6 +39,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+- Create a pill for all listed casinos with Paid reviews (extreme transparency)
 - Bonus at the bonus page should be of our top/paid partners only.
 - Content: National Casino is setup as an Argentinian casino but it works great for Brazil (it seems)
 - Blog articles have their date in english. Eg. June 14, 2018

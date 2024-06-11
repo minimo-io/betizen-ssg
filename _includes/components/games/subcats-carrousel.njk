@@ -1,7 +1,7 @@
-{# <div class="container position-relative mt-4 px-0">
+<div class="container position-relative mt-2 mb-2 mb-lg-4 px-0">
     <div class="tag-carrousel-gradient d-none d-md-block"></div>
     <div class="tag-carrousel disable-scrollbars">
-        <a
+        {# <a
             href="../../ingreso/index0ddc.html?action=register"
             role="button"
             class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0"
@@ -14,7 +14,14 @@
             class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0"
         >
             <i class="fa fa-star" aria-hidden="true" style="color: #f1c100"></i>&nbsp; Recomendadas </a
-        ><a
+        > #}
+        {% for category in nav[page.lang][2]["children"] %}
+                <a href="{{ category.url }}" role="button" class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0">
+                    {{ category.text }}
+                </a>
+        {% endfor %}
+{# 
+        <a
             href="../../tag/tragamonedas-3d/index.html"
             role="button"
             class="btn btn-light btn-sm mb-4 mb-md-0 mr-1 mr-md-0"
@@ -64,6 +71,6 @@
             Selva </a
         ><a href="../../index.html#tag-cloud-title" role="button" class="btn btn-dark btn-sm mb-4 mb-md-0">
             Todas las categorias
-        </a>
+        </a> #}
     </div>
-</div> #}
+</div>

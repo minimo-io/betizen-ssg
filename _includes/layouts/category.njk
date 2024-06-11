@@ -8,7 +8,12 @@ layout: layouts/base.njk
             <div class="row align-items-end">
                 <div class="col-md-12">
                     <h1 class="page-title mb-2 mb-md-0">
-                        {{ title }} <span class="badge badge-dark">{{ (collections.games | forCategory( gamesFrom, page.lang )).length }}</span>
+                        {% if gamesFrom %} 
+                            {{ title }} <span class="badge badge-dark">{{ (collections.games | forCategory( gamesFrom, page.lang )).length }}</span>
+                        {% else %}
+                            {{ title }} <span class="badge badge-dark">{{ (collections.games | forLang( page.lang )).length }}</span>
+                        {% endif %}
+
                     </h1>
                     <div
                         class="catalog-description mt-2 ml-1 mb-2 minimo-read-more"
@@ -34,7 +39,7 @@ layout: layouts/base.njk
                 </div> #}
             </div>
 
-            {% include "components/games/subcats-carrousel.njk" %}
+           
         </div>
 
         <div class="theme-cards-holder mt-3" style="border-bottom: 0">
@@ -43,10 +48,9 @@ layout: layouts/base.njk
                     {%- set gamesList = collections.games | forCategory( gamesFrom, page.lang ) -%}
                     {%- include "components/games/games-list.njk" -%}
                 {%else%}
-                    <div class="alert alert-danger d-block w-100">
-                        Define a category tag front matter for categories. Eg: `gamesFrom: slot`
-                        category.
-                    </div>
+                    {% include "components/games/subcats-carrousel.njk" %}
+                    {%- set gamesList = collections.games | forLang( page.lang ) -%}
+                    {%- include "components/games/games-list.njk" -%}                    
                 {% endif %}
             </ul>
         </div>
