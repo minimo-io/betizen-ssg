@@ -4,7 +4,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Create /juegos page.
+- Affiliate programs en portugues.
 - Las páginas no tienen el carrousel
 - Create special bonus page for indexed bonuses:
 

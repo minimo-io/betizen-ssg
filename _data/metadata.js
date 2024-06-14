@@ -9,6 +9,7 @@ module.exports = {
     banners: "/assets/imgs/banners/",
     providers: "/assets/imgs/providers/",
     posts: "/assets/imgs/posts/",
+    affiliatePrograms: "/assets/imgs/affiliate-programs/",
   },
   author: {
     name: "Mínimo",
