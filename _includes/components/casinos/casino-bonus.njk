@@ -1,30 +1,37 @@
+{%- if not backgroundImage -%}
 <style>
-  .card-bonus:before {
-    background-image: url("/assets/imgs/site/bonus-bg-1.webp");
-  }
-  .btn-customcolor-inverted {
-    background-color: {{ gradient.start }} !important;
-    border-color: {{ gradient.start }} !important;
-    color: white !important;
-  }
-  .btn-customcolor-inverted:hover {
-    background-color: white !important;
-    color: {{ gradient.end }} !important;
-    border-color: {{ gradient.end }} !important;
-  }
+    {%- set backgroundImage -%}{{ metadata.images.site }}bonus-bg-1.webp{%- endset -%}
+
+    {%- if bonus.image -%}
+      {%- set customBonusImage -%}{{ metadata.images.bonuses }}{{ bonus.image }}{%- endset -%}
+    {%- endif -%}
+    .card-bonus:before {
+      background-image: url("{{ customBonusImage or backgroundImage }}");
+    }
+    .btn-customcolor-inverted {
+      background-color: {{ gradient.start or "#59003d" }} !important;
+      border-color: {{ gradient.start or "#59003d" }} !important;
+      color: white !important;
+    }
+    .btn-customcolor-inverted:hover {
+      background-color: white !important;
+      color: {{ gradient.end or '#9d0037' }} !important;
+      border-color: {{ gradient.end or '#9d0037' }} !important;
+    } 
 </style>
+{%- endif -%}
 
 <div class="card card-bonus mb-3">
   <div class="card-body">
     <h5 class="card-title text-center">
-      {{ bonus.title }}&nbsp;<a
+      {{ bonus.title or title }}&nbsp;<a
         href="{{ bonus.link }}"
         class="knowmore-icon-link text-white"
         ><sup><i class="fa fa-info-circle" aria-hidden="true"></i></sup
       ></a>
     </h5>
     <p class="card-text text-white text-center">
-      {{ bonus.text }}
+      {{ bonus.text or description }}
     </p>
     <a
       rel="noopener nofollow"

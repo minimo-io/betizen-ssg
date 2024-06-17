@@ -1,0 +1,191 @@
+---
+layout: layouts/base.njk
+---
+<style>
+    {%- set backgroundImage -%}{{ metadata.images.site }}bonus-bg-1.webp{%- endset -%}
+
+    {%- if bonus.image -%}
+      {%- set customBonusImage -%}{{ metadata.images.bonuses }}{{ bonus.image }}{%- endset -%}
+    {%- endif -%}
+    .card-bonus:before {
+      background-image: url("{{ customBonusImage or backgroundImage }}");
+    }
+    .btn-customcolor-inverted {
+      background-color: {{ gradient.start or "#59003d" }} !important;
+      border-color: {{ gradient.start or "#59003d" }} !important;
+      color: white !important;
+    }
+    .btn-customcolor-inverted:hover {
+      background-color: white !important;
+      color: {{ gradient.end or '#9d0037' }} !important;
+      border-color: {{ gradient.end or '#9d0037' }} !important;
+    }    
+</style>
+<section
+  class="profile__hero"
+  style="background-image: linear-gradient(to right,  {{ gradient.start or '#59003d' }}, {{ gradient.end or '#9d0037' }});"
+  alt="{{ title | slugify }}"
+  title="{{ title | slugify }}"
+></section>
+
+<section class="section section--pt-0" style="padding: 0">
+  <div class="container">
+    <div class="profile">
+      <div class="row">
+        <div class="col-lg-8 mb-2">
+          <div class="d-flex">
+            <div class="profile__avatar">
+              <img
+                src="{{ metadata.images.casinos }}{{ casino.slug }}-logo.webp"
+                class="attachment-square_crop size-square_crop"
+                alt="casino-bonus-logo"
+                width="300"
+                height="300"
+              />
+            </div>
+            <div class="profile__description">
+              <h1 class="profile__description__title">
+                {{ title }}
+              </h1>
+              <p class="d-none d-sm-block">
+                {# Estado del bono: <span class="badge badge-success">activo</span> #}
+                <span><a href="{{ casino.url }}">{{ casino.name }}</a></span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-4 align-items-sm-center justify-content-sm-start justify-content-lg-end mt-2 d-none d-lg-flex"
+          style="display: none !important"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <a
+              class="link--dark ranking-dropdown"
+              js-price-dropdown="true"
+              href="/rankings/"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Ranking</a
+            >
+            <h2
+              class="d-flex align-items-center"
+              js-price-value="main_price_div"
+            >
+              <span class="woocommerce-Price-amount amount ranking-big"
+                ><span class="woocommerce-Price-currencySymbol"></span>#13</span
+              >
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+<div class="row">
+    <div id="container">
+    <div id="content" role="main">
+        <div class="row">
+        <div class="col-12 mb-md-0 mb-3">
+            <div class="product type-product status-publish has-post-thumbnail product_cat-landing-corporate first casino-single"
+            >
+            <div class="row">
+                <div class="container-fluid">
+                <div class="card border-0">
+                    <div class="card-body">
+
+
+                      {%- include "components/casinos/casino-bonus.njk" -%} 
+
+                      <div class="container casino-featured casino-single-featured">
+                        <div class="row">
+                          <div class="col">
+                            <div class="card">
+                              <div class="card-body text-center">
+                                <h5 class="card-title">
+                                  Rollover
+                                  <a
+                                    href="{{
+                                      '/blog/que-es-el-rollover-de-los-bonos-y-como-funciona-no-te-dejes-enganar/'
+                                        | locale_url
+                                    }}"
+                                    ><sup><i class="fa fa-info-circle" aria-hidden="true"></i></sup
+                                  ></a>
+                                </h5>
+                                <p class="card-text display-4">x{{ bonus.rollover }}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card">
+                              <div class="card-body text-center">
+                                <h5 class="card-title">{{ languages[page.lang].texts.minDeposit }}</h5>
+                                <p class="card-text display-4">{{ bonus.minDeposit }}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-4 mt-3 mt-sm-0">
+                            <div class="card">
+                              <div class="card-body text-center">
+                                <h5 class="card-title">{{ languages[page.lang].texts.code }}</h5>
+                                <p class="card-text display-4">{{ bonus.code }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <h2 class="mt-3 d-block">{{ languages[page.lang].texts.bonusDetailsTitle }}</h2>
+
+                      <div class="card-text general-description">
+                        {{ content | safe }}
+                      </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="d-lg-none">
+                <div
+                class="d-flex justify-content-between align-items-center mb-3"
+                >
+                <form action="" method="POST" class="d-block w-100">
+                    <a
+                    class="btn btn-brand btn-block up btn-customcolor"
+                    target="_blank"
+                    rel="nofollow"
+                    href="{{ bonus.link }}"
+                    >
+                    <span class="btn-text">{{ languages[page.lang].texts.tryBonus }}</span></a
+                    >
+                </form>
+                </div>
+                <div
+                class="d-flex justify-content-between align-items-center mb-3"
+                ></div>
+                <div class="theme-description__list d-lg-none mb-4">
+                <div
+                    class="theme-description__list__item align-items-center"
+                >
+                    <span class="theme-description__item__title"
+                    >{{ languages[page.lang].texts.questions }}</span
+                    ><a
+                    class="btn btn-xs btn-outline-brand btn-customcolor-outline"
+                    href="https://www.instagram.com/betizen_org/"
+                    >{{ languages[page.lang].texts.contactUs }}</a
+                    >
+                </div>
+                </div>
+            </div>
+            <div>
+                {%- include "components/bz-banner-hero.njk" -%}
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

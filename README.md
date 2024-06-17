@@ -4,13 +4,14 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Affiliate programs en portugues.
 - Las páginas no tienen el carrousel
 - Create special bonus page for indexed bonuses:
 
-  - https://www.betizen.org/bonus/20-giros-gratis-en-slotvibe/
-  - https://www.betizen.org/pt-br/bonus/codigo-de-bonus-no-slotvibe/
-  - https://www.betizen.org/bonus/bono-de-bienvenida-en-dafabet/
+  OK - https://www.betizen.org/bonus/20-giros-gratis-en-slotvibe/
+  OK - https://www.betizen.org/pt-br/bonus/codigo-de-bonus-no-slotvibe/
+
+  OK y en PT- https://www.betizen.org/bonus/bono-de-bienvenida-en-dafabet/
+
   - https://www.betizen.org/bonus/bono-de-bienvenida-en-slottica/
   - https://www.betizen.org/bonus/promos-de-halloween-en-lucky-elektra/
   - https://www.betizen.org/pt-br/bonus/bonus-de-boas-vindas-na-netbet/
@@ -20,11 +21,11 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
   - https://www.betizen.org/bonus/bono-de-bienvenida-en-somos-casino/
 
 - Remove errorMode: "never" for "allow-fallback" and create content needed
-- Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
 
 - Correct links:
   /visit/ links all along articles and posts...
+  index.html
   http://localhost:8080/promocoes/
   http://localhost:8080/colunas/bankroll-o-que-e-e-como-gerencia-lo-em-nossas-apostas/
   href="/cassino/
@@ -39,6 +40,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+- Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Create a pill for all listed casinos with Paid reviews (extreme transparency)
 - Bonus at the bonus page should be of our top/paid partners only.
 - Content: National Casino is setup as an Argentinian casino but it works great for Brazil (it seems)
@@ -56,6 +58,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 - Add more casino metadata (now commented, like Withdrawal time, etc)
 - Add popup subscription
 - Casino bottom promotions are hidden, maybe add a CTA.
+- Currently when there is a bonus page for the casino bonus, the bonus box in the casino page is not related to the actual bonus page info but duplicated in the casino and bonus front-matters.
 
 ### Bugs
 
@@ -75,3 +78,5 @@ In case you live in this online iGaming underworld and are trying to use this El
 
 - Two conversion boxes: `"components/bz-banner-hero.njk"`, `"components/bz-subscribe.njk"` and one landing page as end-of-funnel.
 - For casinos without the bonus.link front-matter then the theme will grab the link from languages[page.lang].promo.url
+
+- Bonus post types can have a bonus.image for the background image of the box, or else the system will pick up the default site-wide background image for bonuses.

@@ -114,6 +114,8 @@ module.exports = {
       cookiesMessage:
         "Utilizamos cookies para mejorar su experiencia en Betizen, al continuar utilizando este sitio web, acepta dicho uso como se describe en nuestra pol\u00edtica de cookies.",
       accept: "Aceptar",
+      code: "Código",
+      bonusDetailsTitle: "Detalle de las condiciones del bono",
     },
   },
   "pt-br": {
@@ -229,6 +231,8 @@ module.exports = {
       cookiesMessage:
         "Usamos cookies para melhorar a sua experiência no Betizen, ao continuar a usar este site, você aceita o uso conforme descrito em nossa política de cookies.",
       accept: "Aceitar",
+      code: "Código",
+      bonusDetailsTitle: "Detalhes das condições do bônus",
     },
   },
   en: {
@@ -336,6 +340,8 @@ module.exports = {
       cookiesMessage:
         "We use cookies to improve your site experience, by continuing to use this website you accept such use as outlined in our cookie policy.",
       accept: "Accept",
+      code: "Code",
+      bonusDetailsTitle: "Bonus Terms Details",
     },
   },
 };
