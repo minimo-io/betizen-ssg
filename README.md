@@ -9,7 +9,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
   OK - https://www.betizen.org/bonus/20-giros-gratis-en-slotvibe/
   OK - https://www.betizen.org/pt-br/bonus/codigo-de-bonus-no-slotvibe/
-
   OK y en PT- https://www.betizen.org/bonus/bono-de-bienvenida-en-dafabet/
 
   - https://www.betizen.org/bonus/bono-de-bienvenida-en-slottica/
