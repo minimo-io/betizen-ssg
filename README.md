@@ -4,41 +4,15 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ## To Do
 
-- Las páginas no tienen el carrousel
-- Create special bonus page for indexed bonuses:
-
-  OK - https://www.betizen.org/bonus/20-giros-gratis-en-slotvibe/
-  OK - https://www.betizen.org/pt-br/bonus/codigo-de-bonus-no-slotvibe/
-  OK y en PT- https://www.betizen.org/bonus/bono-de-bienvenida-en-dafabet/
-
-  - https://www.betizen.org/bonus/bono-de-bienvenida-en-slottica/
-  - https://www.betizen.org/bonus/promos-de-halloween-en-lucky-elektra/
-  - https://www.betizen.org/pt-br/bonus/bonus-de-boas-vindas-na-netbet/
-  - https://www.betizen.org/pt-br/bonus/bonus-de-boas-vindas-no-twin/
-  - https://www.betizen.org/bonus/bono-de-bienvenida-en-betwinner/
-  - https://www.betizen.org/bonus/bono-de-bienvenida-en-royal-panda/
-  - https://www.betizen.org/bonus/bono-de-bienvenida-en-somos-casino/
+- Correct links:
 
 - Remove errorMode: "never" for "allow-fallback" and create content needed
 - Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
-
-- Correct links:
-  /visit/ links all along articles and posts...
-  index.html
-  http://localhost:8080/promocoes/
-  http://localhost:8080/colunas/bankroll-o-que-e-e-como-gerencia-lo-em-nossas-apostas/
-  href="/cassino/
-  /jogo/
-
-> > Same in english and portuguse
-
-> > Define what to do with tags links.
-> > /pt-br/tag/
-
-> > Do sth with this: http://localhost:8080/tags/
+  https://i0.wp.com
 
 ### v2
 
+- Pages do not load the carrousel at the top
 - Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Create a pill for all listed casinos with Paid reviews (extreme transparency)
 - Bonus at the bonus page should be of our top/paid partners only.
