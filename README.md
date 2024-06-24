@@ -8,7 +8,6 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 - Remove errorMode: "never" for "allow-fallback" and create content needed
 - Uncomment {# <meta name="robots" content="index,follow" /> #} and remove vercel.json noindex header.
-  https://i0.wp.com
 
 ### v2
 

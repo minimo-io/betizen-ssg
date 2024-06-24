@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Reliable listings of online casinos, games, bonuses and affiliate programs, without scams!",
   "scripts": {
-    "build": "npm-run-all clean-build build:* minify:*",
+    "build": "NODE_ENV=dev NODE_OPTIONS=--max_old_space_size=5012 npm-run-all clean-build build:* minify:*",
     "build:11ty": "eleventy",
     "dev": "NODE_ENV=dev NODE_OPTIONS=--max_old_space_size=5012 npm-run-all clean-build --parallel watch:*",
     "watch:11ty": "eleventy --serve --watch --quiet",
