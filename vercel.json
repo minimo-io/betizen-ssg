@@ -1,15 +1,3 @@
 {
-    "redirects": [{ "source": "/es/", "destination": "/", "permanent": true }],
-
-    "headers": [
-        {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "x-robots-tag",
-                    "value": "noindex"
-                }
-            ]
-        }
-    ]
+  "redirects": [{ "source": "/es/", "destination": "/", "permanent": true }]
 }
