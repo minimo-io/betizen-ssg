@@ -11,6 +11,13 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 
 ### v2
 
+- Search action schema hidden, at base
+
+```<script type="application/ld+json">
+              [{"@context":"https://schema.org/","@type":"WebSite","@id":"https://www.betizen.org#website","headline":"Betizen","name":"Betizen","description":"{{description}}.","url":"https://www.betizen.org","potentialAction":{"@type":"SearchAction","target":"https://www.betizen.org?s={search_term_string}","query-input":"required name=search_term_string"}}]
+  </script>
+```
+
 - Pages do not load the carrousel at the top
 - Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Create a pill for all listed casinos with Paid reviews (extreme transparency)
