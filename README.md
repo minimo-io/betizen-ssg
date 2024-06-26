@@ -19,6 +19,7 @@ Reliable listings of online casinos, games, bonuses and affiliate programs, with
 ```
 
 - Pages do not load the carrousel at the top
+- Add quick voting like in vegas site so we an update aggregateRatings for games and casinos
 - Change old library html-minifier for https://www.npmjs.com/package/html-minifier-terser
 - Create a pill for all listed casinos with Paid reviews (extreme transparency)
 - Bonus at the bonus page should be of our top/paid partners only.

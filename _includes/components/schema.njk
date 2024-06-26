@@ -38,18 +38,18 @@
                 "logo": {
                     "@type": "ImageObject",
                     "url": "{{ '/assets/favs/apple-touch-icon.png' | htmlBaseUrl(metadata.url) }}"
-                    },
+                },
                 "contactPoint": {
                     "@type" : "ContactPoint",
                     "email" : "{{ metadata.author.email }}",
                     "contactType" : "customer service"
-                    }
+                }
             },
             "reviewRating": {
                 "@type": "Rating",
                 "worstRating": 0,
                 "bestRating": 10,
-                "ratingValue": {{ score or "0.0" }},
+                "ratingValue": {{ score or "0.0" }}
             }
         }
     }
