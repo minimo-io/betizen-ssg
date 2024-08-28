@@ -250,8 +250,8 @@ module.exports = {
       casino: {
         logo: metadata.images.casinos + "coins-game-logo.webp",
         name: "COINSGAME",
-        title: "UP TO 1000% AND 100 SPINS 🤯 LIMITED PROMOTION!",
-        cta: "CLAIM YOUR 100 FREE SPINS TODAY!",
+        title: "UP TO 200% AND 200 SPINS 🤯 LIMITED PROMOTION!",
+        cta: "CLAIM YOUR 200 FREE SPINS TODAY!",
       },
       external_250x250: metadata.images.banners + "coinsgame-300x300.png",
     },
