@@ -12,14 +12,14 @@ module.exports = {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/es/casino",
       url: "https://coinsaffs.com/df0c24934",
       cta: "👉 ¿200 GIROS GRATIS?",
-      image: metadata.images.banners + "coinsgame-1176x264.png",
+      image: metadata.images.banners + "coinsgame-1176x264-es.png",
       casino: {
         logo: "/assets/imgs/casinos/coins-game-logo.webp",
         name: "COINSGAME",
         title: "HASTA 2% Y 200 GIROS 🤯 ¡PROMO LIMITADA!",
         cta: "¡RECLAMA TUS 200 GIROS GRATIS HOY!",
       },
-      external_250x250: metadata.images.banners + "coinsgame-300x300.png",
+      external_250x250: metadata.images.banners + "coinsgame-300x300-es.png",
     },
     categories: {
       slot: { name: "Tragamonedas", url: "/juegos/tragamonedas/" },
@@ -129,14 +129,14 @@ module.exports = {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/br/casino",
       url: "https://coinsaffs.com/d37668763",
       cta: "👉 QUER 200 RODADAS GRÁTIS?",
-      image: metadata.images.banners + "coinsgame-1176x264.png",
+      image: metadata.images.banners + "coinsgame-1176x264-pt.png",
       casino: {
         logo: metadata.images.casinos + "coins-game-logo.webp",
         name: "COINSGAME",
         title: "ATÉ 1000% E 200 RODADAS 🤯 PROMOÇÃO LIMITADA!",
         cta: "RECLAME SUAS 200 RODADAS GRÁTIS HOJE!",
       },
-      external_250x250: metadata.images.banners + "coinsgame-300x300.png",
+      external_250x250: metadata.images.banners + "coinsgame-300x300-pt.png",
     },
     categories: {
       slot: { name: "Caça níqueis", url: "/pt-br/jogos/caca-niqueis/" },
