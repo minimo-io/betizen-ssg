@@ -19,7 +19,7 @@ module.exports = {
         title: "HASTA 2% Y 200 GIROS 🤯 ¡PROMO LIMITADA!",
         cta: "¡RECLAMA TUS 200 GIROS GRATIS HOY!",
       },
-      external_250x250: metadata.images.banners + "coinsgame-300x300-es.png",
+      external_250x250: metadata.images.banners + "coinsgame-300x300-2-es.png",
     },
     categories: {
       slot: { name: "Tragamonedas", url: "/juegos/tragamonedas/" },
@@ -136,7 +136,7 @@ module.exports = {
         title: "ATÉ 1000% E 200 RODADAS 🤯 PROMOÇÃO LIMITADA!",
         cta: "RECLAME SUAS 200 RODADAS GRÁTIS HOJE!",
       },
-      external_250x250: metadata.images.banners + "coinsgame-300x300-pt.png",
+      external_250x250: metadata.images.banners + "coinsgame-300x300-2-pt.png",
     },
     categories: {
       slot: { name: "Caça níqueis", url: "/pt-br/jogos/caca-niqueis/" },
