@@ -1,3 +1,30 @@
 {
-  "redirects": [{ "source": "/es/", "destination": "/", "permanent": true }]
+    "redirects": [
+        { "source": "/es/", "destination": "/", "permanent": true },
+        {
+            "source": "/casino/leovegas/",
+            "destination": "/casinos/",
+            "permanent": true
+        },
+        {
+            "source": "/pt-br/cassino/analise-leovegas-brasil/",
+            "destination": "/pt-br/cassinos/",
+            "permanent": true
+        },
+        {
+            "source": "/casino/royal-panda/",
+            "destination": "/casinos/",
+            "permanent": true
+        },
+        {
+            "source": "/casino/royal-panda/",
+            "destination": "/casinos/",
+            "permanent": true
+        },
+        {
+            "source": "/pt-br/cassino/royal-panda-analise/",
+            "destination": "/pt-br/cassinos/",
+            "permanent": true
+        }
+    ]
 }

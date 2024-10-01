@@ -5,7 +5,7 @@ eleventyComputed:
 ---
 <section class="section pt-0">
     <div class="container">
-        {%- include "components/bz-carrousel.njk" -%} 
+        {%- include "components/bz-carrousel.njk" -%}
         {%- include "components/bz-banner-hero.njk" -%}
 
         <div class="theme-cards-holder">
@@ -82,7 +82,7 @@ eleventyComputed:
                     >{{ languages[page.lang].texts.seeAll }}</a>
             </div>
             <ul class="row games-table-body mb-0 pl-3 pl-md-0">
-                {%- set gamesList = collections.games.slice(0,98) | reverse | forLang( page.lang ) -%}
+                {%- set gamesList = collections.games.slice(0,112) | reverse | forLang( page.lang ) -%}
                 {%- include "components/games/games-list.njk" -%}
             </ul>
 
@@ -103,7 +103,7 @@ eleventyComputed:
                         </h5>
                         <p class="home-subtitles bz-subtitle">
                             {{ languages[page.lang].texts.featuredProvidersText }}
-                            
+
                         </p>
                     </div>
                     <a
