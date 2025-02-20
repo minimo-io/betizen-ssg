@@ -11,7 +11,7 @@ module.exports = {
     promo: {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/es/casino",
       url: "/casino/megapari/",
-      cta: "👉 ¿200 GIROS GRATIS?",
+      cta: "👉 ¿150 GIROS GRATIS?",
       image: metadata.images.banners + "coinsgame-1176x264-es.png",
       casino: {
         logo: "/assets/imgs/casinos/megapari-logo.webp",
@@ -125,7 +125,7 @@ module.exports = {
     promo: {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/br/casino",
       url: "/pt-br/cassino/megapari/",
-      cta: "👉 QUER 200 RODADAS GRÁTIS?",
+      cta: "👉 QUER 150 RODADAS GRÁTIS?",
       image: metadata.images.banners + "coinsgame-1176x264-pt.png",
       casino: {
         logo: metadata.images.casinos + "megapari-logo.webp",
@@ -239,7 +239,7 @@ module.exports = {
     },
     promo: {
       url: "/en/online-casino/megapari/",
-      cta: "👉 CLAIM 200% + 200 FREE SPINS?",
+      cta: "👉 CLAIM 150 FREE SPINS?",
       image: metadata.images.banners + "coinsgame-1176x264.png",
       casino: {
         logo: metadata.images.casinos + "megapari-logo.webp",
@@ -330,8 +330,7 @@ module.exports = {
       questions: "Questions?",
       contactUs: "Get in touch",
       founded: "Founded",
-      cookiesMessage:
-        "We use cookies to improve your site experience, by continuing to use this website you accept such use as outlined in our cookie policy.",
+      cookiesMessage: "We use cookies to improve your site experience, by continuing to use this website you accept such use as outlined in our cookie policy.",
       accept: "Accept",
       code: "Code",
       bonusDetailsTitle: "Bonus Terms Details",
