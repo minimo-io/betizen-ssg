@@ -10,14 +10,14 @@ module.exports = {
     },
     promo: {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/es/casino",
-      url: "https://coinsaffs.com/df0c24934",
+      url: "/casino/megapari/",
       cta: "👉 ¿200 GIROS GRATIS?",
       image: metadata.images.banners + "coinsgame-1176x264-es.png",
       casino: {
-        logo: "/assets/imgs/casinos/coins-game-logo.webp",
-        name: "COINSGAME",
-        title: "HASTA 2% Y 200 GIROS 🤯 ¡PROMO LIMITADA!",
-        cta: "¡RECLAMA TUS 200 GIROS GRATIS HOY!",
+        logo: "/assets/imgs/casinos/megapari-logo.webp",
+        name: "MEGAPARI",
+        title: "HASTA 200% Y 150 GIROS 🤯 ¡PROMO LIMITADA!",
+        cta: "¡RECLAMA TUS 150 GIROS GRATIS HOY!",
       },
       external_250x250: metadata.images.banners + "coinsgame-300x300-2-es.png",
     },
@@ -58,15 +58,12 @@ module.exports = {
       addCasino: "Agregar casino",
       slogan: {
         firstLine: "Transparencia extrema en Apuestas En Línea 🧘‍♂️",
-        secondLine:
-          "¡Nuevas plataformas con sus bonos sin depósito, juegos con acumulados y programas de afiliados!",
+        secondLine: "¡Nuevas plataformas con sus bonos sin depósito, juegos con acumulados y programas de afiliados!",
       },
       latestGames: "Los últimos juegos",
-      latestGamesTeaser:
-        "¡Los últimos slots, bingos y juegos de mesa lanzados al mercado!",
+      latestGamesTeaser: "¡Los últimos slots, bingos y juegos de mesa lanzados al mercado!",
       featuredProviders: "Proveedores destacados",
-      featuredProvidersText:
-        "Explora los mejores creadores juegos de tragamonedas, bingo y plinko",
+      featuredProvidersText: "Explora los mejores creadores juegos de tragamonedas, bingo y plinko",
       seeAll: "Ver todos",
       createdBy: "Creado por",
       home: "Inicio",
@@ -127,12 +124,12 @@ module.exports = {
     },
     promo: {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/br/casino",
-      url: "https://coinsaffs.com/d37668763",
+      url: "/pt-br/cassino/megapari/",
       cta: "👉 QUER 200 RODADAS GRÁTIS?",
       image: metadata.images.banners + "coinsgame-1176x264-pt.png",
       casino: {
-        logo: metadata.images.casinos + "coins-game-logo.webp",
-        name: "COINSGAME",
+        logo: metadata.images.casinos + "megapari-logo.webp",
+        name: "MEGAPARI",
         title: "ATÉ 1000% E 200 RODADAS 🤯 PROMOÇÃO LIMITADA!",
         cta: "RECLAME SUAS 200 RODADAS GRÁTIS HOJE!",
       },
@@ -176,15 +173,12 @@ module.exports = {
       addCasino: "Adicionar cassino",
       slogan: {
         firstLine: "Transparência Extrema em Apostas Online 🧘‍♂️",
-        secondLine:
-          "Novas plataformas com seus bônus sem depósito, jogos com acumuladores e programas de afiliados!",
+        secondLine: "Novas plataformas com seus bônus sem depósito, jogos com acumuladores e programas de afiliados!",
       },
       latestGames: "Os últimos jogos",
-      latestGamesTeaser:
-        "As últimas slots, bingos e jogos de mesa lançados no mercado!",
+      latestGamesTeaser: "As últimas slots, bingos e jogos de mesa lançados no mercado!",
       featuredProviders: "Fornecedores em destaque",
-      featuredProvidersText:
-        "Explore os melhores criadores de jogos de slots, bingo e plinko",
+      featuredProvidersText: "Explore os melhores criadores de jogos de slots, bingo e plinko",
       seeAll: "Ver todos",
       createdBy: "Criado por",
       home: "Início",
@@ -244,12 +238,12 @@ module.exports = {
       flagClass: "flag-icon-gb",
     },
     promo: {
-      url: "https://coinsaffs.com/d37668763",
+      url: "/en/online-casino/megapari/",
       cta: "👉 CLAIM 200% + 200 FREE SPINS?",
       image: metadata.images.banners + "coinsgame-1176x264.png",
       casino: {
-        logo: metadata.images.casinos + "coins-game-logo.webp",
-        name: "COINSGAME",
+        logo: metadata.images.casinos + "megapari-logo.webp",
+        name: "MEGAPARI",
         title: "UP TO 200% AND 200 SPINS 🤯 LIMITED PROMOTION!",
         cta: "CLAIM YOUR 200 FREE SPINS TODAY!",
       },
@@ -285,15 +279,12 @@ module.exports = {
       addCasino: "Include casino",
       slogan: {
         firstLine: "Extreme Transparency in Online Betting 🧘‍♂️",
-        secondLine:
-          "New platforms with their no deposit bonuses, jackpot games and affiliate programs!",
+        secondLine: "New platforms with their no deposit bonuses, jackpot games and affiliate programs!",
       },
       latestGames: "Latest Games",
-      latestGamesTeaser:
-        "The latest slots, bingos and table games launched on the market!",
+      latestGamesTeaser: "The latest slots, bingos and table games launched on the market!",
       featuredProviders: "Featured Providers",
-      featuredProvidersText:
-        "Explore the best slots, bingo and plinko game creators",
+      featuredProvidersText: "Explore the best slots, bingo and plinko game creators",
       seeAll: "See All",
       createdBy: "Created by",
       home: "Home",
