@@ -10,7 +10,7 @@ module.exports = {
     },
     promo: {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/es/casino",
-      url: "/casino/megapari/",
+      url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
       cta: "👉 ¿150 GIROS GRATIS?",
       image: metadata.images.banners + "coinsgame-1176x264-es.png",
       casino: {
@@ -124,7 +124,7 @@ module.exports = {
     },
     promo: {
       // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/br/casino",
-      url: "/pt-br/cassino/megapari/",
+      url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
       cta: "👉 QUER 150 RODADAS GRÁTIS?",
       image: metadata.images.banners + "coinsgame-1176x264-pt.png",
       casino: {
@@ -238,7 +238,7 @@ module.exports = {
       flagClass: "flag-icon-gb",
     },
     promo: {
-      url: "/en/online-casino/megapari/",
+      url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
       cta: "👉 CLAIM 150 FREE SPINS?",
       image: metadata.images.banners + "coinsgame-1176x264.png",
       casino: {
