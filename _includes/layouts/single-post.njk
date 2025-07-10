@@ -33,13 +33,13 @@ layout: layouts/base.njk
         href="https://www.facebook.com/sharer/sharer.php?text={{ title | url }}&amp;u={{ metadata.url | url }}{{ page.url | url }}"
         data-analytics-social="facebook"
       ></a>
-      <a
+      {# <a
         class="c-share-item c-share-twitter ml-1"
         target="_blank"
         rel="nofollow"
         href="https://twitter.com/intent/tweet?text={{ title | url }}&amp;url={{ metadata.url | url }}{{ page.url | url }}"
         data-analytics-social="twitter"
-      ></a>
+      ></a> #}
     </p>
     <span class="clearfix"></span>
     <div class="row">
@@ -58,8 +58,9 @@ layout: layouts/base.njk
               />
               <figcaption class="figure-caption text-right"></figcaption>
             </figure>
+             {%- include "components/bz-banner-hero.njk" -%}			
             {{ content | safe }}
-			{%- include "components/bz-banner-hero.njk" -%}			
+			     
           </div>
       </div>
 	  

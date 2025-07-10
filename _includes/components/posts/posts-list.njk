@@ -1,4 +1,4 @@
-{% for post in postsList %}
+{% for post in postsList | reverse %}
     {% if post.data.gradientColor %}
         <div
         class="card blog-card mt-4 p-2"
