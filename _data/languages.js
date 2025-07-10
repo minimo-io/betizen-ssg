@@ -9,17 +9,18 @@ module.exports = {
       flagClass: "flag-icon-es",
     },
     promo: {
-      // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/es/casino",
-      url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
-      cta: "👉 ¿150 GIROS GRATIS?",
-      image: metadata.images.banners + "megapari-es-1176x264.jpg",
+      url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
+      // url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
+      cta: "👉 ¿100 GIROS GRATIS? AHORA!",
+      image: metadata.images.banners + "national-es-1176x264.png",
       casino: {
-        logo: "/assets/imgs/casinos/megapari-logo.webp",
-        name: "MEGAPARI",
-        title: "HASTA 150 GIROS GRÁTIS 🤯 ¡PROMO LIMITADA!",
-        cta: "¡RECLAMA TUS 150 GIROS GRATIS HOY!",
+        logo: "/assets/imgs/casinos/merlin-casino-logo.webp",
+        name: "MERLINE",
+        title: "HASTA 300 GIROS GRÁTIS 🤯 ¡PROMO LIMITADA!",
+        cta: "¡RECLAMA TUS 300 GIROS GRATIS HOY!",
+        url: "/casino/merlin-casino/",
       },
-      external_250x250: metadata.images.banners + "coinsgame-300x300-2-es.png",
+      external_250x250: metadata.images.banners + "banner_20bet_300x300.webp",
     },
     categories: {
       slot: { name: "Tragamonedas", url: "/juegos/tragamonedas/" },
@@ -58,12 +59,15 @@ module.exports = {
       addCasino: "Agregar casino",
       slogan: {
         firstLine: "Transparencia extrema en Apuestas En Línea 🧘‍♂️",
-        secondLine: "¡Nuevas plataformas con sus bonos sin depósito, juegos con acumulados y programas de afiliados!",
+        secondLine:
+          "¡Nuevas plataformas con sus bonos sin depósito, juegos con acumulados y programas de afiliados!",
       },
       latestGames: "Los últimos juegos",
-      latestGamesTeaser: "¡Los últimos slots, bingos y juegos de mesa lanzados al mercado!",
+      latestGamesTeaser:
+        "¡Los últimos slots, bingos y juegos de mesa lanzados al mercado!",
       featuredProviders: "Proveedores destacados",
-      featuredProvidersText: "Explora los mejores creadores juegos de tragamonedas, bingo y plinko",
+      featuredProvidersText:
+        "Explora los mejores creadores juegos de tragamonedas, bingo y plinko",
       seeAll: "Ver todos",
       createdBy: "Creado por",
       home: "Inicio",
@@ -123,17 +127,18 @@ module.exports = {
       flagClass: "flag-icon-br",
     },
     promo: {
-      // url: "https://promo.20bet.partners/redirect.aspx?pid=101348&bid=1971&redirectURL=https://20media.world/br/casino",
-      url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
+      url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
+      // url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
       cta: "👉 QUER 150 RODADAS GRÁTIS?",
-      image: metadata.images.banners + "megapari-pt-1176x264.jpg",
+      image: metadata.images.banners + "national-pt-1176x264.png",
       casino: {
         logo: metadata.images.casinos + "megapari-logo.webp",
         name: "MEGAPARI",
         title: "ATÉ 150 RODADAS GRÁTIS 🤯 PROMOÇÃO LIMITADA!",
         cta: "RECLAME SUAS 150 RODADAS GRÁTIS HOJE!",
+        url: "/pt-br/cassino/merlin-casino/",
       },
-      external_250x250: metadata.images.banners + "coinsgame-300x300-2-pt.png",
+      external_250x250: metadata.images.banners + "banner_250x250-pt-br.webp",
     },
     categories: {
       slot: { name: "Caça níqueis", url: "/pt-br/jogos/caca-niqueis/" },
@@ -173,12 +178,15 @@ module.exports = {
       addCasino: "Adicionar cassino",
       slogan: {
         firstLine: "Transparência Extrema em Apostas Online 🧘‍♂️",
-        secondLine: "Novas plataformas com seus bônus sem depósito, jogos com acumuladores e programas de afiliados!",
+        secondLine:
+          "Novas plataformas com seus bônus sem depósito, jogos com acumuladores e programas de afiliados!",
       },
       latestGames: "Os últimos jogos",
-      latestGamesTeaser: "As últimas slots, bingos e jogos de mesa lançados no mercado!",
+      latestGamesTeaser:
+        "As últimas slots, bingos e jogos de mesa lançados no mercado!",
       featuredProviders: "Fornecedores em destaque",
-      featuredProvidersText: "Explore os melhores criadores de jogos de slots, bingo e plinko",
+      featuredProvidersText:
+        "Explore os melhores criadores de jogos de slots, bingo e plinko",
       seeAll: "Ver todos",
       createdBy: "Criado por",
       home: "Início",
@@ -238,14 +246,15 @@ module.exports = {
       flagClass: "flag-icon-gb",
     },
     promo: {
-      url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
-      cta: "👉 CLAIM 150 FREE SPINS?",
-      image: metadata.images.banners + "megapari-en-1176x264.jpg",
+      url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
+      cta: "👉 CLAIM 100 FREE SPINS?",
+      image: metadata.images.banners + "national-en-1176x264.png",
       casino: {
-        logo: metadata.images.casinos + "megapari-logo.webp",
+        logo: "/assets/imgs/casinos/merlin-casino-logo.webp",
         name: "MEGAPARI",
         title: "UP TO 150 FREE SPINS 🤯 LIMITED PROMOTION!",
         cta: "CLAIM YOUR 150 FREE SPINS TODAY!",
+        url: "/en/online-casino/merlin-casino/",
       },
       external_250x250: metadata.images.banners + "coinsgame-300x300.png",
     },
@@ -279,12 +288,15 @@ module.exports = {
       addCasino: "Include casino",
       slogan: {
         firstLine: "Extreme Transparency in Online Betting 🧘‍♂️",
-        secondLine: "New platforms with their no deposit bonuses, jackpot games and affiliate programs!",
+        secondLine:
+          "New platforms with their no deposit bonuses, jackpot games and affiliate programs!",
       },
       latestGames: "Latest Games",
-      latestGamesTeaser: "The latest slots, bingos and table games launched on the market!",
+      latestGamesTeaser:
+        "The latest slots, bingos and table games launched on the market!",
       featuredProviders: "Featured Providers",
-      featuredProvidersText: "Explore the best slots, bingo and plinko game creators",
+      featuredProvidersText:
+        "Explore the best slots, bingo and plinko game creators",
       seeAll: "See All",
       createdBy: "Created by",
       home: "Home",
@@ -330,7 +342,8 @@ module.exports = {
       questions: "Questions?",
       contactUs: "Get in touch",
       founded: "Founded",
-      cookiesMessage: "We use cookies to improve your site experience, by continuing to use this website you accept such use as outlined in our cookie policy.",
+      cookiesMessage:
+        "We use cookies to improve your site experience, by continuing to use this website you accept such use as outlined in our cookie policy.",
       accept: "Accept",
       code: "Code",
       bonusDetailsTitle: "Bonus Terms Details",

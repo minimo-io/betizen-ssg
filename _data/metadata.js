@@ -13,8 +13,8 @@ module.exports = {
     affiliatePrograms: "/assets/imgs/affiliate-programs/",
   },
   author: {
-    name: "Mínimo",
-    email: "nicolas@minimo.io",
-    url: "https://minimo.io/",
+    name: "FW",
+    email: "#",
+    url: "#",
   },
 };
