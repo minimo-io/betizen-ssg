@@ -39,7 +39,7 @@ eleventyComputed:
 
                 <table class="table table-striped table-responsive mx-2">
                     <tbody class="casinos-table-body">
-                        {%- set postsList = collections.casinos | forLang( page.lang ) | sortByOrder | head(11) %}
+                        {%- set postsList = collections.casinos | forLang( page.lang ) | sortByOrder | head(20) %}
                         {% include "components/casinos/casinos-list.njk" %}
                     </tbody>
                 </table>
@@ -63,6 +63,12 @@ eleventyComputed:
 
         <br />
 
+
+
+
+
+<section class="section pt-0">
+    <div class="container">
         <div class="theme-cards-holder" style="border-bottom: 0">
             <div class="theme-cards__heading mt-1">
                 <div>
@@ -82,7 +88,7 @@ eleventyComputed:
                     >{{ languages[page.lang].texts.seeAll }}</a>
             </div>
             <ul class="row games-table-body mb-0 pl-3 pl-md-0">
-                {%- set gamesList = collections.games.slice(0,112) | reverse | forLang( page.lang ) -%}
+                {%- set gamesList = collections.games | head(40) | forLang( page.lang ) -%}
                 {%- include "components/games/games-list.njk" -%}
             </ul>
 
