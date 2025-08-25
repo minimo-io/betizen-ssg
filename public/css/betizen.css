@@ -1,246 +1,246 @@
 :root {
-    --titles-color: rgb(23, 25, 36);
-    --subtitle-color: rgb(88, 102, 126);
-    --bz-bg-grey: rgb(248, 249, 250);
-    --bz-bg-grey-border: #e9ecef;
-    --bz-grey-text: rgba(128, 128, 128, 0.8);
-    --bz-grey-dark-text: rgba(128, 128, 128);
-    --carousel-image-height: 136px;
-    --bz-blue: blue;
-    --bz-black: black;
-    --bz-red: #dc3545;
-    --bz-yellow: #f9c733;
-    --bz-gold: #cba627;
-    --bz-title-font: Inter, -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
-        Helvetica, Arial, sans-serif;
+  --titles-color: rgb(23, 25, 36);
+  --subtitle-color: rgb(88, 102, 126);
+  --bz-bg-grey: rgb(248, 249, 250);
+  --bz-bg-grey-border: #e9ecef;
+  --bz-grey-text: rgba(128, 128, 128, 0.8);
+  --bz-grey-dark-text: rgba(128, 128, 128);
+  --carousel-image-height: 136px;
+  --bz-blue: blue;
+  --bz-black: black;
+  --bz-red: #dc3545;
+  --bz-yellow: #f9c733;
+  --bz-gold: #cba627;
+  --bz-title-font: Inter, -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    Helvetica, Arial, sans-serif;
 }
 .table td,
 .table th {
-    border: none !important;
+  border: none !important;
 }
 .bz-btn-shadow {
-    box-shadow: 0 8px 15px rgb(0 0 0/20%);
+  box-shadow: 0 8px 15px rgb(0 0 0/20%);
 }
 .bz-text-small {
-    font-size: 11px !important;
+  font-size: 11px !important;
 }
 .bz-img-banner {
-    display: block;
-    width: 100%;
-    max-height: 300px;
-    background-repeat: no-repeat;
-    background-size: contain;
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .bz-img-banner img {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 .bz-title {
-    font-size: 24px;
-    color: var(--titles-color);
-    font-weight: 700;
+  font-size: 24px;
+  color: var(--titles-color);
+  font-weight: 700;
 }
 .bz-subtitle {
-    color: var(--subtitle-color);
-    line-height: 18px;
-    font-weight: 300;
-    margin-top: 0.25rem !important;
+  color: var(--subtitle-color);
+  line-height: 18px;
+  font-weight: 300;
+  margin-top: 0.25rem !important;
 }
 .bz-search-bar {
-    position: relative;
-    margin: 0 0.5rem;
+  position: relative;
+  margin: 0 0.5rem;
 }
 .bz-search-bar input {
-    margin: 0.5rem 0 1rem;
-    width: 100%;
-    background-color: var(--bz-bg-grey);
-    border-radius: 34px;
-    color: var(--bz-grey-dark-text);
-    border: 2px solid var(--bz-bg-grey-border) !important;
-    position: relative;
-    font-size: 25px;
-    padding: 7px 33px;
+  margin: 0.5rem 0 1rem;
+  width: 100%;
+  background-color: var(--bz-bg-grey);
+  border-radius: 34px;
+  color: var(--bz-grey-dark-text);
+  border: 2px solid var(--bz-bg-grey-border) !important;
+  position: relative;
+  font-size: 25px;
+  padding: 7px 33px;
 }
 .bz-search-bar input::placeholder {
-    color: var(--bz-grey-text);
+  color: var(--bz-grey-text);
 }
 .bz-search-icon {
-    position: absolute;
-    right: 22px;
-    color: var(--bz-grey-text);
-    top: calc(50% - 0.55em);
+  position: absolute;
+  right: 22px;
+  color: var(--bz-grey-text);
+  top: calc(50% - 0.55em);
 }
 .featured-text {
-    color: #fff;
-    background-color: var(--bz-red);
-    border-radius: 15px;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
-    font-size: 0.9rem;
-    margin: 0;
-    line-height: 1rem;
-    opacity: 0.85;
-    position: absolute;
-    top: 5px;
-    right: 4px;
-    z-index: 100;
+  color: #fff;
+  background-color: var(--bz-red);
+  border-radius: 15px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1rem;
+  opacity: 0.85;
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  z-index: 100;
 }
 .featured-blue {
-    background-color: var(--bz-blue) !important;
-    border-color: var(--bz-blue) !important;
+  background-color: var(--bz-blue) !important;
+  border-color: var(--bz-blue) !important;
 }
 .featured-black {
-    background-color: var(--bz-black) !important;
-    border-color: var(--bz-black) !important;
+  background-color: var(--bz-black) !important;
+  border-color: var(--bz-black) !important;
 }
 .featured-gold {
-    background-color: var(--bz-gold) !important;
-    border-color: var(--bz-gold) !important;
+  background-color: var(--bz-gold) !important;
+  border-color: var(--bz-gold) !important;
 }
 .gameListFeatured .featured-text {
-    opacity: 1;
+  opacity: 1;
 }
 .carousel-cell {
-    width: 280px;
-    height: 180px;
-    margin-right: 15px;
-    border-radius: 10px;
-    counter-increment: carousel-cell;
+  width: 280px;
+  height: 180px;
+  margin-right: 15px;
+  border-radius: 10px;
+  counter-increment: carousel-cell;
 }
 .carousel-cell-image-overlay {
-    border-radius: 10px;
-    background: linear-gradient(
-        to top left,
-        transparent 0%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
-    z-index: 1;
-    position: absolute;
-    height: var(--carousel-image-height);
-    width: 100%;
+  border-radius: 10px;
+  background: linear-gradient(
+    to top left,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
+  position: absolute;
+  height: var(--carousel-image-height);
+  width: 100%;
 }
 .carousel-button {
-    color: #fff !important;
-    background-color: var(--bz-red);
-    border-color: var(--bz-red);
-    padding: 3px 18px;
-    width: 95%;
-    border-radius: 19px;
-    margin: auto;
-    margin-top: 5px;
-    font-size: 12px;
-    display: block;
+  color: #fff !important;
+  background-color: var(--bz-red);
+  border-color: var(--bz-red);
+  padding: 3px 18px;
+  width: 95%;
+  border-radius: 19px;
+  margin: auto;
+  margin-top: 5px;
+  font-size: 12px;
+  display: block;
 }
 .carousel:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100px;
-    height: 100%;
-    transition: all 0.3s ease-out 0s;
-    cursor: pointer;
-    z-index: 5;
-    top: 0;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  transition: all 0.3s ease-out 0s;
+  cursor: pointer;
+  z-index: 5;
+  top: 0;
 }
 .carousel:after {
-    right: 0;
-    background-image: linear-gradient(to left, white 0%, transparent 100%);
+  right: 0;
+  background-image: linear-gradient(to left, white 0%, transparent 100%);
 }
 .carousel-button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 .carousel-cell-big div.carousel-image {
-    height: var(--carousel-image-height);
-    width: 100%;
-    border-radius: 8px;
-    background-size: cover;
-    z-index: 2;
+  height: var(--carousel-image-height);
+  width: 100%;
+  border-radius: 8px;
+  background-size: cover;
+  z-index: 2;
 }
 .carousel-cell-big-title {
-    color: #fff !important;
-    position: absolute;
-    bottom: 29%;
-    left: 5%;
-    font-weight: 700;
-    font-size: 1.1rem;
-    z-index: 1;
-    opacity: 0.9;
+  color: #fff !important;
+  position: absolute;
+  bottom: 29%;
+  left: 5%;
+  font-weight: 700;
+  font-size: 1.1rem;
+  z-index: 1;
+  opacity: 0.9;
 }
 .carousel-cell-smaller {
-    height: var(--carousel-image-height);
-    width: var(--carousel-image-height);
+  height: var(--carousel-image-height);
+  width: var(--carousel-image-height);
 }
 .carousel-cell-smaller .carousel-image-small {
-    border-radius: 15px;
-    height: 136px;
-    width: 100%;
-    background-size: 136px !important;
+  border-radius: 15px;
+  height: 136px;
+  width: 100%;
+  background-size: 136px !important;
 }
 .carousel .carousel-casino {
-    border-radius: 100%;
+  border-radius: 100%;
 }
 .carousel-cell.is-selected {
 }
 .carousel-cell-subtitle {
-    white-space: nowrap;
-    cursor: pointer;
-    font-family: var(--bz-title-font);
-    box-sizing: border-box;
-    border-spacing: 0;
-    margin: 0 auto;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 12px;
-    line-height: 17px;
-    color: #58667e !important;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: var(--bz-title-font);
+  box-sizing: border-box;
+  border-spacing: 0;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 17px;
+  color: #58667e !important;
 }
 .carousel-cell-title {
-    white-space: nowrap;
-    cursor: pointer;
-    font-family: var(--bz-title-font);
-    box-sizing: border-box;
-    border-spacing: 0;
-    line-height: 24px;
-    margin: 0 auto;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    color: #1e1e1e;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: var(--bz-title-font);
+  box-sizing: border-box;
+  border-spacing: 0;
+  line-height: 24px;
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #1e1e1e;
 }
 .game-excerpt {
-    font-size: 20px;
+  font-size: 20px;
 }
 @media (max-width: 576px) {
-    .bz-search-bar input {
-        font-size: 20px;
-    }
-    .bz-title {
-        font-size: 1.4rem;
-    }
-    .bz-subtitle {
-        font-size: 0.8rem;
-    }
-    .gameListFeatured .featured-text {
-        font-size: 10px;
-    }
-    .carousel:after {
-        width: 10px;
-    }
-    .theme-cards__heading {
-        display: block !important;
-    }
-    .btn-heading-suggest-casino {
-        margin-top: 0.6rem;
-        margin-left: 0 !important;
-        display: block !important;
-    }
-    .game-excerpt {
-        font-size: 13px;
-    }
-    .provider-btns {
-        display: block !important;
-    }
+  .bz-search-bar input {
+    font-size: 20px;
+  }
+  .bz-title {
+    font-size: 1.4rem;
+  }
+  .bz-subtitle {
+    font-size: 0.8rem;
+  }
+  .gameListFeatured .featured-text {
+    font-size: 10px;
+  }
+  .carousel:after {
+    width: 10px;
+  }
+  .theme-cards__heading {
+    display: block !important;
+  }
+  .btn-heading-suggest-casino {
+    margin-top: 0.6rem;
+    margin-left: 0 !important;
+    display: block !important;
+  }
+  .game-excerpt {
+    font-size: 13px;
+  }
+  .provider-btns {
+    display: block !important;
+  }
 }

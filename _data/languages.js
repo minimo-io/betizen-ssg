@@ -14,6 +14,13 @@ module.exports = {
       cta: "👉 ¿100 GIROS GRATIS? AHORA!",
       image: metadata.images.banners + "national-es-1176x264.png",
       casino: {
+        logo: "/assets/imgs/casinos/axe-casino-logo.webp",
+        name: "AxeCasino",
+        title: "HASTA 300 GIROS GRÁTIS 🤯 ¡PROMO LIMITADA!",
+        cta: "¡RECLAMA TUS 300 GIROS GRATIS HOY!",
+        url: "/en/online-casino/axe-casino/",
+      },
+      casino2: {
         logo: "/assets/imgs/casinos/ohmyzino-analisis-logo.webp",
         name: "OHMYZINO",
         title: "HASTA 300 GIROS GRÁTIS 🤯 ¡PROMO LIMITADA!",
@@ -249,7 +256,15 @@ module.exports = {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
       cta: "👉 CLAIM 100 FREE SPINS?",
       image: metadata.images.banners + "national-en-1176x264.png",
+
       casino: {
+        logo: "/assets/imgs/casinos/axe-casino-logo.webp",
+        name: "AxeCasino",
+        title: "UP TO 150 FREE SPINS 🤯 LIMITED PROMOTION!",
+        cta: "CLAIM YOUR 150 FREE SPINS TODAY!",
+        url: "/en/online-casino/axe-casino/",
+      },
+      casino2: {
         logo: "/assets/imgs/casinos/ohmyzino-analisis-logo.webp",
         name: "OHMYZINO",
         title: "UP TO 150 FREE SPINS 🤯 LIMITED PROMOTION!",

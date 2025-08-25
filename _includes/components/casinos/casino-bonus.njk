@@ -21,10 +21,12 @@
 </style>
 {%- endif -%}
 
+
+{%- if not bonus.noHtmlImage -%}
 <div class="card card-bonus mb-3">
   <div class="card-body">
     <h5 class="card-title text-center">
-      {{ bonus.title or title }}&nbsp;<a
+     {{ bonus.title or title }}&nbsp;<a
         href="{{ bonus.link }}"
         class="knowmore-icon-link text-white"
         ><sup><i class="fa fa-info-circle" aria-hidden="true"></i></sup
@@ -45,3 +47,8 @@
     </a>
   </div>
 </div>
+{% else %}
+  <a target="_blank" href="{{ bonus.link }}" rel="noopener nofollow">
+    <img class="rounded-xl animated pulse infinite" src="{{ metadata.images.casinos }}{{bonus.noHtmlImage}}" alt="{{ page.fileSlug }}-bonus" />
+  </a>
+{%- endif -%}

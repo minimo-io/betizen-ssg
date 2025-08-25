@@ -1,24 +1,68 @@
+{# _includes/components/bz-carrousel.njk #}
 <div class="carousel-container mt-4">
     <!-- Flickity HTML init -->
     <div class="carousel mx-2 mt-3 mt-md-1 mb-5 Xmb-md-0">
-        <a
-            href="{{ languages[page.lang].promo.casino.url }}"
-            target="_blank"
-            class="carousel-cell carousel-cell-smaller"
-        >
-            <div
-                class="carousel-image-small Xcarousel-casino"
-                style="
-                    background-image: url('{{ languages[page.lang].promo.casino.logo }}');
-                "
-            ></div>
-            <div class="featured-text featured-gold">
-                🥇 {{ languages[page.lang].texts.featured }}
+        
+        <!-- First cell with nested carousel for multiple featured casinos -->
+        <div class="carousel-cell carousel-cell-smaller nested-carousel-wrapper">
+            <div class="nested-carousel-container">
+                <div class="nested-carousel">
+                    <!-- First featured casino -->
+                    <a
+                        href="{{ languages[page.lang].promo.casino.url }}"
+                        target="_blank"
+                        class="nested-carousel-cell"
+                    >
+                        <div
+                            class="carousel-image-small"
+                            style="background-image: url('{{ languages[page.lang].promo.casino.logo }}');"
+                        ></div>
+                        <div class="featured-text featured-gold">
+                            🥇 {{ languages[page.lang].texts.featured }}
+                        </div>
+                        <span class="carousel-button featured-gold btn btn-scale">{{ languages[page.lang].texts.visit }}</span>
+                    </a>
+                    
+                    <!-- Add more featured casinos here -->
+                    {% if languages[page.lang].promo.casino2 %}
+                    <a
+                        href="{{ languages[page.lang].promo.casino2.url }}"
+                        target="_blank"
+                        class="nested-carousel-cell"
+                    >
+                        <div
+                            class="carousel-image-small"
+                            style="background-image: url('{{ languages[page.lang].promo.casino2.logo }}');"
+                        ></div>
+                        <div class="featured-text featured-gold">
+                            🥇 {{ languages[page.lang].texts.featured }}
+                        </div>
+                        <span class="carousel-button featured-gold btn btn-scale">{{ languages[page.lang].texts.visit }}</span>
+                    </a>
+                    {% endif %}
+                    
+                    {% if languages[page.lang].promo.casino3 %}
+                    <a
+                        href="{{ languages[page.lang].promo.casino3.url }}"
+                        target="_blank"
+                        class="nested-carousel-cell"
+                    >
+                        <div
+                            class="carousel-image-small"
+                            style="background-image: url('{{ languages[page.lang].promo.casino3.logo }}');"
+                        ></div>
+                        <div class="featured-text featured-gold">
+                            🥇 {{ languages[page.lang].texts.featured }}
+                        </div>
+                        <span class="carousel-button featured-gold btn btn-scale">{{ languages[page.lang].texts.visit }}</span>
+                    </a>
+                    {% endif %}
+                </div>
+                
+
             </div>
-            <span class="carousel-button featured-gold btn btn-scale"
-                >{{ languages[page.lang].texts.visit }}</span
-            >
-        </a>
+        </div>
+
         <a
             href="{{ languages[page.lang].promo.url }}"
             target="_blank"
@@ -34,14 +78,6 @@
             ></div>
             <h3 class="carousel-cell-big-title">
                 {{ languages[page.lang].promo.cta }}
-                {# <span class="carousel-cell-subtitle mb-0 mt-2 ml-2">
-                    <span class="carousel-subtitle-image mr-1"
-                        ><img
-                            width="20"
-                            src="{{ languages[page.lang].promo.casino.logo }}"
-                    /></span>
-                    31Bet
-                </span>#}
             </h3>
 
             <div class="featured-text featured-black">{{ languages[page.lang].texts.bonus }}</div>
@@ -63,14 +99,14 @@
             <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
         </a>           
         <a
-            href="{{ "/juego/catrina-video-bingo-online/" | locale_url }}"
+            href="{{ "/juego/tragamonedas-jack-y-las-habichuelas-magicas/" | locale_url }}"
             target="_blank"
             class="carousel-cell carousel-cell-smaller"
         >
             <div
                 class="carousel-image-small"
                 style="
-                    background-image: url('/assets/imgs/games/catrina-video-bingo-online-logo.webp');
+                    background-image: url('/assets/imgs/games/tragamonedas-jack-y-las-habichuelas-magicas-logo.webp');
                 "
             ></div>
             <div class="featured-text">
@@ -126,39 +162,35 @@
             </div>
             <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
         </a>     
-     
-        {# <a
-            href="https://www.betizen.org/bonus/bono-de-bienvenida-en-31bet/"
-            target="_blank"
-            class="carousel-cell carousel-cell-big">
-            <div class="carousel-cell-image-overlay"></div>
-            <div
-                class="carousel-image"
-                style="
-                    background-image: url('https://www.betizen.org/wp-content/uploads/2023/11/casino-31bet-150x150.webp');
-                "
-            ></div>
-            <h3 class="carousel-cell-big-title">100% hasta $1000, x35</h3>
-
-            <p class="carousel-cell-subtitle mb-0 mt-2 ml-2">
-                <span class="carousel-subtitle-image mr-1"
-                    ><img
-                        width="20"
-                        src="https://www.betizen.org/wp-content/uploads/2023/11/31bet-casino-logo-150x150.webp"
-                /></span>
-                31Bet
-            </p>
-            <p class="d-none carousel-cell-title mb-0 mt-0 ml-2">
-                $20 depósito mínimo
-            </p>
-            <div class="featured-text featured-blue">Bono</div>
-        </a> #}
     </div>
 </div>
 
+<style>
+/* Nested carousel styles */
+.nested-carousel-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.nested-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.nested-carousel-cell {
+    min-width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+</style>
+
 <script>
     var flkty = $(".carousel").flickity({
-        // options
         cellAlign: "left",
         prevNextButtons: false,
         contain: true,
@@ -169,4 +201,16 @@
         pageDots: true,
     });
     flkty.next();
+
+    // Simple nested carousel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.nested-carousel-cell');
+    const carousel = document.querySelector('.nested-carousel');
+    
+    if (slides.length > 1) {
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }, 3000);
+    }
 </script>

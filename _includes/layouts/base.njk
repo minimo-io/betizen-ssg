@@ -29,10 +29,7 @@
 
         <link rel="dns-prefetch" href="//fonts.googleapis.com/" />
         <link rel="dns-prefetch" href="//unpkg.com/" />
-        <link rel="dns-prefetch" href="//cdn.jsdelivr.net/" />        
-		
-		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-        <meta name="generator" content="{{ eleventy.generator }}">
+        <link rel="dns-prefetch" href="//cdn.jsdelivr.net/" />
 
         {#-
                 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
@@ -88,6 +85,16 @@
         {# <script type="application/ld+json">
             [{"@context":"https://schema.org/","@type":"WebSite","@id":"https://www.betizen.org#website","headline":"Betizen","name":"Betizen","description":"{{description}}.","url":"https://www.betizen.org","potentialAction":{"@type":"SearchAction","target":"https://www.betizen.org?s={search_term_string}","query-input":"required name=search_term_string"}}]
         </script> #}
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9FEXZ8H3E"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-S9FEXZ8H3E');
+        </script>        
     </head>
     <body class="home blog woocommerce dokan-theme-dokan">
 
