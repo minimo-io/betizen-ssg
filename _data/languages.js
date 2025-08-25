@@ -8,6 +8,10 @@ module.exports = {
       name: "Español",
       flagClass: "flag-icon-es",
     },
+    top: {
+      text: "Unite al Grupo de Alertas (Telegram)",
+      url: "https://t.me/+Z0VG1CVk2Do4ZTMx",
+    },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
       // url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
@@ -133,6 +137,10 @@ module.exports = {
       name: "Português",
       flagClass: "flag-icon-br",
     },
+    top: {
+      text: "Entre no Grupo de Alertas (no Telegram)",
+      url: "https://t.me/+Z0VG1CVk2Do4ZTMx",
+    },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
       // url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
@@ -251,6 +259,10 @@ module.exports = {
       class: "dropdown-item flag-icon-background flag-icon-gb",
       name: "English",
       flagClass: "flag-icon-gb",
+    },
+    top: {
+      text: "Join the Jackpot & Scam Alerts Group",
+      url: "https://t.me/+Z0VG1CVk2Do4ZTMx",
     },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
