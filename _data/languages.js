@@ -9,8 +9,8 @@ module.exports = {
       flagClass: "flag-icon-es",
     },
     top: {
-      text: "Unite al Grupo de Alertas (Telegram)",
-      url: "https://t.me/+Z0VG1CVk2Do4ZTMx",
+      text: "Unite al Grupo de Alertas & Jackpots",
+      url: "https://www.instagram.com/betizen_org/",
     },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
@@ -138,8 +138,8 @@ module.exports = {
       flagClass: "flag-icon-br",
     },
     top: {
-      text: "Entre no Grupo de Alertas (no Telegram)",
-      url: "https://t.me/+Z0VG1CVk2Do4ZTMx",
+      text: "Entre no Grupo de Alertas",
+      url: "https://www.instagram.com/betizen_org/",
     },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
@@ -262,7 +262,7 @@ module.exports = {
     },
     top: {
       text: "Join the Jackpot & Scam Alerts Group",
-      url: "https://t.me/+Z0VG1CVk2Do4ZTMx",
+      url: "https://www.instagram.com/betizen_org/",
     },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
