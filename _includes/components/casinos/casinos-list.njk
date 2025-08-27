@@ -1,5 +1,11 @@
+{# _includes/components/casinos/casinos-list.njk #}
 {%- from "macros/reputation-button.njk" import reputationButton with context -%}
 {%- css %}.casinos-list{}{% endcss %} 
+
+
+{# Featured Casino Component #}
+{% include "components/casinos/featured-casino.njk" %}
+
 {% set counter = 0 -%}
 {% for post in postsList | sortByOrder %} 
     {% if post.data.details %}

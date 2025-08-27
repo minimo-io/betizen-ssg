@@ -1,17 +1,14 @@
 <div class="god-message text-truncate">
-    {# <strong style="color: #014a43; display: none">
-        👉 <a target="_blank" rel="nofollow noopener" href="{{ languages[page.lang].promo.url }}">
-            {{ languages[page.lang].promo.casino.cta }}
-        </a>
-    </strong> #}
-
-    {# <strong style="color: #014a43">
-        👉 <a href="{{ languages[page.lang].promo.url }}">{{ languages[page.lang].promo.casino.cta }}</a></strong
-    > #}
-   
-    <strong style="color: #014a43">
-        👉 <a href="{{ languages[page.lang].top.url }}">{{ languages[page.lang].top.text }}</a></strong
-    >
-
-    
+  <strong style="color: #014a43">
+    👉 <a target="_blank" 
+          rel="nofollow noopener noreferrer" 
+          href="{{ languages[page.lang].top.url }}" 
+          onclick="gtag('event', 'click', { 
+              event_category: 'link', 
+              event_label: 'top-link', 
+              value: 1 
+          });">
+        {{ languages[page.lang].top.text }}
+    </a>
+  </strong>
 </div>

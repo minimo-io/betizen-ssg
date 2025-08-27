@@ -9,8 +9,8 @@ module.exports = {
       flagClass: "flag-icon-es",
     },
     top: {
-      text: "Unite al Grupo de Alertas & Jackpots",
-      url: "https://www.instagram.com/betizen_org/",
+      text: "Obtené 100 giros gratuitos en slots",
+      url: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com",
     },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
@@ -22,7 +22,7 @@ module.exports = {
         name: "HunnyPlay",
         title: "HASTA 100 GIROS GRÁTIS 🤯 ¡En HUNNYPLAY!",
         cta: "¡RECLAMA TUS 100 GIROS GRATIS 🤯 ¡En HUNNYPLAY!",
-        url: "/casino/hunnypay/",
+        url: "/casino/hunnyplay/",
       },
       casino2: {
         logo: "/assets/imgs/casinos/axe-casino-logo.webp",
@@ -266,8 +266,8 @@ module.exports = {
       flagClass: "flag-icon-gb",
     },
     top: {
-      text: "Join the Jackpot & Scam Alerts Group",
-      url: "https://www.instagram.com/betizen_org/",
+      text: "Grab 100 free spins in slots",
+      url: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com",
     },
     promo: {
       url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",

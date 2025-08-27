@@ -1,0 +1,84 @@
+{# _includes/components/casinos/featured-casino.njk #}
+
+{%- css %}
+.featured-casino-row {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%) !important;
+    {# border: 3px solid #ffb300 !important; #}
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4) !important;
+    position: relative;
+}
+
+.featured-crown {
+    color: #ff6b35;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.featured-glow-medal {
+    background: radial-gradient(circle, #ff6b35, #ffd700) !important;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.featured-badge {
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.featured-rating .fa-star {
+    color: #ff6b35 !important;
+    filter: drop-shadow(0 0 3px rgba(255, 107, 53, 0.7));
+}
+{% endcss %}
+
+<tr class="casinoItem postlist-item featured-casino-row">
+    <th scope="row" class="table-ranking-ner">
+        <div class="featured-crown">👑</div>
+    </th>
+    <td style="vertical-align:middle;">
+        <a class="casino-table-image" rel="nofollow noopener noreferrer" target="_blank" href="https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com">
+            <img width="80" src="/assets/imgs/casinos/national-argentina-logo.webp" class="theme-card__img wp-post-image" alt="hunnyplay">
+            <span class="medal medal-gold featured-glow-medal"></span>
+        </a>
+    </td>
+    <td style="padding: 0 !important" class="casinos-table-item-name text-left d-none d-md-table-cell">
+        <div class="text-truncate">
+            <a class="opacity-8 dotted-3-grey" rel="nofollow noopener noreferrer" target="_blank" href="https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com">National Casino
+        </div>
+    </td>
+    <td class="d-md-table-cell btn-scale" style="width: auto; vertical-align:middle;">
+        <div class="rating-display featured-rating" style="color: black">
+            <center>
+                <span class="featured-badge"> {{ languages[page.lang].texts.featured }}</span></a>
+            </center>
+        </div>
+    </td>
+    <td class="casinos-table-lastAction" colspan="2">
+        <a rel="nofollow noopener noreferrer" target="_blank" href="https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com" class="btn btn-brand btn-bg btn-table-more btn-scale" style="padding: 10.5px 20px; width:100%;">
+            {{ languages[page.lang].texts.visit }}
+        </a>
+    </td>    
+    <td class="" style="vertical-align: middle;text-align:center;">
+        {# <div class="table-comments">
+            <button data-target="#tc-modal" data-toggle="modal" data-hasbutton="0" data-title="Detalles de la reputación" data-content="&lt;div class=&quot;container&quot;&gt;    &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;col text-center&quot;&gt;&lt;img src=&quot;/assets/imgs/casinos/hunnyplay-logo.webp&quot; alt=&quot;Casino HunnyPlay&quot; width=&quot;100&quot; class=&quot;rounded-circle&quot;&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;col text-center mt-4 mb-4&quot;&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-outline text-uppercase btn-casino-reputation&quot;&gt;&lt;span class=&quot;badge badge-pill btn-success&quot;&gt;&nbsp;&lt;/span&gt;&nbsp;Justo&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;    &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;col&quot;&gt;HunnyPlay es un casino de criptomonedas con depósitos y retiros transparentes basados en blockchain. La plataforma ha crecido en los mercados de América Latina y recibe buenas opiniones, aunque, como otros casinos con licencia de Curaçao, los jugadores deben revisar cuidadosamente los términos y condiciones de los bonos.&lt;/div&gt;&lt;/div&gt;    &lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;col mt-4&quot;&gt;&lt;a class=&quot;btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110&quot; href=&quot;#&quot; role=&quot;button&quot; rel=&quot;sponsored&quot; target=&quot;_blank&quot;&gt;Visitar casino&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;style&gt;.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:#161f2b !important;border-color:#0f1923 !important;}&lt;/style&gt;" type="button" class="btn btn-success text-uppercase btn-casino-reputation Xd-none Xd-md-block btn-scale" style="">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Justo
+            </button>
+        </div> #}
+    </td>
+
+</tr>

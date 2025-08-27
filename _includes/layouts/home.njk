@@ -22,15 +22,19 @@ eleventyComputed:
                     </p>
                 </div>
 
-                <a
-                    class="theme-cards__heading__button btn btn-brand btn-heading-suggest-casino text-uppercase bz-btn-shadow"
-                    href="https://bit.ly/add_casino_to_betizen"
-                    target="_blank"
-                    rel="noopener nofollow"
-                >
-                    <i class="fa fa-plus Xfa-lg mr-1" aria-hidden="true"></i>
-                    {{ languages[page.lang].texts.addCasino }}
-                </a>
+            <a
+            class="theme-cards__heading__button btn btn-brand btn-heading-suggest-casino text-uppercase bz-btn-shadow"
+            href="https://forms.gle/vMpnv4cFgccHYNp56"
+            target="_blank"
+            rel="noopener nofollow"
+            onclick="gtag('event', 'click', {
+                event_category: 'affiliate',
+                event_label: 'add-casino-button'
+            });"
+            >
+                <i class="fa fa-plus Xfa-lg mr-1" aria-hidden="true"></i>
+                {{ languages[page.lang].texts.addCasino }}
+            </a>
             </div>
             <div class="casinos-table row pt-0">
                 <div class="container mx-2 px-0">
@@ -39,8 +43,10 @@ eleventyComputed:
 
                 <table class="table table-striped table-responsive mx-2">
                     <tbody class="casinos-table-body">
+
                         {%- set postsList = collections.casinos | forLang( page.lang ) | sortByOrder | head(20) %}
                         {% include "components/casinos/casinos-list.njk" %}
+                        
                     </tbody>
                 </table>
 
