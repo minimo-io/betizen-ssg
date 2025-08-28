@@ -18,11 +18,11 @@ module.exports = {
       cta: "👉 ¿100 GIROS GRATIS? AHORA!",
       image: metadata.images.banners + "national-es-1176x264.png",
       casino: {
-        logo: "/assets/imgs/casinos/hunnyplay-logo.webp",
-        name: "HunnyPlay",
-        title: "HASTA 100 GIROS GRÁTIS 🤯 ¡En HUNNYPLAY!",
-        cta: "¡RECLAMA TUS 100 GIROS GRATIS 🤯 ¡En HUNNYPLAY!",
-        url: "/casino/hunnyplay/",
+        logo: "/assets/imgs/casinos/national-argentina-logo.webp",
+        name: "National",
+        title: "HASTA 100 GIROS GRÁTIS 🤯 ¡En National!",
+        cta: "¡RECLAMA TUS 100 GIROS GRATIS 🤯 ¡En National!",
+        url: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com",
       },
       casino2: {
         logo: "/assets/imgs/casinos/axe-casino-logo.webp",
@@ -274,11 +274,11 @@ module.exports = {
       cta: "👉 CLAIM 100 FREE SPINS?",
       image: metadata.images.banners + "national-en-1176x264.png",
       casino: {
-        logo: "/assets/imgs/casinos/hunnyplay-logo.webp",
-        name: "HunnyPlay",
-        title: "UP TO 100 FREE SPINS 🤯 AT HUNNYPLAY!",
-        cta: "UP TO 100 FREE SPINS 🤯 AT HUNNYPLAY!",
-        url: "/en/online-casino/hunnyplay/",
+        logo: "/assets/imgs/casinos/national-argentina-logo.webp",
+        name: "National",
+        title: "UP TO 100 FREE SPINS 🤯 AT NATIONAL!",
+        cta: "UP TO 100 FREE SPINS 🤯 AT NATIONAL!",
+        url: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com",
       },
       casino2: {
         logo: "/assets/imgs/casinos/axe-casino-logo.webp",

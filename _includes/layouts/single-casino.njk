@@ -84,15 +84,25 @@ layout: layouts/base.njk
                   <div
                     class="d-flex justify-content-between align-items-center mb-3"
                   >
-                    <form action="" method="POST" class="d-block w-100">
-                      <a
-                        class="btn btn-brand btn-block up btn-customcolor"
-                        rel="nofollow noopener"
-                        href="{{ bonus.link }}"
-                      >
-                        <span class="btn-text">{{ languages[page.lang].texts.visit }}</span></a
-                      >
-                    </form>
+                    {% if blacklisted %}
+                        {# <div style="    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 5px;">BLACKLISTED</div> #}
+                    {% else %}
+                      <form action="" method="POST" class="d-block w-100">
+                        <a
+                          class="btn btn-brand btn-block up btn-customcolor"
+                          rel="nofollow noopener"
+                          href="{{ bonus.link }}"
+                        >
+                          <span class="btn-text">{{ languages[page.lang].texts.visit }}</span></a
+                        >
+                      </form>
+                    {% endif %}
                   </div>
 
                   <div class="theme-purchases">
@@ -183,12 +193,17 @@ layout: layouts/base.njk
                     </div>
                   </div>
                 </div>
-                <a
-                  href="{{ bonus.link }}"
-                  rel="nofollow noopener"
-                  class="btn btn-brand btn-block btn-checkout up btn-customcolor"
-                  >{{ languages[page.lang].texts.visit }}</a
-                >
+
+                {% if blacklisted %}
+
+                {% else %}
+                  <a
+                    href="{{ bonus.link }}"
+                    rel="nofollow noopener"
+                    class="btn btn-brand btn-block btn-checkout up btn-customcolor"
+                    >{{ languages[page.lang].texts.visit }}</a
+                  >
+                {% endif %}
 
                 <div class="theme-description__list pt-2">
                   <div
