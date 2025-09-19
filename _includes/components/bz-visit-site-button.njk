@@ -12,7 +12,7 @@
         rel="sponsored noopener noreferrer" 
         class="btn btn-primary w-full text-white font-semibold">
         <i data-lucide="external-link" strokeWidth={1} class="h-3"></i>
-        {{ languages[page.lang].texts.visitSite }}
+        {{ languages[page.lang].texts.visitSite | safe }}
     </a>
 </div>
 

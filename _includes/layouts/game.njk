@@ -95,7 +95,7 @@ layout: layouts/base.njk
                                 target="_blank"
                                 class="btn btn-primary w-full text-white font-semibold">
                                   <i data-lucide="play" strokeWidth={1} class="h-3"></i>
-                                  {{ languages[page.lang].texts.realPlay }}
+                                  {{ languages[page.lang].texts.realPlay | safe }}
                               </a>
                           </div>
                         </div>

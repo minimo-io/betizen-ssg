@@ -103,6 +103,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   document
     .getElementById("logout-btn")
     ?.classList.toggle("hidden", !isAuthenticated);
+  // Handle language modal
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#language-modal-trigger')) {
+      const template = document.getElementById('language-links-template');
+      if (template) {
+        const content = template.innerHTML;
+        setupAndShowModal({
+          title: getTranslation('texts.selectLanguage', window.currentLang) || 'Select Language',
+          body: content
+        }, true, false);
+      }
+    }
+  });
+
   // NEW: Simple auth UI updates
   window.BZ?.state?.subscribe("auth.isAuthenticated", (isAuth) => {
     document.getElementById("login-btn")?.classList.toggle("hidden", isAuth);

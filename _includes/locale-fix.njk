@@ -10,17 +10,17 @@
 {%endmacro%}
 
 {% macro localeUrlFixDaisy(fixLang) %}
-    <li class="text-xs flex flex-row items-center">
-        <a class="{{ languages[fixLang].menu.class }} text-xs">
+    <li>
+        <a class="{{ languages[fixLang].menu.class }} text-base-content/80 flex items-center gap-2 font-bold">
             {% if languages[fixLang].menu.flagClass == "flag-icon-es" %}
-                <img src="/assets/imgs/flags/svg/ar.svg" class="h-4" alt="es-flag" />
+                <img src="/assets/imgs/flags/svg/ar.svg" class="h-6 w-6 object-cover" alt="es-flag" />
             {% elif languages[fixLang].menu.flagClass == "flag-icon-br"  %}
-                <img src="/assets/imgs/flags/svg/br.svg" class="h-4" alt="br-flag" />
+                <img src="/assets/imgs/flags/svg/br.svg" class="h-6 w-6 object-cover" alt="br-flag" />
             {% else %}
-                <img src="/assets/imgs/flags/svg/gb.svg" class="h-4" alt="gb-flag" />
+                <img src="/assets/imgs/flags/svg/gb.svg" class="h-6 w-6 object-cover" alt="gb-flag" />
             {% endif %}
 
-            <strong>{{ languages[fixLang].menu.name }}</strong>
+            {{ languages[fixLang].menu.name }}
         </a>
     </li>
 {%endmacro%}

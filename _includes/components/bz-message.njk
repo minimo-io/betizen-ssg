@@ -48,47 +48,23 @@
 
         <li class="text-neutral-content mx-3">/</li>
 
-        {# Language #}
-        <div class="gap-0 dropdown md:dropdown-end">
-            <button class="btn btn-ghost btn-circle" popovertarget="popover-1" style="anchor-name:--anchor-1">
-                <div class="indicator">
-                    <i data-lucide="languages" class="h-4 md:h-4"></i>
-                    <span class="badge badge-xs p-0 indicator-item">
-                        {% if currentLangClass == "flag-icon-es" %}
-                            <img src="/assets/imgs/flags/svg/ar.svg" class="h-4" alt="mx-flag" />
-                        {% elif currentLangClass == "flag-icon-br"  %}
-                            <img src="/assets/imgs/flags/svg/br.svg" class="h-4" alt="br-flag" />
-                        {% else %}
-                            <img src="/assets/imgs/flags/svg/gb.svg" class="h-4" alt="gb-flag" />
-                        {% endif %}
-                    </span>
-                </div>
-            </button>
-            <ul class="dropdown-content menu menu-sm w-36 -left-26 rounded-box bg-base-100 shadow-sm"
-            popover id="popover-1" style="position-anchor:--anchor-1">
-                {{ localeUrlFixDaisy(fixLang=page.lang) }}
+        {# Language Modal Trigger #}
+        <button id="language-modal-trigger" class="btn btn-ghost btn-circle">
+            <div class="indicator">
+                <i data-lucide="languages" class="h-4 md:h-4"></i>
+                <span class="badge badge-xs p-0 indicator-item">
+                    {% if currentLangClass == "flag-icon-es" %}
+                        <img src="/assets/imgs/flags/svg/ar.svg" class="h-4" alt="mx-flag" />
+                    {% elif currentLangClass == "flag-icon-br"  %}
+                        <img src="/assets/imgs/flags/svg/br.svg" class="h-4" alt="br-flag" />
+                    {% else %}
+                        <img src="/assets/imgs/flags/svg/gb.svg" class="h-4" alt="gb-flag" />
+                    {% endif %}
+                </span>
+            </div>
+        </button>
 
-                {% for link in page.url | locale_links %}
-                    <li>
-                        
-                        <a class="{{ languages[link.lang].menu.class }} text-xs" href="{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
-
-
-                            {% if languages[link.lang].menu.flagClass == "flag-icon-es" %}
-                                <img src="/assets/imgs/flags/svg/ar.svg" class="h-4" alt="mx-flag" />
-                            {% elif languages[link.lang].menu.flagClass == "flag-icon-br"  %}
-                                <img src="/assets/imgs/flags/svg/br.svg" class="h-4" alt="br-flag" />
-                            {% else %}
-                                <img src="/assets/imgs/flags/svg/gb.svg" class="h-4" alt="gb-flag" />
-                            {% endif %}
-
-                            {{ languages[link.lang].menu.name }}
-                        </a>
-                    </li>
-                {% endfor %}
-
-            </ul>
-        </div>        
+        {% include "templates/languages-modal.template.njk" %}        
 
       </ul>
 

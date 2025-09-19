@@ -1,0 +1,21 @@
+<template id="language-links-template">
+    <ul class="menu grid grid-cols-2 lg:grid-cols-3 gap-2">
+        
+        {{ localeUrlFixDaisy(fixLang=page.lang) }}
+
+        {% for link in page.url | locale_links %}
+            <li>
+                <a class="{{ languages[link.lang].menu.class }} text-base-content/80 hover:text-base-content flex items-center gap-2" href="{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
+                    {% if languages[link.lang].menu.flagClass == "flag-icon-es" %}
+                        <img src="/assets/imgs/flags/svg/ar.svg" class="h-6 w-6 object-cover" alt="mx-flag" />
+                    {% elif languages[link.lang].menu.flagClass == "flag-icon-br"  %}
+                        <img src="/assets/imgs/flags/svg/br.svg" class="h-6 w-6 object-cover" alt="br-flag" />
+                    {% else %}
+                        <img src="/assets/imgs/flags/svg/gb.svg" class="h-6 w-6 object-cover" alt="gb-flag" />
+                    {% endif %}
+                    {{ languages[link.lang].menu.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</template>
