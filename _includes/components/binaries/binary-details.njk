@@ -1,0 +1,70 @@
+{# _includes/components/binaries/binary-details.njk #}
+{%- from "macros/details.njk" import fieldScore with context -%}
+<div class="rounded-lg border dark:bg-gray-800 border-gray-200 dark:border-gray-700 mt-3">
+    <ul class="list">
+        <a href="#regulamentacao-e-seguranca" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryRegulation }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.regulamentacao) }}
+            </div>
+        </a>
+        <a href="#plataforma-de-negociacao" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryPlatform }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.plataforma) }}
+            </div>
+        </a>
+        <a href="#ativos-disponiveis" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryAssets }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.ativos) }}
+            </div>
+        </a>
+        <a href="#taxas-e-comissoes" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryFees }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.taxas) }}
+            </div>
+        </a>
+        <a href="#depositos-e-saques" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryPayments }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.pagamentos) }}
+            </div>
+        </a>
+        <a href="#conta-demo" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryDemo }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.conta_demo) }}
+            </div>
+        </a>
+        <a href="#suporte-ao-cliente" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-600 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binarySupport }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.suporte) }}
+            </div>
+        </a>
+        <a href="#recursos-educacionais" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.binaryEducation }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.educacao) }}
+            </div>
+        </a>
+    </ul>
+</div>

@@ -1,93 +1,63 @@
-{# <div class="categoryCasinosFilters text-center my-2">
-    <div class="card bg-light d-none d-lg-block">
-        <div class="card-body">
-            <button
-                data-casinotype="0"
-                type="button"
-                class="btn btn-outline-info btnType-0 active"
-            >
-                Todos
-            </button>
-            <button
-                data-casinotype="321"
-                type="button"
-                class="btn btn-outline-info btnType-321"
-            >
-                <i class="fa fa-gamepad mr-1" aria-hidden="true"></i
-                >Tragamonedas
-                <span class="badge badge-info badge-pill">54</span>
-            </button>
-            <button
-                data-casinotype="320"
-                type="button"
-                class="btn btn-outline-info btnType-320"
-            >
-                <i class="fa fa-users mr-1" aria-hidden="true"></i>Poker
-                <span class="badge badge-info badge-pill">1</span>
-            </button>
-            <button
-                data-casinotype="353"
-                type="button"
-                class="btn btn-outline-info btnType-353"
-            >
-                <i class="fa fa-money mr-1" aria-hidden="true"></i>Lotería
-                <span class="badge badge-info badge-pill">2</span>
-            </button>
-            <button
-                data-casinotype="318"
-                type="button"
-                class="btn btn-outline-info btnType-318"
-            >
-                <i class="fa fa-futbol-o mr-1" aria-hidden="true"></i>Deportivas
-                <span class="badge badge-info badge-pill">3</span>
-            </button>
-            <button
-                data-casinotype="317"
-                type="button"
-                class="btn btn-outline-info btnType-317"
-            >
-                <i class="fa fa-btc mr-1" aria-hidden="true"></i>Cripto
-                <span class="badge badge-info badge-pill">14</span>
-            </button>
-            <button
-                data-casinotype="319"
-                type="button"
-                class="btn btn-outline-info btnType-319"
-            >
-                <i class="fa fa-dot-circle-o mr-1" aria-hidden="true"></i>Bingo
-                <span class="badge badge-info badge-pill">4</span>
-            </button>
-        </div>
-    </div>
-    <div class="card bg-light d-block d-sm-none">
-        <div class="card-body">
-            <div class="d-flex justify-content-md-end">
-                <select
-                    id="category_order_by"
-                    name="orderby"
-                    class="form-control text-gray-soft"
-                >
-                    <option class="selectType-0" value="0">Todos</option>
-                    <option class="selectType-321" value="321">
-                        Tragamonedas (54)
-                    </option>
-                    <option class="selectType-320" value="320">
-                        Poker (1)
-                    </option>
-                    <option class="selectType-353" value="353">
-                        Lotería (2)
-                    </option>
-                    <option class="selectType-318" value="318">
-                        Deportivas (3)
-                    </option>
-                    <option class="selectType-317" value="317">
-                        Cripto (14)
-                    </option>
-                    <option class="selectType-319" value="319">
-                        Bingo (4)
-                    </option>
-                </select>
+{# Blacklist button #}
+<div class="flex flex-col md:flex-row mb-4 px-3 gap-2 border-b border-base-200 dark:border-gray-700 pb-2 md:pb-2 md:items-center md:justify-between">
+
+    {# Filter buttons #}
+    <div class="flex items-center gap-2">
+        {# Main filter button #}
+        <div class="dropdown dropdown-start">
+            <div tabindex="0" role="button" class="btn btn-sm btn-primary btn-soft md:btn-md m-1 ">
+                <i data-lucide="trending-up" strokeWidth={1} class="h-4"></i>
+                {{ languages[page.lang].texts.orderMostVoted }}
+                 <i data-lucide="chevron-down" strokeWidth={1} class="h-4"></i>
             </div>
-        </div>
+            <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-lg gap-2">
+                {# New #}
+                <li>
+                    <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-primary btn-soft btn-sm md:btn-md">
+                        <i data-lucide="badge-plus" strokeWidth={1} class="h-4"></i>
+                        {{ languages[page.lang].texts.orderNewer }}
+                    </button>                
+                </li>
+                {# Licensed#}            
+                <li>
+                    <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-primary btn-soft btn-sm md:btn-md">
+                        <i data-lucide="shield" strokeWidth={1} class="h-4"></i>
+                        {{ languages[page.lang].texts.orderLicensed }}
+                    </button>                  
+                </li>                
+                {# Alphabetical #}            
+                <li>
+                    <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-primary btn-soft btn-sm md:btn-md">
+                        <i data-lucide="list-ordered" strokeWidth={1} class="h-4"></i>
+                        {{ languages[page.lang].texts.orderAlphabetical }}
+                    </button>                  
+                </li>
+                {# Shutdown #}            
+                <li>
+                    <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-primary btn-soft btn-sm md:btn-md">
+                        <i data-lucide="x-circle" strokeWidth={1} class="h-4"></i>
+                        {{ languages[page.lang].texts.orderShutdown }}
+                    </button>                  
+                </li>                
+            </ul>
+        </div>    
+
+        {# Blacklisted #}
+        <a href="{{ '/casinos/blacklisted/' | locale_url }}" class="btn btn-error btn-soft btn-sm md:btn-md">
+            <i data-lucide="skull" strokeWidth={1} class="h-4"></i>
+             {{ languages[page.lang].texts.orderBlacklisted }}
+        </a>
     </div>
-</div> #}
+
+    {# Search field #}
+    <div class="relative w-full md:w-auto">
+        <input 
+            type="text" 
+            placeholder="{{ languages[page.lang].texts.search or 'Search...' }}" 
+            class="input input-bordered input-sm md:input-md w-full md:w-64 pr-10"
+            id="casino-search"
+        />
+        <i data-lucide="search" strokeWidth={1} class="h-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-base-content/50"></i>
+    </div>
+ 
+</div>

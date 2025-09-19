@@ -1,45 +1,59 @@
+{# _includes/components/casinos/casino-details.njk #}
 {%- from "macros/details.njk" import fieldScore with context -%}
-<div class="list-index list-group mt-1 mb-4">
-  <a
-    href="#juegos"
-    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-  >
-    {{ languages[page.lang].texts.games }}
-    {{ fieldScore(details.games) }}
-  </a>
-  <a
-    href="#bonos"
-    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-  >
-    {{ languages[page.lang].texts.promotionsAndPayments }}
-    {{ fieldScore(details.promotions) }}
-  </a>
-  <a
-    href="#atencion-al-cliente"
-    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-  >
-    {{ languages[page.lang].texts.customerSupport }}
-    {{ fieldScore(details.customerSupport) }}
-  </a>
-  <a
-    href="#usabilidad"
-    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-  >
-    {{ languages[page.lang].texts.designAndUsability }}
-    {{ fieldScore(details.design) }}
-  </a>
-  <a
-    href="#licenses"
-    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-  >
-    {{ languages[page.lang].texts.license }}
-    {{ fieldScore(details.license) }}
-  </a>
-  <a
-    href="#affiliateprogram"
-    class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-  >
-    {{ languages[page.lang].texts.affiliateProgram }}
-    {{ fieldScore(details.affiliateProgram) }}
-  </a>
+<div class="rounded-lg border dark:bg-gray-800 border-gray-200 dark:border-gray-700 mt-3">
+    <ul class="list">
+        <a href="#juegos" class="list-row hover:bg-gray-50 border-b border-gray-100 dark:border-gray-700 text-blue-500 font-medium font-weight-bolder no-underline py-3 dark:hover:bg-gray-700">
+            <div>
+                {{ languages[page.lang].texts.games }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.games) }}
+            </div>
+        </a>
+        
+        <a href="#bonos" class="list-row hover:bg-gray-50  border-b border-gray-100 dark:border-gray-700 text-blue-500 font-medium font-weight-bolder no-underline py-3 dark:hover:bg-gray-700">
+            <div>
+                {{ languages[page.lang].texts.promotionsAndPayments }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.promotions) }}
+            </div>
+        </a>
+        
+        <a href="#atencion-al-cliente" class="list-row hover:bg-gray-50  border-b border-gray-100 dark:border-gray-700 text-blue-500 font-medium font-weight-bolder no-underline py-3 dark:hover:bg-gray-700">
+            <div>
+                {{ languages[page.lang].texts.customerSupport }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.customerSupport) }}
+            </div>
+        </a>
+        
+        <a href="#usabilidad" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 text-blue-500  font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.designAndUsability }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.design) }}
+            </div>
+        </a>
+        
+        <a href="#licenses" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 text-blue-500 font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.license }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.license) }}
+            </div>
+        </a>
+        
+        <a href="#affiliateprogram" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-gray-100 dark:border-gray-700 text-blue-500  font-medium font-weight-bolder no-underline ">
+            <div>
+                {{ languages[page.lang].texts.affiliateProgram }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(details.affiliateProgram) }}
+            </div>
+        </a>
+    </ul>
 </div>

@@ -2,123 +2,218 @@
 layout: layouts/base.njk
 ---
 
-{%- set gamesList = collections.games | reverse | forLang(page.lang) | gamesForProvider(page.url) -%}
+{%- set gamesList = collections.games | reverse | forLang(page.lang) | gamesForProvider(page.url) -%}
+{%- from "macros/karma-button.macro.njk" import karmaButton with context -%}
 
-<section
-    class="profile__hero"
-    style="background-image: linear-gradient(to right, {{ color }}, #ffffff)"
-></section>
-<section class="section section--pt-0" style="padding: 0">
-    <div class="container">
-        <div class="profile">
-            <div class="row">
-                <div class="col-lg-8 mb-2">
-                    <div class="d-flex">
-                        <div class="profile__avatar">
-                            {%- set imagePath -%}{{ page.fileSlug }}-logo.webp{%- endset -%}
-                            <img
-                                src="{%- providerImageExists imagePath, metadata.images.providers -%}"
-                                class="rounded d-inline-block"
-                                alt="logo-proveedor"
-                                width="300"
-                            />
-                        </div>
-                        <div class="profile__description">
-                            <h1 class="profile__description__title">
-                                {{ title }}
-                            </h1>
-                            {% if founded %}
-                                <p class="d-none d-sm-block">Desde el {{ founded }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
+<!-- Provider Review Card -->
+<div class="max-w-6xl mx-auto debug-container">
+    <!-- Provider Review Card -->
+    <div class="rounded-xl shadow-lg dark:shadow-none dark:border dark:border-gray-800">
+        <!-- Background & Logo -->
+        <div 
+          style="background-image: linear-gradient(to right, {{ color }}, #ffffff)"
+          class="bg-red-200 h-20 relative rounded-t-lg">
+            <!-- Provider logo container -->
+            <div class="absolute -bottom-8 left-6">
+                <div class="w-20 h-20 rounded-xl border-4 border-white flex items-center justify-center shadow-lg bg-white">
+                    <!-- Brand logo -->
+                    {%- set imagePath -%}{{ page.fileSlug }}-logo.webp{%- endset -%}
+                    <img
+                      src="{%- providerImageExists imagePath, metadata.images.providers -%}"
+                      class="rounded-lg max-w-full max-h-full object-contain"
+                      alt="{{ title }} logo"
+                      width="64"
+                      height="64"
+                    />
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="section pt-1 section-provider">
-    <div class="container">
-        <div class="archive-title border-0 clearfix pb-0 pb-md-5">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="catalog-description mt-2 ml-1 minimo-read-more">
-                        {{ content | safe }}
-                    </div>
-                    <div class="tax-btns provider-btns d-inline-block">
-                        <button
-                            id="btn-minimo-readmore"
-                            data-original-height=""
-                            data-status="off"
-                            data-text-more="Leer más"
-                            data-text-less="Leer menos"
-                            class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0"
-                        >
-                            Leer más
-                        </button>
-                        <a
-                            href="#providersGames"
-                            role="button"
-                            class="btn btn-dark btn-sm ml-1 mb-2 mb-md-0 mt-md-3 opacity-7"
-                        >
-                            {{ gamesList | length }} juegos
-                        </a>
-                        
-                    </div>
-                    <span
-                        class="provider-meta pull-right mt-0 mt-md-4 mb-3 mb-md-0"
-                    >
-                        <a
-                            class="opacity-7 d-inline-block"
-                            href="{{ '/proveedores/' | locale_url }}"
-                        >
-                            <i
-                                class="fa fa-reply mr-1"
-                                aria-hidden="true"
-                            ></i> </a
-                        ><span class="d-inline-block">‧</span>
-                        
-                        {% if site %}
-                            <a
-                                class="opacity-7"
-                                href="{{ site }}"
-                                target="_blank"
-                                rel="nofollow"
-                            >
-                                <i class="fa fa-link mr-1" aria-hidden="true"></i
-                                >Web
-                            </a>
-                            ‧
-                        {% endif %}
-
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        {{ headquarters }}
-
-                    </span>
-                </div>
-                <div class="col-md-4">
-                    <div class="tax-sticky text-center d-none d-md-block">
-                        <img
-                            src="{{ metadata.images.providers }}{{ page.fileSlug }}-char.webp"
-                            class="rounded mb-2"
-                            alt="{{ page.fileSlug }}-char.webp"
-                            width="200"
-                        />
-                    </div>
-                </div>
+            
+            <!-- Provider tag -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/proveedores/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    <i class="fa fa-reply mr-1" aria-hidden="true"></i>
+                     {{ languages[page.lang].texts.providers }}
+                </a>
             </div>
         </div>
-
-        <div>
-            {%- include "components/bz-banner-hero.njk" -%}
-        </div>
-        <div id="providersGames" class="mt-4">
-            <ul class="row pl-3 pl-md-0">
+        
+        <!-- Card content -->
+        <div class="pt-12 pb-6 px-6">
+            <!-- Provider name and details -->
+            <div class="flex items-start justify-between mb-4">
+                {# Title and founded #}
+                <div class="prose prose-lg">
+                    <h1 class="text-2xl mb-1 flex gap-2 md:gap-3">
+                        {{ title }} 
+                        {{ karmaButton("0") }}
+                    </h1>
+                    {% if founded %}
+                        <p class="text-sm text-gray-500">{{ languages[page.lang].texts.since }} {{ founded }}</p>
+                    {% endif %}
+                    {% if headquarters %}
+                        <p class="text-sm text-gray-500 flex items-center mt-1">
+                            <i class="fa fa-map-marker mr-1" aria-hidden="true"></i>
+                            {{ headquarters }}
+                        </p>
+                    {% endif %}
+                </div>
                 
-                {%- include "components/games/games-list.njk" -%}
-            </ul>
-        </div>       
+                <!-- Games count and karma -->
+                {# <div class="text-right">
+                    <div class="flex relative">
+                        <span class="text-lg md:text-2xl font-bold text-gray-400">
+                           {{ gamesList | length }} juegos
+                        </span>                        
+                    </div>
+                </div> #}
+            </div>
+            
+            <!-- Bottom section -->
+            <div class="pt-3 border-t border-gray-100 dark:border-gray-700">
+                <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-gray-700 pb-3">
+                    <h3 class="text-gray-600 font-medium flex items-center flex-row">
+                        <span class="hidden md:inline-block mr-3">{{ languages[page.lang].texts.vote }}:</span>
+                        <div class="flex flex-row justify-center gap-2">
+                            <button class="btn md:btn-md bg-transparent hover:bg-base-200 text-success" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                👍&nbsp;+{{ config.karmaPoints }}
+                            </button>
+                            <button class="btn md:btn-md bg-transparent hover:bg-base-200 text-error" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                👎&nbsp;-{{ config.karmaPoints }}
+                            </button>
+                        </div>
+                    </h3>
+                    <div class="flex gap-2">
+                        <!-- Opinion button -->
+                        <div class="hidden md:flex items-center gap-2 text-orange-500">
+                          <div class="tooltip w-full" data-tip="Gana +{{ config.karmaPoints * 2 }} puntos">                             
+                              <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
+                                  <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
+                                   {{ languages[page.lang].texts.leaveOpinion }}
+                              </button>
+                          </div>
+                        </div>                    
+                        <!-- Visit site button -->
+                        {% if site %}
+                        <div class="flex items-center gap-2 text-orange-500">
+                          <div class="tooltip" data-tip="Gana +{{ config.karmaPoints }} puntos">
+                              <a href="{{ site }}" target="_blank" rel="nofollow" class="btn btn-primary w-full text-white font-semibold">
+                                  <i data-lucide="external-link" strokeWidth={1} class="h-3"></i>
+                                  <i class="fa fa-link mr-1" aria-hidden="true"></i>
+                                  {{ languages[page.lang].texts.visitSite }}
+                              </a>
+                          </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <!-- Mobile Opinion button -->
+                <div class="md:hidden mb-3 items-center gap-2 text-orange-500">
+                    <div class="tooltip w-full" data-tip="Gana +{{ config.karmaPoints * 2 }} puntos">                  
+                      <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
+                        <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
+                        {{ languages[page.lang].texts.leaveOpinion }}
+                      </button>
+                    </div>
+                </div>                 
+
+                {# Details #}
+                <div class="md:flex md:gap-6">
+
+                  {# Left Details #}
+                  <div class="md:flex-1">
+                    
+                    {# Provider Description with Read More #}
+                    <div class="mb-6">
+                        <div id="expandable-content" class="bz-expandable-content overflow-hidden transition-[max-height] duration-500 ease-in-out prose prose-neutral prose-sm md:prose-base max-w-full">
+                            {{ content | safe }}
+                        </div>
+
+                        <button
+                            id="toggle-read-more"
+                            class="btn btn-outline btn-sm"
+                        >
+                            {{ languages[page.lang].texts.readMore }}
+                        </button>
+                    </div>
+
+                    {# Games Section #}
+                    <div id="providersGames" class="mt-6">
+                        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-400 mb-4">
+                             {{ languages[page.lang].texts.gamesBy }} {{ title }} ({{ gamesList | length }})
+                        </h2>
+
+                        {%- include "components/games/games-list.njk" -%}
+                    </div>
+
+                  </div>
+
+                  {# Right Details - Sticky Sidebar #}
+                  <aside class="md:w-80 md:flex-shrink-0">
+                    <div class="sticky top-4 debug-sticky" style="position: sticky !important; top: 16px !important;">
+                      
+                      {# Quick Stats Card #}
+                      <div class="hidden md:block bg-white rounded-xl shadow-sm p-4 mb-4  dark:bg-gray-700 dark:border-gray-800">
+                          <h3 class="font-semibold  mb-3">{{ languages[page.lang].texts.quickInfo }}</h3>
+                          <div class="space-y-2 text-sm">
+                              {% if founded %}
+                              <div class="flex justify-between">
+                                  <span class="text-gray-600 dark:text-gray-400">{{ languages[page.lang].texts.founded }}:</span>
+                                  <span class="font-medium">{{ founded }}</span>
+                              </div>
+                              {% endif %}
+                              {% if headquarters %}
+                              <div class="flex justify-between">
+                                  <span class="text-gray-600 dark:text-gray-400">{{ languages[page.lang].texts.headquarters }}:</span>
+                                  <span class="font-medium">{{ headquarters }}</span>
+                              </div>
+                              {% endif %}
+                              <div class="flex justify-between">
+                                  <span class="text-gray-600 dark:text-gray-400">{{ languages[page.lang].texts.games }}:</span>
+                                  <span class="font-medium">{{ gamesList | length }}</span>
+                              </div>
+                              {% if site %}
+                                <div class="pt-2">
+                                    <a href="{{ site }}" target="_blank" rel="nofollow" 
+                                        class="btn btn-sm btn-outline w-full">
+                                        <i class="fa fa-link mr-1"></i>
+                                        {{ languages[page.lang].texts.officialSite }}
+                                    </a>
+                                </div>
+                              {% endif %}
+                          </div>
+                      </div>
+
+                      {# Provider Character Image #}
+                      {# <div class="hidden md:block mb-4">
+                          <div class="bg-white rounded-xl shadow-sm p-4 text-center">
+                              <img
+                                  src="{{ metadata.images.providers }}{{ page.fileSlug }}-char.webp"
+                                  class="rounded-lg mb-2 mx-auto"
+                                  alt="{{ page.fileSlug }} character"
+                                  width="200"
+                              />
+                          </div>
+                      </div> #}
+
+                      {# Banner #}
+                      <div class="mb-3 hidden md:block">
+                          {%- include "components/bz-banner-hero.njk" -%}
+                      </div>
+
+
+
+                    </div>
+                  </aside>
+                </div>                  
+
+            </div>
+        </div>
     </div>
-</section>
+</div>
+
+{# Mobile banner for games section #}
+<div class="block md:hidden mt-4 px-4">
+    {%- include "components/bz-banner-hero.njk" -%}
+</div>

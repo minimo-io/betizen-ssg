@@ -2,57 +2,46 @@
 layout: layouts/base.njk
 ---
 
-<section class="section games pt-3">
-    <div class="container">
-        <div class="archive-title mb-0 mb-md-2 pb-0 pb-md-4 clearfix border-0">
-            <div class="row align-items-end">
-                <div class="col-md-12">
-                    <h1 class="page-title mb-2 mb-md-0">
-                        {% if gamesFrom %} 
-                            {{ title }} <span class="badge badge-dark">{{ (collections.games | forCategory( gamesFrom, page.lang )).length }}</span>
-                        {% else %}
-                            {{ title }} <span class="badge badge-dark">{{ (collections.games | forLang( page.lang )).length }}</span>
-                        {% endif %}
+<section class="pl-2">
+    <div class="max-w-6xl mx-auto">
+        {%- include "components/bz-carrousel.njk" -%}
+    </div>
+</section>
 
-                    </h1>
-                    <div
-                        class="catalog-description mt-2 ml-1 mb-2 minimo-read-more"
-                        style="height: 50px"
-                    >
-                        {{ content | safe }}
-                    </div>
-                    <button
-                        id="btn-minimo-readmore"
-                        data-original-height
-                        data-status="off"
-                        data-text-more="{{ languages[page.lang].texts.readMore }}"
-                        data-text-less="{{ languages[page.lang].texts.readLess }}"
-                        class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0"
-                    >
-                        {{ languages[page.lang].texts.readMore }}
-                    </button>
-                </div>
-                {# <div class="col-md-4">
+<section class="max-w-6xl mx-auto mt-10 px-2 md:px-0">
 
-                        <!-- Adspace? -->
-                        
-                </div> #}
-            </div>
+     <div class="prose prose-sm px-2 md:px-5 max-w-full">
+        <h1 class="page-title text-2xl mb-2 mb-md-0">
+            {% if gamesFrom %} 
+                {{ title }} <span class="badge badge-dark">{{ (collections.games | forCategory( gamesFrom, page.lang )).length }}</span>
+            {% else %}
+                {{ title }} <span class="badge badge-dark">{{ (collections.games | forLang( page.lang )).length }}</span>
+            {% endif %}
 
-           
+        </h1>
+
+        <div id="expandable-content" class="overflow-hidden transition-[max-height] duration-500 ease-in-out" style="max-height: 5rem;">
+            {{ content | safe }}
         </div>
+        <!-- Button with ID for the script -->
+        <button id="toggle-read-more" class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0 mt-2">
+            {{ languages[page.lang].texts.readMore }}
+        </button>
+    </div>
+        
 
-        <div class="theme-cards-holder mt-3" style="border-bottom: 0">
-            <ul class="row pl-3 pl-md-0">
-                {% if gamesFrom %} 
-                    {%- set gamesList = collections.games | forCategory( gamesFrom, page.lang ) -%}
-                    {%- include "components/games/games-list.njk" -%}
-                {%else%}
+    <div class="md:mt-6">
+        
+            {% if gamesFrom %} 
+                {%- set gamesList = collections.games | forCategory( gamesFrom, page.lang ) -%}
+                {%- include "components/games/games-list.njk" -%}
+            {%else%}
+                <ul class="row pl-3 pl-md-0">
                     {% include "components/games/subcats-carrousel.njk" %}
                     {%- set gamesList = collections.games | forLang( page.lang ) -%}
-                    {%- include "components/games/games-list.njk" -%}                    
-                {% endif %}
-            </ul>
-        </div>
+                    {%- include "components/games/games-list.njk" -%}       
+                    </ul>             
+            {% endif %}
+        
     </div>
 </section>

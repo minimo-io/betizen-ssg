@@ -2,68 +2,164 @@
 layout: layouts/base.njk
 ---
 
-<section class="section">
-  <div class="container">
-    <h1
-      id="blog-post-title"
-      class="post-title hero-h1 bd-text-purple-bright display-4 mt-4">
-      {{ title }}
-    </h1>
-    <p class="c-entry-summary p-dek text-left">
-      {{ description }}
-    </p>
-    <p class="blog-post-meta"></p>
-    <div class="c-byline Xtext-center">
-      <span class="c-byline__item">
-        <time
-          class="c-byline__item"
-          data-ui="timestamp"
-          datetime="{{ date }}"
-        >
+{# Hero Section #}
+<section class="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 pt-12 md:pt-16">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex flex-col items-center justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px] text-center">
+      <h1>{{ title }}</h1>
+      <h2 class="text-gray-400 !mt-0 !mb-10">
+        {{ description }}
+      </h2>
+    </div>
+    
+    {# Meta Information #}
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-base-content/60 mb-8 not-prose">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+        </svg>
+        <time datetime="{{ date }}" class="font-medium">
           {{ date | postDate }}
         </time>
-      </span>
-    </div>
-    <p></p>
-    <p class="c-share">
-      <a
-        class="c-share-item c-share-facebook"
-        target="_blank"
-        rel="nofollow"
-        href="https://www.facebook.com/sharer/sharer.php?text={{ title | url }}&amp;u={{ metadata.url | url }}{{ page.url | url }}"
-        data-analytics-social="facebook"
-      ></a>
-      {# <a
-        class="c-share-item c-share-twitter ml-1"
-        target="_blank"
-        rel="nofollow"
-        href="https://twitter.com/intent/tweet?text={{ title | url }}&amp;url={{ metadata.url | url }}{{ page.url | url }}"
-        data-analytics-social="twitter"
-      ></a> #}
-    </p>
-    <span class="clearfix"></span>
-    <div class="row">
-      <div class="col-lg mb-md-0 mb-3">
-          <div class="post-content">
-            <style>
-              .post-content {
-                margin-top: 2%;
-              }
-            </style>
-            <figure class="figure">
-              <img
-                src="{{ metadata.images.posts }}{{ page.fileSlug }}-featured.webp"
-                class="figure-img img-fluid rounded"
-                alt="post-image-{{ slugOverride }}"
-              />
-              <figcaption class="figure-caption text-right"></figcaption>
-            </figure>
-             {%- include "components/bz-banner-hero.njk" -%}			
-            {{ content | safe }}
-			     
-          </div>
       </div>
-	  
+      
     </div>
   </div>
 </section>
+
+{# Main Content Section #}
+<section class="max-w-4xl mx-auto px-4 pt-6 pb-12">
+  
+  {# Featured Image #}
+  <div class="mb-12">
+    <figure class="relative overflow-hidden rounded-2xl shadow-xl">
+      <img 
+        src="{{ metadata.images.posts }}{{ page.fileSlug }}-featured.webp"
+        alt="{{ title }}"
+        class="w-full h-64 md:h-96 object-cover transition-transform duration-700 hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+    </figure>
+  </div>
+
+  {# Banner Component #}
+  <div class="mb-8">
+    {%- include "components/bz-banner-hero.njk" -%}
+  </div>
+
+  {# Article Content #}
+  <article class="prose md:prose-lg max-w-none">
+    <div class="post-content bg-base-100 rounded-2xl border border-base-200/50 p-6 md:p-8 shadow-sm">
+      {{ content | safe }}
+    </div>
+  </article>
+
+  {# Bottom Navigation or Related Posts could go here #}
+  <div class="mt-12 pt-8 border-t border-base-200">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-base-content/60">
+        <span class="text-sm">¿Te gustó este artículo?</span>
+      </div>
+      <div class="flex gap-2">
+        <a href="/blog" class="btn btn-outline btn-sm">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+          </svg>
+          Volver al blog
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  /* Enhanced prose styling for post content */
+  .post-content {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+  }
+
+  .post-content h1,
+  .post-content h2,
+  .post-content h3,
+  .post-content h4,
+  .post-content h5,
+  .post-content h6 {
+    color: hsl(var(--p));
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.875rem;
+    border-bottom: 2px solid hsl(var(--p) / 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .post-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .post-content p {
+    margin-bottom: 1.5rem;
+    color: hsl(var(--bc) / 0.8);
+  }
+
+  .post-content blockquote {
+    border-left: 4px solid hsl(var(--p));
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    background: hsl(var(--p) / 0.05);
+    border-radius: 0.5rem;
+    font-style: italic;
+  }
+
+  .post-content code {
+    background: hsl(var(--n) / 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .post-content pre {
+    background: hsl(var(--n));
+    color: hsl(var(--nc));
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    margin: 2rem 0;
+  }
+
+  .post-content img {
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+  }
+
+  .post-content ul,
+  .post-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+
+  .post-content li {
+    margin-bottom: 0.5rem;
+    color: hsl(var(--bc) / 0.8);
+  }
+
+  .post-content a {
+    color: hsl(var(--p));
+    text-decoration: underline;
+    text-decoration-color: hsl(var(--p) / 0.3);
+    text-underline-offset: 0.2rem;
+    transition: all 0.2s ease;
+  }
+
+  .post-content a:hover {
+    text-decoration-color: hsl(var(--p));
+    color: hsl(var(--p) / 0.8);
+  }
+</style>

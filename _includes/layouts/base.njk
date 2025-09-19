@@ -1,5 +1,6 @@
+{# _includes/layouts/base.njk #}
 <!doctype html>
-<html lang="{{ page.lang }}" dir="{{ languages[page.lang].dir or 'ltr' }}">
+<html lang="{{ page.lang }}" dir="{{ languages[page.lang].dir or 'ltr' }}" data-theme="{{ config.theme }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,76 +11,91 @@
         {%- if description -%}<meta name="description" content="{{ description }}">{% endif %}
         <meta name="robots" content="index,follow" />
 
+                {% set google_locale = page.lang %}
+        {% if google_locale == 'pt-br' %}{% set google_locale = 'pt-BR' %}{% endif %}
+        <script src="https://accounts.google.com/gsi/client?hl={{ google_locale }}" defer></script>
+
+        
+
         <link rel="shortcut icon" href="/assets/favs/favicon.ico">
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favs/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favs/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favs/favicon-16x16.png">        
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favs/favicon-16x16.png">
 
         <link rel="alternate" hreflang="{{ page.lang }}" href="{{ metadata.url }}{{ page.url }}" />
         {%- for link in page.url | locale_links %}
             <link rel="alternate" hreflang="{{ link.lang }}" href="{{ metadata.url }}{{ link.url }}" />
         {%- endfor %}
-        <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url | locale_url('es') }}"/>        
-        <link rel="canonical" href="{{ metadata.url }}{{ page.url }}"/>         
+        <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url | locale_url('es') }}"/>
+        <link rel="canonical" href="{{ metadata.url }}{{ page.url }}"/>
 
 
         {#- Atom and JSON feeds included by default #}
         <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
         <link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
 
-        <link rel="dns-prefetch" href="//fonts.googleapis.com/" />
+        {# <link rel="dns-prefetch" href="//fonts.googleapis.com/" /> #}
         <link rel="dns-prefetch" href="//unpkg.com/" />
         <link rel="dns-prefetch" href="//cdn.jsdelivr.net/" />
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com/" />
 
-        {#-
-                		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
-                		1. You can add to them using `{% css %}`
-                		2. You can get from them using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
-                		3. You can do the same for JS: {% js %}{% endjs %} and <script>{% getBundle "js" %}</script>
-                		4. Learn more: https://github.com/11ty/eleventy-plugin-bundle
-                		#}
+        {# Tailwind / DaisyUI #}
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        {# <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> #}
+        <link rel="stylesheet" href="{{ '/assets/app.css' | url }}">
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+ 
+        {# Flickity  #}
+        <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-        {#- Add an arbitrary string to the bundle #}{%- css %} * { box-sizing: border-box; }{% endcss %}
-        {#- Add the contents of a file to the bundle #}
+        {# Lucide icons #}
+        <script src="https://unpkg.com/lucide@latest" defer></script>
 
-        {%- css %}
-            {% include "public/css/base.css" %}
-            {% include "public/css/block-library.css" %}
-            {% include "public/css/others.css" %}
-            {% include "public/css/flickity.css" %}
-            {% include "public/css/betizen.css" %}
-            {% include "public/css/modal.css" %}
-        {% endcss %}
+        {# Animate #}
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
 
-    
+
+        {# {%- css %}
+            {% include "public/css/app.css" %}
+        {% endcss %} #}
+
+        <script>
+            window.i18n = {{ languages | dump | safe }};
+            window.currentLang = '{{ page.lang }}';
+            window.c = { log: console.log.bind(console) };
+
+            (function() {
+                const savedTheme = localStorage.getItem('bz_theme') || 'cmyk';
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            })();
+
+        </script>
         {%- js %}
-            {% include "public/js/jquery.min.js" %}
-            {% include "public/js/tether.min.js" %}
-            {% include "public/js/popper.min.js" %}
-            {% include "public/js/bootstrap.min.js" %}
-            
-            {% include "public/js/jquery-migrate.min.js" %}
+            {% include "public/js/core/state.js" %}
+            {% include "public/js/core/api.js" %}
+            {% include "public/js/modules/auth.js" %}
+            {% include "public/js/modules/voting.js" %}
 
-            {% include "public/js/flickity.pkgd.min.js" %}
-            {% include "public/js/js.cookie.min.js" %}
-            {% include "public/js/micromodal.min.js" %}
-            {% include "public/js/scripts.js" %}
-            
-        {% endjs %} 
-        {#- Or add from node_modules #}
-        {# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
-            {#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-        {# <style>
+            {% include "public/js/toast.js" %}
+            {% include "public/js/app.js" %}
+        {% endjs %}
+
+        <style>
             {% getBundle "css" %}
-        </style> #}
-        <link href='{% getBundleFileUrl "css" %}' rel="stylesheet" />
+        </style>
 
+        {# <link href='{% getBundleFileUrl "css" %}' rel="stylesheet" /> #}
         {#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-        {#- <link rel="stylesheet" href="/{% getBundleFileUrl "css" %}"> #}
-        {# <script>
+        {# <link rel="stylesheet" href="/{% getBundleFileUrl "css" %}"> #}
+
+        <script>
             {% getBundle "js" %}
-        </script> #}
-        <script src="{% getBundleFileUrl "js" %}"></script>
+        </script>
+        {# <script src="{% getBundleFileUrl "js" %}"></script> #}
 
         {# Schema #}
         {# <script type="application/ld+json">
@@ -89,39 +105,65 @@
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9FEXZ8H3E"></script>
         <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-S9FEXZ8H3E');
-        </script>        
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-S9FEXZ8H3E');
+        </script>
     </head>
-    <body class="home blog woocommerce dokan-theme-dokan">
+    <body>
 
-        <script type="text/javascript">window.onload = new function(){var hd = document.getElementsByTagName('head').item(0);var js = document.createElement('script'); js.setAttribute('language', 'javascript'); js.setAttribute('src', 'https://certify.gpwa.org/script/betizen.org/'); hd.appendChild(js); return false;}</script>        
-
+        <script type="text/javascript">window.onload = new function(){var hd = document.getElementsByTagName('head').item(0);var js = document.createElement('script'); js.setAttribute('language', 'javascript'); js.setAttribute('src', 'https://certify.gpwa.org/script/betizen.org/'); hd.appendChild(js); return false;}</script>
 
         {%- include "components/bz-message.njk" %}
         {%- include "components/bz-nav.njk" %}
 
+        <main id="main">
+            {{ content | safe }}
+        </main>
 
-        <div class="cookiePolicy d-none">
+        {%- include "components/bz-footer.njk" %}
+
+        {# {%- include "components/schema.njk" -%} #}
+
+        {# <div class="cookiePolicy d-none">
             <div class="cookieDescription"></div>
             <div>
                 <button class="MuiButtonBase-root MuiButton-root muiButtonBase MuiButton-contained cookieAction MuiButton-containedSecondary muiButtonContainedSecondary" tabindex="0" type="button"><span class="MuiButton-label">Accept</span><span class="MuiTouchRipple-root"></span>
                 </button>
             </div>
+        </div> #}
+
+        {# Modal #}
+        <dialog id="bz_modal_1" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold"></h3>
+            <div class="py-4 text-sm md:text-sm"></div>
+            <div class="modal-action mt-0">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    {# <button onclick="setupAndShowModal({ title: '', body:''  }, false)" class="btn">{{ languages[page.lang].texts.close }}</button> #}
+                    <button class="btn">{{ languages[page.lang].texts.close }}</button>
+                </form>
+            </div>
+        </div>
+        </dialog>
+
+        {# Fixed Button #}
+        <div class="chat chat-end fixed right-6 bottom-6 md:right-12 flex">
+            {# <div class="w-fit">           
+                <div class="chat-bubble w-[180px] chat-bubble-secondary bg-secondary/60 hover:bg-secondary hover:cursor-pointer text-white text-sm relative -top-2">
+                    Fantastic game!
+                </div>
+                
+                <div class="chat-footer opacity-50 ml-1 relative -top-1">Pepe G. at 12:46</div>
+            </div> #}
+
+            <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-lg md:btn-xl btn-secondary btn-circle shadow-lg">
+                <i data-lucide="message-square-dot" strokeWidth={1} class="text-white"></i>
+            </button>            
         </div>
 
-        <main id="main" class="site-main main">
-            {{ content | safe }}
-        </main>
 
-        {%- include "components/bz-modal.njk" %}
-        {%- include "components/bz-footer.njk" %}
-
-        {%- include "components/schema.njk" -%}
-
-        <!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
     </body>
 </html>

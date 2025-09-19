@@ -1,0 +1,20 @@
+{# _includes/components/bz-youtube.njk #}
+{% if not youtube %}
+    <a href="{{ bonus.link }}" target="_blank" rel="nofollow noopener">
+{% else %}
+    <a class="btn-bz-modal" data-modal-full="true" data-modal-body='<iframe class="rounded-lg" width="100%" height="100%" src="https://www.youtube.com/embed/{{ youtube }}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'>
+{% endif %}
+        <img
+            src="{{ splashPath }}"
+            alt="{{ title | slugify }}"
+            class="w-full h-48 object-cover"
+        />
+        <div class="absolute inset-0 flex items-center justify-center">
+            <button
+                data-micromodal-trigger="modal-1"
+                class="btn btn-circle btn-primary btn-lg"
+            >
+                <i data-lucide="play" class="h-6 w-6"></i>
+            </button>
+        </div>
+    </a>

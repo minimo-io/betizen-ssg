@@ -1,154 +1,177 @@
 ---
 title: "About us"
-description: "An english about us"
-slugOverride: about us
-hideNormalTitle: true
+description: ""
+slugOverride: about-us
 ---
 
-<style>
-  .section{
-     padding:0 !important;
-   }
-  .section ~ .section {
-       padding:inherit !important;
-   }
-  .hero h1, .hero h4, .hero h1, .hero h4{
-     color:white !important;
+<div class="max-w-6xl mx-auto">
 
-  }
-  .hero {
-      position: relative;
-      /* top:-242px; */
-  }
-
-  .profile__hero {
-      position: relative;
-      /* top:-242px; */
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block !important;
-      width: 100%;
-      min-height: 300px !important;
-      filter: brightness(.7);
-      background-image: url({{ metadata.images.site }}/hero-example-2.webp);
-      border-radius:10px;
-  }
-</style>
-
-
-<div class="mt-1" style="min-height: 300px; position: relative; display: block">
-  <section
-    class="profile__hero profile__hero_game"
-    alt="about-us-header"
-  ></section>
-  <section class="hero hero--xs w-100 pt-0 pt-4" style="margin-bottom: 5%">
-    <div class="container">
-      <h1 class="display-2 text-bold mt-4">
-        What is Betizen?
-      </h1>
-      <h4 class="text-gray-soft text-regular mx-4">
-        We are here to end so much "b@*&!it" in the world of online betting, but still being <i>zen</i> about it 🤣
-        Take a look at the site to discover new
-        <a href="{{ '/casinos/'  | locale_url  }}" class="opacity-8 dotted-3" title="casinos">betting platforms</a> with their no deposit bonuses,
-        <a href="/juegos/" class="opacity-8 dotted-3" title="juegos">jackpot games</a> and
-        <a
-          href="{{ '/programas-de-afiliados/' | locale_url }}"
-          class="opacity-8 dotted-3"
-          title="programs de afiliados"
-          >affiliate programs</a
-        > that will allow you to make money online!
-        - <a class="opacity-8 dotted-3" href="#know-more">Learn more below</a>
-      </h4>
-    </div>
-  </section>
-</div>
-
-<section class="section">
-  <div class="container">
-    <div class="row">
-      <div id="container">
-        <div id="content" role="main">
-          {# <hr class="wp-block-separator" /> #}
-          <div
-            class="wp-block-group is-layout-flow wp-block-group-is-layout-flow"
-          >
-            <div class="wp-block-group__inner-container">
-              <h2
-                class="post-title text-center mt-5 mt-lg-5 wp-block-heading"
-                id="know-more"
-              >
-                Extreme Transparency in Online Betting
-              </h2>
+    <!-- Header with Casino Review Style -->
+    <div class="rounded-xl shadow-lg mb-8 dark:shadow-none dark:border dark:border-gray-800">
+        <!-- Background & Logo -->
+        <div 
+          style="background-image: linear-gradient(to right, #4f46e5, #7c3aed)"
+          class="bg-red-200 h-20 relative rounded-t-lg">
+            
+            <!-- Back tag -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    Home
+                </a>
             </div>
-          </div>
-          <div class="post-content mb-5 text-justify">
-            <p>
-              Hey! We are an iGaming affiliates. What-the-heck is that? It means
-              we make money every time we refer a user to a betting platform and
-              he/she places a bet (via Revenue-Share or CPA).
-            </p>
-
-            <p>
-              <strong class="text-dark"
-                >Do you also want to make money online by being an
-                affiliate?</strong
-              >
-              <a rel="nofollow noopener" href="https://ig.me/m/betizen_org"
-                >Send us a message</a
-              >
-              and we'll get you stared!
-            </p>
-            <p>
-              There are (too) many
-              <a href="{{ '/casinos/' | locale_url }}">online casinos</a>, too
-              much regulation (of the shi***y kind). That you might feel lost.
-              So... here we are. Betizen, cutting through the BS in online
-              betting, but still being zen about it 🤣.
-            </p>
-            <p>
-              So to clear things out, (and avoid getting lost in the glitz):
-            </p>
-            <p>
-              What is a good casino for us? Well, it's not that hard, just one
-              that is transparent about what is offering, the conditions for
-              withdrawing, and that well... PAYS when it has to! One that let's
-              you limit your gambling and earn a buck.
-            </p>
-            <p>
-              What is a good affiliate program? Also simple, one that is not
-              tricky about admin fees, that pay what the program promises, one
-              with a responsive affiliate manager and that has a good system
-              (with API).
-            </p>
-            <p>
-              What is a good game studio / provider? One that creates great,
-              fair audited games that are fun to bet on!
-            </p>
-
-            <p>Don't be fooled by flashy facades.</p>
-
-            <h2>
-              Join the Betizen community – And get insider info about new
-              platforms, bonuses, games and affiliate programs.
-            </h2>
-            <p>
-              We're independent, so our loyalty lies solely with you. We're here
-              to help you find the perfect online playground to try your luck -
-              sounds simple, and it is!
-            </p>
-            <p>
-              When in doubt,
-              <a href="https://www.instagram.com/betizen_org">get in touch</a>
-              via Instagram, we are there to help! Follow us, choose a platform,
-              place your bets, (in a crypto casino if possible), then, be a zen
-              player, we've got you covered! :)
-            </p>
-            <p>And remember to have fun. And when the fun stops, get help.</p>
-            <p>Good luck! 🎰</p>
-          </div>
         </div>
-      </div>
+        
+        <!-- Card content -->
+        <div class="pt-12 pb-6 px-6">
+            <!-- Title and subtitle -->
+            <div class="flex flex-col items-start justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px]">
+                <h1>What is Betizen? 🤌</h1>
+                <h2 class="text-gray-400 !mt-0 !mb-10">
+                  We are the first Casino, Binary, and Forex listings site with the right incentives: <span class="text-neutral dark:text-gray-100">karma, merit, and proof-of-work</span>. You decide Betizen's rankings by spreading your karma.
+                </h2>
+
+                {# Stats #}
+                {%- include "components/bz-stats.njk" %}
+
+
+            </div>
+
+            <!-- FAQ -->
+            <div class="join join-vertical w-full mt-10">
+              
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  What exactly is Betizen?
+                </div>
+                <div class="collapse-content prose md:prose-lg min-w-full prose-p:my-[10px]">
+                  <p>
+                    The era of fraudulent casino and affiliate sites is over.
+                    <br />
+                    The online betting market has changed.
+                  </p>
+
+                  <p>Have you ever visited sites full of ads? Ok, that is NOT Betizen.</p>
+
+                  <p>Affiliates who promoted unregulated sites have now obtained licenses and fiercely defend regulated gaming—or they work for the industry.
+                  
+                  Meanwhile, casino, forex, and binary sites continue entering regulated markets <a class="italic" href="#">not always with approved licenses</a>, confusing players, users, the general public, and regulators.</p>
+
+                  <p>We believe that the best possible solution comes from the market itself. Directly from the experiences of <i>players</i>, for <i>players</i>.</p>
+
+
+                  <p>🌟 It is from this place that Betizen (re)emerged with the mission to offer just one thing: <span class="font-black">reliable & auditable listings and rankings</span> for players, operators, and managers.</p>
+
+                </div>
+              </div>
+
+              {# FAQ 2 #}
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  How do we get trustworthy listings?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p><span class="font-bold"></span> Listings on Betizen depend on collective experience. On the (auditable) votes of participants.
+                  <br />
+                  <span class="italic">(Our v2 even foresees blockchain technology to bring transparency to vote auditing).</span>
+                                    
+                  </p>
+
+                  <p>Usually affiliate sites showcase brands and operators for the best price. Betizen is not naïve—we are affiliates indeed. But we reserve spaces for sponsors, and in doing so we purify our listings, which depend exclusively on "<strong>karma</strong>".</p>
+
+                  <p>This way, we fight real fraud <strong>by including all sites</strong> in the possibility of being listed and <strong>earning their place</strong> through good operational practices. And being judged by the public.</p>
+
+                  <p>Sites with valid licenses will be properly marked in green.</p>
+                </div>
+              </div>        
+
+              {# FAQ 3 #}
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  Karma, merit, and proof-of-work?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>
+                      <strong>What is karma?</strong> Karma is what drives Betizen (and life!).
+                      <br />
+                      Earn karma by interacting with the site and other users, and distribute karma through your votes, thus altering the site listings.
+                    </p>
+
+                    <p>
+                      <strong>Why merit?</strong> Only users who have earned karma by interacting and benefiting the community will be able to vote, <u>transfer karma</u>, and alter the rankings.
+                    </p>
+
+                    <p>
+                      <strong>Why proof-of-work?</strong> Proof-of-work (a concept from the Bitcoin world) means that only those who contribute their effort to improve the community will be able to earn karma, vote, and influence the direction of the community.
+                    </p>                    
+                </div>
+              </div>                     
+              
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  How do you make money?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>We are affiliates of some sites, which means we receive a commission if you register through our links. However, this does not affect the listings, which are determined by the community’s "<strong>karma</strong>".</p>
+                </div>
+              </div>
+              
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  Are your reviews honest?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>Absolutely, our foundation is built on earning and honoring users' trust. There are paid and unpaid reviews. The paid ones are marked accordingly. But even paid reviews don’t affect the fact that listings and rankings are determined by the community’s "<strong>karma</strong>".</p>
+
+                  <p>
+                    Our reputation depends on our users’ trust. If a casino is bad, we say it without fear, even if we lose money. If it’s very bad, it goes on our <strong>blacklists</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  How to include a new site?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>You can do it yourself (if you have enough <strong>karma</strong>) by accessing the “Add a site” button at the top of every page.</p>
+                </div>
+              </div>                 
+              
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  How can I contact you?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>You can contact us through our social media, especially Instagram (<a href="{{ config.links.instagram }}" target="_blank" rel="noopener noreferrer">@betizen_org</a>) where we reply quickly to all inquiries.</p>
+                </div>
+              </div>
+
+           
+              
+            </div>
+            
+            <div class="alert alert-lg alert-info alert-soft mt-8">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6 hidden md:flex">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <div>
+                <h3 class="md:text-lg font-bold">Do you have more questions?</h3>
+                <div class="text-xs">Write to us on Telegram and we’ll respond instantly</div>
+              </div>
+              <div>
+                <a href="{{ config.links.instagram }}" target="_blank" rel="noopener noreferrer" class="btn btn-info text-white btn-sm">@betizen_org</a>
+              </div>
+            </div>
+
+        </div>
+
     </div>
-  </div>
-</section>
+
+</div>

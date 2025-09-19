@@ -2,10 +2,10 @@
     {% set detailText = languages[page.lang].texts[detail] %}
 
     {% if detail == "bad" %}
-        <span class="badge badge-danger badge-pill">x {{ detailText }}</span>
+        <span class="badge badge-soft badge-error badge-pill badge-sm md:badge-md">x {{ detailText }}</span>
     {% elif detail == "average" %}
-        <span class="badge badge-warning badge-pill">∼{{ detailText }}</span>
+        <span class="badge badge-soft badge-warning badge-pill badge-sm md:badge-md">∼{{ detailText }}</span>
     {% elif detail == "good" %}
-        <span class="badge badge-success badge-pill">✓ {{ detailText }}</span>
+        <span class="badge badge-soft badge-success badge-pill badge-sm md:badge-md">✓ {{ detailText }}</span>
     {% endif %}
 {% endmacro %}

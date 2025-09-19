@@ -23,32 +23,42 @@
 
 
 {%- if not bonus.noHtmlImage -%}
-<div class="card card-bonus mb-3">
-  <div class="card-body">
-    <h5 class="card-title text-center">
-     {{ bonus.title or title }}&nbsp;<a
-        href="{{ bonus.link }}"
-        class="knowmore-icon-link text-white"
-        ><sup><i class="fa fa-info-circle" aria-hidden="true"></i></sup
-      ></a>
-    </h5>
-    <p class="card-text text-white text-center">
-      {{ bonus.text or description }}
-    </p>
-    <a
-      rel="noopener nofollow"
-      target="_blank"
-      role="button"
-      href="{{ bonus.link }}"
-      class="btn btn-bonus btn-outline-brand btn-block mb-1 ml-0 btn-customcolor-inverted text-uppercase"
-    >
-      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-      {{ languages[page.lang].texts.tryBonus }}
-    </a>
-  </div>
-</div>
+    <div class="md:border-b border-base-200 dark:border-gray-700 my-0 block mt-2"></div>
+
+    <div class="card text-primary-content mb-3 md:px-0">
+      <div class="card-body prose md:prose-lg prose-h2:mb-2">
+        <h2 class="card-title justify-center text-center">
+          {{ bonus.title or title }}
+        </h2>
+        {# <p class="text-center">
+          {{ bonus.text or description }}
+        </p> #}
+        <div class="card-actions justify-center">
+          <a
+            rel="noopener nofollow"
+            target="_blank"
+            role="button"
+            href="{{ bonus.link }}"
+            class="btn btn-outline btn-primary btn-block uppercase"
+          >
+            <i class="fa fa-thumbs-up mr-2" aria-hidden="true"></i>
+            {{ languages[page.lang].texts.tryBonus }}
+          </a>
+        </div>
+      </div>
+    </div>
+
 {% else %}
-  <a target="_blank" href="{{ bonus.link }}" rel="noopener nofollow">
-    <img class="rounded-xl animated pulse infinite" src="{{ metadata.images.casinos }}{{bonus.noHtmlImage}}" alt="{{ page.fileSlug }}-bonus" />
-  </a>
+
+    <a target="_blank" href="{{ bonus.link }}" rel="noopener nofollow" class="mt-3 flex">
+      <img class="rounded-xl bz-swing-and-pulse animate__animated animate__swing" src="{{ metadata.images.casinos }}{{bonus.noHtmlImage}}" alt="{{ page.fileSlug }}-bonus" />
+    </a>
+ 
 {%- endif -%}
+
+{# Banner #}
+<div class="flex justify-center text-center mt-5">
+  <a href="{{ languages[page.lang].promo.url }}" target="_blank" rel="nofollow noopener">
+    <img alt="banner-250x250" src="{{ languages[page.lang].promo.external_250x250 | safe }}" class="w-full rounded-lg" />
+  </a>
+</div>

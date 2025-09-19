@@ -1,25 +1,32 @@
 {%- from "macros/details.njk" import fieldScore with context -%}
 
-<div class="list-index list-group mt-1 mb-4">
-    <a
-        href="#premios"
-        class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-    >
-        {{ languages[page.lang].texts.details.prizes}}
-        {{ fieldScore(areas.prizes) }}
-    </a>
-    <a
-        href="#funciones-y-mecanica"
-        class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-    >
-        {{ languages[page.lang].texts.details.functions }}
-        {{ fieldScore(areas.functions) }}
-    </a>
-    <a
-        href="#tematica"
-        class="list-group-item d-flex justify-content-between align-items-center font-weight-bolder"
-    >
-        {{ languages[page.lang].texts.details.theme }}
-        {{ fieldScore(areas.theme) }}
-    </a>
+<div class="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 mt-3">
+    <ul class="list">
+        <a href="#premios" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 text-blue-500 dark:text-blue-400 font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.details.prizes }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(areas.prizes) }}
+            </div>
+        </a>
+        
+        <a href="#funciones-y-mecanica" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 border-b border-gray-100 dark:border-gray-700 text-blue-500 dark:text-blue-400 font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.details.functions }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(areas.functions) }}
+            </div>
+        </a>
+        
+        <a href="#tematica" class="list-row hover:bg-gray-50 dark:hover:bg-gray-700 text-blue-500 dark:text-blue-400 font-medium font-weight-bolder no-underline py-3">
+            <div>
+                {{ languages[page.lang].texts.details.theme }}
+            </div>
+            <div class="text-right">
+                {{ fieldScore(areas.theme) }}
+            </div>
+        </a>
+    </ul>
 </div>

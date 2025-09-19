@@ -5,6 +5,7 @@ module.exports = {
   images: {
     site: "/assets/imgs/site/",
     casinos: "/assets/imgs/casinos/",
+    binaries: "/assets/imgs/binaries/",
     bonuses: "/assets/imgs/bonuses/",
     games: "/assets/imgs/games/",
     banners: "/assets/imgs/banners/",

@@ -1,46 +1,53 @@
-<div class="container casino-featured casino-single-featured">
-  <div class="row">
-    <div class="col-6 col-sm">
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title text-truncate">{{ languages[page.lang].texts.maxWithdrawal }}</h5>
-          <p class="card-text display-4" xstyle="line-height:58px;">
-            {{ maxWidthdrawal }}
-          </p>
+<div class="container mx-auto my-2 md:mx-4 md:px-4 md:-left-2 relative">
+      <div class="flex flex-col gap-2">
+
+        {# <div class="divider my-0 flex md:hidden"></div> #}
+
+        <!-- Founded -->
+        {% if founded %}
+          <div class="text-center">
+            <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.founded }}</h3>
+            <p class="text-2xl md:text-xl font-bold">{{ founded }}</p>
+          </div>    
+           <div class="border-b border-base-200 dark:border-gray-700 my-0"></div>
+        {% endif %}
+
+        {# Max withdrawal #}
+        <div class="text-center">
+          <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.maxWithdrawal }}</h3>
+          <p class="text-2xl md:text-xl font-bold">{{ maxWidthdrawal }}</p>
         </div>
-      </div>
-    </div>
-    <div class="col-6 col-sm">
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title text-truncate">{{ languages[page.lang].texts.minDeposit }}</h5>
-          <p class="card-text display-4">{{ minDeposit }}</p>
+        
+        <div class="border-b border-base-200 my-0 dark:border-gray-700"></div>
+        
+        {# Min deposit #}
+        <div class="text-center">
+          <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.minDeposit }}</h3>
+          <p class="text-2xl md:text-xl font-bold">{{ minDeposit }}</p>
         </div>
-      </div>
-    </div>
-    <div class="col-6 col-sm mt-3 mt-sm-0">
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title text-truncate">{{ languages[page.lang].texts.minWithdrawal }}</h5>
-          <p class="card-text display-4">{{ minWidthdrawal }}</p>
+        
+        <div class="border-b border-base-200 my-0 dark:border-gray-700"></div>
+        
+        {# Min withdrawal #}
+        <div class="text-center">
+          <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.minWithdrawal }}</h3>
+          <p class="text-2xl md:text-xl font-bold">{{ minWidthdrawal }}</p>
         </div>
-      </div>
-    </div>
-    <div class="col-6 col-sm-12 mt-sm-0">
-      <div class="card mt-3 mt-md-3">
-        <a href="#licenses">
-          <div class="card-body text-center">
-            <h5 class="card-title text-truncate">{{ languages[page.lang].texts.license }}</h5>
-            <p class="card-text display-4 text-truncate">
-              <span class="licensesColorDot"
-                ><span class="badge badge-success badge-pill"
-                  >&nbsp;</span
-                ></span
-              >{{ license }}
+        
+        <div class="border-b border-base-200 my-0 dark:border-gray-700"></div>
+        
+        {# License #}
+        <div class="text-center">
+          <a href="#licenses" class="block">
+            <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.license }}</h3>
+            <p class="text-2xl md:text-xl font-bold truncate flex items-center justify-center">
+              <span class="inline-flex items-center mr-2">
+                <span class="badge badge-success w-3 h-3 rounded-full p-0"></span>
+              </span>{{ license }}
             </p>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
-    </div>
-  </div>
+
+      <div class="border-b border-base-200 my-0 dark:border-gray-700 md:hidden mt-2"></div>
 </div>

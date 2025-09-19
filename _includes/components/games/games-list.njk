@@ -1,74 +1,86 @@
-{%- css %}.games-list{}{% endcss %} 
+{%- css %}.games-list{}{% endcss %}
 
-{% for game in gamesList %}
 
-    <li class="col-6 col-md-3 pl-0 pl-md-1">
-        <div class="theme-card {% if game.data.featured -%}gameListFeatured{%-endif-%}">
-            <div class="theme-card__body">
-                {%- if game.data.featured -%}
-                    <span class="featured-text animated infinite pulse"><i class="fa fa-bell mr-1" aria-hidden="true"></i>{{ languages[page.lang].texts.featured }}</span>
-                {%- endif -%}
-                <a class="d-block" href="{{ game.url }}">
-                    <img
-                        width="400"
-                        height="300"
-                        src="{{ metadata.images.games }}{{
-                            game.fileSlug
-                        }}-splash.webp"
-                        class="theme-card__img wp-post-image"
-                        alt="{{ game.data.title | slugify }}"
-                    />
-                </a>
-                <a
-                    class="theme-card__body__overlay btn btn-brand btn-sm"
-                    href="{{ game.url }}"
-                >
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 p-3 md:p-0">
+    {% for game in gamesList %}
+    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 {% if game.data.featured %}ring-2 ring-primary{% endif %}">
+        <!-- Featured Badge -->
+        {% if game.data.featured %}
+        <div class="absolute top-2 left-2 z-10">
+            <div class="badge badge-primary badge-lg animate-pulse">
+                <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 2L3 7v11a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V7l-7-5z"/>
+                </svg>
+                {{ languages[page.lang].texts.featured }}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Game Image -->
+        <figure class="relative overflow-hidden">
+            <a href="{{ game.url }}" class="block">
+                <img
+                    width="400"
+                    height="300"
+                    src="{{ metadata.images.games }}{{ game.fileSlug }}-splash.webp"
+                    alt="{{ game.data.title | slugify }}"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                />
+            </a>
+            
+            <!-- Play Button Overlay -->
+            <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="{{ game.url }}" class="btn btn-primary btn-sm">
                     {{ languages[page.lang].texts.freePlay }}
                 </a>
-                <div class="rtp-content d-none d-md-block">
-                    <p>RTP</p>
-                    <h6>{{ game.data.game.rtp }}</h6>
+            </div>
+
+            <!-- RTP Badge (hidden on mobile) -->
+            <div class="absolute top-2 right-2 hidden md:block">
+                <div class="bg-base-100 bg-opacity-90 rounded-lg p-2 text-center">
+                    <p class="text-xs text-base-content opacity-70 mb-0">RTP</p>
+                    <h6 class="text-sm font-bold text-primary mb-0">{{ game.data.game.rtp }}</h6>
                 </div>
             </div>
-            <div class="theme-card__footer">
-                <div class="theme-card__footer__item">
-                    <a
-                        class="theme-card__title mr-1"
-                        href="/juego/analisis-goblin-cave-slot/"
-                    >
-                        {{ game.data.title | safe }}
+        </figure>
+
+        <!-- Card Content -->
+        <div class="card-body p-4">
+            <!-- Game Title -->
+            <h3 class="card-title text-base">
+                <a href="/juego/analisis-goblin-cave-slot/" class="link link-hover text-base-content">
+                    {{ game.data.title | safe }}
+                </a>
+            </h3>
+
+            <!-- Game Info -->
+            <div class="flex flex-wrap gap-2 text-sm">
+                <!-- Provider -->
+                <div class="badge badge-outline">
+                    <a href="{{ game.data.provider.url }}" class="link link-hover">
+                        {{ game.data.provider.name }}
                     </a>
-                    <div class="theme-card__info">
-                        <ul class="prod_cats_list">
-                            <li>
-                                <a href="{{ game.data.provider.url }}">{{
-                                    game.data.provider.name
-                                }}</a>
-                            </li>
-                            <li
-                                style="color: #838e95"
-                                title="{{ languages[page.lang].texts.volatility }}"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                            >
-                                <i
-                                    class="fa fa-thermometer-2"
-                                    aria-hidden="true"
-                                ></i>
-                                {{ game.data.game.volatility }}
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-                <div class="theme-card__footer__item">
-                    <p class="theme-card__price">
-                        <span class="woocommerce-Price-amount amount">
-                            <span class="woocommerce-Price-currencySymbol">#</span
-                            >{{ game.data.game.ranking }}
-                        </span>
-                    </p>
+                
+                <!-- Volatility -->
+                <div 
+                    class="badge badge-ghost tooltip" 
+                    data-tip="{{ languages[page.lang].texts.volatility }}"
+                >
+                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                    {{ game.data.game.volatility }}
+                </div>
+            </div>
+
+            <!-- Ranking -->
+            <div class="card-actions justify-end mt-2">
+                <div class="badge badge-secondary badge-lg">
+                    #{{ game.data.game.ranking }}
                 </div>
             </div>
         </div>
-    </li>
-{% endfor %}
+    </div>
+    {% endfor %}
+</div>

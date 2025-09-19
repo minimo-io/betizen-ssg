@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@variant dark ([data-theme="dark"] &);
+
+:root {
+  --bz-text-secondary: #838e95;
+
+  --titles-color: rgb(23, 25, 36);
+  --subtitle-color: rgb(88, 102, 126);
+  --bz-bg-grey: rgb(248, 249, 250);
+  --bz-bg-grey-border: #e9ecef;
+  --bz-grey-text: rgba(128, 128, 128, 0.8);
+  --bz-grey-dark-text: rgba(128, 128, 128);
+  --carousel-image-height: 136px;
+
+  --bz-blue: blue;
+  --bz-black: black;
+  --bz-red: #dc3545;
+  --bz-yellow: #f9c733;
+  --bz-gold: #cba627;
+  --bz-green: #68cb54;
+}
+
+/* Force Tailwind to generate these classes */
+@layer utilities {
+  .generate-classes {
+    @apply p-0 w-screen h-screen max-w-none max-h-none rounded-none flex flex-col flex-1 overflow-auto max-w-lg w-11/12;
+  }
+}
+
+[data-theme="dark"] {
+  .invert-logo {
+    @apply invert;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Nested carousel styles */
+.nested-carousel-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nested-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.nested-carousel-cell {
+  min-width: 100%;
+  flex-shrink: 0;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+
+.carousel-cell {
+  width: 280px;
+  height: 180px;
+  margin-right: 15px;
+  border-radius: 10px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-smooth:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  transition: all 0.3s ease-out 0s;
+  cursor: pointer;
+  z-index: 5;
+  top: 0;
+}
+.carousel-smooth:after {
+  right: 0;
+  background-image: linear-gradient(to left, white 0%, transparent 100%);
+}

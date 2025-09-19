@@ -1,206 +1,172 @@
 {# _includes/components/bz-carrousel.njk #}
-<div class="carousel-container mt-4">
-    <!-- Flickity HTML init -->
-    <div class="carousel mx-2 mt-3 mt-md-1 mb-5 Xmb-md-0">
-        
-        <!-- First cell with nested carousel for multiple featured casinos -->
-        <div class="carousel-cell carousel-cell-smaller nested-carousel-wrapper">
-            <div class="nested-carousel-container">
-                <div class="nested-carousel">
-                    <!-- First featured casino -->
-                    <a
-                        href="{{ languages[page.lang].promo.casino.url }}"
-                        target="_blank"
-                        class="nested-carousel-cell"
-                    >
-                        <div
-                            class="carousel-image-small"
-                            style="background-image: url('{{ languages[page.lang].promo.casino.logo }}');"
-                        ></div>
-                        <div class="featured-text featured-gold">
-                            🥇 {{ languages[page.lang].texts.featured }}
-                        </div>
-                        <span class="carousel-button featured-gold btn btn-scale">{{ languages[page.lang].texts.visit }}</span>
-                    </a>
-                    
-                    <!-- Add more featured casinos here -->
-                    {% if languages[page.lang].promo.casino2 %}
+
+<div class="main-carousel carousel-smooth mt-0">
+
+
+    <div class="carousel-cell !w-[136px] nested-carousel-wrapper">
+        <div class="nested-carousel-container">
+            <div class="nested-carousel">
+
+                {# First nested casino #}
+                <a
+                    href="{{ languages[page.lang].promo.casino.url }}"
+                    target="_blank"
+                    class="nested-carousel-cell !w-[136px] !h-[166px]"
+                >
+                    <div
+                        class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px]"
+                        style="background-image:url('{{ languages[page.lang].promo.casino.logo }}');"
+                    ></div>
+
+                    <div class="text-white bg-(--bz-gold) rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                        🥇 {{ languages[page.lang].texts.featured }}
+                    </div>
+
+
+                    <div class="mt-1 btn bg-(--bz-gold) text-white btn-xs btn-block rounded-2xl">
+                        {{ languages[page.lang].texts.visit }}
+                    </div>
+                </a>
+                
+                {# Second nested casino #}
+                {% if languages[page.lang].promo.casino2 %}
                     <a
                         href="{{ languages[page.lang].promo.casino2.url }}"
                         target="_blank"
                         class="nested-carousel-cell"
                     >
+
                         <div
-                            class="carousel-image-small"
-                            style="background-image: url('{{ languages[page.lang].promo.casino2.logo }}');"
-                        ></div>
-                        <div class="featured-text featured-gold">
+                            class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px]"
+                            style="background-image:url('{{ languages[page.lang].promo.casino2.logo }}')"
+                        ></div>                    
+
+                        <div class="text-white bg-(--bz-gold) rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
                             🥇 {{ languages[page.lang].texts.featured }}
                         </div>
-                        <span class="carousel-button featured-gold btn btn-scale">{{ languages[page.lang].texts.visit }}</span>
-                    </a>
-                    {% endif %}
-                    
-                    {% if languages[page.lang].promo.casino3 %}
-                    <a
-                        href="{{ languages[page.lang].promo.casino3.url }}"
-                        target="_blank"
-                        class="nested-carousel-cell"
-                    >
-                        <div
-                            class="carousel-image-small"
-                            style="background-image: url('{{ languages[page.lang].promo.casino3.logo }}');"
-                        ></div>
-                        <div class="featured-text featured-gold">
-                            🥇 {{ languages[page.lang].texts.featured }}
+  
+                        <div class="mt-1 btn bg-(--bz-gold) text-white btn-xs btn-block rounded-2xl">
+                            {{ languages[page.lang].texts.visit }}
                         </div>
-                        <span class="carousel-button featured-gold btn btn-scale">{{ languages[page.lang].texts.visit }}</span>
                     </a>
-                    {% endif %}
-                </div>
-                
+                {% endif %}
 
             </div>
+            
+
         </div>
+    </div>
 
+
+    {# Promo #}
+    <div class="carousel-cell !w-[290px] !h-[136px]">
         <a
-            href="{{ languages[page.lang].promo.url }}"
-            target="_blank"
-            rel="nofollow noopener"
-            class="carousel-cell carousel-cell-big"
-        >
-            <div class="carousel-cell-image-overlay"></div>
+            href="{{ languages[page.lang].promo.carrouselBonus.url }}"
+            target="_blank" rel="nofollow noopener noreferrer">
             <div
-                class="carousel-image"
-                style="
-                    background-image: url('{{ metadata.images.site }}bonus-bg-1.webp');
-                "
+                class="w-full h-[136px] bg-[size:290px] rounded-[15px]"
+                style="background-image:url('{{ languages[page.lang].promo.carrouselBonus.image }}')"
             ></div>
-            <h3 class="carousel-cell-big-title">
-                {{ languages[page.lang].promo.cta }}
-            </h3>
-
-            <div class="featured-text featured-black">{{ languages[page.lang].texts.bonus }}</div>
-            <span class="carousel-button btn btn-scale featured-black">{{ languages[page.lang].texts.tryBonus }}</span>
+            <div class="text-white bg-black rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                {{ languages[page.lang].texts.bonus }}
+            </div>
+            <div class="mt-1 btn btn-primary text-white btn-xs btn-block rounded-2xl">
+                {{ languages[page.lang].promo.carrouselBonus.cta }}
+            </div>
         </a>
+    </div>    
+
+    {# Game 1 #}
+    <div class="carousel-cell !w-[136px] !h-[136px]">
         <a
             href="{{ "/juego/slot-fortune-tiger/" | locale_url }}"
-            target="_blank"
-            class="carousel-cell carousel-cell-smaller">
+            target="_blank">
             <div
-                class="carousel-image-small"
-                style="
-                    background-image: url('/assets/imgs/games/slot-fortune-tiger-logo.webp');
-                "
+                class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px] bg-[url('/assets/imgs/games/slot-fortune-tiger-logo.webp')]"
             ></div>
-            <div class="featured-text">
-                <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
+            <div class="text-white bg-secondary rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                Popular
             </div>
-            <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
-        </a>           
+            <div class="mt-1 btn bg-secondary text-white btn-xs btn-block rounded-2xl">
+                {{ languages[page.lang].texts.freePlay }}
+            </div>
+        </a>
+    </div>
+
+    {# Game 2 #}
+    <div class="carousel-cell !w-[136px] !h-[166px]">
         <a
             href="{{ "/juego/tragamonedas-jack-y-las-habichuelas-magicas/" | locale_url }}"
-            target="_blank"
-            class="carousel-cell carousel-cell-smaller"
-        >
+            target="_blank">
             <div
-                class="carousel-image-small"
-                style="
-                    background-image: url('/assets/imgs/games/tragamonedas-jack-y-las-habichuelas-magicas-logo.webp');
-                "
+                class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px] bg-[url('/assets/imgs/games/tragamonedas-jack-y-las-habichuelas-magicas-logo.webp')]"
             ></div>
-            <div class="featured-text">
-                <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
+            <div class="text-white bg-secondary rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                Popular
             </div>
-            <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
+            <div class="mt-1 btn bg-secondary text-white btn-xs btn-block rounded-2xl">
+                {{ languages[page.lang].texts.freePlay }}
+            </div>
         </a>
+    </div>  
+
+    {# Game 3 #}
+    <div class="carousel-cell !w-[136px] !h-[166px]">
         <a
             href="{{ "/juego/thunderstruck-ii-video-bingo/" | locale_url }}"
-            target="_blank"
-            class="carousel-cell carousel-cell-smaller"
-        >
+            target="_blank">
             <div
-                class="carousel-image-small"
-                style="
-                    background-image: url('/assets/imgs/games/thunderstruck-ii-video-bingo-logo.webp');
-                "
+                class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px] bg-[url('/assets/imgs/games/thunderstruck-ii-video-bingo-logo.webp')]"
             ></div>
-            <div class="featured-text">
-                <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
+            <div class="text-white bg-secondary rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                Popular
             </div>
-            <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
+            <div class="mt-1 btn bg-secondary text-white btn-xs btn-block rounded-2xl">
+                {{ languages[page.lang].texts.freePlay }}
+            </div>
         </a>
+    </div>     
+
+    {# Game 4 #}
+    <div class="carousel-cell !w-[136px] !h-[166px]">
         <a
             href="{{ "/juego/conquestera-tragaperras/" | locale_url }}"
-            target="_blank"
-            class="carousel-cell carousel-cell-smaller"
-        >
+            target="_blank">
             <div
-                class="carousel-image-small"
-                style="
-                    background-image: url('/assets/imgs/games/conquestera-tragaperras-logo.webp');
-                "
+                class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px] bg-[url('/assets/imgs/games/conquestera-tragaperras-logo.webp')]"
             ></div>
-            <div class="featured-text">
-                <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
+            <div class="text-white bg-secondary rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                Popular
             </div>
-            <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
-        </a>        
+            <div class="mt-1 btn bg-secondary text-white btn-xs btn-block rounded-2xl">
+                {{ languages[page.lang].texts.freePlay }}
+            </div>
+        </a>
+    </div>  
+
+
+    {# Game 5 #}
+    <div class="carousel-cell !w-[136px] !h-[166px]">
         <a
             href="{{ "/juego/tragamonedas-monopoly-megaways/" | locale_url }}"
-            target="_blank"
-            class="carousel-cell carousel-cell-smaller"
-        >
+            target="_blank">
             <div
-                class="carousel-image-small"
-                style="
-                    background-image: url('/assets/imgs/games/tragamonedas-monopoly-megaways-logo.webp');
-                "
+                class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px] bg-[url('/assets/imgs/games/tragamonedas-monopoly-megaways-logo.webp')]"
             ></div>
-            <div class="featured-text">
-                <i class="fa fa-line-chart mr-1" aria-hidden="true"></i>Popular
+            <div class="text-white bg-secondary rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
+                Popular
             </div>
-            <span class="carousel-button btn btn-scale">{{ languages[page.lang].texts.freePlay }}</span>
-        </a>     
-    </div>
+            <div class="mt-1 btn bg-secondary text-white btn-xs btn-block rounded-2xl">
+                {{ languages[page.lang].texts.freePlay }}
+            </div>
+        </a>
+    </div>  
+
+
+    
 </div>
 
-<style>
-/* Nested carousel styles */
-.nested-carousel-container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.nested-carousel {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-    height: 100%;
-}
-
-.nested-carousel-cell {
-    min-width: 100%;
-    flex-shrink: 0;
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-}
-</style>
-
 <script>
-    var flkty = $(".carousel").flickity({
-        cellAlign: "left",
-        prevNextButtons: false,
-        contain: true,
-        wrapAround: false,
-        freeScroll: false,
-        groupCells: true,
-        autoPlay: false,
-        pageDots: true,
-    });
-    flkty.next();
 
     // Simple nested carousel
     let currentSlide = 0;
@@ -213,4 +179,19 @@
             carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
         }, 3000);
     }
+
+
+    var flkty2 = new Flickity('.main-carousel', {
+        cellAlign: "left",
+        prevNextButtons: false,
+        contain: true,
+        wrapAround: false,
+        freeScroll: false,
+        groupCells: true,
+        autoPlay: false,
+        pageDots: true,
+    });
+    {# flkty2.next();     #}
+
+
 </script>

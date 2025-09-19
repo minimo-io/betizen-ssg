@@ -1,0 +1,82 @@
+{%- from "macros/reputation-button.njk" import reputationButton with context -%}
+
+
+{% if aiOverview %}
+    
+    {% from '_includes/macros/aiMethods.njk' import getSentimentLabel, getSentimentColor, getBarColor with context %}
+ 
+
+    <div class="card bg-gray-100 w-full mx-auto border-b border-gray-200 dark:bg-gray-700 dark:border-gray-800 !rounded-lg">
+        <div class="card-body py-5 px-6 md:py-6 md:px-8">
+            <!-- Header -->
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-primary"></i>
+                    <h3 class="text-lg md:text-lg font-semibold">{{ languages[page.lang].texts.aiOverview }}</h3>
+                </div>
+
+                {# Button #}
+                {# {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, false, "Xd-none Xd-md-block btn-scale") }} #}
+
+                {# <button class="btn btn-outline btn-sm">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    Details
+                </button> #}
+            </div>
+            
+            {# Veredict #}
+            <p class="text-sm md:text-sm">
+                {% if aiOverview.reason %}
+                    {{ aiOverview.reason | safe }}
+                {% else %}
+                    {{ excerpt | safe }}
+                {% endif %}
+
+                {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, false, "", true) }}   
+            </p>
+            <!-- Stats Row -->
+            
+            {# <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-4 h-4 text-gray-500"></i>
+                    <span class="text-sm text-gray-600">Mentions:</span>
+                    <span class="font-semibold">847</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="star" class="w-4 h-4 text-gray-500"></i>
+                    <span class="text-sm text-gray-600">Avg Rating:</span>
+                    <span class="font-semibold">4.3</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
+                    <span class="text-sm text-gray-600">Trend:</span>
+                    <span class="font-semibold text-green-600">+12%</span>
+                </div>
+            </div> #}
+            {{ sentimentData.sentimentLabel }}
+
+            <!-- Sentiment Bar -->
+            <div class="mt-1 md:mt-2 border-t border-base-300 pt-4 md:pt-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-gray-600 dark:text-gray-400">{{ languages[page.lang].texts.overallSentiment }}</span>
+                    <span class="text-sm font-semibold {{ getSentimentColor(aiOverview.count) }}">
+                        {{ getSentimentLabel(aiOverview.count) }}
+                    </span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="{{ getBarColor(aiOverview.count) }} h-2 rounded-full" style="width: {{ aiOverview.count }}%"></div>
+                </div>
+            </div>
+
+            <!-- Trending Discussions -->
+            {# <div>
+                <span class="text-sm text-gray-600 mb-2 block">Top concepts:</span>
+                <div class="flex flex-wrap gap-2">
+                    <div class="badge badge-outline badge-sm">New AI features</div>
+                    <div class="badge badge-outline badge-sm">Mobile app update</div>
+                    <div class="badge badge-outline badge-sm">Customer service</div>
+                </div>
+            </div> #}
+        </div>
+    </div>
+{% endif %}

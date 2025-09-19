@@ -2,70 +2,128 @@
 layout: layouts/base.njk
 ---
 
-<div class="container mt-3">
-    <div class="row">
-        <div id="container">
-            <div id="content" role="main">
-                <h1 class="page-title mb-2 mb-md-0 mb-3">{{ title }}</h1>
-                <div class="row">
-                    <div class="Xcol-lg-8 Xmb-md-0 Xmb-3 col">
-                        <div
-                            class="product type-product status-publish has-post-thumbnail product_cat-landing-corporate first instock downloadable shipping-taxable purchasable product-type-simple">
-                            <div class="theme-description catalog-description pt-2">
-                                <p>{{ description | safe }}</p>
-                                <div>
-                                    <div class="row align-items-end">
-                                        <div class="col-md-8">&nbsp;</div>
-                                        <div
-                                            class="col-md-4 mb-4 text-right providers-list-view-selector"
-                                        >
-                                            <div
-                                                class="btn-group"
-                                                role="group"
-                                                aria-label="Visualization type"
-                                            >
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-light btn-galleryview active"
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
-                                                    data-original-title="Gallery view"
-                                                >
-                                                    <i
-                                                        class="fa fa-th"
-                                                        aria-hidden="true"
-                                                    ></i>
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    class="btn btn-light btn-listview"
-                                                    data-toggle="tooltip"
-                                                    data-placement="top"
-                                                    data-original-title="List view"
-                                                >
-                                                    <i
-                                                        class="fa fa-th-list"
-                                                        aria-hidden="true"
-                                                    ></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="theme-cards-holder"
-                                    style="border-bottom: 0">
-                                    <ul class="row list-galleryview">
-                                        {%- set providersList = collections.provider | forLang(page.lang) -%}
-                                        {%- include "components/providers/providers-list.njk" -%}
-                                    </ul> 
-                                </div>
-                                {{ content | safe }}
-                            </div>
-                        </div>
+<div class="max-w-6xl mx-auto">
+    <!-- Page Header Card -->
+    <div class="rounded-xl shadow-lg dark:shadow-none dark:border dark:border-gray-800 mb-8">
+        <!-- Background Header -->
+        <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-20 relative rounded-t-lg">
+            <!-- Back button -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    {{ languages[page.lang].texts.home }}
+                </a>
+            </div>
+            
+            <!-- Page title container -->
+            <div class="absolute -bottom-4 left-6">
+                <div class="bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg">
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-0">
+                        {{ title }}
+                    </h1>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page content -->
+        <div class="pt-8 pb-6 px-6">
+            <!-- Description -->
+            {% if description %}
+            <div class="prose prose-neutral prose-sm md:prose-base mb-6 max-w-full">
+                <p>{{ description | safe }}</p>
+            </div>
+            {% endif %}
+            
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <input 
+                    type="text" 
+                    id="providerSearch"
+                    placeholder="{{ languages[page.lang].texts.search }}" 
+                    class="input input-bordered w-full"
+                />
+            </div>
+            
+            <div class="flex justify-between items-center mb-4">
+                <div class="text-sm text-gray-500">
+                    <span id="resultsCount"></span>
+                </div>
+            </div>
+            
+            <div class="theme-cards-holder">
+                <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none p-0">
+                    {%- set providersList = collections.provider | forLang(page.lang) -%}
+                    {%- include "components/providers/providers-list.njk" -%}
+                </ul>
+                
+                <!-- No Results Message -->
+                <div id="noResults" class="hidden text-center py-8">
+                    <div class="text-gray-500">
+                        <div class="text-4xl mb-4">🔍</div>
+                        <p class="text-lg">No providers found</p>
+                        <p class="text-sm">Try adjusting your search terms</p>
                     </div>
                 </div>
+            </div>
+            
+            <div class="prose min-w-full mt-10">
+                {{ content | safe }}
             </div>
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('providerSearch');
+    const providersList = document.querySelector('.theme-cards-holder ul');
+    const noResults = document.getElementById('noResults');
+    const resultsCount = document.getElementById('resultsCount');
+    
+    const providerCards = providersList.querySelectorAll('.provider-card');
+    const totalProviders = providerCards.length;
+    
+    function updateResultsCount(visible) {
+        resultsCount.textContent = `${visible} of ${totalProviders} providers`;
+    }
+    
+    function filterProviders() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        providerCards.forEach(card => {
+            const title = card.dataset.title;
+            
+            if (title.includes(searchTerm)) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        updateResultsCount(visibleCount);
+        
+        if (visibleCount === 0 && searchTerm !== '') {
+            noResults.classList.remove('hidden');
+            providersList.classList.add('hidden');
+        } else {
+            noResults.classList.add('hidden');
+            providersList.classList.remove('hidden');
+        }
+    }
+
+    // Search functionality
+    searchInput.addEventListener('input', filterProviders);
+    
+    // Initialize count
+    updateResultsCount(totalProviders);
+    
+    // Clear search on escape
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            searchInput.value = '';
+            filterProviders();
+        }
+    });
+});
+</script>

@@ -1,60 +1,51 @@
+{# _includes/components/providers/providers-list.njk #}
 {% for provider in providersList %}
     {% if provider.data.color %}
-        <li
-            class="col-6 col-md-3 galleryview-item featured-provider"
-            data-buttontext="Juegos"
-            data-gamescount="8 juegos"
-            data-title="1x2 Gaming"
-            data-url="{{ provider.url }}"
-            data-image="{{ metadata.images.providers }}{{ provider.fileSlug }}-logo.webp"
-        >
-            <div class="theme-card">
+        <li class="provider-card" 
+            data-title="{{ provider.data.title | lower }}"
+            data-url="{{ provider.url }}">
+            
+            <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 group relative">
+                
+                <!-- Featured Badge -->
                 {% if provider.data.featured %}
-                    <span class="featured-text"><i class="fa fa-bell mr-1" aria-hidden="true"></i>{{ languages[page.lang].texts.featured }}</span>
+                    <div class="absolute top-2 right-2 z-10">
+                        <div class="badge badge-primary badge-sm gap-1">
+                            <i class="fa fa-bell"></i>
+                            <span class="hidden sm:inline">{{ languages[page.lang].texts.featured }}</span>
+                        </div>
+                    </div>
                 {% endif %}
-                <div class="theme-card__body">
-                    <a
-                        class="d-block"
-                        href="{{ provider.url }}"
-                    >   
+                
+                <!-- Card Image -->
+                <figure class="relative overflow-hidden">
+                    <a href="{{ provider.url }}" class="block">
                         {%- set imagePath -%}{{ provider.fileSlug }}-logo.webp{%- endset -%}
                         <img
-                            fetchpriority="high"
-                            decoding="async"
+                            src="{%- providerImageExists imagePath, metadata.images.providers -%}"
+                            alt="{{ provider.data.title }}"
+                            class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
                             width="400"
                             height="300"
-                            src="{%- providerImageExists imagePath, metadata.images.providers -%}"
-                            class="theme-card__img wp-post-image"
-                            alt="{{page.fileSlug}}"
+                            loading="lazy"
                         />
                     </a>
-                    <a
-                        class="theme-card__body__overlay btn btn-brand btn-sm"
-                        href="{{ provider.url }}"
-                        >Ver juegos</a
-                    >
-                </div>
-                <div class="theme-card__footer">
-                    <div class="theme-card__footer__item">
-                        <a
-                            class="theme-card__title mr-1"
-                            href="{{ provider.url }}"
-                            >{{ provider.data.title }}</a
-                        >
-                        <p class="theme-card__info"></p>
-                        {# <ul class="prod_cats_list">
-                            <li><a href="#">? juegos</a></li>
-                        </ul> #}
-                        <p></p>
+                    
+                    <!-- Overlay Button -->
+                    <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <a href="{{ provider.url }}" class="btn btn-primary btn-sm">
+                            Ver juegos
+                        </a>
                     </div>
-                    <div class="theme-card__footer__item">
-                        <p class="theme-card__price">
-                            <span class="woocommerce-Price-amount amount"
-                                ><span class="woocommerce-Price-currencySymbol"></span
-                                >&nbsp;</span
-                            >
-                        </p>
-                    </div>
+                </figure>
+                
+                <!-- Card Body -->
+                <div class="card-body p-3">
+                    <h3 class="card-title text-sm leading-tight">
+                        <a href="{{ provider.url }}" class="link link-hover">
+                            {{ provider.data.title }}
+                        </a>
+                    </h3>
                 </div>
             </div>
         </li>

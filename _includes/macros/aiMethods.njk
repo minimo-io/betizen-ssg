@@ -1,0 +1,17 @@
+{% macro getSentimentLabel(count) %}
+    {%- if count >= 70 -%}
+        {{ languages[page.lang].texts.positive }}
+    {%- elif count >= 40 -%}
+        {{ languages[page.lang].texts.average }}
+    {%- else -%}
+        {{ languages[page.lang].texts.bad }}
+    {%- endif -%}
+{% endmacro %}
+
+{% macro getSentimentColor(count) %}
+  {%- if count >= 70 -%}text-green-600{%- elif count >= 40 -%}text-yellow-600{%- else -%}text-red-600{%- endif -%}
+{% endmacro %}
+
+{% macro getBarColor(count) %}
+  {%- if count >= 70 -%}bg-green-500{%- elif count >= 40 -%}bg-yellow-500{%- else -%}bg-red-500{%- endif -%}
+{% endmacro %}

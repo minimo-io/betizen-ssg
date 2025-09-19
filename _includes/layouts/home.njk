@@ -2,78 +2,133 @@
 layout: layouts/base.njk
 eleventyComputed:
     pageTitle: "{{metadata.title}} - {{ title }}"
+    description: "{{ languages[page.lang].texts.tagline }}: {{ languages[page.lang].texts.tagline2 }}"
 ---
-<section class="section pt-0">
-    <div class="container">
+
+<section class="pl-2">
+    <div class="max-w-6xl mx-auto">
         {%- include "components/bz-carrousel.njk" -%}
+    </div>
+</section>
+
+{# Home banner #}
+{% if config.showHomeBanner %}
+    <section class="max-w-6xl mx-auto px-5 mt-12">
         {%- include "components/bz-banner-hero.njk" -%}
+    </section>
+{% endif %}
 
-        <div class="theme-cards-holder">
-            <div class="theme-cards__heading mb-2 mb-md-4">
-                <div>
-                    <h5
-                        id="top-casinos"
-                        class="home-titles bz-title mt-3 theme-cards__title"
-                    >
-                       {{ languages[page.lang].texts.slogan.firstLine }}
-                    </h5>
-                    <p class="home-subtitles bz-subtitle">
-                        {{ languages[page.lang].texts.slogan.secondLine }}
-                    </p>
-                </div>
+<section class="max-w-6xl mx-2 md:mx-auto {% if not config.showHomeBanner %}mt-16{% endif %}">
+    <div>
 
-            <a
-            class="theme-cards__heading__button btn btn-brand btn-heading-suggest-casino text-uppercase bz-btn-shadow"
-            href="https://forms.gle/vMpnv4cFgccHYNp56"
-            target="_blank"
-            rel="noopener nofollow"
-            onclick="gtag('event', 'click', {
-                event_category: 'affiliate',
-                event_label: 'add-casino-button'
-            });"
-            >
-                <i class="fa fa-plus Xfa-lg mr-1" aria-hidden="true"></i>
-                {{ languages[page.lang].texts.addCasino }}
+        <div class="flex flex-col items-start justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px] px-6 md:px-12 mt-12 relative">
+
+            {# Site Tagline Header #}
+            <a href="{{ '/nosotros/' | locale_url }}" class="-top-1 md:top-0 right-2 md:right-1 scale-90 btn btn-secondary btn-xs md:btn-sm text-white shadow-lg z-50 rounded-xl text-xs md:text-sm absolute px-3 hover:border cursor-pointer">
+                {{ languages[page.lang].texts.howWorks }}
             </a>
-            </div>
-            <div class="casinos-table row pt-0">
-                <div class="container mx-2 px-0">
-                    {%- include "components/casinos/casinos-filter.njk" -%}
-                </div>
 
-                <table class="table table-striped table-responsive mx-2">
-                    <tbody class="casinos-table-body">
 
-                        {%- set postsList = collections.casinos | forLang( page.lang ) | sortByOrder | head(20) %}
-                        {% include "components/casinos/casinos-list.njk" %}
-                        
-                    </tbody>
-                </table>
+            <h1 class="!mb-2">{{ languages[page.lang].texts.tagline2 }}</h1>
+            <h2 class="text-gray-400 !mt-0 !mb-6">
+                {{ languages[page.lang].texts.tagline }}: 
+                <strong class="font-bold">{{ languages[page.lang].texts.tagline2 }}</strong>.
+                    {# {{ languages[page.lang].texts.tagline3 }} #}
+            </h2>
 
-                <div class="mx-3 mb-3 w-100">
-                    <a
-                        href="{{ '/casinos/' | locale_url }}"
-                        class="btn btn-light btn-loadmore loadmore-casinos-button btn-block"
-                        ><i class="fa fa-plus fa-2x fa-fw"></i
-                    ></a>
-                </div>
-            </div>
-            {# <a
-                class="btn btn-brand btn-block d-md-none"
-                href="{{ '/casinos/' | locale_url }}"
-                >Ver todos los casinos</a
-            > #}
         </div>
 
-        {%- include "components/bz-subscribe.njk" -%}
 
-        <br />
+        {# Site tagline #}
+        {# <div class="mb-2 mb-md-4 relative">
+
+            <a href="{{ '/nosotros/' | locale_url }}" class="-top-1 md:top-0 right-2 md:right-1 scale-90 btn btn-secondary btn-xs md:btn-sm text-white shadow-lg z-50 rounded-xl text-xs md:text-sm absolute px-3 hover:border cursor-pointer">
+                {{ languages[page.lang].texts.howWorks }}
+            </a>
+
+            <div role="alert" 
+            class="my-4 mx-2 alert alert-info alert-soft flex flex-col justify-star items-start !py-4 !pb-5 !px-6 gap-0 md:!px-10 md:!py-5">          
+                <h2
+                    id="top-casinos"
+                    class="text-lg md:text-3xl text-left font-bold first-letter:uppercase text-neutral/80 mt-2"
+                >
+                   {{ languages[page.lang].texts.tagline2 }}
+                </h2>
+                <h3 class="mt-2 md:mt-3 text-xs md:text-2xl text-gray-400">
+                    {{ languages[page.lang].texts.tagline }}: 
+                    <strong class="font-bold">{{ languages[page.lang].texts.tagline2 }}</strong>.
+                    {{ languages[page.lang].texts.tagline3 }}
+                </h3>
+            </div>
+        </div> #}
+        
+        {# Casino list #}
+        <div>
+
+            {# Actual casino list #}
+            <div class="overflow-x-auto rounded-box border border-base-300 dark:border-gray-700 bg-base-100 p-2 md:px-5 md:mt-6">
+
+                {%- set postsList = collections.casinos | forLang( page.lang ) | sortByOrder | head(20) %}
+                {% include "components/casinos/casinos-list.njk" %}
+
+            </div>
+
+            {# Load more button #}
+            <div class="w-full my-2">
+                <a
+                    href="{{ '/casinos/' | locale_url }}"
+                    class="btn btn-lg rounded-xl btn-soft bg-transparent btn-block hover:bg-base-200"
+                    >
+                   {{ languages[page.lang].texts.loadMore }}
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{# User list #}
+<section class="max-w-6xl px-6 md:px-12 md:mx-auto mt-10 md:mt-16">
+    <div class="flex flex-col items-start justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px]">
+        <h1>{{ languages[page.lang].texts.supporters }} 💪</h1>
+        <h2 class="text-gray-400 !mt-0">{{ languages[page.lang].texts.supportersText }}</h2>
+         <a onclick="alert('{{languages[page.lang].texts.soon }}')" href="{{ config.links.sponsor }}" class="btn md:btn-lg btn-soft btn-secondary">
+            {{ languages[page.lang].texts.becomeSponsor }}
+        </a>
+
+    </div>
+
+    {# Sponsors #}
+    <div class="mt-6">
+        <div class="avatar-group -space-x-6">
+            <div class="avatar">
+                <div class="w-12">
+                <img src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
+                </div>
+            </div>
+            <div class="avatar">
+                <div class="w-12">
+                <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                </div>
+            </div>
+            <div class="avatar">
+                <div class="w-12">
+                <img src="https://img.daisyui.com/images/profile/demo/averagebulk@192.webp" />
+                </div>
+            </div>
+            <div class="avatar">
+                <div class="w-12">
+                <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
+                </div>
+            </div>
+        </div>  
+    </div>    
+</section>
 
 
 
 
-
-<section class="section pt-0">
+{# <section class="section pt-0">
     <div class="container">
         <div class="theme-cards-holder" style="border-bottom: 0">
             <div class="theme-cards__heading mt-1">
@@ -138,4 +193,4 @@ eleventyComputed:
             </div>
         </div>
     </div>
-</section>
+</section> #}

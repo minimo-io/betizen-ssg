@@ -1,12 +1,18 @@
 {% if languages[page.lang].promo.image and languages[page.lang].promo.url %}
-<div class="bz-img-banner mb-2 mt-1 animated pulse infinite">
-    <a href="{{languages[page.lang].promo.url}}"
-    target="_blank"
-    rel="nofollow noopener">
-        <img
-            alt="hero-banner"
-            src="{{ languages[page.lang].promo.image }}"
-        />
-    </a>
-</div>
+    <div class="rounded-xl relative">
+        
+        <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="-top-4 -right-2 md:top-2 md:right-2 scale-90 btn btn-primary btn-soft btn-xs shadow-lg z-50 rounded-full text-xs md:text-sm absolute px-3  hover:border cursor-pointer">
+                {{ languages[page.lang].texts.changeBanner }}
+        </button>
+
+        <a href="{{languages[page.lang].promo.url}}"
+        target="_blank"
+        rel="nofollow noopener">
+            <img
+                class="rounded-xl animate__animated animate__pulse animate__infinite infinite"
+                alt="hero-banner"
+                src="{{ languages[page.lang].promo.image }}"
+            />
+        </a>
+    </div>
 {% endif %}

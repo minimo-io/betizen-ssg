@@ -1,75 +1,56 @@
-<div
-    class="container casino-featured casino-single-featured"
-    style="margin-top: 1%"
->
-    <div class="row">
-        <div class="col-6 col-sm">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">
-                        RTP
-                        <a href="{{ '/blog/que-es-el-rtp-en-las-tragamonedas/'  | locale_url }}"
-                            ><sup
-                                ><i
-                                    class="fa fa-info-circle"
-                                    aria-hidden="true"
-                                ></i></sup
-                        ></a>
-                    </h5>
-                    <p class="card-text display-4">{{ game.rtp or "-" }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-sm">
-            <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">
-                        {{ languages[page.lang].texts.volatility }}
-                        <a
-                            href="{{ '/blog/que-es-la-volatilidad-de-las-tragamonedas/' | locale_url }}"
-                            ><sup
-                                ><i
-                                    class="fa fa-info-circle"
-                                    aria-hidden="true"
-                                ></i></sup
-                        ></a>
-                    </h5>
-                    <p class="card-text display-4 text-truncate">
-                        {{ game.volatility or "-" }}
-                    </p>
-                </div>
-            </div>
+{# _includes/components/games/key-props.njk #}
+<div class="container mx-auto my-2 md:mx-4 md:px-4 md:-left-2 relative">
+    <div class="flex flex-col gap-2">
+        
+        {# RTP #}
+        <div class="text-center">
+            <h3 class="text-sm font-semibold truncate text-primary-content/50 flex items-center justify-center gap-1">
+                RTP
+                <a href="{{ '/blog/que-es-el-rtp-en-las-tragamonedas/'  | locale_url }}" class="text-xs">
+                    <i data-lucide="info" class="h-3 w-3"></i>
+                </a>
+            </h3>
+            <p class="text-2xl md:text-xl font-bold">{{ game.rtp or "-" }}</p>
         </div>
         
+        <div class="border-b border-base-200 my-0 dark:border-gray-700"></div>
+        
+        {# Volatility #}
+        <div class="text-center">
+            <h3 class="text-sm font-semibold truncate text-primary-content/50 flex items-center justify-center gap-1">
+                {{ languages[page.lang].texts.volatility }}
+                <a href="{{ '/blog/que-es-la-volatilidad-de-las-tragamonedas/' | locale_url }}" class="text-xs">
+                    <i data-lucide="info" class="h-3 w-3"></i>
+                </a>
+            </h3>
+            <p class="text-2xl md:text-xl font-bold truncate">{{ game.volatility or "-" }}</p>
+        </div>
+        
+        <div class="border-b border-base-200 my-0 dark:border-gray-700"></div>
+        
+        {# Paylines or Min/Max Bet #}
         {% if game.minMaxBet and tags.includes("bingo") %}
-            <div class="col-6 col-sm mt-3 mt-sm-0">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.minMaxBets }}</h5>
-                        <p class="card-text display-4">{{ game.minMaxBet or "-" }}</p>
-                    </div>
-                </div>
+            <div class="text-center">
+                <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.minMaxBets }}</h3>
+                <p class="text-2xl md:text-xl font-bold">{{ game.minMaxBet or "-" }}</p>
             </div>
         {% else %}
-            <div class="col-6 col-sm mt-3 mt-sm-0">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.paylines }}</h5>
-                        <p class="card-text display-4">{{ game.paylines or "-" }}</p>
-                    </div>
-                </div>
+            <div class="text-center">
+                <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.paylines }}</h3>
+                <p class="text-2xl md:text-xl font-bold">{{ game.paylines or "-" }}</p>
             </div>
         {% endif %}
-
+        
         {% if game.maxWin and game.maxWin != "-" %}
-            <div class="col-6 col-sm-12 mt-sm-0">
-                <div class="card mt-3 mt-md-3">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-truncate">{{ languages[page.lang].texts.maxWin }}</h5>
-                        <p class="card-text display-4">{{ 'x' + game.maxWin }}</p>
-                    </div>
-                </div>
+            <div class="border-b border-base-200 my-0 dark:border-gray-700"></div>
+            
+            {# Max Win #}
+            <div class="text-center">
+                <h3 class="text-sm font-semibold truncate text-primary-content/50">{{ languages[page.lang].texts.maxWin }}</h3>
+                <p class="text-2xl md:text-xl font-bold">{{ 'x' + game.maxWin }}</p>
             </div>
         {% endif %}
     </div>
+
+    <div class="border-b border-base-200 my-0 dark:border-gray-700 md:hidden mt-2"></div>
 </div>

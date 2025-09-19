@@ -1,51 +1,75 @@
-{% for post in postsList | reverse %}
-    {% if post.data.gradientColor %}
-        <div
-        class="card blog-card mt-4 p-2"
-        style="background: linear-gradient(to bottom left, transparent 20%, {{ post.data.gradientColor }} 100%);">
-        <div class="card-body">
-            <div class="post-preview">
-            <a
-                class="post-preview-link"
-                href="{{ post.url }}"
-            >
-                <h2
-                class="catalog-blog-title post-title hero-h1 bd-text-purple-bright display-4"
-                >
-                {{ post.data.title }}
-                </h2>
-                <h3 class="post-subtitle">
-                <p>
-                    {{ post.data.description }}
-                </p>
-                </h3>
-            </a>
-            <p class="post-meta">
-                <small>
-                <a href="#">
-                    <time datetime="2023-09-23T18:10:00+00:00"
-                    >{{ post.data.date | postDate }}</time
-                    >
-                    {# 23 septiembre, 2023 #}
-                </a></small
-                >
-            </p>
-            </div>
-        </div>
-        </div>
-    {% endif %}
-{% endfor %}
+{# _includes/components/posts/posts-list.njk #}
+<div class="blog-card-grid">
+    {% for post in postsList | reverse %}
+        {% if post.data.gradientColor %}
+            <article class="blog-card group relative overflow-hidden rounded-2xl bg-base-100 border border-base-200/50 shadow-lg hover:shadow-2xl transition-all duration-300">
+                {# Gradient Background #}
+                <div class="absolute inset-0 opacity-60" 
+                     style="background: linear-gradient(135deg, transparent 0%, {{ post.data.gradientColor }}22 50%, {{ post.data.gradientColor }}44 100%);"></div>
+                
+                {# Content #}
+                <div class="relative p-6 md:p-8 h-full flex flex-col">
+                    <a href="{{ post.url }}" class="flex-1 no-underline hover:no-underline">
+                        <div class="mb-4">
+                            <h2 class="text-2xl md:text-3xl font-bold text-base-content group-hover:text-primary transition-colors duration-300 leading-tight mb-4">
+                                {{ post.data.title }}
+                            </h2>
+                            
+                            <p class="text-base-content/80 text-lg leading-relaxed line-clamp-3">
+                                {{ post.data.description }}
+                            </p>
+                        </div>
+                    </a>
+                    
+                    {# Meta Information #}
+                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-base-200/30">
+                        <div class="flex items-center gap-2 text-base-content/60">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                            <time datetime="{{ post.data.date | htmlDateString }}" class="text-sm font-medium">
+                                {{ post.data.date | postDate }}
+                            </time>
+                        </div>
+                        
+                        <a href="{{ post.url }}" class="btn btn-sm btn-primary btn-outline group-hover:btn-primary transition-all duration-300">
+                            Leer más
+                            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                {# Decorative Element #}
+                <div class="absolute top-0 right-0 w-32 h-32 opacity-10" 
+                     style="background: radial-gradient(circle, {{ post.data.gradientColor }} 0%, transparent 70%);"></div>
+            </article>
+        {% endif %}
+    {% endfor %}
+</div>
 
-{# 
-{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-<ol reversed class="postlist">
-{% for post in postslist | reverse %}
-	{% if post.data.lang == page.lang %}
-		<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-			<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-			<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
-		</li>
-	{% endif %}
-{% endfor %}
-</ol>
-#}
+<style>
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    .blog-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--p) 0%, var(--s) 50%, var(--a) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .blog-card:hover::before {
+        opacity: 1;
+    }
+</style>

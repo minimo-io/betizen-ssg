@@ -1,0 +1,73 @@
+<div class="overflow-x-auto">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>{{ languages[page.lang].texts.leaderboardRank | default("Rank") }}</th>
+        <th>{{ languages[page.lang].texts.leaderboardUser | default("User") }}</th>
+        <th>{{ languages[page.lang].texts.leaderboardKarma | default("Karma Points") }}</th>
+        <th>{{ languages[page.lang].texts.leaderboardLevel | default("Level") }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- This will be replaced by a loop when the API is implemented -->
+      <!-- row 1 -->
+      <tr>
+        <th>1</th>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar of Hart Hagerty" />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold">Hart Hagerty</div>
+              <div class="text-sm opacity-50">United States</div>
+            </div>
+          </div>
+        </td>
+        <td>10,500</td>
+        <td><div class="badge badge-primary">Gold</div></td>
+      </tr>
+      <!-- row 2 -->
+      <tr>
+        <th>2</th>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704e" alt="Avatar of Brice Swyre" />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold">Brice Swyre</div>
+              <div class="text-sm opacity-50">China</div>
+            </div>
+          </div>
+        </td>
+        <td>9,800</td>
+        <td><div class="badge badge-secondary">Silver</div></td>
+      </tr>
+      <!-- row 3 -->
+      <tr>
+        <th>3</th>
+        <td>
+          <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704f" alt="Avatar of Marjy Ferencz" />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold">Marjy Ferencz</div>
+              <div class="text-sm opacity-50">Russia</div>
+            </div>
+          </div>
+        </td>
+        <td>8,200</td>
+        <td><div class="badge badge-accent">Bronze</div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

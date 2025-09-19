@@ -1,177 +1,234 @@
+{# _includes/components/bz-nav.njk #}
 {%- set currentLangClass = languages[page.lang].menu.flagClass %}
 
-{% from "locale-fix.njk" import localeUrlFix with context %}
-<nav
-    id="nav-header"
-    class="navbar navbar-expand-lg bg-white navbar-light fixed-top"
->
-    <div class="container">
-        <a href="{{ "/" | locale_url }}" lang="{{ page.lang }}" hreflang="{{ page.lang }}" class="navbar-brand zoom">
-            <img
-                src="/assets/imgs/site/betizen-logo.webp"
-                alt="Betizen"
-                title="Betizen"
-            />
-        </a>
-        <div class="d-flex Xml-auto">
-            <ul class="navbar-nav d-lg-none">
-                <li class="nav-item mr-2 animated shake notificationli">
-                    <a class="nav-notifications-box" href="{{ '/bonos/' | locale_url  }}">
-                        <i class="fa fa-bell"></i>
-                        <span class="nav-notifications">37</span>
-                    </a>
-                </li>
-            </ul>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#globalNavbar"
-                aria-controls="globalNavbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+{# Daisy nav #}
+<div class="navbar bg-base-100">
+    <div class="flex max-w-6xl mx-auto w-full">
+
+        
+        <div class="navbar-start w-fit mr-16">
+            {# Mobile menu #}
+            <div class="dropdown block md:hidden">
+
+                {# Hamburger #}
+                <div tabindex="0" role="button" class="pl-0 md:pl-3 btn btn-ghost">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                </div>
+
+                {# Mobile menu items #}
+                <ul
+                    tabindex="0"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+
+                    {% for item in nav[page.lang] %}
+                        {%- set hasChildren = not not item.children -%}
+
+                        {% if hasChildren === false %}
+
+                                    <li><a href="{{ item.url }}">{{ item.text }}</a></li>
+
+                        {% else %}
+
+                            <li>
+                                <details>
+                                <summary>{{ item.text }}</summary>
+                                    <ul class="p-2">
+                                        {% for subCat in item.children %}
+                                            <li>
+                                                <a
+                                                    href="{{ subCat.url }}"
+                                                    >{{ subCat.text }}</a
+                                                >
+                                            </li>
+                                        {% endfor %}                                
+                                    </ul>
+                                </details>
+                            </li>         
+
+                                
+                        {% endif %}             
+                    {% endfor %}
+
+                    <li class="border-t border-base-300 h-[1px] my-1">&nbsp;</li>
+
+                    {# Mobile leaderboard #}
+                    <li class="text-base text-primary-content opacity-80">
+                        <a href="{{ '/leaderboard/' | locale_url }}">
+                            👑 
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+
+                    {# Mobile benefits #}
+                    <li class="text-base text-primary-content opacity-80">
+                        <a href="{{ '/beneficios/' | locale_url }}">
+                            ✨
+                           {{ languages[page.lang].texts.benefits }}
+                        </a>
+                    </li>
+
+                    {# Mobile news #}
+                    <li class="text-base text-primary-content opacity-80">
+                        <a href="{{ '/blog/' | locale_url }}">
+                            🗞️
+                           {{ languages[page.lang].texts.news }}
+                        </a>
+                    </li>                    
+
+                </ul>
+            </div>
+
+            {# Logo #}
+            <a href="{{ "/" | locale_url }}" lang="{{ page.lang }}" hreflang="{{ page.lang }}" class="btn btn-ghost pl-0 md:pl-5 relative">
+                <img
+                    src="/assets/imgs/site/betizen-logo.png"
+                    alt="Betizen"
+                    title="Betizen"
+                    class="h-5 md:h-6 -top-[1px] relative invert-logo"
+                />
+                <div class="absolute -top-1 md:-top-2 -right-3 badge badge-xs md:badge-sm badge-soft badge-secondary text-xs">beta</div>
+            </a>
         </div>
 
-        <div class="collapse navbar-collapse" id="globalNavbar">
-            {# mobile menu #}
-            <div id="term-id-activity-mobile" class="nav-item d-lg-none">
-                <a
-                    class="nav-link dropdown-toggle flag-icon-background {{ currentLangClass }}"
-                    href="/"
-                    data-toggle="dropdown"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    > {{ languages[page.lang].menu.name }}</a
-                >
-                <div class="dropdown-menu">
-                    {% for link in page.url | locale_links %}
-                        {% if  languages[link.lang].menu.flagClass != "flag-icon-br" %}
-                        <a class="{{ languages[link.lang].menu.class }}" href="{{ link.url }}" lang="{{ link.lang }}" hreflang="{{ link.lang }}">
-                            {{ languages[link.lang].menu.name }}
-                        </a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-            <ul class="navbar-nav navbar-main ml-auto order-1">
-                {% for item in nav[page.lang] %}
 
+        {# Desktop menu items #}
+        <div class="navbar hidden lg:flex justify-center">
+
+            <ul class="menu menu-horizontal px-1 gap-2 items-center">
+                {% for item in nav[page.lang] %}
                     {%- set hasChildren = not not item.children -%}
 
                     {% if hasChildren === false %}
-                        <li
-                            id="{{ item.id }}"
-                            class="nav-item nav-item-spread nav-item-lg d-none d-lg-block"
-                        >
-                            <a class="nav-link" href="{{ item.url }}">{{ item.text }}</a>
+
+                        <li class="text-base font-light text-(--bz-text-secondary)">
+                            <a class="px-2 font-normal" href="{{ item.url }}">
+                                {{ item.text }}
+                            </a>
                         </li>
-                        <li
-                            id="{{ item.id }}-mobile"
-                            class="nav-item nav-item-mobile d-lg-none"
-                        >
-                            <a
-                                class="mt-1 btn btn-lg mb-1 btn-knowledge btn-knowledge-purple btn-round btn-md-block mt-sm-1"
-                                href="{{ item.url }}"
-                                >{{ item.text }}</a
-                            >
-                        </li>
+
                     {% else %}
-                        <li
-                            id="{{ item.id }}"
-                            class="nav-item nav-item-lg nav-item-spread dropdown d-none d-lg-block">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="{{ item.url }}"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                >{{ item.text }}</a
-                            >
-                            <div class="dropdown-menu">
-                                <div class="navbar-collapse navbar-top-collapse">
-                                    <ul id="menu-top-menu" class="nav navbar-nav">
-                                        {% for subCat in item.children %}
-                                            <li
-                                                class="menu-item menu-item-type-taxonomy menu-item-object-product_cat"
-                                            >
-                                                <a
-                                                    title
-                                                    href="{{ subCat.url }}"
-                                                    >{{ subCat.text }}</a
-                                                >
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li
-                            id="{{ item.id }}-mobile"
-                            class="nav-item nav-item-mobile Xnav-item-spread dropdown d-lg-none mb-3"
-                        >
-                            <a
-                                class="btn btn-lg mt-1 mb-1 btn-knowledge btn-knowledge btn-round btn-md-block mt-sm-1 dropdown-toggle"
-                                href="{{ item.url }}"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                >{{ item.text }}</a
-                            >
-                            <div class="dropdown-menu">
-                                <div class="navbar-collapse navbar-top-collapse">
-                                    <ul id="menu-top-menu" class="nav navbar-nav">
-                                        {% for subCat in item.children %}
-                                            <li
-                                                class="menu-item menu-item-type-taxonomy menu-item-object-product_cat"
-                                            >
-                                                <a
-                                                    title
-                                                    href="{{ subCat.url }}"
-                                                    >{{ subCat.text }}</a
-                                                >
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    {% endif %} 
+
+                        <li class="text-base Xtext-(--bz-text-secondary) text-primary-content">
+                            <details>
+                                <summary>{{ item.text }}</summary>
+                                <ul class="p-2">
+                                    {% for subCat in item.children %}
+                                        <li>
+                                            <a
+                                                title
+                                                href="{{ subCat.url }}">
+                                                {{ subCat.text }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}                                
+                                </ul>
+                            </details>
+                        </li>         
+
+                            
+                    {% endif %}             
                 {% endfor %}
-               
 
-                <li
-                    id="term-id-activity"
-                    class="nav-item nav-item-spread nav-item-lg d-none d-lg-block dropdown">
+                <li class="text-[12px] font-light text-black mx-2"> / </li>
 
-                    <a
-                        class="nav-link dropdown-toggle flag-icon-background {{ currentLangClass }}"
-                        href="/"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >{{ languages[page.lang].menu.name }}</a
-                    >
-                    <div class="dropdown-menu">
-                        {{ localeUrlFix(fixLang="es") }}
-                        {# {{ localeUrlFix(fixLang="pt-br") }} #}
-                        {{ localeUrlFix(fixLang="en") }}
-                    </div>
-                </li>
-                <li
-                    class="d-none d-md-block nav-item mr-2 animated shake notificationli"
-                >
-                    <a class="nav-notifications-box" href="{{ '/bonos/' | locale_url  }}">
-                        <i class="fa fa-bell"></i>
-                        <span class="nav-notifications">37</span>
+                {# Leaderboard #}
+                <li class="text-base font-light text-primary-content opacity-80">
+                    <a href="{{ '/leaderboard/' | locale_url }}" class="px-2">
+                        {# <i data-lucide="trophy" strokeWidth={1} class="h-[17px]"></i> #}
+                        <span class="relative -top-[2px]">👑</span>
+                        <span>Leaderboard</span>
                     </a>
                 </li>
-                <li class="d-lg-none nav-item nav-item-lg"></li>
+
+                {# Benefits #}
+                <li class="text-base font-light text-primary-content opacity-80">
+                    <a href="{{ '/beneficios/' | locale_url }}" class="px-2 -left-2 relative">
+                        {# <i data-lucide="award" strokeWidth={1} class="h-5"></i> #}
+                        <span class="relative -top-[2px]">✨</span>
+                        <span>{{ languages[page.lang].texts.benefits }}</span>
+                    </a>
+                </li>
+
+                {# News #}
+                <li class="text-base font-light text-primary-content opacity-80">
+                    <a href="{{ '/blog/' | locale_url }}" class="px-2 -left-2 relative">
+                        {# <i data-lucide="award" strokeWidth={1} class="h-5"></i> #}
+                        <span class="relative -top-[2px]">🗞️</span>
+                        <span>{{ languages[page.lang].texts.news }}</span>
+                    </a>
+                </li>                
+
+
             </ul>
         </div>
-    </div>
-</nav>
+
+        {# Nav User #}
+        <div class="flex flex-1 justify-end items-center gap-0 md:gap-3">
+            
+            {# Logged in stuff #}
+            <div class="auth-logged-in hidden">
+                {# Karma button #}
+                <button 
+                    data-modal-title="🧘‍♀️ {{ languages[page.lang].texts.karma.title }}" 
+                    data-modal-body="{{ languages[page.lang].texts.karma.content }}" 
+                    class="btn btn-sm btn-bz-modal !py-0 px-0 md:px-auto btn-ghost btn-rounded md:btn-md relative md:mr-4">
+                    
+                    <div class="bz-karma-count badge badge-soft badge-primary badge-md md:badge-lg text-xs md:text-base">21 karma</div>  
+                </button>
+
+                {# User score button #}
+                {# <button 
+                    data-modal-title="👑 {{ languages[page.lang].texts.levels.title }}" 
+                    data-modal-body="{{ languages[page.lang].texts.levels.content }}" 
+                    class="btn btn-sm btn-bz-modal !py-0 px-0 md:px-auto btn-ghost btn-rounded md:btn-md md:hidden">
+                    
+                    <div class="flex items-center flex-row badge badge-accent badge-md text-xs ml-1">
+                        <span class="relative -top-[2px] hidden">👑</span> 
+                        <span class="text-accent-content">#12</span>
+                    </div>
+                </button> #}
+
+                {# User #}
+                <div
+                    data-modal-title="👑 {{ languages[page.lang].texts.levels.title }}" 
+                    data-modal-body="{{ languages[page.lang].texts.levels.content }}"
+                    class="flex relative items-center flex-row btn-bz-modal cursor-pointer ml-4 mr-4 md:ml-0 scale-110 md:scale-120">
+
+                        {# User score #}
+                        <div class="md:flex absolute -right-4 -top-3 md:-right-7 z-50 items-center flex-row badge badge-accent badge-sm px-1 md:px-2 animate__animated animate__swing">
+                            <div class="relative text-[10px] md:text-[12px] flex items-center">
+                                <span class="hidden md:flex">👑</span>
+                                <span class="md:hidden font-bold">#</span>
+                                <span class="font-bold bz-user-rank">12</span>
+                            </div> 
+                        </div>  
+
+                        {# User image #}
+                        <div class="avatar">
+                            <div class="bg-neutral text-neutral-content w-8 md:w-10 rounded-full hover:ring-[#FBF234] hover:ring-4 hover:ring-offset-3">
+                                <div class="w-8 md:w-10 rounded-full">
+                                    <img class="bz-user-avatar" src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
+                                </div>
+                            </div>
+                        </div>
+                </div>                
+
+            </div>
+
+            {# Logged out stuff #}
+            <div>
+                <div class="auth-logged-out">
+                <button class="btn btn-primary btn-sm md:btn-md btn-login flex items-center text-white">
+                    <i data-lucide="log-in" class="h-4"></i>
+                    {{ languages[page.lang].texts.login }}
+                </button>
+                </div>
+            </div>
+
+
+            
+        </div>
+
+
+  </div>
+</div>

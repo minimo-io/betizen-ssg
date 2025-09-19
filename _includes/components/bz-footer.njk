@@ -1,172 +1,91 @@
-<footer class="footer-mobile d-inline-block d-md-none">
-    <div
-        id="buttonGroup"
-        class="btn-group selectors"
-        role="group"
-        aria-label="Basic example"
-    >
-        <button
-            id="home"
-            type="button"
-            class="btn btn-secondary button-inactive btn-footer-mobile"
-        >
-            <a href="/">
-                <div class="selector-holder">
-                    <i class="fa fa-home fa-ax" aria-hidden="true"></i>
-                    <span>{{ languages[page.lang].texts.home }}</span>
-                </div>
-            </a>
-        </button>
-        <button
-            id="feed"
-            type="button"
-            class="btn btn-secondary button-inactive btn-footer-mobile"
-        >
-            <a href="{{ '/juegos/' | locale_url }}">
-                <div class="selector-holder">
-                    <i class="games-icon fa-ax" aria-hidden="true"></i>
-                    <span>{{ languages[page.lang].texts.games }}</span>
-                </div>
-            </a>
-        </button>
-        <button
-            id="create"
-            type="button"
-            class="btn btn-secondary button-inactive btn-footer-mobile"
-        >
-            <a href="/casinos/">
-                <div class="selector-holder">
-                    <i class="casino-icon fa-ax"></i>
-                    <span>{{ languages[page.lang].texts.casinos }}</span>
-                </div>
-            </a>
-        </button>
-        <button
-            id="account"
-            type="button"
-            class="btn btn-secondary button-inactive btn-footer-mobile"
-        >
-            <a href="{{ '/bonos/' | locale_url  }}">
-                <div class="selector-holder">
-                    <i class="bonus-icon fa-ax" aria-hidden="true"></i>
-                    <span>{{ languages[page.lang].texts.bonuses }}</span>
-                </div>
-            </a>
-        </button>
-    </div>
-</footer>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer__inner">
-            <div
-                class="footer__item d-lg-flex justify-content-lg-between align-items-lg-center"
-            >
-                <ul id="menu-footer" class="nav sub-nav footer__sub-nav">
-                    <li
-                        id="menu-item-1194"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"
-                    >
-                        <a title="about-us" href="{{ '/nosotros/' | locale_url }}">{{ languages[page.lang].texts.aboutUs }}</a>
-                    </li>
-                    <li
-                        id="menu-item-1194"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194 d-none"
-                    >
-                        <a title="Glosario" href="{{ '/glosario/' | locale_url }}">{{ languages[page.lang].texts.glossary }}</a>
-                    </li>
-                    <li
-                        id="menu-item-1194"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"
-                    >
-                        <a title="Proveedores" href="{{ '/proveedores/' | locale_url }}"
-                            >{{ languages[page.lang].texts.providers }}</a
-                        >
-                    </li>
-                    <li
-                        id="menu-item-117"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-117"
-                    >
-                        <a title="Afiliados" href="{{ '/programas-de-afiliados/' | locale_url }}"
-                            >{{ languages[page.lang].texts.affiliates }}</a
-                        >
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle dropdown-normal"
-                            href="#others"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            {{ languages[page.lang].texts.others }}
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="navbar-collapse navbar-top-collapse">
-                                <ul id="menu-top-menu" class="nav navbar-nav">
-                                    <li
-                                        id="term-id-6"
-                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-601"
-                                    >
-                                        <a
-                                            title="Transparencia"
-                                            href="{{ '/transparencia/' | locale_url }}"
-                                            >{{ languages[page.lang].texts.transparency }}</a
-                                        >
-                                        <a title="Rankings" href="{{ '/rankings/' | locale_url }}"
-                                            >{{ languages[page.lang].texts.rankings }}</a
-                                        >
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+<footer class="footer footer-horizontal footer-center text-base-content rounded p-10 gap-0">
+    <nav class="flex flex-col md:flex-row gap-2 md:gap-5 mb-4">
+
+        <div class="flex gap-3">
+
+            {# Games #}
+            <div class="dropdown dropdown-top dropdown-end hover:underline">
+                <div tabindex="0" role="button" class="cursor-pointer flex items-center md:text-lg">
+                    {{ languages[page.lang].footerNav.games.name }}
+                    <i data-lucide="chevron-down" class="h-4"></i>
+                </div>
+                <ul
+                    tabindex="0"
+                    class="menu dropdown-content bg-base-200 rounded-box z-1 mt-4 w-52 p-2 shadow-sm">
+                        {% for item in categories[page.lang] %}
+
+                            <li>
+                                <a href="{{ item.url }}">
+                                    {{ item.text }}
+                                </a>
+                            </li>
+
+                        {% endfor %}                
                 </ul>
-                <p class="hidden-sm-down d-none d-lg-block">
-                    v1.2.16
-                </p>
             </div>
-            <div class="disclaimers nav sub-nav pb-3 d-block">
-                <!-- <img
-                    class="disclaimers-mga"
-                    src="/assets/imgs/site/mga-logo.png"
-                /> -->
-                <img
-                    class="disclaimers-18plus"
-                    src="/assets/imgs/site/18-plus.png"
-                />
-                <a
-                    class="mt-0 pt-0"
-                    href="https://www.begambleaware.org/"
-                    target="_blank"
-                    rel="nofollow"
-                >
-                    <img
-                        class="disclaimers-bga"
-                        src="/assets/imgs/site/begambleawareorg.png"
-                    />
-                </a>
-                <a
-                    href="https://certify.gpwa.org/verify/betizen.org/"
-                    onclick="return GPWAVerificationPopup(this)"
-                    id="GPWASeal"
-                    style="padding-top: 0; margin-right: 10px"
-                    ><img
-                        src="https://certify.gpwa.org/seal/betizen.org/"
-                        onError="this.width=0; this.height=0;"
-                        style="max-height: 30px"
-                /></a>
-            </div>
-        </div>
-    </div>
-</footer>
 
-<script type="text/javascript" id="betizen-js-js-extra">
-    /* <![CDATA[ */
-    var bzTranslation = {
-        acceptCookie:
-            "{{ languages[page.lang].texts.cookiesMessage }}",
-        acceptCookieBtnText: "{{ languages[page.lang].texts.accept }}",
-    };
-    /* ]]> */
-</script>
+            <a class="hover:underline md:text-lg" title="Afiliados" href="{{ '/programas-de-afiliados/' | locale_url }}">
+                {{ languages[page.lang].texts.affiliates }}
+            </a>
+          
+        </div>
+            
+        <div class="flex gap-3 md:gap-5">
+            {# <a class="hover:underline md:text-lg" href="{{ '/blog/' | locale_url }}" class="link link-hover">
+                {{ languages[page.lang].footerNav.blog.name }}
+            </a> #}
+            
+            <a class="hover:underline md:text-lg" title="Afiliados" href="{{ '/proveedores/' | locale_url }}">
+                {{ languages[page.lang].texts.providers }}
+            </a>  
+
+            <a href="{{ config.links.mediaKit }}" target="_blank" rel="nofollow noopener" class="hover:underline md:text-lg">
+                Media Kit
+            </a>
+
+            <a href="{{ config.links.roadmap }}" target="_blank" rel="nofollow noreferrer noopener" class="hover:underline md:text-lg">
+                Roadmap
+            </a>            
+        </div>
+
+
+
+    </nav>
+    <div class="flex flex-col gap-3 my-3">
+        <img
+            width="30"
+            class="disclaimers-18plus"
+            src="/assets/imgs/site/18-plus.png"
+        />
+        <a
+            class="mt-0 pt-0"
+            href="https://www.begambleaware.org/"
+            target="_blank"
+            rel="nofollow"
+        >
+            <img
+                width="150"
+                class="disclaimers-bga"
+                src="/assets/imgs/site/begambleawareorg.png"
+            />
+        </a>
+        <a
+            href="https://certify.gpwa.org/verify/betizen.org/"
+            onclick="return GPWAVerificationPopup(this)"
+            id="GPWASeal"
+            style="padding-top: 0; margin-right: 10px"
+            ><img
+                src="https://certify.gpwa.org/seal/betizen.org/"
+                onError="this.width=0; this.height=0;"
+                style="max-height: 30px"
+        /></a>
+    </div>
+    <aside>
+        <p>Betizen.org &bull; 2018 - {% currentYear %} &bull; 
+            <a href="https://github.com/minimo-io/betizen-ssg" class="font-bold hover:underline" target="_blank" rel="noopener noreferrer">
+                v2.1.5
+            </a>
+        </p>
+    </aside>
+</footer>

@@ -1,4 +1,5 @@
-{% macro reputationButton(buttonCode, description, logo, title, gradient, link, small=false, extraClasses="") %}
+{% macro reputationButton(buttonCode, description, logo, title, gradient, link, small=false, extraClasses="", anchor = false) %}
+
     {# fair, acceptable, caution, dangerous #}
     {%- set buttonClass = "-" -%}
     {%- set buttonText = languages[page.lang].texts.reputation[buttonCode] -%}
@@ -11,18 +12,27 @@
     {% elif buttonCode == "dangerous" %}
         {%- set buttonClass = "btn-danger" -%}
     {% endif %}
-    <button
-        data-target="#tc-modal"
-        data-toggle="modal"
-        data-hasbutton="0"
-        data-title="{{ languages[page.lang].texts.reputationDetails }}"
-        data-content='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-circle"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ buttonText }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">{{ languages[page.lang].texts.visitCasino }}</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
-        type="button"
-        class="btn {{ buttonClass }} text-uppercase btn-casino-reputation {{ extraClasses }}"
-        style="{%- if small -%}padding: 6px{%- endif -%}"
-    >
-        <i class="fa fa-info-circle" aria-hidden="true"></i
-        >&nbsp;{{ buttonText }}
-    </button>
+
+    {% if anchor == false %}
+        <button
+            data-modal-title="{{ languages[page.lang].texts.reputationDetails }}"
+            data-modal-body='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-circle"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ buttonText }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">{{ languages[page.lang].texts.visitCasino }}</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
+            type="button"
+            class="btn-bz-modal btn btn-sm md:btn-md btn-soft order-2 md:order-1 {{ buttonClass }} text-uppercase {{ extraClasses }}"
+        >
+            <i data-lucide="zoom-in" strokeWidth={1} class="h-4"></i>
+            {{ buttonText }}
+        </button>
+
+    {% else %}
+        <button
+            data-modal-title="{{ languages[page.lang].texts.reputationDetails }}"
+            data-modal-body='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-circle"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ buttonText }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">{{ languages[page.lang].texts.visitCasino }}</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
+            type="button"
+            class="btn-bz-modal {{ extraClasses }} font-bold hover:underline cursor-pointer"
+        >
+            {{ languages[page.lang].texts.readMore }}.
+        </button>
+    {% endif %}
 
 {% endmacro %}

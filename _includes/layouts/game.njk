@@ -1,267 +1,245 @@
 ---
 layout: layouts/base.njk
 ---
-<section class="section m-0 p-0">
-    <div class="container px-1 w-100">
-        {%- include "components/bz-carrousel.njk" %}
-    </div>
-</section>
 
-<section
-    class="profile__hero profile__hero_game"
-    style="background-image: url({{ metadata.images.games }}{{ page.fileSlug }}-hero.webp);"
-    alt="{{ page.fileSlug }} Top Image"
-></section>
+{%- from "macros/reputation-button.njk" import reputationButton with context -%}
+{%- from "macros/karma-button.macro.njk" import karmaButton with context -%}
 
-<section class="section section--pt-0" style="padding: 0">
-    <div class="container">
-        <div class="profile">
-            <div class="row">
-                <div class="col-lg-8 mb-2">
-                    <div class="d-flex">
-                        <div class="profile__avatar">
-                            <img
-                                src="{{ metadata.images.games }}{{ page.fileSlug }}-logo.webp"
-                                class="attachment-square_crop size-square_crop"
-                                alt="{{ page.fileSlug }}"
-                                width="300"
-                                height="300"
-                            />
-                        </div>
-                        <div class="profile__description">
-                            <h1 class="profile__description__title">
-                                {{ title | safe }}
-                            </h1>
-                            <p>
-                                {{ languages[page.lang].texts.createdBy }} <strong><a href="{{ provider.url }}">
-                                    {{ provider.name }}</a></strong>
-                            </p>
-                        </div>
+{%- set logoPath -%}{{ metadata.images.games }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+{%- set splashPath -%}{{ metadata.images.games }}{{ page.fileSlug }}-splash.webp{%- endset -%}
+
+<!-- Game Detail Card -->
+<div class="max-w-6xl mx-auto debug-container">
+    <!-- Game Detail Card -->
+    <div class="rounded-xl shadow-lg dark:shadow-none dark:border dark:border-gray-800">
+        <!-- Background & Logo -->
+        <div 
+          class="bg-gradient-to-r from-purple-500 to-blue-600 h-20 relative rounded-t-lg"
+          style="background-image: url({{ metadata.images.games }}{{ page.fileSlug }}-hero.webp); background-size: cover; background-position: center;">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-500/80 to-blue-600/80 rounded-t-lg"></div>
+            
+            <!-- Game logo container -->
+            <div class="absolute -bottom-8 left-6">
+                <div class="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg ">
+                    <!-- Game logo -->
+                    <img
+                      src="{{ metadata.images.games }}{{ page.fileSlug }}-logo.webp"
+                      class="rounded-lg w-20 h-20 object-cover"
+                      alt="{{ title }}"
+                      width="300"
+                      height="300"
+                    />
+                </div>
+            </div>
+            
+            <!-- Back to games tag -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/games/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    {{ languages[page.lang].texts.backToList }}
+                </a>
+            </div>
+        </div>
+        
+        <!-- Card content -->
+        <div class="pt-12 pb-6 px-6">
+            <!-- Game name and provider -->
+            <div class="flex items-start justify-between md:mb-4">
+                {# Title and provider #}
+                <div class="prose prose-lg">
+                    <h2 class="text-2xl mb-1">{{ title }}</h2>
+                    <p class="text-sm text-gray-500">
+                      {{ languages[page.lang].texts.createdBy }} 
+                      <a href="{{ provider.url }}" class="text-blue-600 hover:underline">{{ provider.name }}</a>
+                    </p>
+                </div>
+                
+                <!-- Rating -->
+                <div class="text-right">
+                    <div class="flex flex-col -top-2 md:top-auto relative md:flex-row items-center gap-1 mb-1">
+                        <span class="text-4xl font-bold text-gray-400">#{{ game.ranking }}</span>
+                        {{ karmaButton("0") }}
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<div class="container">
-    <div class="row">
-        <div id="container">
-            <div id="content" role="main">
-                <div class="row">
-                    <div class="col-lg-8 mb-md-0 mb-3">
-                        <div
-                            id="casino-2102"
-                            class="product type-product status-publish has-post-thumbnail product_cat-landing-corporate first casino-single"
-                        >
-                            <div class="row box-did-u-know">
-                                <div class="container-fluid">
-                                    <div class="card border-0">
-                                        <div class="card-body pb-0 px-0">
-                                            
-                                            
-                                            {% include "components/bz-banner-hero.njk" %}
-
-                                            <div class="container">
-                                                <div class="row">
-                                                    <button
-                                                        id="btn-minimo-readmore"
-                                                        data-original-height=""
-                                                        data-status="off"
-                                                        data-text-more="Leer más"
-                                                        data-text-less="Leer menos"
-                                                        class="d-none btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0"
-                                                    >
-                                                        Leer más
-                                                    </button>
-                                                    {# mobile top free play button #}
-                                                    <a
-                                                        class="mb-2 d-block d-lg-none btn btn-brand btn-block btn-sm btn-customcolor-outline text-center btn-block btn-play-now" style="color:white;"
-                                                        >{{ languages[page.lang].texts.freePlay }}</a>
-
-                                                </div>
-                                                    <div class="d-lg-none">
-                                                        <div class="theme-purchases">
-                                                            <div class="mt-3 text-center">
-                                                                {%- set starSize = "35px" -%}
-                                                                {%- set score = game.score -%}
-                                                                {% include "components/bz-score.njk" %}
-                                                            </div>
-                                                        </div>
-                                                    </div>                                                
-                                            </div>
-
-                                            {%- include "components/games/details-list.njk" -%}
-
-                                            {% if tags.includes("bingo") %}
-                                                {%- include "components/games/key-props-bingo.njk" -%}
-                                            {% elif tags.includes("roulette") %}
-                                                {%- include "components/games/key-props-roulette.njk" -%}
-                                            {% elif tags.includes("poker") %}
-                                                {%- include "components/games/key-props-poker.njk"-%}
-                                            {% elif tags.includes("blackjack") %}
-                                                {%- include "components/games/key-props-blackjack.njk"-%}    
-                                            {% elif tags.includes("baccarat") %}
-                                                {%- include "components/games/key-props-baccarat.njk"-%}                                                                                                                                      
-                                            {% else %}
-                                                {%- include "components/games/key-props.njk" -%}
-                                            {% endif %}
-
-                                            <div class="mb-3 card game-excerpt">
-                                                <div class="card-body text-center">
-                                                    {{ excerpt or description }}
-                                                </div>
-                                            </div>
-                                            <div class="mt-1 mb-4"></div>
-                                            <div class="feature-screenshot">
-                                                <div
-                                                    data-columns="4"
-                                                    style="
-                                                        opacity: 1;
-                                                        transition: opacity
-                                                            0.25s ease-in-out;
-                                                        filter: blur(5px);
-                                                        -webkit-filter: blur(
-                                                            5px
-                                                        );
-                                                    "
-                                                >
-                                                    <div style="opacity: 0.5">
-                                                        <img
-                                                            width="1200"
-                                                            height="900"
-                                                            src="{{ metadata.images.games }}{{ page.fileSlug }}-splash.webp"
-                                                            class="attachment-large_crop size-large_crop"
-                                                            alt="{{ title | slugify }}"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div
-                                                    class="game-play-box game-play-box-desktop"
-                                                >
-                                                    <div
-                                                        class="game-play-button-for-real-box"
-                                                    >
-                                                        <a
-                                                            data-micromodal-trigger="modal-1"
-                                                            class="game-play-button btn-play-now"
-                                                            ><span></span
-                                                        ></a>
-                                                        <a
-                                                            data-micromodal-trigger="modal-1"
-                                                            role="button"
-                                                            class="btn btn-brand btn-block btn-checkout up btn-customcolor game-play-button-for-free btn-play-now"
-                                                        >
-                                                            <span
-                                                                class="btn-text"
-                                                                >{{ languages[page.lang].texts.freePlay }}</span
-                                                            >
-                                                        </a>
-                                                        <a href="{{ languages[page.lang].promo.url }}"
-                                                            rel="nofollow noopener"
-                                                            target="_blank"
-                                                            role="button"
-                                                            class="btn btn-outline-brand btn-block up btn-customcolor-outline game-play-button-for-real"
-                                                            data-linkid="4707"
-                                                        >
-                                                            <span
-                                                                class="btn-text"
-                                                                ><i
-                                                                    class="fa fa-external-link mr-1"
-                                                                    aria-hidden="true"
-                                                                ></i
-                                                                >{{ languages[page.lang].texts.realPlay }}</span
-                                                            >
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                {% include "components/games/casino-main-promo.njk" %}
-
-                                                {% include "components/games/top-casinos.njk" %}
-                                            </div>
-                                            <div class="card-text mt-5 px-2 general-description">
-                                                <h2 class="card-title text-truncate ml-1">
-                                                    {{ languages[page.lang].texts.moreAbout }}
-                                                    {{ title | safe }}
-                                                </h2>                                                
-                                                {{ content | safe }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="d-lg-none">
-
-                                <div
-                                    class="theme-description__list d-lg-none mb-4">
-                                    {# mobile #}
-                                    {%- include "components/games/game-data.njk" -%}
-                                </div>
-                            </div>
-
-                            <div class="tab-content">
-                                {%- include "components/bz-subscribe.njk" -%}
-                            </div>
-                            <div class="relatedGamesBox col-12 container mt-4 mb-4">
-                                {%- include "components/games/other-games.njk" -%}
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="col-lg-4 d-none d-lg-block pl-xs-0 pl-lg-5 casino-sidebar"
-                    >
-                        <div class="sidebar-lg">
-                            <div class="theme-purchases">
-                                <div
-                                    class="text-center Xd-flex Xjustify-content-between align-items-center mb-1">
-                                    <h2 class="Xd-flex align-items-center">
-                                        <span
-                                            class="woocommerce-Price-amount amount ranking-big"
-                                            ><span
-                                                class="woocommerce-Price-currencySymbol"
-                                            ></span
-                                            >#{{ game.ranking }}</span
-                                        ><a
-                                            class="knowmore-icon-main"
-                                            href="{{ '/rankings/' | locale_url }}"
-                                            ><i
-                                                class="fa fa-info-circle"
-                                                aria-hidden="true"
-                                            ></i
-                                        ></a>
-                                    </h2>
-                                </div>
-                                <div
-                                    class="theme-purchases__item" style="border-top: 0">
-
-                                    {%- set starSize = "font-size: 35px" -%}
-                                    {%- set score = game.score -%}
-                                    {% include "components/bz-score.njk" %}
-
-                                </div>
-                            </div>                                                    
-                            <button
-                                id="btn-opinion-right"
-                                type="button"
-                                class="btn btn-brand btn-play-now btn-block btn-checkout up btn-customcolor Xmb-3"
-                                data-micromodal-trigger="modal-1"
-                            >
-                                <span class="btn-text">{{ languages[page.lang].texts.freePlay }}</span>
+            
+            <!-- Bottom section -->
+            <div class="pt-3 border-t border-gray-100 dark:border-gray-700">
+                <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-gray-700 pb-3">
+                    <h3 class="text-gray-600 font-medium flex items-center flex-row ">
+                        <span class="hidden md:inline-block mr-3">{{ languages[page.lang].texts.vote }}:</span>
+                        <div class="flex flex-row justify-center gap-2">
+                            <button class="btn md:btn-md bg-transparent hover:bg-base-200 text-(--bz-green) text-neutral" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                👍&nbsp;+{{ config.karmaPoints }}
                             </button>
-                             
-
-                            <div class="theme-description__list pt-2">
-                                {# desktop #}
-                                {%- include "components/games/game-data.njk" -%}
-                            </div>
+                            <button class="btn md:btn-md bg-transparent text-(--bz-red) hover:bg-base-200 text-neutral" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                👎&nbsp;-{{ config.karmaPoints }}
+                            </button>
+                        </div>
+                    </h3>
+                    <div class="flex gap-2">
+                        <!-- Opinion button -->
+                        <div class="hidden md:flex items-center gap-2 text-orange-500">
+                          <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                             
+                              <button class="btn btn-soft btn-outline btn-secondary w-full font-semibold" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                  <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
+                                  {{ languages[page.lang].texts.leaveOpinion }}
+                              </button>
+                          </div>
+                        </div>                    
+                        <!-- Play game button -->
+                        <div class="flex items-center gap-2 text-orange-500">
+                          <div class="tooltip" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints }} {{ languages[page.lang].texts.points }}">
+                              <a 
+                                href="{{ languages[page.lang].promo.url }}"
+                                rel="nofollow noopener"
+                                target="_blank"
+                                class="btn btn-primary w-full text-white font-semibold">
+                                  <i data-lucide="play" strokeWidth={1} class="h-3"></i>
+                                  {{ languages[page.lang].texts.realPlay }}
+                              </a>
+                          </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Mobile Opinion button -->
+                <div class="md:hidden mb-3 items-center gap-2 text-orange-500">
+                    <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                  
+                      <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
+                          <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
+                          {{ languages[page.lang].texts.leaveOpinion }}
+                      </button>
+                    </div>
+                </div>                 
+
+                {# Details #}
+                <div class="md:flex md:gap-6 debug-overflow">
+
+                  {# Left Details #}
+                  <div class="md:flex-1 debug-overflow">
+                    
+                    {# Game screenshot - Mobile version #}
+                    <div class="block md:hidden mb-4">
+                        <div class="relative overflow-hidden rounded-lg">
+                            <img
+                                src="{{ metadata.images.games }}{{ page.fileSlug }}-splash.webp"
+                                alt="{{ title | slugify }}"
+                                class="w-full h-48 object-cover"
+                            />
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                {%- include "components/games/game-play-button.njk" -%}
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Game details #}
+                    {%- include "components/games/details-list.njk" -%}
+
+                    {# Game excerpt #}
+                    <div class="bg-gray-50 rounded-lg p-4 mt-4 mb-6 dark:bg-gray-700 dark:border-gray-800">
+                        {{ excerpt or description }}
+                    </div>
+
+                    {# Key properties based on game type #}
+                    <div class="md:hidden">
+                        {% if tags.includes("bingo") %}
+                            {%- include "components/games/key-props-bingo.njk" -%}
+                        {% elif tags.includes("roulette") %}
+                            {%- include "components/games/key-props-roulette.njk" -%}
+                        {% elif tags.includes("poker") %}
+                            {%- include "components/games/key-props-poker.njk"-%}
+                        {% elif tags.includes("blackjack") %}
+                            {%- include "components/games/key-props-blackjack.njk"-%}    
+                        {% elif tags.includes("baccarat") %}
+                            {%- include "components/games/key-props-baccarat.njk"-%}                                                
+                        {% else %}
+                            {%- include "components/games/key-props.njk" -%}
+                        {% endif %}
+                    </div>                      
+
+                    {# Top casinos mobile #}
+                    <div class="mb-3 block md:hidden">
+                        {% include "components/games/top-casinos.njk" %}
+                    </div>
+
+                    {# Content - Game review and details #}
+                    <div class="prose prose-neutral prose-sm md:prose-base mt-4 w-full max-w-full md:px-4 prose-headings:my-6">
+                        <h2 class="text-xl font-bold mb-4">
+                            {{ languages[page.lang].texts.moreAbout }} {{ title | safe }}
+                        </h2>
+                        {{ content | safe }}
+                    </div>
+
+                    {# Related games #}
+                    {# <div class="mt-8">
+                        {%- include "components/games/other-games.njk" -%}
+                    </div> #}
+
+                  </div>
+
+                  {# Right Details - Sticky Sidebar #}
+                  <aside class="md:w-80 md:flex-shrink-0">
+                    <div class="sticky top-4 debug-sticky" style="position: sticky !important; top: 16px !important;">
+
+                        {# Game screenshot - Desktop version #}
+                        <div class="hidden md:block mb-4">
+                            <div class="relative overflow-hidden rounded-lg">
+                                <img
+                                    src="{{ metadata.images.games }}{{ page.fileSlug }}-splash.webp"
+                                    alt="{{ title | slugify }}"
+                                    class="w-full h-48 object-cover"
+                                />
+                                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                                    {%- include "components/games/game-play-button.njk" -%}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden md:block">
+                            {# Key properties based on game type #}
+                            {% if tags.includes("bingo") %}
+                                {%- include "components/games/key-props-bingo.njk" -%}
+                            {% elif tags.includes("roulette") %}
+                                {%- include "components/games/key-props-roulette.njk" -%}
+                            {% elif tags.includes("poker") %}
+                                {%- include "components/games/key-props-poker.njk"-%}
+                            {% elif tags.includes("blackjack") %}
+                                {%- include "components/games/key-props-blackjack.njk"-%}    
+                            {% elif tags.includes("baccarat") %}
+                                {%- include "components/games/key-props-baccarat.njk"-%}                                                
+                            {% else %}
+                                {%- include "components/games/key-props.njk" -%}
+                            {% endif %}     
+                        </div>
+
+                        {# Banner #}
+                        <div class="flex justify-center text-center mt-5 relative left-2">
+                            <a href="{{ languages[page.lang].promo.url }}" target="_blank" rel="nofollow noopener">
+                                <img alt="banner-250x250" src="{{ languages[page.lang].promo.external_250x250 | safe }}" class="w-full rounded-lg" />
+                            </a>
+                        </div>
+
+
+                        {# Game data sidebar #}
+                        {# <div class="hidden md:block mb-4">
+                            {%- include "components/games/game-data.njk" -%}
+                        </div> #}
+
+                        {# Top casinos desktop #}
+                        {# <div class="mb-3 hidden md:block">
+                            {% include "components/games/top-casinos.njk" %}
+                        </div> #}
+
+                        {# Main promo #}
+                        {# <div class="mb-3 hidden md:block">
+                            {% include "components/games/casino-main-promo.njk" %}
+                        </div> #}
+
+                    </div>
+                  </aside>
+                </div>                  
+
             </div>
         </div>
     </div>
 </div>
-{# modals for games #}
-{%- include "components/games/modal.njk" -%}

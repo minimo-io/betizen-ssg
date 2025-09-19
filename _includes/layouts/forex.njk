@@ -1,0 +1,48 @@
+---
+layout: "layouts/base.njk"
+---
+
+<section class="pl-2">
+    <div class="max-w-6xl mx-auto">
+        {%- include "components/bz-carrousel.njk" -%}
+    </div>
+</section>
+
+<section class="max-w-6xl mx-auto mt-10 px-2 md:px-0">
+
+    <div class="prose prose-sm px-2 md:px-5 max-w-full">
+        <h1 class="page-title text-2xl mb-2 mb-md-0">
+            {{title}}
+        </h1>
+        <!-- The initial max-height is now removed and will be set by the script -->
+        <div id="expandable-content" class="bz-expandable-content overflow-hidden transition-[max-height] duration-500 ease-in-out">
+            {{ content | safe }}
+        </div>
+        <!-- Button with ID for the script -->
+        <button id="toggle-read-more" class="btn btn-light btn-sm btn-minimo-readmore mb-4 mb-md-0 mt-4">
+            {{ languages[page.lang].texts.readMore }}
+        </button>
+    </div>
+
+    {# <div class="mt-3">
+        {%- include "components/bz-banner-hero.njk" -%}
+    </div> #}
+
+    <div class="overflow-x-auto rounded-box border border-base-300 bg-base-100 p-2 md:px-5 md:mt-6">
+
+            {%- set postsList = collections.forex | forLang( page.lang ) %}
+
+            {% if (postsList | length) > 1 %}
+                {% include "components/casinos/casinos-list.njk" %}
+            {% else %} 
+                <div class="my-5 text-center flex flex-col justify-center">
+                    {{ languages[page.lang].texts.noItemToList }}
+
+                    {# <a href="{{ languages[page.lang].top.url }}" class="btn btn-soft btn-primary w-fit mx-auto mt-2">{{ languages[page.lang].top.text}}</a> #}
+                </div>
+            {% endif  %}
+
+        </table>
+    </div>
+
+</section>

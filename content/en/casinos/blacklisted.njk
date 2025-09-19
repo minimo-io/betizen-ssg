@@ -1,0 +1,59 @@
+---
+title: "Blacklisted Online Casinos"
+description: "A list of online casinos that we do not recommend due to poor practices, unresolved complaints, or other serious issues. Sites with very low karma will appear here."
+layout: "layouts/base.njk"
+permalink: "/en/online-casinos/blacklisted/"
+---
+
+<div class="max-w-6xl mx-auto">
+    <!-- Header with Casino Review Style -->
+    <div class=" rounded-xl shadow-lg mb-8">
+        <!-- Background & Logo -->
+        <div 
+          style="background-image: linear-gradient(to right, #e54646, #ed3a3a)"
+          class="bg-red-200 h-20 relative rounded-t-lg">
+            
+            <!-- Back tag -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/casinos/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    {{ languages[page.lang].texts.backToList }}
+                </a>
+            </div>
+        </div>
+        
+        <!-- Card content -->
+        <div class="pt-12 pb-6 px-6">
+            <!-- Title and subtitle -->
+            <div class="flex flex-col items-start justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px]">
+                <h1 class="flex items-center gap-4 !mb-2">
+                    <i data-lucide="alert-octagon" class="hidden md:inline-block w-10 h-10 text-error"></i> 
+                    {{ title }}
+                </h1>
+                <h2 class="text-gray-400 !mt-0 !mb-10">{{ description }}</h2>
+            </div>
+
+            <!-- The list of casinos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {%- for casino in collections.blacklistedCasinos -%}
+                    {% if casino.data.lang == page.lang %}
+                    <div class="card bg-base-100 shadow-xl card-error hover:shadow-2xl transition-shadow duration-300">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ casino.data.title }}</h2>
+                            <p>
+                                {%- if casino.data.blacklistedReason -%}
+                                    {{ casino.data.blacklistedReason }}
+                                {%- else -%}
+                                    {{ languages[page.lang].texts.blacklistReason }}
+                                {%- endif -%}
+                            </p>
+                            <div class="card-actions justify-end mt-4">
+                                <a href="{{ casino.url }}" class="btn btn-soft btn-sm btn-error">Read Why</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</div>

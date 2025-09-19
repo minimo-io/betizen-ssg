@@ -3,253 +3,214 @@ layout: layouts/base.njk
 ---
 
 {%- from "macros/reputation-button.njk" import reputationButton with context -%}
-{%- include "components/casinos/casino-header.njk" -%}
-{%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+{%- from "macros/karma-button.macro.njk" import karmaButton with context -%}
 
-<section class="section pt-0">
-  <div class="container">
-    <div class="row">
-      <div id="container">
-        <div id="content" role="main">
-          <div class="row">
-            <div class="col-lg-8 mb-md-0 mb-3">
-              <div
-                id="casino-110"
-                class="product type-product status-publish has-post-thumbnail product_cat-landing-corporate first casino-single"
-              >
-                <div class="row box-did-u-know">
-                  <div class="container-fluid">
-                    <div class="card border-0">
-                      <div class="card-body pb-0 px-0">
-                        <h2 class="card-title ml-1">
-                          {{ languages[page.lang].texts.reviewOf }} {{ title }}
-                        </h2>
+{%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+{%- set splashPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-splash.webp{%- endset -%}
+
+<!-- Casino Review Card -->
+<div class="max-w-6xl mx-auto debug-container">
+    <!-- Casino Review Card -->
+    <div class="rounded-xl shadow-lg dark:shadow-none dark:border dark:border-gray-800">
+        <!-- Background & Logo -->
+        <div 
+          style="background-image: linear-gradient(to right, {{ gradient.start }}, {{ gradient.end }})"
+          class="bg-red-200 h-20 relative rounded-t-lg">
+            <!-- Casino logo container -->
+            <div class="absolute -bottom-8 left-6">
+                <div class="w-20 h-20 border-2 rounded-full border-white dark:border-[#1C232A] flex items-center justify-center shadow-lg">
+                    <!-- Brand logo -->
+                    <img
+                      src="{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp"
+                      class="rounded-full"
+                      alt="{{ slugOverride }}"
+                      width="300"
+                      height="300"
+                    />
+                </div>
+            </div>
+            
+            <!-- Casino tag -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/casinos/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    {{ languages[page.lang].texts.backToList }}
+                </a>
+            </div>
+        </div>
+        
+        <!-- Card content -->
+        <div class="pt-12 pb-6 px-6">
+
+            {% if blacklisted %}
+            <div role="alert" class="alert alert-error alert-soft shadow-lg mb-4 rounded-lg">
+                <i data-lucide="alert-octagon" class="hidden md:block w-6 h-6"></i>
+                <div>
+                    <h3 class="font-bold text-lg md:text-xl">Blacklisted</h3>
+                    <div class="text-xs md:text-sm">
+                    {% if blacklistedReason %}
+                        {{ blacklistedReason }}
+                    {% else %}
+                        {{ languages[page.lang].texts.blacklistReason }}
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Casino name and operator -->
+            <div class="flex items-start justify-between md:mb-4">
+                {# Title and operator #}
+                <div class="prose prose-lg prose-p:mt-0">
+                    <h1 class="text-2xl mb-1 flex gap-2 md:gap-3">
+                        {{ title }} 
+                        {{ karmaButton("0") }}
+                    </h1>
+                    <p class="text-sm text-gray-500">
+                      {{ languages[page.lang].texts.operatedBy }} {{ operator }}
+                    </p>
+                </div>
+                
+                <!-- Rating -->
+                <div class="text-right">
+                    <div class="flex md:top-auto relative items-center">
+                        <span class="text-4xl font-bold text-gray-400">#{{ ranking }}
+                        </span>
+                        {# {{ karmaButton("0") }} #}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom section -->
+            <div class="pt-3 border-t border-gray-100 dark:border-gray-700">
+                <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-gray-700 pb-3">
+                    <h3 class="text-gray-600 font-medium flex items-center flex-row">
+                        <span class="hidden md:inline-block mr-3">{{ languages[page.lang].texts.vote }}:</span>
+                        <div class="flex flex-row justify-center gap-2">
+                            <button class="btn md:btn-md bg-transparent hover:bg-base-200 text-(--bz-green) text-neutral" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                👍&nbsp;+{{ config.karmaPoints }}
+                            </button>
+                            <button class="btn md:btn-md bg-transparent text-(--bz-red) hover:bg-base-200 text-neutral" onclick="alert('{{languages[page.lang].texts.soon }}')">
+                                👎&nbsp;-{{ config.karmaPoints }}
+                            </button>
+                        </div>
+                    </h3>
+                    <div class="flex gap-2">
+                        <!-- Opinion button -->
+                        <div class="hidden md:flex items-center gap-2 text-orange-500">
+                          <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                             
+                              <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
+                                  <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
+                                  {{ languages[page.lang].texts.leaveOpinion }}
+                              </button>
+                          </div>
+                        </div>                    
+                        <!-- Visit site button -->
+                        {% if blacklisted %}
+                            {# Casino is blacklisted, do not show the visit button. #}
+                        {% else %}
+                        <div class="flex items-center gap-2 text-orange-500">
+                            {%- include "components/bz-visit-site-button.njk" -%}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <!-- Mobile Opinion button -->
+                <div class="md:hidden mb-3 items-center gap-2 text-orange-500">
+                    <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                  
+                      <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
+                          <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
+                          {{ languages[page.lang].texts.leaveOpinion }}
+                      </button>
+                    </div>
+                </div>                 
+
+                {# Details #}
+                <div class="md:flex md:gap-6 debug-overflow">
+
+                  {# Left Details #}
+                  <div class="md:flex-1 debug-overflow">
+
+                    {# Casino video - Mobile version #}
+                    <div class="block md:hidden mb-4">
+                        <div class="relative overflow-hidden rounded-lg">
+                            {%- include "components/bz-youtube.njk" -%}
+                        </div>
+                    </div>
+
+                    {# Ai overview #}
+                    {%- include "components/bz-ai-overview.njk" -%} 
+
+                     {# Details #}
+                    {%- include "components/casinos/casino-details.njk" -%}
+
+                    {# Features #}
+                    <div class="block md:hidden pt-3">
+                      {%- include "components/casinos/casino-featured.njk" -%}    
+                    </div>
+
+                    {# Bonus mobile #}
+                    <div class="mb-3 block md:hidden">
                         {% if not bonus.title %}
                           {%- include "components/bz-banner-hero.njk" -%}
-                        {% else %}
+                         {% else %}
                           {%- include "components/casinos/casino-bonus.njk" -%}
                         {% endif %}
-                        
-
-                        {%- include "components/casinos/casino-details.njk" -%}
-                        
-                        {%- include "components/casinos/casino-featured.njk" -%}
-
-                        <br />
-                        <p class="mb-3">
-                          {{ excerpt | safe }}
-                        </p>
-                      </div>
                     </div>
-                  </div>
-                </div>
-            
-                {%- include "components/casinos/casino-gallery.njk" -%}
 
-                <div class="card-text general-description Xminimo-read-more Xminimo-read-more-short px-1">
-                  <br />
-                  {{ content | safe }}
-                </div>
-
-                {%- include "components/casinos/casino-providers.njk" -%}
-
-                <div class="d-lg-none">
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-3"
-                  >
-                    <div>
-                      <h4 class="mt-3 mb-1">{{ title | safe }}</h4>
-                      {{ languages[page.lang].texts.reputationText }}&nbsp;
-                      <span class="casino-reputation-box">
-                        {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, true) }}
-                      </span>
-                    </div>
-                    <h3
-                      class="d-flex align-items-center"
-                      js-price-value="main_price_div"
-                    >
-                      <span
-                        class="woocommerce-Price-amount amount ranking-small mr-1"
-                        ><span class="woocommerce-Price-currencySymbol">#</span
-                        >{{ ranking }}</span
-                      ><a href="{{ '/rankings/' | locale_url }}"
-                        ><sup
-                          ><i
-                            class="fa fa-info-circle"
-                            aria-hidden="true"
-                          ></i></sup
-                      ></a>
-                    </h3>
-                  </div>
-                  <div
-                    class="d-flex justify-content-between align-items-center mb-3"
-                  >
-                    {% if blacklisted %}
-                        {# <div style="    background: linear-gradient(45deg, #ff6b35, #ff8c42);
-    color: white;
-    padding: 2px 6px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: bold;
-    margin-left: 5px;">BLACKLISTED</div> #}
-                    {% else %}
-                      <form action="" method="POST" class="d-block w-100">
-                        <a
-                          class="btn btn-brand btn-block up btn-customcolor"
-                          rel="nofollow noopener"
-                          href="{{ bonus.link }}"
-                        >
-                          <span class="btn-text">{{ languages[page.lang].texts.visit }}</span></a
-                        >
-                      </form>
-                    {% endif %}
-                  </div>
-
-                  <div class="theme-purchases">
-                    <div class="theme-purchases__item">
-                      <div
-                        class="theme-purchases__item__inner text-center Xpt-0">
-                        {%- set starSize = "font-size: 35px" -%}
-                        {%- set score = score -%}
-                        {%- set paddingBottom = "pb-0" -%}
-                        {% include "components/bz-score.njk" %}
-                        
-                        <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">{{ languages[page.lang].texts.rateOnInstagram }}</a></span>
-
-                      </div>
-                    </div>
-                  </div>
-                  <div class="theme-description__list d-lg-none mb-4">
-                    {# <div class="theme-description__list__item">
-                      <span class="theme-description__item__title">Fundado</span
-                      ><span>2011</span>
-                    </div>
-                    <div class="theme-description__list__item">
-                      <span class="theme-description__item__title"
-                        >Licencia(s)</span
-                      ><span>Malta, UKGC, Dinamarca</span>
-                    </div>
-                    <div class="theme-description__list__item">
-                      <span class="theme-description__item__title"
-                        >Tiempos de retiro</span
-                      ><span
-                        >Billetera electrónica: Instantánea<br />
-                        Credito/Débito: 3-5 días<br />
-                        Transferencia: 0-3 días</span
-                      >
-                    </div> #}
-                    <div
-                      class="theme-description__list__item align-items-center"
-                    >
-                      <span class="theme-description__item__title"
-                        >{{ languages[page.lang].texts.questions }}</span
-                      ><a
-                        class="btn btn-xs btn-outline-brand btn-customcolor-outline"
-                        href="https://www.instagram.com/betizen_org/"
-                        >{{ languages[page.lang].texts.contactUs }}</a
-                      >
-                    </div>
-                    <div class="mt-2 text-center">
-                      <a href="{{ languages[page.lang].promo.url }}" target="_blank" rel="nofollow noopener">
-                          <img alt="banner-250x250" src="{{ languages[page.lang].promo.external_250x250 | safe }}" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {%- include "components/casinos/casino-bottom-bonuses.njk" -%}
-
-              </div>
-            </div>
-            <div
-              class="col-lg-4 d-none d-lg-block pl-xs-0 pl-lg-5 casino-sidebar"
-            >
-              <div class="sidebar-lg">
-                <div class="theme-purchases">
-                  <div
-                    class="text-center Xd-flex Xjustify-content-between align-items-center mb-1"
-                  >
-                    <h2 class="Xd-flex align-items-center">
-                      <span class="woocommerce-Price-amount amount ranking-big"
-                        ><span class="woocommerce-Price-currencySymbol"></span
-                        >#{{ ranking }}</span
-                      ><a
-                        class="knowmore-icon-main"
-                        href="{{ "/rankings/" | locale_url }}"
-                        ><i class="fa fa-info-circle" aria-hidden="true"></i
-                      ></a>
-                    </h2>
-                  </div>
-                  <div class="theme-purchases__item" style="border-top: 0">
-                    <div
-                      class="theme-purchases__item__inner text-center pt-0">
-                      {%- set starSize = "font-size: 35px" -%}
-                      {%- set score = score -%}
-                      {%- set paddingBottom = "pb-0" -%}
-                      {% include "components/bz-score.njk" %}
+                    {# Content - Adding lots of content for testing #}
+                    <div class="prose prose-neutral prose-sm md:prose-base mt-4 w-full max-w-full md:px-4 prose-headings:my-6">
+                      {# <h2 class="mb-0">{{ languages[page.lang].texts.reviewOf }} {{ title }}</h2> #}
+                      {{ content | safe }}
                       
-                      <span class="avg-inline">👉 <a href="https://www.instagram.com/betizen_org" class="avg-inline">{{ languages[page.lang].texts.rateOnInstagram }}</a></span>
+                    </div>
+
+                  </div>
+
+                  {# Right Details - DEBUG STICKY SIDEBAR #}
+                  <aside class="md:w-80 md:flex-shrink-0">
+                    <div class="sticky top-4 debug-sticky" style="position: sticky !important; top: 16px !important;">
+                      
+
+
+                      {# Casino video - Desktop version #}
+                      <div class="hidden md:block mb-4">
+                          <div class="relative overflow-hidden rounded-lg">
+                                {%- include "components/bz-youtube.njk" -%}
+                          </div>
+                      </div>
+
+
+                      {# Features #}
+                      <div class="hidden md:block mb-4">
+                        {%- include "components/casinos/casino-featured.njk" -%}    
+                      </div>
+
+                      {# Banner #}
+                      {% if not blacklisted %}
+                      <div class="mb-3 hidden md:block">
+                          {% if not bonus.title %}
+                            {%- include "components/bz-banner-hero.njk" -%}
+                          {% else %}
+                            {%- include "components/casinos/casino-bonus.njk" -%}
+                          {% endif %}
+                      </div>
+                      {% endif %}
 
                     </div>
-                  </div>
-                </div>
+                  </aside>
+                </div>                  
 
-                {% if blacklisted %}
-
-                {% else %}
-                  <a
-                    href="{{ bonus.link }}"
-                    rel="nofollow noopener"
-                    class="btn btn-brand btn-block btn-checkout up btn-customcolor"
-                    >{{ languages[page.lang].texts.visit }}</a
-                  >
-                {% endif %}
-
-                <div class="theme-description__list pt-2">
-                  <div
-                    class="theme-description__list__item casino-reputation-box"
-                    style="font-size: 20px; padding-bottom: 26px"
-                  >
-                    <span class="theme-description__item__title"
-                      >{{ languages[page.lang].texts.reputationText }}</span
-                    >
-                    {{ reputationButton(reputation.code, reputation.text, logoPath, title, gradient, bonus.link, false) }}
-                  </div>
-                  {% if founded %}
-                    <div class="theme-description__list__item">
-                      <span class="theme-description__item__title">{{ languages[page.lang].texts.founded }}</span
-                      ><span>{{ founded }}</span>
-                    </div>
-                  {% endif %}
-                  {# <div class="theme-description__list__item">
-                    <span class="theme-description__item__title"
-                      >Tiempos de retiro</span
-                    ><span
-                      >Billetera electrónica: Instantánea<br />
-                      Credito/Débito: 3-5 días<br />
-                      Transferencia: 0-3 días</span
-                    >
-                  </div> #}
-                  <div class="theme-description__list__item align-items-center">
-                    <span class="theme-description__item__title"
-                      >{{ languages[page.lang].texts.questions }}</span
-                    ><a
-                      class="btn btn-xs btn-outline-brand btn-customcolor-outline"
-                      href="https://www.instagram.com/betizen_org/"
-                      >{{ languages[page.lang].texts.contactUs }}</a
-                    >
-                  </div>
-                  <div class="mt-2 text-center">
-                    <a href="{{ languages[page.lang].promo.url }}" target="_blank" rel="nofollow noopener">
-                        <img alt="banner-250x250" src="{{ languages[page.lang].promo.external_250x250 | safe }}" />
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
+
+{# <!-- DEBUG: Add extra space at bottom for scrolling -->
+<div class="h-screen bg-gray-100 flex items-center justify-center">
+  <div class="text-center text-gray-500">
+    <p>🐛 Debug: Extra space for scrolling test</p>
+    <p>Scroll up to test if the sidebar sticks</p>
   </div>
-</section>
+</div> #}

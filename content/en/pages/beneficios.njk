@@ -1,0 +1,68 @@
+---
+title: "Benefits"
+description: "Exclusive for top contributors in the community. Climb the leaderboard by spreading your karma through votes and reviews to unlock special bonuses and benefits."
+layout: "layouts/base.njk"
+permalink: "/en/benefits/"
+---
+
+<div class="max-w-6xl mx-auto">
+    <!-- Header with Casino Review Style -->
+    <div class="rounded-xl shadow-lg mb-8">
+        <!-- Background & Logo -->
+        <div 
+          style="background-image: linear-gradient(to right, #4f46e5, #7c3aed)"
+          class="bg-red-200 h-20 relative rounded-t-lg">
+            
+            <!-- Back tag -->
+            <div class="absolute top-4 right-6">
+                <a href="{{ '/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                    Home
+                </a>
+            </div>
+        </div>
+        
+        <!-- Card content -->
+        <div class="pt-12 pb-6 px-6">
+            <!-- Title and subtitle -->
+            <div class="flex flex-col items-start justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px]">
+                <h1 class="!mb-2">{{ title }}</h1>
+                <h2 class="text-gray-400 !mt-0 !mb-8">{{ description }}</h2>
+            </div>
+
+            {# Benefit types #}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 !mb-8">
+                <!-- Bronze Tier -->
+                <div class="card bg-base-200/50">
+                    <div class="card-body items-center text-center">
+                        <h2 class="card-title">Bronze Tier</h2>
+                        <p>1,000 Karma Spread</p>
+                        <div class="badge badge-accent">Coming Soon</div>
+                    </div>
+                </div>
+                <!-- Silver Tier -->
+                <div class="card bg-base-200/50">
+                    <div class="card-body items-center text-center">
+                        <h2 class="card-title">Silver Tier</h2>
+                        <p>5,000 Karma Spread</p>
+                        <div class="badge badge-secondary">Coming Soon</div>
+                    </div>
+                </div>
+                <!-- Gold Tier -->
+                <div class="card bg-base-200/50">
+                    <div class="card-body items-center text-center">
+                        <h2 class="card-title">Gold Tier</h2>
+                        <p>10,000 Karma Spread</p>
+                        <div class="badge badge-primary">Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Content -->
+            <div class="text-left prose prose-h3:mb-2">
+                <h3>Unlock Exclusive Rewards</h3>
+                <p>Our Benefits program is designed to reward the most active and helpful members of our community. The more karma you use by voting and reviewing, the higher you'll climb on the leaderboard and the better the benefits you'll unlock.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
