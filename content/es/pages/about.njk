@@ -126,7 +126,7 @@ slugOverride: nosotros
                 </div>
               </div>
               
-              <div class="collapse collapse-arrow join-item border border-base-300">
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
                 <input type="radio" name="faq" />
                 <div class="collapse-title text-xl md:text-2xl font-medium">
                   ¿Sus reviews son honestas?
@@ -150,7 +150,7 @@ slugOverride: nosotros
                 </div>
               </div>                 
               
-              <div class="collapse collapse-arrow join-item border border-base-300">
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
                 <input type="radio" name="faq" />
                 <div class="collapse-title text-xl md:text-2xl font-medium">
                   ¿Cómo puedo contactarlos?
@@ -160,10 +160,28 @@ slugOverride: nosotros
                 </div>
               </div>
 
+
+              {# Technologies #}
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  ¿Cuales tecnologías utilizan?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>
+                    El proyecto Betizen utiliza las 
+                    <a href="{{ config.links.futurewiseApis }}/es" target="_blank">APIs de Votación y Usuários de Futurewise</a>, 
+                    <a href="https://www.11ty.dev/" target="_blank" rel="nofollow noopener noreferrer">Eleventy</a> como SSG, 
+                    y <a href="https://vercel.com/" target="_blank" rel="nofollow noopener noreferrer">Vercel</a> como plataforma de despliegue en la nube con CDN global y builds automáticos.
+                  </p>
+                </div>
+              </div>
+
            
               
             </div>
             
+            {# Contact #}
             <div class="alert alert-lg alert-info alert-soft mt-8">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6 hidden md:flex">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

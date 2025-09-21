@@ -8,6 +8,7 @@ module.exports = {
     roadmap:
       "https://minimo.notion.site/Betizen-Roadmap-273b76f5215a8097be61f3bf9e97012c",
     sponsor: "#",
+    futurewiseApis: "https://www.futurewise.lat",
   },
 
   showHomeBanner: false,

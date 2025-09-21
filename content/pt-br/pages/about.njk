@@ -153,7 +153,26 @@ slugOverride: sobre-nos
                 </div>
               </div>
 
+
+              {# Tecnologias #}
+              <div class="collapse collapse-arrow join-item border border-base-300 dark:border-gray-700">
+                <input type="radio" name="faq" />
+                <div class="collapse-title text-xl md:text-2xl font-medium">
+                  Quais tecnologias utilizam?
+                </div>
+                <div class="collapse-content prose md:prose-lg prose-p:my-[10px] min-w-full">
+                  <p>
+                    O projeto Betizen utiliza as 
+                    <a href="{{ config.links.futurewiseApis }}" target="_blank">APIs de Votação e Usuários da Futurewise</a>, 
+                    <a href="https://www.11ty.dev/" target="_blank" rel="nofollow noopener noreferrer">Eleventy</a> como SSG, 
+                    e <a href="https://vercel.com/" target="_blank" rel="nofollow noopener noreferrer">Vercel</a> como plataforma de deploy em nuvem com CDN global e builds automáticos.
+                  </p>
+                </div>
+              </div>                
+
             </div>
+
+          
             
             <div class="alert alert-lg alert-info alert-soft mt-8">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6 hidden md:flex">
@@ -167,6 +186,9 @@ slugOverride: sobre-nos
                 <a href="{{ config.links.instagram }}" target="_blank" rel="noopener noreferrer" class="btn btn-info text-white btn-sm">@betizen_org</a>
               </div>
             </div>
+
+
+
 
         </div>
 
