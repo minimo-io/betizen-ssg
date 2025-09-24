@@ -219,7 +219,7 @@ module.exports = function (eleventyConfig) {
     function (imageName, providersImageUrl) {
       const imageFile = path.join("public/imgs/providers", `${imageName}`);
 
-      let imageResult = `${providersImageUrl}/${imageName}`;
+      let imageResult = `${providersImageUrl}${imageName}`;
       if (!fs.existsSync(imageFile)) {
         imageResult = "/assets/imgs/site/placeholder.webp";
       }
