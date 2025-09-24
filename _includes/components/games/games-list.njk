@@ -31,7 +31,7 @@
             <!-- Play Button Overlay -->
             <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <a href="{{ game.url }}" class="btn btn-primary btn-sm">
-                    {{ languages[page.lang].texts.freePlay }}
+                    {{ languages[page.lang].texts.freePlay | safe }}
                 </a>
             </div>
 

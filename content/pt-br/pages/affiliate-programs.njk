@@ -7,7 +7,7 @@ slugOverride: programas-de-afiliados-brasil
 <div class="max-w-6xl mx-auto">
 
     <!-- Header with Casino Review Style -->
-    <div class="bg-white rounded-xl shadow-lg mb-8">
+    <div class="rounded-xl shadow-lg mb-8 dark:shadow-none dark:border dark:border-gray-800">
         <!-- Background & Logo -->
         <div 
           style="background-image: linear-gradient(to right, #4f46e5, #7c3aed)"
@@ -24,11 +24,9 @@ slugOverride: programas-de-afiliados-brasil
         <!-- Card content -->
         <div class="pt-12 pb-6 px-6">
             <!-- Title and subtitle -->
-            <div class="prose prose-xs md:prose-lg min-w-full prose-p:my-[10px]">
-                <h1>{{ title }}</h1>
-                <p class="lead !text-gray-400 !mt-0 !mb-10">
-                  {{ description }}
-                </p>
+            <div class="flex flex-col items-start justify-between md:mb-4 prose prose-xs md:prose-lg min-w-full prose-p:my-[10px]">
+                <h1 class="!mb-2">{{ title }}</h1>
+                <h2 class="text-gray-400 !mt-0 !mb-10">{{ description }}</h2>
             </div>
 
             <img

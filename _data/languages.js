@@ -248,6 +248,7 @@ module.exports = {
       becomeSponsor: "Sea patrocinador",
       soon: "En breve...",
       selectLanguage: "Selecciona un idioma",
+      viewGames: "Ver juegos",
     },
   },
   "pt-br": {
@@ -494,6 +495,7 @@ module.exports = {
       becomeSponsor: "Seja patrocinador",
       soon: "Em breve...",
       selectLanguage: "Selecione um idioma",
+      viewGames: "Ver jogos",
     },
   },
   en: {
@@ -737,6 +739,7 @@ module.exports = {
       becomeSponsor: "Become a sponsor",
       soon: "Soon...",
       selectLanguage: "Select a language",
+      viewGames: "View games",
     },
   },
 };
