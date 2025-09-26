@@ -13,11 +13,11 @@ layout: layouts/base.njk
     <!-- Game Detail Card -->
     <div class="rounded-xl shadow-lg dark:shadow-none dark:border dark:border-gray-800">
         <!-- Background & Logo -->
-        <div 
+        <div
           class="bg-gradient-to-r from-purple-500 to-blue-600 h-20 relative rounded-t-lg"
           style="background-image: url({{ metadata.images.games }}{{ page.fileSlug }}-hero.webp); background-size: cover; background-position: center;">
             <div class="absolute inset-0 bg-gradient-to-r from-purple-500/80 to-blue-600/80 rounded-t-lg"></div>
-            
+
             <!-- Game logo container -->
             <div class="absolute -bottom-8 left-6">
                 <div class="w-20 h-20 rounded-xl flex items-center justify-center shadow-lg ">
@@ -31,7 +31,7 @@ layout: layouts/base.njk
                     />
                 </div>
             </div>
-            
+
             <!-- Back to games tag -->
             <div class="absolute top-4 right-6">
                 <a href="{{ '/juegos/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
@@ -39,7 +39,7 @@ layout: layouts/base.njk
                 </a>
             </div>
         </div>
-        
+
         <!-- Card content -->
         <div class="pt-12 pb-6 px-6">
             <!-- Game name and provider -->
@@ -48,11 +48,11 @@ layout: layouts/base.njk
                 <div class="prose prose-lg">
                     <h2 class="text-2xl mb-1">{{ title }}</h2>
                     <p class="text-sm text-gray-500">
-                      {{ languages[page.lang].texts.createdBy }} 
+                      {{ languages[page.lang].texts.createdBy }}
                       <a href="{{ provider.url }}" class="text-blue-600 hover:underline">{{ provider.name }}</a>
                     </p>
                 </div>
-                
+
                 <!-- Rating -->
                 <div class="text-right">
                     <div class="flex flex-col -top-2 md:top-auto relative md:flex-row items-center gap-1 mb-1">
@@ -61,7 +61,7 @@ layout: layouts/base.njk
                     </div>
                 </div>
             </div>
-            
+
             <!-- Bottom section -->
             <div class="pt-3 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-gray-700 pb-3">
@@ -79,17 +79,17 @@ layout: layouts/base.njk
                     <div class="flex gap-2">
                         <!-- Opinion button -->
                         <div class="hidden md:flex items-center gap-2 text-orange-500">
-                          <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                             
+                          <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">
                               <button class="btn btn-soft btn-outline btn-secondary w-full font-semibold" onclick="alert('{{languages[page.lang].texts.soon }}')">
                                   <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
                                   {{ languages[page.lang].texts.leaveOpinion }}
                               </button>
                           </div>
-                        </div>                    
+                        </div>
                         <!-- Play game button -->
                         <div class="flex items-center gap-2 text-orange-500">
                           <div class="tooltip" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints }} {{ languages[page.lang].texts.points }}">
-                              <a 
+                              <a
                                 href="{{ languages[page.lang].promo.url }}"
                                 rel="nofollow noopener"
                                 target="_blank"
@@ -104,20 +104,20 @@ layout: layouts/base.njk
 
                 <!-- Mobile Opinion button -->
                 <div class="md:hidden mb-3 items-center gap-2 text-orange-500">
-                    <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                  
+                    <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">
                       <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
                           <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
                           {{ languages[page.lang].texts.leaveOpinion }}
                       </button>
                     </div>
-                </div>                 
+                </div>
 
                 {# Details #}
                 <div class="md:flex md:gap-6 debug-overflow">
 
                   {# Left Details #}
                   <div class="md:flex-1 debug-overflow">
-                    
+
                     {# Game screenshot - Mobile version #}
                     <div class="block md:hidden mb-4">
                         <div class="relative overflow-hidden rounded-lg">
@@ -149,13 +149,13 @@ layout: layouts/base.njk
                         {% elif tags.includes("poker") %}
                             {%- include "components/games/key-props-poker.njk"-%}
                         {% elif tags.includes("blackjack") %}
-                            {%- include "components/games/key-props-blackjack.njk"-%}    
+                            {%- include "components/games/key-props-blackjack.njk"-%}
                         {% elif tags.includes("baccarat") %}
-                            {%- include "components/games/key-props-baccarat.njk"-%}                                                
+                            {%- include "components/games/key-props-baccarat.njk"-%}
                         {% else %}
                             {%- include "components/games/key-props.njk" -%}
                         {% endif %}
-                    </div>                      
+                    </div>
 
                     {# Top casinos mobile #}
                     <div class="mb-3 block md:hidden">
@@ -204,12 +204,12 @@ layout: layouts/base.njk
                             {% elif tags.includes("poker") %}
                                 {%- include "components/games/key-props-poker.njk"-%}
                             {% elif tags.includes("blackjack") %}
-                                {%- include "components/games/key-props-blackjack.njk"-%}    
+                                {%- include "components/games/key-props-blackjack.njk"-%}
                             {% elif tags.includes("baccarat") %}
-                                {%- include "components/games/key-props-baccarat.njk"-%}                                                
+                                {%- include "components/games/key-props-baccarat.njk"-%}
                             {% else %}
                                 {%- include "components/games/key-props.njk" -%}
-                            {% endif %}     
+                            {% endif %}
                         </div>
 
                         {# Banner #}
@@ -237,7 +237,7 @@ layout: layouts/base.njk
 
                     </div>
                   </aside>
-                </div>                  
+                </div>
 
             </div>
         </div>

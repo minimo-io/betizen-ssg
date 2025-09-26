@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   showFuturewiseSignature();
 
   // Initial toast
-  showToast(
-    getTranslation("texts.spreadKarma"),
-    "success",
-    5000,
-    "toast-center",
-    true
-  );
+  // showToast(
+  //   getTranslation("texts.spreadKarma"),
+  //   "success",
+  //   5000,
+  //   "toast-center",
+  //   true
+  // );
 
   // Load lucide icons
   lucide.createIcons();
@@ -41,11 +41,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         //   });
 
         // Nostr login
-        document
-          .getElementById("nostr-login-btn")
-          ?.addEventListener("click", () => {
-            window.BZ.auth.loginWithNostr();
-          });
+        document.getElementById("nostr-login-btn")?.addEventListener("click", () => {
+          window.BZ.auth.loginWithNostr();
+        });
       }, 100);
     }
 
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           body: modalBody,
         },
         true,
-        isFullscreen
+        isFullscreen,
       );
     });
   });
@@ -97,22 +95,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     c.log("User needs to login...");
   }
 
-  document
-    .getElementById("login-btn")
-    ?.classList.toggle("hidden", isAuthenticated);
-  document
-    .getElementById("logout-btn")
-    ?.classList.toggle("hidden", !isAuthenticated);
+  document.getElementById("login-btn")?.classList.toggle("hidden", isAuthenticated);
+  document.getElementById("logout-btn")?.classList.toggle("hidden", !isAuthenticated);
   // Handle language modal
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('#language-modal-trigger')) {
-      const template = document.getElementById('language-links-template');
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("#language-modal-trigger")) {
+      const template = document.getElementById("language-links-template");
       if (template) {
         const content = template.innerHTML;
-        setupAndShowModal({
-          title: getTranslation('texts.selectLanguage', window.currentLang) || 'Select Language',
-          body: content
-        }, true, false);
+        setupAndShowModal(
+          {
+            title: getTranslation("texts.selectLanguage", window.currentLang) || "Select Language",
+            body: content,
+          },
+          true,
+          false,
+        );
       }
     }
   });
@@ -176,11 +174,7 @@ function setupAndShowModal(contentData, show = true, fullscreen = false) {
 
   if (typeof fullscreen === "boolean") {
     isFullscreen = fullscreen;
-  } else if (
-    fullscreen &&
-    fullscreen.dataset &&
-    fullscreen.dataset.modalFull === "true"
-  ) {
+  } else if (fullscreen && fullscreen.dataset && fullscreen.dataset.modalFull === "true") {
     isFullscreen = true;
   }
 
@@ -194,29 +188,13 @@ function setupAndShowModal(contentData, show = true, fullscreen = false) {
     // Make modal fullscreen
     modal.classList.add("p-0");
     modalBox.classList.remove("max-w-lg", "w-11/12");
-    modalBox.classList.add(
-      "w-screen",
-      "h-screen",
-      "max-w-none",
-      "max-h-none",
-      "rounded-none",
-      "flex",
-      "flex-col"
-    );
+    modalBox.classList.add("w-screen", "h-screen", "max-w-none", "max-h-none", "rounded-none", "flex", "flex-col");
     modalBody.classList.add("flex-1", "overflow-auto");
   } else {
     // Reset to normal modal
     modal.classList.remove("p-0");
     modalBox.classList.add("max-w-lg", "w-11/12");
-    modalBox.classList.remove(
-      "w-screen",
-      "h-screen",
-      "max-w-none",
-      "max-h-none",
-      "rounded-none",
-      "flex",
-      "flex-col"
-    );
+    modalBox.classList.remove("w-screen", "h-screen", "max-w-none", "max-h-none", "rounded-none", "flex", "flex-col");
     modalBody.classList.remove("flex-1", "overflow-auto");
   }
 
@@ -300,8 +278,7 @@ function setupReadMore(container) {
 
       let isExpanded = false;
       const readMoreText = "{{ languages[page.lang].texts.readMore }}";
-      const readLessText =
-        "{{ languages[page.lang].texts.readLess | default('Read Less') }}";
+      const readLessText = "{{ languages[page.lang].texts.readLess | default('Read Less') }}";
 
       toggleBtn.addEventListener("click", () => {
         isExpanded = !isExpanded;

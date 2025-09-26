@@ -8,12 +8,42 @@ layout: layouts/base.njk
 {%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
 {%- set splashPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-splash.webp{%- endset -%}
 
+{# Js code for games #}
+{%- js %}
+    document.addEventListener("DOMContentLoaded", ()=>{
+
+      const originalButton = document.querySelector('.bz-visit-site-button');
+      const fixedButton = document.querySelector('.bz-visit-site-button-fixed');
+
+      if (!originalButton || !fixedButton) return;
+
+      const observer = new IntersectionObserver((entities)=>{
+        entities.forEach(entry =>{
+
+          if (!entry.isIntersecting){
+            console.log("NOT Intersecting");
+            fixedButton.classList.remove("hidden");
+            fixedButton.classList.add("fixed");
+            fixedButton.classList.add("animate__animated", "animate__tada");
+          }else{
+            fixedButton.classList.remove("fixed");
+            fixedButton.classList.add("hidden");
+            console.log("YES Intersecting");
+          }
+
+        });
+      }, { threshold: 0 });
+
+      observer.observe(originalButton);
+    });
+{% endjs %}
+
 <!-- Casino Review Card -->
 <div class="max-w-6xl mx-auto debug-container">
     <!-- Casino Review Card -->
     <div class="rounded-xl shadow-lg dark:shadow-none dark:border dark:border-gray-800">
         <!-- Background & Logo -->
-        <div 
+        <div
           style="background-image: linear-gradient(to right, {{ gradient.start }}, {{ gradient.end }})"
           class="bg-red-200 h-20 relative rounded-t-lg">
             <!-- Casino logo container -->
@@ -29,7 +59,7 @@ layout: layouts/base.njk
                     />
                 </div>
             </div>
-            
+
             <!-- Casino tag -->
             <div class="absolute top-4 right-6">
                 <a href="{{ '/casinos/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
@@ -37,7 +67,7 @@ layout: layouts/base.njk
                 </a>
             </div>
         </div>
-        
+
         <!-- Card content -->
         <div class="pt-12 pb-6 px-6">
 
@@ -60,16 +90,16 @@ layout: layouts/base.njk
             <!-- Casino name and operator -->
             <div class="flex items-start justify-between md:mb-4">
                 {# Title and operator #}
-                <div class="prose prose-lg prose-p:mt-0">
+                <div class="prose prose-lg prose-p:mt-0 mb-2 md:mb-0">
                     <h1 class="text-2xl mb-1 flex gap-2 md:gap-3">
-                        {{ title }} 
+                        {{ title }}
                         {{ karmaButton("0") }}
                     </h1>
                     <p class="text-sm text-gray-500">
                       {{ languages[page.lang].texts.operatedBy }} {{ operator }}
                     </p>
                 </div>
-                
+
                 <!-- Rating -->
                 <div class="text-right">
                     <div class="flex md:top-auto relative items-center">
@@ -79,7 +109,7 @@ layout: layouts/base.njk
                     </div>
                 </div>
             </div>
-            
+
             <!-- Bottom section -->
             <div class="pt-3 border-t border-gray-100 dark:border-gray-700">
                 <div class="flex items-center justify-between mb-3 border-b border-gray-100 dark:border-gray-700 pb-3">
@@ -97,13 +127,13 @@ layout: layouts/base.njk
                     <div class="flex gap-2">
                         <!-- Opinion button -->
                         <div class="hidden md:flex items-center gap-2 text-orange-500">
-                          <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                             
+                          <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">
                               <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
                                   <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
                                   {{ languages[page.lang].texts.leaveOpinion }}
                               </button>
                           </div>
-                        </div>                    
+                        </div>
                         <!-- Visit site button -->
                         {% if blacklisted %}
                             {# Casino is blacklisted, do not show the visit button. #}
@@ -118,13 +148,13 @@ layout: layouts/base.njk
 
                 <!-- Mobile Opinion button -->
                 <div class="md:hidden mb-3 items-center gap-2 text-orange-500">
-                    <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">                  
+                    <div class="tooltip w-full" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints * 2 }} {{ languages[page.lang].texts.points }}">
                       <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
                           <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
                           {{ languages[page.lang].texts.leaveOpinion }}
                       </button>
                     </div>
-                </div>                 
+                </div>
 
                 {# Details #}
                 <div class="md:flex md:gap-6 debug-overflow">
@@ -140,14 +170,14 @@ layout: layouts/base.njk
                     </div>
 
                     {# Ai overview #}
-                    {%- include "components/bz-ai-overview.njk" -%} 
+                    {%- include "components/bz-ai-overview.njk" -%}
 
                      {# Details #}
                     {%- include "components/casinos/casino-details.njk" -%}
 
                     {# Features #}
                     <div class="block md:hidden pt-3">
-                      {%- include "components/casinos/casino-featured.njk" -%}    
+                      {%- include "components/casinos/casino-featured.njk" -%}
                     </div>
 
                     {# Bonus mobile #}
@@ -163,7 +193,7 @@ layout: layouts/base.njk
                     <div class="prose prose-neutral prose-sm md:prose-base mt-4 w-full max-w-full md:px-4 prose-headings:my-6">
                       {# <h2 class="mb-0">{{ languages[page.lang].texts.reviewOf }} {{ title }}</h2> #}
                       {{ content | safe }}
-                      
+
                     </div>
 
                   </div>
@@ -171,7 +201,7 @@ layout: layouts/base.njk
                   {# Right Details - DEBUG STICKY SIDEBAR #}
                   <aside class="md:w-80 md:flex-shrink-0">
                     <div class="sticky top-4 debug-sticky" style="position: sticky !important; top: 16px !important;">
-                      
+
 
 
                       {# Casino video - Desktop version #}
@@ -184,7 +214,7 @@ layout: layouts/base.njk
 
                       {# Features #}
                       <div class="hidden md:block mb-4">
-                        {%- include "components/casinos/casino-featured.njk" -%}    
+                        {%- include "components/casinos/casino-featured.njk" -%}
                       </div>
 
                       {# Banner #}
@@ -200,7 +230,7 @@ layout: layouts/base.njk
 
                     </div>
                   </aside>
-                </div>                  
+                </div>
 
             </div>
         </div>

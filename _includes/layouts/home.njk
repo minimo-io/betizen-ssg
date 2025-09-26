@@ -5,6 +5,20 @@ eleventyComputed:
     description: "{{ languages[page.lang].texts.tagline }}: {{ languages[page.lang].texts.tagline2 }}"
 ---
 
+{% js %}
+  document.addEventListener("DOMContentLoaded", ()=>{
+
+    showToast(
+      getTranslation("texts.spreadKarma"),
+      "success",
+      5000,
+      "toast-center",
+      true
+    );
+
+  });
+{% endjs %}
+
 <section class="pl-2">
     <div class="max-w-6xl mx-auto">
         {%- include "components/bz-carrousel.njk" -%}
@@ -31,7 +45,7 @@ eleventyComputed:
 
             <h1 class="!mb-2">{{ languages[page.lang].texts.tagline2 }}</h1>
             <h2 class="text-gray-400 !mt-0 !mb-6">
-                {{ languages[page.lang].texts.tagline }}: 
+                {{ languages[page.lang].texts.tagline }}:
                 <strong class="font-bold">{{ languages[page.lang].texts.tagline2 }}</strong>.
                     {# {{ languages[page.lang].texts.tagline3 }} #}
             </h2>
@@ -46,8 +60,8 @@ eleventyComputed:
                 {{ languages[page.lang].texts.howWorks }}
             </a>
 
-            <div role="alert" 
-            class="my-4 mx-2 alert alert-info alert-soft flex flex-col justify-star items-start !py-4 !pb-5 !px-6 gap-0 md:!px-10 md:!py-5">          
+            <div role="alert"
+            class="my-4 mx-2 alert alert-info alert-soft flex flex-col justify-star items-start !py-4 !pb-5 !px-6 gap-0 md:!px-10 md:!py-5">
                 <h2
                     id="top-casinos"
                     class="text-lg md:text-3xl text-left font-bold first-letter:uppercase text-neutral/80 mt-2"
@@ -55,13 +69,13 @@ eleventyComputed:
                    {{ languages[page.lang].texts.tagline2 }}
                 </h2>
                 <h3 class="mt-2 md:mt-3 text-xs md:text-2xl text-gray-400">
-                    {{ languages[page.lang].texts.tagline }}: 
+                    {{ languages[page.lang].texts.tagline }}:
                     <strong class="font-bold">{{ languages[page.lang].texts.tagline2 }}</strong>.
                     {{ languages[page.lang].texts.tagline3 }}
                 </h3>
             </div>
         </div> #}
-        
+
         {# Casino list #}
         <div>
 
@@ -121,8 +135,8 @@ eleventyComputed:
                 <img src="https://img.daisyui.com/images/profile/demo/wonderperson@192.webp" />
                 </div>
             </div>
-        </div>  
-    </div>    
+        </div>
+    </div>
 </section>
 
 

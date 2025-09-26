@@ -17,7 +17,7 @@
 
         {# Ahrefs #}
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="VRg+mahyNzTg8SI7FZIBjg" async></script>
-        
+
 
         <link rel="shortcut icon" href="/assets/favs/favicon.ico">
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favs/apple-touch-icon.png">
@@ -46,7 +46,7 @@
         {# <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> #}
         <link rel="stylesheet" href="{{ '/assets/app.css' | url }}">
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
- 
+
         {# Flickity  #}
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
         <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
@@ -64,6 +64,7 @@
         {# {%- css %}
             {% include "public/css/app.css" %}
         {% endcss %} #}
+
 
         <script>
             window.i18n = {{ languages | dump | safe }};
@@ -153,17 +154,17 @@
 
         {# Fixed Button #}
         <div class="chat chat-end fixed right-6 bottom-6 md:right-12 flex">
-            {# <div class="w-fit">           
+            {# <div class="w-fit">
                 <div class="chat-bubble w-[180px] chat-bubble-secondary bg-secondary/60 hover:bg-secondary hover:cursor-pointer text-white text-sm relative -top-2">
                     Fantastic game!
                 </div>
-                
+
                 <div class="chat-footer opacity-50 ml-1 relative -top-1">Pepe G. at 12:46</div>
             </div> #}
 
             <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-lg md:btn-xl btn-secondary btn-circle shadow-lg">
                 <i data-lucide="message-square-dot" strokeWidth={1} class="text-white"></i>
-            </button>            
+            </button>
         </div>
 
 
