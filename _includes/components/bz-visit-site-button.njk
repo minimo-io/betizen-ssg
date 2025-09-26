@@ -17,7 +17,7 @@
 </div>
 
 {# Fixed button used when scrolling #}
-<div class="hidden bz-visit-site-button-fixed bottom-[33px] md:bottom-[30px] w-fit right-20 md:right-28 flex justify-center z-50">
+<div class="hidden bz-visit-site-button-fixed bottom-[30px] md:bottom-[28px] w-fit right-20 md:right-28 flex justify-center z-50">
   <a
       href="{{ bonus.link }}"
       onclick="gtag('event', 'click', {
@@ -27,7 +27,7 @@
       });"
       target="_blank"
       rel="sponsored noopener noreferrer"
-      class="btn btn-primary md:btn-lg bz-visit-site-button w-[200px] !rounded-full !text-white font-semibold">
+      class="btn btn-primary btn-lg md:btn-xl bz-visit-site-button w-[200px] !rounded-full !text-white font-semibold">
       <!--<i data-lucide="external-link" strokeWidth={1} class="h-3"></i>-->
       {{ languages[page.lang].texts.visitSite | safe }}
   </a>
