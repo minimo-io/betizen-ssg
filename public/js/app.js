@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Handle logout buttons
     if (e.target.closest(".btn-logout")) {
       window.BZ.auth.logout();
-      closeModal();
+      window.BZ.modal.close();
     }
   });
 
