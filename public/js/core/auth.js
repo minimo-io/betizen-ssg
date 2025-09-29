@@ -187,7 +187,7 @@ window.BZ.auth = {
       </div>
     `;
 
-    setupAndShowModal({
+    window.BZ.modal.show({
       // title: "Login to Betizen",
       title: getTranslation("texts.login"),
       body: loginForm,

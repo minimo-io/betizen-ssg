@@ -80,10 +80,12 @@
         {%- js %}
             {% include "public/js/core/state.js" %}
             {% include "public/js/core/api.js" %}
-            {% include "public/js/modules/auth.js" %}
-            {% include "public/js/modules/voting.js" %}
+            {% include "public/js/core/auth.js" %}
+            {% include "public/js/core/voting.js" %}
 
-            {% include "public/js/toast.js" %}
+            {% include "public/js/modules/modal.js" %}
+            {% include "public/js/modules/toast.js" %}
+
             {% include "public/js/app.js" %}
         {% endjs %}
 
@@ -137,20 +139,6 @@
             </div>
         </div> #}
 
-        {# Modal #}
-        <dialog id="bz_modal_1" class="modal">
-        <div class="modal-box">
-            <h3 class="text-lg font-bold"></h3>
-            <div class="py-4 text-sm md:text-sm"></div>
-            <div class="modal-action mt-0">
-                <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
-                    {# <button onclick="setupAndShowModal({ title: '', body:''  }, false)" class="btn">{{ languages[page.lang].texts.close }}</button> #}
-                    <button class="btn">{{ languages[page.lang].texts.close }}</button>
-                </form>
-            </div>
-        </div>
-        </dialog>
 
         {# Fixed Button #}
         <div class="chat chat-end fixed right-6 bottom-6 md:right-12 flex">

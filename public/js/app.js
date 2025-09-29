@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Load lucide icons
   lucide.createIcons();
 
-  // NEW: Initialize auth and voting modules
+  // Initialize main modules
+  if (window.BZ?.modal) window.BZ.modal.init();
   if (window.BZ?.auth) await window.BZ.auth.init();
   if (window.BZ?.voting) window.BZ.voting.init();
 
@@ -41,9 +42,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         //   });
 
         // Nostr login
-        document.getElementById("nostr-login-btn")?.addEventListener("click", () => {
-          window.BZ.auth.loginWithNostr();
-        });
+        document
+          .getElementById("nostr-login-btn")
+          ?.addEventListener("click", () => {
+            window.BZ.auth.loginWithNostr();
+          });
       }, 100);
     }
 
@@ -54,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // modal button
+  // modal buttons
   document.querySelectorAll(".btn-bz-modal").forEach((button) => {
     button.addEventListener("click", (event) => {
       // Access the clicked element from the 'event' object
@@ -63,13 +66,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const modalBody = clickedButton.dataset.modalBody;
       const isFullscreen = clickedButton.dataset.modalFull === "true";
 
-      setupAndShowModal(
+      window.BZ.modal.show(
         {
           title: modalTitle,
           body: modalBody,
         },
         true,
-        isFullscreen,
+        isFullscreen
       );
     });
   });
@@ -95,21 +98,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     c.log("User needs to login...");
   }
 
-  document.getElementById("login-btn")?.classList.toggle("hidden", isAuthenticated);
-  document.getElementById("logout-btn")?.classList.toggle("hidden", !isAuthenticated);
+  document
+    .getElementById("login-btn")
+    ?.classList.toggle("hidden", isAuthenticated);
+  document
+    .getElementById("logout-btn")
+    ?.classList.toggle("hidden", !isAuthenticated);
   // Handle language modal
   document.addEventListener("click", (e) => {
     if (e.target.closest("#language-modal-trigger")) {
       const template = document.getElementById("language-links-template");
       if (template) {
         const content = template.innerHTML;
-        setupAndShowModal(
+        window.BZ.modal.show(
           {
-            title: getTranslation("texts.selectLanguage", window.currentLang) || "Select Language",
+            title:
+              getTranslation("texts.selectLanguage", window.currentLang) ||
+              "Select Language",
             body: content,
           },
           true,
-          false,
+          false
         );
       }
     }
@@ -144,101 +153,6 @@ function showFuturewiseSignature() {
 
   // Log the message with the applied style
   console.log("%c" + asciiArt, style);
-}
-
-/**
- * Sets up the content of the modal and displays it.
- * @param {object} contentData - An object containing the data to populate the modal.
- * @param {string} contentData.title - The title of the modal.
- * @param {string} contentData.body - The main body content of the modal.
- * @param {boolean} show - Whether to show the modal immediately.
- * @param {boolean|HTMLElement} fullscreen - Whether to display in fullscreen mode, or the trigger element to read data-modal-full from.
- */
-function setupAndShowModal(contentData, show = true, fullscreen = false) {
-  // Select the modal element inside the function to ensure it is in the DOM.
-  const modal = document.getElementById("bz_modal_1");
-
-  if (!modal) {
-    console.error('Modal element with ID "bz_modal_1" not found.');
-    return;
-  }
-
-  // Remove existing close listener to avoid duplicates
-  modal.removeEventListener("close", emptyModal);
-
-  // Add close listener to reset content when modal is closed
-  modal.addEventListener("close", emptyModal);
-
-  // Determine if fullscreen mode should be used
-  let isFullscreen = false;
-
-  if (typeof fullscreen === "boolean") {
-    isFullscreen = fullscreen;
-  } else if (fullscreen && fullscreen.dataset && fullscreen.dataset.modalFull === "true") {
-    isFullscreen = true;
-  }
-
-  // Find the content elements within the modal box
-  const modalTitle = modal.querySelector(".modal-box h3");
-  const modalBody = modal.querySelector(".modal-box div");
-  const modalBox = modal.querySelector(".modal-box");
-
-  // Toggle fullscreen classes
-  if (isFullscreen) {
-    // Make modal fullscreen
-    modal.classList.add("p-0");
-    modalBox.classList.remove("max-w-lg", "w-11/12");
-    modalBox.classList.add("w-screen", "h-screen", "max-w-none", "max-h-none", "rounded-none", "flex", "flex-col");
-    modalBody.classList.add("flex-1", "overflow-auto");
-  } else {
-    // Reset to normal modal
-    modal.classList.remove("p-0");
-    modalBox.classList.add("max-w-lg", "w-11/12");
-    modalBox.classList.remove("w-screen", "h-screen", "max-w-none", "max-h-none", "rounded-none", "flex", "flex-col");
-    modalBody.classList.remove("flex-1", "overflow-auto");
-  }
-
-  // Populate the content elements with the provided data
-  if (modalTitle) {
-    if (contentData.title && contentData.title.trim() !== "") {
-      modalTitle.textContent = contentData.title;
-      modalTitle.style.display = "block"; // Show title
-    } else {
-      modalTitle.textContent = "";
-      modalTitle.style.display = "none"; // Hide title if undefined/empty
-    }
-  }
-
-  if (modalBody) {
-    modalBody.innerHTML = contentData.body;
-  }
-
-  // Finally, show the modal
-  if (show) modal.showModal();
-}
-
-function emptyModal() {
-  const modal = document.getElementById("bz_modal_1");
-
-  if (!modal) {
-    console.error('Modal element with ID "bz_modal_1" not found.');
-    return;
-  }
-
-  const modalBody = modal.querySelector(".modal-box div");
-
-  modalBody.innerHTML = "";
-}
-
-function closeModal() {
-  const modal = document.getElementById("bz_modal_1");
-
-  if (!modal) {
-    console.error('Modal element with ID "bz_modal_1" not found.');
-    return;
-  }
-
-  modal.close();
 }
 
 /**
@@ -278,7 +192,8 @@ function setupReadMore(container) {
 
       let isExpanded = false;
       const readMoreText = "{{ languages[page.lang].texts.readMore }}";
-      const readLessText = "{{ languages[page.lang].texts.readLess | default('Read Less') }}";
+      const readLessText =
+        "{{ languages[page.lang].texts.readLess | default('Read Less') }}";
 
       toggleBtn.addEventListener("click", () => {
         isExpanded = !isExpanded;
