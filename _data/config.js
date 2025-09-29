@@ -1,4 +1,7 @@
 module.exports = {
+  isDev: process.env.NODE_ENV === "dev",
+
+  // Default karma used for voting buttons
   karmaPoints: 21,
 
   links: {

@@ -67,6 +67,7 @@
 
 
         <script>
+            window.isDev = {{ config.isDev | dump | safe }};
             window.i18n = {{ languages | dump | safe }};
             window.currentLang = '{{ page.lang }}';
             window.c = { log: console.log.bind(console) };

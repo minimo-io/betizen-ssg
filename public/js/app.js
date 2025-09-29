@@ -55,6 +55,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.BZ.auth.logout();
       window.BZ.modal.close();
     }
+
+    // Handle voting buttons
+    if (e.target.closest(".btn-bz-voting")) {
+      if (window.BZ.voting) {
+        const buttonElement = e.target.closest(".btn-bz-voting");
+
+        // const entityId = buttonElement.dataset.entityId;
+        // const karma = buttonElement.dataset.karma;
+        // console.log(`So u wanna vote ${karma} to ${entityId} eh?`);
+
+        // Pass the button element to your function
+        window.BZ.voting.handleVote(buttonElement);
+      }
+    }
   });
 
   // modal buttons
@@ -76,7 +90,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
     });
   });
-
   // Call the setupReadMore function for your content.
   // The IDs here must match the IDs in your HTML template.
   setupReadMore("expandable-content", "toggle-read-more");

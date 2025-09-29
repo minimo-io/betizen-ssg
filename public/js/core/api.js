@@ -1,7 +1,8 @@
 // API client with error handling
 window.BZ.api = {
-  baseURL: "https://api.futurewise.lat",
-
+  baseURL: window.isDev
+    ? "http://127.0.0.1:8085"
+    : "https://api.futurewise.lat",
   async request(endpoint, options = {}) {
     const { headers: optionHeaders = {}, ...restOptions } = options;
     const config = {
@@ -61,11 +62,14 @@ window.BZ.api = {
 
   // Voting endpoints
   voting: {
-    vote: (voteData) =>
-      window.BZ.api.request("/votes", {
+    vote: (voteData) => {
+      console.log("Vote payload", voteData);
+      window.BZ.api.request("/users/voting/vote", {
         method: "POST",
         body: JSON.stringify(voteData),
-      }),
+      });
+    },
+
     getUserVotes: () => window.BZ.api.request("/votes/user"),
   },
 };

@@ -22,28 +22,31 @@ window.BZ.voting = {
     }
 
     const entityId = button.dataset.entityId;
-    const voteType = button.dataset.vote;
-    const entityType = button.dataset.entityType;
+    const karma = button.dataset.karma;
 
     try {
       button.disabled = true;
       button.classList.add("loading");
 
+      c.log("Trying to vote...");
+
       const response = await window.BZ.api.voting.vote({
-        entityId,
-        voteType,
-        entityType,
+        entity_id: entityId,
+        karma: Number(karma),
       });
 
+      c.log("VOTING RESPONSE", response);
+
       // Update local state
-      const userVotes = window.BZ.state.get("voting.userVotes");
-      userVotes.set(entityId, voteType);
-      window.BZ.state.set("voting.userVotes", userVotes);
+      // const userVotes = window.BZ.state.get("voting.userVotes");
+      // userVotes.set(entityId, voteType);
+      // window.BZ.state.set("voting.userVotes", userVotes);
 
       // Update UI
-      this.updateVoteUI(entityId, response.votes);
-      showToast("Vote recorded!", "success");
+      // this.updateVoteUI(entityId, response.votes);
+      // showToast("Vote recorded!", "success");
     } catch (error) {
+      console.error("Vote failed", error);
       showToast("Vote failed", "error");
     } finally {
       button.disabled = false;

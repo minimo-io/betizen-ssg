@@ -1,0 +1,18 @@
+{# _includes/macros/voting-button.macro.njk #}
+{% macro votingButtons(entityId, smallOnMobile = false) %}
+    {# Voting buttons #}
+    <button
+        class="btn-bz-voting btn {% if smallOnMobile %} btn-sm {% endif %} md:btn-md bg-transparent hover:bg-base-200 text-(--bz-green) text-neutral"
+        data-entity-id="{{ entityId }}"
+        data-karma="{{ config.karmaPoints }}"
+    >
+        👍&nbsp;+{{ config.karmaPoints }}
+    </button>
+    <button
+        class="btn-bz-voting btn {% if smallOnMobile %} btn-sm {% endif %} md:btn-md bg-transparent text-(--bz-red) hover:bg-base-200 text-neutral"
+        data-entity-id="{{ entityId }}"
+        data-karma="{{ -config.karmaPoints }}"
+    >
+        👎&nbsp;-{{ config.karmaPoints }}
+    </button>
+{% endmacro %}

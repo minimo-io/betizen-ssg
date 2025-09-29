@@ -4,6 +4,7 @@ layout: layouts/base.njk
 
 {%- set gamesList = collections.games | reverse | forLang(page.lang) | gamesForProvider(page.url) -%}
 {%- from "macros/karma-button.macro.njk" import karmaButton with context -%}
+{% from "macros/voting-buttons.macro.njk" import votingButtons with context %}
 
 <!-- Provider Review Card -->
 <div class="max-w-6xl mx-auto debug-container">
@@ -74,12 +75,9 @@ layout: layouts/base.njk
                     <h3 class="text-gray-600 font-medium flex items-center flex-row">
                         <span class="hidden md:inline-block mr-3">{{ languages[page.lang].texts.vote }}:</span>
                         <div class="flex flex-row justify-center gap-2">
-                            <button class="btn md:btn-md bg-transparent hover:bg-base-200 text-success" onclick="alert('{{languages[page.lang].texts.soon }}')">
-                                👍&nbsp;+{{ config.karmaPoints }}
-                            </button>
-                            <button class="btn md:btn-md bg-transparent hover:bg-base-200 text-error" onclick="alert('{{languages[page.lang].texts.soon }}')">
-                                👎&nbsp;-{{ config.karmaPoints }}
-                            </button>
+
+                            {{ votingButtons(page.fileSlug) }}
+
                         </div>
                     </h3>
                     <div class="flex gap-2">

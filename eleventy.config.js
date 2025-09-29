@@ -235,6 +235,12 @@ module.exports = function (eleventyConfig) {
 
   // eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
+  // if (process.env.NODE_ENV === "dev") {
+  //   eleventyConfig.setServerOptions({
+  //     port: 3000,
+  //   });
+  // }
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
