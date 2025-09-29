@@ -3,7 +3,7 @@
   "version": "2.1.5",
   "description": "Reliable listings of online casinos, games, bonuses and affiliate programs, without scams!",
   "scripts": {
-    "build": "NODE_ENV=dev NODE_OPTIONS=--max_old_space_size=5012 npm-run-all clean-build build:* minify:*",
+    "build": "NODE_ENV=prod NODE_OPTIONS=--max_old_space_size=5012 npm-run-all clean-build build:* minify:*",
     "build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./_site/assets/app.css --minify",
     "build:11ty": "eleventy",
     "dev": "NODE_ENV=dev NODE_OPTIONS=--max_old_space_size=5012 npm-run-all clean-build --parallel watch:*",
