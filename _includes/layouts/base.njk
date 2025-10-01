@@ -24,12 +24,24 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/favs/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/favs/favicon-16x16.png">
 
+        {# hreflang #}
+        <link rel="canonical" href="{{ metadata.url }}{{ page.url }}"/>
+
         <link rel="alternate" hreflang="{{ page.lang }}" href="{{ metadata.url }}{{ page.url }}" />
+        {%- set english_link = null -%}
         {%- for link in page.url | locale_links %}
             <link rel="alternate" hreflang="{{ link.lang }}" href="{{ metadata.url }}{{ link.url }}" />
+            {%- if link.lang == 'en' -%}
+                {%- set english_link = link.url -%}
+            {%- endif -%}            
         {%- endfor %}
-        <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url | locale_url('es') }}"/>
-        <link rel="canonical" href="{{ metadata.url }}{{ page.url }}"/>
+
+        {# <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url | locale_url('es') }}"/> #}
+        {# x-default always points to English if it exists #}
+        {# {%- set english_link = page.url | locale_url('en') -%} #}
+        {%- if english_link %}
+            <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ english_link }}"/>
+        {%- endif -%}  
 
 
         {#- Atom and JSON feeds included by default #}
