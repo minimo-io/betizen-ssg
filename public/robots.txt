@@ -1,4 +1,28 @@
 User-agent: *
 Disallow:
 
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: Barkrowler
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: YandexBot
+Disallow: /
+
+User-agent: Googlebot
+Crawl-delay: 10
+
+User-agent: bingbot
+Crawl-delay: 10
+
 Sitemap: https://www.betizen.org/sitemap.xml
