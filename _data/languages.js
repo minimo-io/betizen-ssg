@@ -103,7 +103,6 @@ module.exports = {
       welcome: "¡Bienvenido!",
       logoutMessage: "¡Adieeeu!",
       supporters: "Patrocinadores",
-
       reputationText: "Reputación",
       reputation: {
         fair: "Justo",
@@ -157,6 +156,10 @@ module.exports = {
           </p>                            
         `,
       },
+
+      votingFailed: "¡El voto falló! Karma insuficiente?",
+      votingSuccess:
+        "¡Gracias por votar! Los listados se actualizan una vez al día.",
 
       featured: "Destacado",
       visit: "Visitar",
@@ -407,6 +410,9 @@ module.exports = {
         `,
       },
       featured: "Destaque",
+      votingFailed: "A votação falhou! Karma insuficiente?",
+      votingSuccess:
+        "Obrigado por votar! As listas são atualizadas uma vez por dia.",
       visit: "Visitar",
       visitCasino: "Visitar cassino",
       visitSite: "Visitar&nbsp;site",
@@ -651,6 +657,8 @@ module.exports = {
         `,
       },
       featured: "Featured",
+      votingFailed: "Voting failed! Insufficient karma?",
+      votingSuccess: "Thanks for voting! Listings update once a day.",
       visit: "Visit",
       visitCasino: "Visit casino",
       visitSite: "Visit&nbsp;site",

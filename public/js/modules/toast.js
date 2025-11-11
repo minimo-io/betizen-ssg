@@ -25,8 +25,8 @@ function removeToast(toast) {
 function showToast(
   message,
   type = "success",
-  duration = 3000,
-  position = "toast-end",
+  duration = 5000,
+  position = "toast-center",
   closable = true,
   pauseOnHover = true
 ) {

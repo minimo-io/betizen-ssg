@@ -62,12 +62,12 @@ window.BZ.api = {
 
   // Voting endpoints
   voting: {
-    vote: (voteData) => {
-      console.log("Vote payload", voteData);
-      window.BZ.api.request("/users/voting/vote", {
+    vote: async (voteData) => {
+      const voteResult = await window.BZ.api.request("/users/voting/vote", {
         method: "POST",
         body: JSON.stringify(voteData),
       });
+      return voteResult;
     },
 
     getUserVotes: () => window.BZ.api.request("/votes/user"),
