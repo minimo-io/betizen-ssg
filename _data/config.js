@@ -14,6 +14,6 @@ module.exports = {
     futurewiseApis: "https://www.futurewise.lat",
   },
 
-  showHomeBanner: false,
+  showHomeBanner: true,
   theme: "cmyk",
 };
