@@ -5,6 +5,8 @@ window.BZ.api = {
     : "https://api.futurewise.lat",
   async request(endpoint, options = {}) {
     const { headers: optionHeaders = {}, ...restOptions } = options;
+
+    // config for all api requests
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -71,5 +73,16 @@ window.BZ.api = {
     },
 
     getUserVotes: () => window.BZ.api.request("/votes/user"),
+
+    // for refreshing karma ui, for example on page load
+    getKarmaData: async () => {
+      // get karma data from api
+      console.log("Getting karma data from api...");
+      const karmaData = await window.BZ.api.request("/users/voting/karma", {
+        method: "GET",
+      });
+      console.log("Getting karma data from api... OK", karmaData.data);
+      return karmaData;
+    },
   },
 };

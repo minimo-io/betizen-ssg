@@ -123,7 +123,7 @@ module.exports = {
           </p>
           <br />
           <p>
-            <strong>¿Cómo ganar karma?</strong> Todos los días ganas karma por acceder al sitio. Además gánalo comentando sobre tus experiencias con las marcas, también cuando otros usuários votan tus comentarios, consiguiendo seguidores o simplemente comprándolo con criptomonedas.
+            <strong>¿Cómo ganar karma?</strong> Todos los días por acceder al sitio y visitar las marcas que vamos listando (botón "Visitar sitio"). Además gánalo comentando sobre tus experiencias con las marcas, también cuando otros usuários votan tus comentarios, consiguiendo seguidores o simplemente comprándolo con criptomonedas.
           </p>
           <br />
           <p>
@@ -376,7 +376,7 @@ module.exports = {
           <p><strong>O que é o karma?</strong> Karma é o que move os rankings (e a vida!). Use-o para votar e influenciar os rankings de sites de cassino, forex e opções binárias, de forma que apenas as melhores marcas subam ao topo dos rankings, e apenas os melhores usuários ao Leaderboard.</p>
           <br />
           <p>
-          <strong>Como ganhar karma?</strong> Todos os dias você ganha karma ao acessar o site. Além disso, ganhe comentando sobre suas experiências com as marcas, quando outros usuários votam nos seus comentários, conquistando seguidores ou simplesmente comprando com criptomoedas.
+          <strong>Como ganhar karma?</strong> TTodos os dias, apenas por acessar o site e visitar as marcas que listamos (usando o botão “Visitar site”). Além disso, ganhe comentando sobre suas experiências com as marcas, quando outros usuários votam nos seus comentários, conquistando seguidores ou simplesmente comprando com criptomoedas.
           </p>
           <br />
           <p>
@@ -623,7 +623,7 @@ module.exports = {
           <p><strong>What is karma?</strong> Karma is what drives rankings (and life!) Use it to vote and influence casino, forex, and binary options brands rankings, so only the bests rise to the top and only the best users make it to the Leaderboard.</p>
           <br />
           <p>
-          <strong>How to earn karma?</strong> Every day you earn karma by visiting the site. You can also earn it by commenting on your experiences with brands, when other users vote on your comments, gaining followers, or simply buying it with cryptocurrencies.
+          <strong>How to earn karma?</strong> Every day, just by accessing the site and visiting the brands we list (using the “Visit site” button). You can also earn it by commenting on your experiences with brands, when other users vote on your comments, gaining followers, or simply buying it with cryptocurrencies.
           </p>
           <br />
           <p>

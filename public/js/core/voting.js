@@ -9,18 +9,33 @@ window.BZ.voting = {
       }
     });
 
-    // Load user votes on auth
-    // window.BZ.state.subscribe("auth.isAuthenticated", (isAuth) => {
-    //   if (isAuth) this.loadUserVotes();
-    // });
-
+    // UI Subscriptions
     // Subscribe to changes in user karma
     window.BZ.state.subscribe("auth.user.karma", (newKarma) => {
-      console.log("FIRE_KARMA CHANGE UPDATE", newKarma);
       const user = JSON.parse(localStorage.getItem("bz_user"));
       user.karma = newKarma;
+
       // save edited value to local storage
       localStorage.setItem("bz_user", JSON.stringify(user));
+      // update ui elements
+      const karmaElements = document.querySelectorAll(".bz-karma-count");
+      karmaElements.forEach((el) => {
+        el.textContent = `${newKarma} karma`;
+      });
+    });
+
+    // Subscribe changes to user ranking
+    window.BZ.state.subscribe("auth.user.rank", (newRank) => {
+      const user = JSON.parse(localStorage.getItem("bz_user"));
+      user.rank = newRank;
+
+      // save edited value to local storage
+      localStorage.setItem("bz_user", JSON.stringify(user));
+      // update ui elements
+      const karmaElements = document.querySelectorAll(".bz-user-rank");
+      karmaElements.forEach((el) => {
+        el.textContent = `${newRank}`;
+      });
     });
   },
 
@@ -37,25 +52,21 @@ window.BZ.voting = {
       button.disabled = true;
       button.classList.add("loading");
 
-      c.log("Trying to vote...");
-
       const response = await window.BZ.api.voting.vote({
         entity_id: entityId,
         karma: Number(karma),
       });
 
-      c.log("VOTING RESPONSE", response);
       showToast(`${getTranslation("texts.votingSuccess")}`, "success");
 
       // Update user karma value an visual elements
-      if (response && response.data.newKarma) {
+      if (response && response.data.newKarma != null) {
         // Update karma state (that will fire ui updates)
         window.BZ.state.set("auth.user.karma", response.data.newKarma);
-
-        const karmaElements = document.querySelectorAll(".bz-karma-count");
-        karmaElements.forEach((el) => {
-          el.textContent = `${response.data.newKarma} karma`;
-        });
+      }
+      // update user rank state (to fire ui updates)
+      if (response && response.data.newRank != null) {
+        window.BZ.state.set("auth.user.rank", response.data.newRank);
       }
 
       // Update local state
@@ -76,24 +87,44 @@ window.BZ.voting = {
     }
   },
 
-  updateVoteUI(entityId, voteCounts) {
-    const container = document.querySelector(`[data-entity-id="${entityId}"]`);
-    if (container) {
-      container.querySelector(".up-count").textContent = voteCounts.up;
-      container.querySelector(".down-count").textContent = voteCounts.down;
+  async loadUserKarmaData() {
+    if (!window.BZ.state.get("auth.isAuthenticated")) {
+      return;
+    }
+
+    try {
+      const response = await window.BZ.api.voting.getKarmaData();
+      // Update karma state (that will fire ui updates)
+      if (response && response.data.karma != null) {
+        window.BZ.state.set("auth.user.karma", response.data.karma);
+      }
+      // Update rank state (that will fire ui updates)
+      if (response && response.data.rank != null) {
+        window.BZ.state.set("auth.user.rank", response.data.rank);
+      }
+    } catch {
+      console.error("Failed to get user karma data", error);
     }
   },
 
-  async loadUserVotes() {
-    try {
-      const response = await window.BZ.api.voting.getUserVotes();
-      const userVotes = new Map();
-      response.votes.forEach((vote) => {
-        userVotes.set(vote.entityId, vote.voteType);
-      });
-      window.BZ.state.set("voting.userVotes", userVotes);
-    } catch (error) {
-      console.error("Failed to load user votes:", error);
-    }
-  },
+  // updateVoteUI(entityId, voteCounts) {
+  //   const container = document.querySelector(`[data-entity-id="${entityId}"]`);
+  //   if (container) {
+  //     container.querySelector(".up-count").textContent = voteCounts.up;
+  //     container.querySelector(".down-count").textContent = voteCounts.down;
+  //   }
+  // },
+
+  // async loadUserVotes() {
+  //   try {
+  //     const response = await window.BZ.api.voting.getUserVotes();
+  //     const userVotes = new Map();
+  //     response.votes.forEach((vote) => {
+  //       userVotes.set(vote.entityId, vote.voteType);
+  //     });
+  //     window.BZ.state.set("voting.userVotes", userVotes);
+  //   } catch (error) {
+  //     console.error("Failed to load user votes:", error);
+  //   }
+  // },
 };

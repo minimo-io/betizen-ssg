@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
-  // modal buttons
+  // handlers for modal buttons
   document.querySelectorAll(".btn-bz-modal").forEach((button) => {
     button.addEventListener("click", (event) => {
       // Access the clicked element from the 'event' object
@@ -90,11 +90,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
     });
   });
+
   // Call the setupReadMore function for your content.
   // The IDs here must match the IDs in your HTML template.
   setupReadMore("expandable-content", "toggle-read-more");
 
-  // swing button with pulse
+  // Swing button with pulse
   const elements = document.querySelectorAll(".bz-swing-and-pulse");
   if (elements.length) {
     setTimeout(() => {
@@ -105,18 +106,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }, 1000);
   }
 
+  // Check for user auth
   const isAuthenticated = window.BZ.state.get("auth.isAuthenticated");
 
+  // A timeout to open the login/signup modal for non-auth users
   if (!isAuthenticated) {
-    c.log("User needs to login...");
+    console.log("Invite user to login...");
+    setTimeout(() => {
+      window.BZ.auth.showLoginModal();
+    }, 10000);
   }
 
-  document
-    .getElementById("login-btn")
-    ?.classList.toggle("hidden", isAuthenticated);
-  document
-    .getElementById("logout-btn")
-    ?.classList.toggle("hidden", !isAuthenticated);
+  // document
+  //   .getElementById("login-btn")
+  //   ?.classList.toggle("hidden", isAuthenticated);
+  // document
+  //   .getElementById("logout-btn")
+  //   ?.classList.toggle("hidden", !isAuthenticated);
+
   // Handle language modal
   document.addEventListener("click", (e) => {
     if (e.target.closest("#language-modal-trigger")) {
@@ -138,10 +145,20 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // NEW: Simple auth UI updates
-  window.BZ?.state?.subscribe("auth.isAuthenticated", (isAuth) => {
+  window.BZ?.state?.subscribe("auth.isAuthenticated", async (isAuth) => {
     document.getElementById("login-btn")?.classList.toggle("hidden", isAuth);
     document.getElementById("logout-btn")?.classList.toggle("hidden", !isAuth);
   });
+
+  // call the get method to refresh the karma & ranking (in localstorage and ui)
+  await BZ.voting.loadUserKarmaData();
+
+  // Global updater for all things need to refresh
+  // if willing to prevent too many api request, then disable
+  setInterval(async function () {
+    console.log("Global updater executed...");
+    await BZ.voting.loadUserKarmaData();
+  }, 15000);
 });
 
 function showFuturewiseSignature() {
