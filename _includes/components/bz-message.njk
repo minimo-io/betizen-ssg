@@ -3,9 +3,12 @@
 
 <div class="border-b border-base-300 dark:border-gray-700 text-center text-xs px-2 md:px-0">
   <div class="max-w-6xl mx-auto text-base-content flex justify-end md:justify-between">
-        <div class="hidden md:flex items-center text-xs text-neutral-400 pl-5">
-            {{ languages[page.lang].texts.protectingPlayersSince }}
-        </div>
+      
+      
+      <div class="hidden md:flex items-center text-xs text-neutral-400 pl-5">
+           {{ languages[page.lang].texts.protectingPlayersSince }}
+      </div>
+
       <ul class="flex justify-end px-2 md:px-0 items-center">
         {# Add casino button #}
         <li class="flex flex-row items-center">
@@ -18,10 +21,20 @@
                     event_label: 'top-link', 
                     value: 1 
                 });">
-                <i data-lucide="circle-plus" strokeWidth={1} class="h-3 text-secondary"></i>
+                <i data-lucide="circle-plus" strokeWidth={1} class="h-3 hidden md:flex text-secondary"></i>
                 {{ languages[page.lang].top.text }}
           </a>
         </li>
+
+        <li class="text-neutral-content mx-3">/</li>
+
+        <li class="flex flex-row items-center">
+          <a class="hover:underline flex flex-row items-center"
+                href="{{ '/transparencia/' | locale_url }}">
+                {{ languages[page.lang].texts.transparency }}
+          </a>
+        </li>  
+
 
         <li class="text-neutral-content mx-3">/</li>
 
