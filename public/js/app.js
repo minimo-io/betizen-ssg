@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Invite user to login...");
     setTimeout(() => {
       window.BZ.auth.showLoginModal();
-    }, 10000);
+    }, 20000);
   }
 
   // document
