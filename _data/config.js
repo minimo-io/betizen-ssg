@@ -6,12 +6,11 @@ module.exports = {
 
   links: {
     mediaKit:
-      "https://drive.google.com/file/d/1-CrqMtAmplqzU0ht3rce_msDsN2SKzAI/view?usp=sharing",
+      "https://drive.google.com/file/d/1F4TnQ5foN-RXavhRTnKrxeqLhcZen7O2/view?usp=sharing",
     instagram: "https://www.instagram.com/betizen_org/",
-    roadmap:
-      "https://minimo.notion.site/Betizen-Roadmap-273b76f5215a8097be61f3bf9e97012c",
+    roadmap: "https://github.com/minimo-io/betizen-ssg",
     sponsor: "#",
-    futurewiseApis: "https://www.futurewise.lat",
+    cubiqApis: "https://www.cubiq.lat",
   },
 
   showHomeBanner: true,

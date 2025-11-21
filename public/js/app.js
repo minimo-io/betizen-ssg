@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initTheme();
 
   // Console signture
-  showFuturewiseSignature();
+  showSignature();
 
   // Initial toast
   // showToast(
@@ -161,17 +161,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }, 15000);
 });
 
-function showFuturewiseSignature() {
+function showSignature() {
   const asciiArt = `
-███████╗██╗    ██╗
-██╔════╝██║    ██║
-█████╗  ██║ █╗ ██║
-██╔══╝  ██║███╗██║
-██║     ╚███╔███╔╝
-╚═╝      ╚══╝╚══╝
+ ██████╗██╗   ██╗██████╗ ██╗ ██████╗ 
+██╔════╝██║   ██║██╔══██╗██║██╔═══██╗
+██║     ██║   ██║██████╔╝██║██║   ██║
+██║     ██║   ██║██╔══██╗██║██║▄▄ ██║
+╚██████╗╚██████╔╝██████╔╝██║╚██████╔╝
+ ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝ ╚══▀▀═╝ 
 +------------------------------------------------+
 |  This is an experiment developed by            |
-|  Futurewise Labs @ https://futurewise.lat      |
+|  Cubiq Labs @ https://cubiq.lat                |
 +------------------------------------------------+
 |  The aim of this experiment is to test the     |
 |  limits of vanilla javascript.                 |
