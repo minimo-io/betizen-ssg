@@ -39,8 +39,10 @@
         {# <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url | locale_url('es') }}"/> #}
         {# x-default always points to English if it exists #}
         {# {%- set english_link = page.url | locale_url('en') -%} #}
-        {%- if english_link %}
+        {%- if english_link  %}
             <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ english_link }}"/>
+        {%- elif page.lang == 'en' -%}
+            <link rel="alternate" hreflang="x-default" href="{{ metadata.url }}{{ page.url }}"/>    
         {%- endif -%}  
 
 
