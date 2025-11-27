@@ -59,6 +59,8 @@ module.exports = {
       poker: { name: "Video poker", url: "/juegos/video-poker/" },
     },
     texts: {
+      latestCommits: "Últimos commits de código",
+      viewOnGitHub: "Ver en Github",
       or: "ó",
       close: "Cerrar",
       bad: "Malo",
@@ -312,6 +314,8 @@ module.exports = {
       poker: { name: "Vídeo-Póker", url: "/pt-br/jogos/video-poker-pt/" },
     },
     texts: {
+      latestCommits: "Últimos commits de código",
+      viewOnGitHub: "Ver no GitHub",
       or: "ou",
       close: "Fechar",
       bad: "Ruim",
@@ -560,6 +564,8 @@ module.exports = {
       roulette: { name: "Roulette", url: "/en/games/online-roulette/" },
     },
     texts: {
+      viewOnGitHub: "View on GitHub",
+      latestCommits: "Latest Code Commits",
       or: "or",
       close: "Close",
       bad: "Bad",

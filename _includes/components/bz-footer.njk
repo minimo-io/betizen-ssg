@@ -48,7 +48,7 @@
                 Roadmap
             </a>   #}
 
-            <a href="{{ '/transparencia/' | locale_url }}" target="_blank" class="hover:underline md:text-lg">
+            <a href="{{ '/transparencia/' | locale_url }}" class="hover:underline md:text-lg">
                 Roadmap
             </a>  
 
@@ -89,9 +89,11 @@
     </div>
     <aside>
         <p>Betizen.org &bull; 2018 - {% currentYear %} &bull; 
-            <a href="https://github.com/minimo-io/betizen-ssg" class="font-bold hover:underline" target="_blank" rel="noopener noreferrer">
-                v2.1.6
-            </a>
+            <span class="tooltip" data-tip="{{ config.versionDetails }}">
+                <a href="https://github.com/minimo-io/betizen-ssg" class="font-bold hover:underline" target="_blank" rel="noopener noreferrer">
+                    v{{ config.version }}
+                </a>
+            </span>
             &bull; 
             <span>Powered by <a class="font-bold" href="https://www.cubiq.lat/" target="_blank" rel="noopener noreferrer">Cubiq</a></span>
         </p>
