@@ -146,7 +146,8 @@ function BZModal(id = "bz_modal_1") {
     // Create close button
     const closeButton = document.createElement("button");
     closeButton.classList.add("btn");
-    closeButton.textContent = "Close"; // Default text, customize as needed
+    // closeButton.textContent = "Close";
+    closeButton.textContent = getTranslation("texts.close") || "Close";
 
     // Assemble the structure
     form.appendChild(closeButton);

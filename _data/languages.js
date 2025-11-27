@@ -42,7 +42,7 @@ module.exports = {
         name: "SpinBetter Casino",
         title: "HASTA 300 GIROS GRÁTIS 🤯 ¡PROMO LIMITADA!",
         cta: "¡RECLAMA TUS 300 GIROS GRATIS HOY!",
-        url: "#",
+        url: "https://redirspinner.com/2Bxv?p=%2Fregistration%2F",
       },
       external_250x250: metadata.images.banners + "banner_20bet_300x300.webp",
     },
@@ -247,7 +247,7 @@ module.exports = {
       blacklistReason:
         "Aconsejamos encarecidamente no jugar en este casino debido a quejas no resueltas, malas prácticas u otros problemas graves.",
       supportersText:
-        "Nada sustituye al poder del conocimiento colectivo, del mercado decidiendo. Betizen fomenta las buenas prácticas, luego los usuários deciden. ¡Ayudanos seguir mejorando el juego online!",
+        "Nada sustituye al poder del conocimiento colectivo, del mercado decidiendo. Mejoremos el juego online. ¡Patrocinanos y aparecerás en las primeras posiciones de los listados! ",
       becomeSponsor: "Sea patrocinador",
       soon: "En breve...",
       selectLanguage: "Selecciona un idioma",
@@ -497,7 +497,7 @@ module.exports = {
       blacklistReason:
         "Aconselhamos fortemente que não jogue neste cassino devido a reclamações não resolvidas, más práticas ou outros problemas graves.",
       supportersText:
-        "Nada substitui o poder do conhecimento coletivo, do mercado decidindo. A Betizen promove boas práticas, depois os usuários decidem. Ajude-nos a continuar melhorando o jogo online!",
+        "Nada substitui o poder do conhecimento coletivo, do mercado decidindo. Vamos melhorar o jogo online. Patrocine-nos e você aparecerá nas primeiras posições das listagens!",
       becomeSponsor: "Seja patrocinador",
       soon: "Em breve...",
       selectLanguage: "Selecione um idioma",
@@ -550,7 +550,7 @@ module.exports = {
         name: "SpinBetter Casino",
         title: "UP TO 150 FREE SPINS 🤯 LIMITED PROMOTION!",
         cta: "CLAIM YOUR 150 FREE SPINS TODAY!",
-        url: "#",
+        url: "https://redirspinner.com/2Bxv?p=%2Fregistration%2F",
       },
       external_250x250: metadata.images.banners + "coinsgame-300x300.png",
     },
@@ -743,7 +743,7 @@ module.exports = {
       blacklistReason:
         "We strongly advise against playing at this casino due to unresolved complaints, poor practices, or other serious issues.",
       supportersText:
-        "Nothing replaces the power of collective knowledge, of the market deciding. Betizen promotes good practices, then users decide. Help us keep improving online gaming!",
+        "Nothing replaces the power of collective knowledge, of the market deciding. Let's improve online gaming. Sponsor us and you will appear in the top positions of the listings!",
       becomeSponsor: "Become a sponsor",
       soon: "Soon...",
       selectLanguage: "Select a language",

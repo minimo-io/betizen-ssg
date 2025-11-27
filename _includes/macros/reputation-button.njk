@@ -16,7 +16,42 @@
     {% if anchor == false %}
         <button
             data-modal-title="{{ languages[page.lang].texts.reputationDetails }}"
-            data-modal-body='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-circle"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ buttonText }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">{{ languages[page.lang].texts.visitCasino }}</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
+            data-modal-body='<div class="container flex items-center flex-col justify-center">
+                                <div class="flex flex-col items-center">
+    
+                                    <div class=" flex-1 text-center">
+                                        <img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-full" />
+                                    </div>
+                                  
+                                    <div class="flex-1 px-5 mt-5 mb-1">
+                                        {{ description | safe }}
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="w-full mt-3">
+                                    <a
+                                        type="button"
+                                        href="{{ link }}"
+                                        role="button"
+                                        rel="sponsored noreferrer noopenener"
+                                        target="_blank"
+                                        class="btn mb-2 btn-outline border-none! uppercase w-full"
+                                        ><span class="badge badge-pill badge-success">&nbsp;</span>&nbsp;{{ buttonText }}</a
+                                    >
+                                    <a
+                                        class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110 text-white w-full"
+                                        href="{{ link }}"
+                                        role="button"
+                                        rel="sponsored noreferrer noopenener"
+                                        target="_blank"
+                                        >{{ languages[page.lang].texts.visitCasino }}</a
+                                    >
+                                </div>
+                            </div>
+                            <style>
+                                .btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}
+                            </style>'
             type="button"
             class="btn-bz-modal btn btn-sm md:btn-md btn-soft order-2 md:order-1 {{ buttonClass }} text-uppercase {{ extraClasses }}"
         >
@@ -27,7 +62,42 @@
     {% else %}
         <button
             data-modal-title="{{ languages[page.lang].texts.reputationDetails }}"
-            data-modal-body='<div class="container">    <div class="row"><div class="col text-center"><img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-circle"></div></div>    <div class="row"><div class="col text-center mt-4 mb-4"><button type="button" class="btn btn-outline text-uppercase btn-casino-reputation"><span class="badge badge-pill btn-success">&nbsp;</span>&nbsp;{{ buttonText }}</button></div></div>    <div class="row"><div class="col">{{ description | safe }}</div></div>    <div class="row"><div class="col mt-4"><a class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110" href="{{ link }}" role="button" rel="sponsored" target="_blank">{{ languages[page.lang].texts.visitCasino }}</a></div></div></div><style>.btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}</style>'
+            data-modal-body='<div class="container flex items-center flex-col justify-center">
+                                <div class="flex flex-col items-center">
+    
+                                    <div class=" flex-1 text-center">
+                                        <img src="{{ logo }}" alt="{{ title }}" width="100" class="rounded-full" />
+                                    </div>
+                                  
+                                    <div class="flex-1 px-5 mt-5 mb-1">
+                                        {{ description | safe }}
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="w-full mt-3">
+                                    <a
+                                        type="button"
+                                        href="{{ link }}"
+                                        role="button"
+                                        rel="sponsored noreferrer noopenener"
+                                        target="_blank"
+                                        class="btn mb-2 btn-outline border-none! uppercase w-full"
+                                        ><span class="badge badge-pill badge-success">&nbsp;</span>&nbsp;{{ buttonText }}</a
+                                    >
+                                    <a
+                                        class="btn btn-brand btn-block btn-checkout text-uppercase btn-customcolor_110 text-white w-full"
+                                        href="{{ link }}"
+                                        role="button"
+                                        rel="sponsored noreferrer noopenener"
+                                        target="_blank"
+                                        >{{ languages[page.lang].texts.visitCasino }}</a
+                                    >
+                                </div>
+                            </div>
+                            <style>
+                                .btn-customcolor_110{background-color:#0082ba !important;border-color:#0082ba !important;}.btn-customcolor_110:hover{background-color:{{ gradient.start }} !important;border-color:{{ gradient.end }} !important;}
+                            </style>'
             type="button"
             class="btn-bz-modal {{ extraClasses }} font-bold hover:underline cursor-pointer"
         >
