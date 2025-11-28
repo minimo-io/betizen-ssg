@@ -1,8 +1,6 @@
 // API client with error handling
 window.BZ.api = {
-  baseURL: window.isDev
-    ? "http://127.0.0.1:8085"
-    : "https://api.futurewise.lat",
+  baseURL: window.isDev ? "http://127.0.0.1:8085" : "https://api.cubiq.lat",
   async request(endpoint, options = {}) {
     const { headers: optionHeaders = {}, ...restOptions } = options;
 
