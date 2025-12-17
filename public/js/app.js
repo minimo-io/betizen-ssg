@@ -107,14 +107,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Check for user auth
-  const isAuthenticated = window.BZ.state.get("auth.isAuthenticated");
 
   // A timeout to open the login/signup modal for non-auth users
-  if (!isAuthenticated) {
-    console.log("Invite user to login...");
-    setTimeout(() => {
-      window.BZ.auth.showLoginModal();
-    }, 20000);
+  if (!window.BZ.state.get("auth.isAuthenticated")) {
+    // setTimeout(() => {
+    //   window.BZ.auth.showLoginModal();
+    // }, 20000);
   }
 
   // document
