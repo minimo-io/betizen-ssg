@@ -1,19 +1,18 @@
+{# Visit button #}
 <div
     class="tooltip"
     data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints }} {{ languages[page.lang].texts.points }}">
-    <a
-        href="{{ bonus.link }}"
+    <button
         onclick="gtag('event', 'click', {
             event_category: 'visit-site-button',
             event_label: 'site-{{ page.fileSlug }}',
             value: 1
         });"
-        target="_blank"
-        rel="sponsored noopener noreferrer"
+        data-url="{{ bonus.link }}"
         class="btn btn-primary bz-visit-site-button w-full text-white font-semibold">
         <i data-lucide="external-link" strokeWidth={1} class="h-3"></i>
         {{ languages[page.lang].texts.visitSite | safe }}
-    </a>
+    </button>
 </div>
 
 {# Fixed button used when scrolling #}

@@ -9,6 +9,14 @@ window.BZ.voting = {
       }
     });
 
+    // Event for link buttons which earn karma
+    document.addEventListener("click", (e) => {
+      const visitBtn = e.target.closest("[data-url]");
+      if (visitBtn) {
+        this.handleEarnKarma(visitBtn);
+      }
+    });
+
     // UI Subscriptions
     // Subscribe to changes in user karma
     window.BZ.state.subscribe("auth.user.karma", (newKarma) => {
@@ -36,6 +44,15 @@ window.BZ.voting = {
       karmaElements.forEach((el) => {
         el.textContent = `${newRank}`;
       });
+    });
+
+    // Subscribe to changes in the modal for external links opened
+    window.BZ.state.subscribe("ui.currentModal", (currentModal) => {
+      if (currentModal == "external_link_opening") {
+        document
+          .getElementById("modal-external-click")
+          .classList.add("modal-open");
+      }
     });
   },
 
@@ -84,6 +101,59 @@ window.BZ.voting = {
     } finally {
       button.disabled = false;
       button.classList.remove("loading");
+    }
+  },
+
+  async handleEarnKarma(button) {
+    // Only apply karma if user is authenticated
+    if (window.BZ.state.get("auth.isAuthenticated")) {
+      const urlToVisit = button.dataset.url;
+      // console.log("URL TO VISIT", urlToVisit);
+      button.disabled = true;
+
+      // open modal
+      window.BZ.state.set("ui.currentModal", "external_link_opening");
+
+      try {
+        const response = await window.BZ.api.voting.earnKarma.forVisitingLink({
+          type: "VISIT_AFFILIATE_LINK",
+          url: urlToVisit,
+        });
+
+        switch (response.data.status) {
+          case "COOLDOWN":
+            showToast(`${getTranslation("texts.karmaEarnCooldown")}`, "error");
+            showToast(
+              `${getTranslation("texts.cooldownTime")}: ${
+                response.data.cooldown_hours
+              }hrs`,
+              "error"
+            );
+
+            break;
+          case "SUCCESS":
+            showToast(`${getTranslation("texts.karmaEarned")}`, "success");
+            showToast(
+              `${getTranslation("texts.youEarned")}: ${
+                response.data.karma_granted
+              } ${getTranslation("texts.karmaPoints")}`,
+              "success"
+            );
+
+            break;
+        }
+        console.log("Response DATA", response.data);
+      } catch (err) {
+        showToast(`${getTranslation("texts.karmaEarnError")}`, "error");
+        button.disabled = true;
+        window.BZ.state.set("ui.currentModal", "null");
+      } finally {
+        setTimeout(function () {
+          window.location.href = urlToVisit;
+        }, 2000);
+      }
+    } else {
+      console.log("Karma not earned, used is logged out.");
     }
   },
 

@@ -82,5 +82,17 @@ window.BZ.api = {
       console.log("Getting karma data from api... OK", karmaData.data);
       return karmaData;
     },
+
+    earnKarma: {
+      forVisitingLink: async (payload) => {
+        // console.log("Earning karma from api...");
+        const earnKarmaResult = window.BZ.api.request("/users/voting/earn", {
+          method: "POST",
+          body: JSON.stringify(payload),
+        });
+        return earnKarmaResult;
+        // console.log("Earn karma result", earnKarmaResult);
+      },
+    },
   },
 };

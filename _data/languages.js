@@ -59,6 +59,14 @@ module.exports = {
       poker: { name: "Video poker", url: "/juegos/video-poker/" },
     },
     texts: {
+      karmaPoints: "puntos de karma",
+      youEarned: "Ganaste",
+      cooldownTime: "Tiempo de espera",
+      karmaEarned: "¡Felicitaciones! Ganaste karma",
+      karmaEarnCooldown:
+        "Debes esperar para volver a ganar karma por esta visita",
+      karmaEarnError: "Error al acumular karma",
+      earningKarma: "Acumulando karma...",
       latestCommits: "Últimos commits de código",
       viewOnGitHub: "Ver en Github",
       or: "ó",
@@ -314,6 +322,14 @@ module.exports = {
       poker: { name: "Vídeo-Póker", url: "/pt-br/jogos/video-poker-pt/" },
     },
     texts: {
+      karmaPoints: "pontos de karma",
+      youEarned: "Você ganhou",
+      cooldownTime: "Tempo de espera",
+      karmaEarned: "Parabéns! Você ganhou karma",
+      karmaEarnCooldown:
+        "Você deve aguardar para voltar a ganhar karma por esta visita",
+      karmaEarnError: "Erro ao acumular karma",
+      earningKarma: "Acumulando karma...",
       latestCommits: "Últimos commits de código",
       viewOnGitHub: "Ver no GitHub",
       or: "ou",
@@ -564,6 +580,14 @@ module.exports = {
       roulette: { name: "Roulette", url: "/en/games/online-roulette/" },
     },
     texts: {
+      karmaPoints: "karma points",
+      youEarned: "You earned",
+      cooldownTime: "Cooldown time",
+      karmaEarned: "Congratulations! You earned karma",
+      karmaEarnCooldown:
+        "You must wait before earning karma again for this visit",
+      karmaEarnError: "Error earning karma",
+      earningKarma: "Earning karma...",
       viewOnGitHub: "View on GitHub",
       latestCommits: "Latest Code Commits",
       or: "or",
