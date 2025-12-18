@@ -142,12 +142,13 @@ window.BZ.voting = {
 
             break;
         }
-        console.log("Response DATA", response.data);
       } catch (err) {
         showToast(`${getTranslation("texts.karmaEarnError")}`, "error");
-        button.disabled = true;
+        button.disabled = false;
         window.BZ.state.set("ui.currentModal", "null");
       } finally {
+        button.disabled = false;
+        window.BZ.state.set("ui.currentModal", "null");
         setTimeout(function () {
           window.location.href = urlToVisit;
         }, 2000);
