@@ -11,7 +11,7 @@ window.BZ.voting = {
 
     // Event for link buttons which earn karma
     document.addEventListener("click", (e) => {
-      const visitBtn = e.target.closest("[data-url]");
+      const visitBtn = e.target.closest("[data-earnurl]");
       if (visitBtn) {
         this.handleEarnKarma(visitBtn);
       }
@@ -52,6 +52,10 @@ window.BZ.voting = {
         document
           .getElementById("modal-external-click")
           .classList.add("modal-open");
+      } else {
+        document
+          .getElementById("modal-external-click")
+          .classList.remove("modal-open");
       }
     });
   },
@@ -107,10 +111,12 @@ window.BZ.voting = {
   async handleEarnKarma(button) {
     // Only apply karma if user is authenticated
     if (window.BZ.state.get("auth.isAuthenticated")) {
-      const urlToVisit = button.dataset.url;
-      // console.log("URL TO VISIT", urlToVisit);
-      button.disabled = true;
+      const urlToVisit = button.dataset.earnurl.trim();
+      // console.log("TRIMMED_URL", urlToVisit);
 
+      window.BZ.modal.close(); // close other modals if opened
+
+      button.disabled = true;
       // open modal
       window.BZ.state.set("ui.currentModal", "external_link_opening");
 
@@ -139,19 +145,30 @@ window.BZ.voting = {
               } ${getTranslation("texts.karmaPoints")}`,
               "success"
             );
-
             break;
         }
+
+        // window.BZ.state.set("ui.currentModal", null);
+        // button.disabled = false;
       } catch (err) {
         showToast(`${getTranslation("texts.karmaEarnError")}`, "error");
-        button.disabled = false;
-        window.BZ.state.set("ui.currentModal", "null");
+        // button.disabled = false;
+        // window.BZ.state.set("ui.currentModal", "null");
       } finally {
-        button.disabled = false;
-        window.BZ.state.set("ui.currentModal", "null");
-        setTimeout(function () {
-          window.location.href = urlToVisit;
-        }, 2000);
+        // button.disabled = false;
+        // window.BZ.state.set("ui.currentModal", "null");
+
+        // change modal message
+        document.getElementById(
+          "modal-external-click-message"
+        ).innerHTML = `${getTranslation("texts.karmaEarnRedirecting")}`;
+
+        // Finally visit the casino
+        // setTimeout(function () {
+        window.location.href = urlToVisit;
+        // }, 1000);
+
+        // window.open(urlToVisit, "_blank");
       }
     } else {
       console.log("Karma not earned, used is logged out.");

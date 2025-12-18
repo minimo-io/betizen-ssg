@@ -1,3 +1,4 @@
+// content/pt-br/casinos/casinos.11tydata.js
 const metadata = require("../../../_data/metadata.js");
 const languages = require("../../../_data/languages.js");
 module.exports = {

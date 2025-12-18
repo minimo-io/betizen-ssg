@@ -66,8 +66,9 @@
                     {# Actions #}
                     <td class="pr-0 md:pr-auto">
                         <div class="flex flex-col md:flex-row justify-center md:justify-end gap-2 items-center">
+
+                            {# Blacklisted #}
                              {% if not post.data.blacklisted %}
-                                {# Info #}
                                 {{ reputationButton(post.data.reputation.code, post.data.reputation.text, logoPath, post.data.title, post.data.gradient, post.data.bonus.link, false, "Xd-none Xd-md-block btn-scale") }}
                             {% endif %}
 
@@ -79,15 +80,13 @@
                                 </a>
                             {% else %}
                                 <div class="tooltip order-last" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints }} {{ languages[page.lang].texts.points }}">
-                                    <a
-                                        href="{{ post.data.bonus.link }}"
-                                        rel="sponsored"
-                                        target="_blank"
+                                    <button
+                                        data-earnurl="{{ post.data.bonus.link }}"
                                         class="btn-primary/20 btn btn-sm md:btn-md order-1 md:order-2"
                                         >
                                         <i data-lucide="external-link" strokeWidth={1} class="h-4"></i>
                                         {{ languages[page.lang].texts.visit }}
-                                    </a>
+                                    </button>
                                 </div>
                             {% endif %}
                         </div>

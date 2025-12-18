@@ -172,5 +172,17 @@
         </div>
 
 
+
+
+        {# List all unique bonus links
+        <ul>
+        {% for link in collections.allBonusLinks %}
+        <li>{{ link }}</li>
+        {% endfor %}
+        </ul>
+
+        {# Or just get the count #}
+        {# <p>Total unique bonus links: {{ collections.allBonusLinks.length }}</p> #}
+
     </body>
 </html>

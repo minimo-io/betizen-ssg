@@ -227,6 +227,28 @@ module.exports = function (eleventyConfig) {
     }
   );
 
+  /**
+   * Collection that returns all unique bonus.link URLs from casino posts
+   * Only includes links explicitly defined in front-matter (no fallbacks)
+   */
+  eleventyConfig.addCollection("allBonusLinks", function (collectionApi) {
+    const casinoPages = collectionApi.getFilteredByTag("casinos");
+    const links = new Set();
+
+    casinoPages.forEach((page) => {
+      // Only add if bonus.link is explicitly defined in front-matter
+      if (page.data.bonus && page.data.bonus.link) {
+        const link = page.data.bonus.link;
+        // Exclude internal links (starting with / or #)
+        if (!link.startsWith("/") && !link.startsWith("#")) {
+          links.add(link);
+        }
+      }
+    });
+
+    return Array.from(links);
+  });
+
   // Features to make your build faster (when you need them)
 
   // If your passthrough copy gets heavy and cumbersome, add this line

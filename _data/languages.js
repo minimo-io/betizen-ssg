@@ -59,6 +59,7 @@ module.exports = {
       poker: { name: "Video poker", url: "/juegos/video-poker/" },
     },
     texts: {
+      karmaEarnRedirecting: "Redireccionado...",
       karmaPoints: "puntos de karma",
       youEarned: "Ganaste",
       cooldownTime: "Tiempo de espera",
@@ -89,7 +90,7 @@ module.exports = {
       vote: "Votar",
       howWorks: "¿Cómo funciona?",
 
-      orderNewer: "Mas nuevos",
+      orderNewer: "Nuevos",
       orderMostVoted: "Mas votados",
       orderAlphabetical: "Alfabético",
       orderLicensed: "Licenciados",
@@ -322,6 +323,7 @@ module.exports = {
       poker: { name: "Vídeo-Póker", url: "/pt-br/jogos/video-poker-pt/" },
     },
     texts: {
+      karmaEarnRedirecting: "Redirecionando...",
       karmaPoints: "pontos de karma",
       youEarned: "Você ganhou",
       cooldownTime: "Tempo de espera",
@@ -352,8 +354,8 @@ module.exports = {
       vote: "Votar",
       howWorks: "Como funciona?",
 
-      orderNewer: "Mas nuevos",
-      orderMostVoted: "Mas votados",
+      orderNewer: "Novos",
+      orderMostVoted: "Mais votados",
       orderAlphabetical: "Alfabético",
       orderBlacklisted: "Lista negra",
       orderLicensed: "Licenciados",
@@ -580,6 +582,7 @@ module.exports = {
       roulette: { name: "Roulette", url: "/en/games/online-roulette/" },
     },
     texts: {
+      karmaEarnRedirecting: "Redirecting...",
       karmaPoints: "karma points",
       youEarned: "You earned",
       cooldownTime: "Cooldown time",
