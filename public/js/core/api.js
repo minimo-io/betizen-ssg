@@ -8,7 +8,9 @@ window.BZ.api = {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        "X-Database-UUID": "3dc66d01-63f5-4909-88ee-f27f03c79d28",
+        // "X-Database-UUID": "3dc66d01-63f5-4909-88ee-f27f03c79d28",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYTM0MTJiYy0yYjZkLTQxMTAtOTIyZi05ZmZlMTNmYmNlYTEiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzY5MTY5ODY1LCJleHAiOjMzNDU5Njk4NjV9.ObbR1fEi-AYVpLb48ArboH4Twj8dNrTyLCJL5_6xy0o",
         ...optionHeaders,
       },
       ...restOptions,
