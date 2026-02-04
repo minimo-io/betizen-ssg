@@ -180,18 +180,23 @@
         }, 3000);
     }
 
+    document.addEventListener('DOMContentLoaded', function () {
 
-    var flkty2 = new Flickity('.main-carousel', {
-        cellAlign: "left",
-        prevNextButtons: false,
-        contain: true,
-        wrapAround: false,
-        freeScroll: false,
-        groupCells: true,
-        autoPlay: false,
-        pageDots: true,
+        var flkty2 = new Flickity('.main-carousel', {
+            cellAlign: "left",
+            prevNextButtons: false,
+            contain: true,
+            wrapAround: false,
+            freeScroll: false,
+            groupCells: true,
+            autoPlay: false,
+            pageDots: true,
+        });
+        {# flkty2.next();     #}
+
     });
-    {# flkty2.next();     #}
+
+
 
 
 </script>

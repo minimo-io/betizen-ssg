@@ -1,5 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+/* @plugin "daisyui"; */
+
+@plugin "daisyui" {
+  themes:
+    cmyk --default,
+    dark --prefersdark;
+}
 
 @variant dark ([data-theme="dark"] &);
 

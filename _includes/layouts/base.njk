@@ -56,10 +56,7 @@
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com/" />
 
         {# Tailwind / DaisyUI #}
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-        {# <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> #}
         <link rel="stylesheet" href="{{ '/assets/app.css' | url }}">
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 
         {# Flickity  #}
         <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -71,6 +68,7 @@
         {# Animate #}
         <link
             rel="stylesheet"
+            media="print" onload="this.media='all'"
             href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
 
