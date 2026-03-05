@@ -85,6 +85,8 @@ window.BZ.api = {
       return karmaData;
     },
 
+    // Earn karma method, which internally (in the api) will also count link
+    // When the user is offline, we have another method so we can just count the link visit (see below)
     earnKarma: {
       forVisitingLink: async (payload) => {
         // console.log("Earning karma from api...");
@@ -95,6 +97,19 @@ window.BZ.api = {
         return earnKarmaResult;
         // console.log("Earn karma result", earnKarmaResult);
       },
+    },
+
+    // Count link vistit even if the user is not loggeed-in
+    countVisit: async (payload) => {
+      console.log("Count +1 visit to this link...");
+      const visitCountResult = await window.BZ.api.request(
+        "/users/voting/visit-count",
+        {
+          method: "POST",
+          body: JSON.stringify(payload),
+        },
+      );
+      console.log(`Visit count result:`, visitCountResult);
     },
   },
 };

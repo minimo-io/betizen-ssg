@@ -110,8 +110,9 @@ window.BZ.voting = {
 
   async handleEarnKarma(button) {
     const urlToVisit = button.dataset.earnurl.trim();
+
     // Only apply karma if user is authenticated
-    if (1 == 1 || window.BZ.state.get("auth.isAuthenticated")) {
+    if (window.BZ.state.get("auth.isAuthenticated")) {
       // console.log("TRIMMED_URL", urlToVisit);
 
       window.BZ.modal.close(); // close other modals if opened
@@ -171,6 +172,14 @@ window.BZ.voting = {
       }
     } else {
       console.log("Karma not earned, used is logged out.");
+      window.BZ.state.set("ui.currentModal", "external_link_opening");
+      document.getElementById("modal-external-click-message").innerHTML =
+        `${getTranslation("texts.karmaEarnRedirecting")}`;
+
+      const visitCount = await window.BZ.api.voting.countVisit({
+        url: urlToVisit,
+      });
+
       window.location.href = urlToVisit;
     }
   },
