@@ -58,7 +58,7 @@ slugOverride: affiliate-programs
             <div class="join join-vertical w-full mt-10">
               
               {% set programs = [
-                { name: "Playamo Partners", featured: true, logo: "playamo-partners-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "16% - 29%", link: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=1988&redirectURL=https://www.registeramo.com", description: "Playamo Partners has a long-standing reputation for paying correctly for many years, even to small affiliates. They own several brands including National Casino or 20Bet, have a revenue share range of 25 to 45% minus administrative expenses and do not have a sub-affiliate program." },
+                { name: "Playamo Partners", featured: true, review: "/blog/playamo-partners-programa-afiliados/", logo: "playamo-partners-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "16% - 29%", link: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=1988&redirectURL=https://www.registeramo.com", description: "Playamo Partners has a long-standing reputation for paying correctly for many years, even to small affiliates. They own several brands including National Casino or 20Bet, have a revenue share range of 25 to 45% minus administrative expenses and do not have a sub-affiliate program." },
                 { name: "Groupartners", logo: "groupartners-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "22.76% - 40.97%", link: "https://media.groupartners.com/redirect.aspx?pid=2341&bid=1590", description: "Groupartners is the brand behind Tusk Casino. Its affiliate system is Netrefer, and has a promotional range of 25-45% revenue share and a real range of 23-41%." },
                 { name: "Betwinner Affiliates", logo: "betwinner-affiliates-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", link: "https://bwredir.com/1t7Y?p=%2Fregistration%3FreturnUrl%3D%2Fslots", description: "The Betwinner affiliate program has a negative transfer if we set up weekly payments and does not carry losses if we set up monthly payments. Minimum winnings to withdraw are $30." },
                 { name: "FastPay Affiliates", logo: "fastpay-affiliates.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "18% - 33%", link: "https://fastpay-go.com/ae1864538", description: "Fasypay has a multi-brand affiliate program, with a rev-share range of 25% to 45% and a cookie duration of 30 days." },
@@ -77,32 +77,35 @@ slugOverride: affiliate-programs
               ] %}
 
               {% for program in programs %}
-              <div class="collapse collapse-arrow join-item border-b border-base-300 {% if program.featured %} ring-2  ring-blue-200 shadow-lg my-2 {% endif %}">
-                <input type="radio" name="affiliate-program" {% if program.featured %}checked="checked"{% endif %} />
-                <div class="collapse-title text-xl font-medium">
-                  <div class="flex items-center gap-4">
-                    <img loading="lazy" decoding="async" width="40" height="40" src="{{ program.path }}{{ program.logo }}" class="rounded-full bg-white" alt="{{ program.name }}-logo" />
-                    <div class="flex-grow">
-                      <div class="font-semibold text-base">{{ program.name }}</div>
-                      <div class="text-sm text-gray-500">
-                        {{ program.commission }}
-                        {% if program.real_commission %}
-                        <span class="italic">(Real: {{ program.real_commission }})</span>
-                        {% endif %}
-                      </div>
+                <div class="collapse collapse-arrow join-item border-b border-base-300 {% if program.featured %} ring-2  ring-blue-200 shadow-lg my-2 {% endif %}">
+                    <input type="radio" name="affiliate-program" {% if program.featured %}checked="checked"{% endif %} />
+                    <div class="collapse-title text-xl font-medium">
+                    <div class="flex items-center gap-4">
+                        <img loading="lazy" decoding="async" width="40" height="40" src="{{ program.path }}{{ program.logo }}" class="rounded-full bg-white" alt="{{ program.name }}-logo" />
+                        <div class="flex-grow">
+                        <div class="font-semibold text-base">{{ program.name }}</div>
+                        <div class="text-sm text-gray-500">
+                            {{ program.commission }}
+                            {% if program.real_commission %}
+                            <span class="italic">(Real: {{ program.real_commission }})</span>
+                            {% endif %}
+                        </div>
+                        </div>
                     </div>
-                  </div>
+                    </div>
+                    <div class="collapse-content prose prose-sm min-w-full prose-p:my-[10px]">
+                    {% if program.featured %}
+                        <div class="badge badge-primary badge-outline mb-2">Featured</div>
+                    {% endif %}
+                    {% if program.review %}
+                        <a href="{{ program.review }}" class="badge badge-primary badge-outline mb-2">Blog</a>
+                    {% endif %}                    
+                    <p>{{ program.description }}</p>
+                    <a href="{{ program.link }}" rel="nofollow noopener noreferrer" target="_blank" class="btn btn-sm btn-primary text-white no-prose">
+                        {{ languages[page.lang].texts.visit }}
+                    </a>
+                    </div>
                 </div>
-                <div class="collapse-content prose prose-sm min-w-full prose-p:my-[10px]">
-                  {% if program.featured %}
-                  <div class="badge badge-primary badge-outline mb-2">Featured</div>
-                  {% endif %}
-                  <p>{{ program.description }}</p>
-                  <a href="{{ program.link }}" rel="nofollow noopener noreferrer" target="_blank" class="btn btn-sm btn-primary text-white no-prose">
-                      {{ languages[page.lang].texts.visit }}
-                  </a>
-                </div>
-              </div>
               {% endfor %}
 
             </div>

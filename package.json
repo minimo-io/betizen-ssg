@@ -1,6 +1,6 @@
 {
   "name": "betizen-ssg",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "Reliable listings of online casinos, games, bonuses and affiliate programs, without scams!",
   "scripts": {
     "build": "NODE_ENV=prod NODE_OPTIONS=--max_old_space_size=5012 npm-run-all clean-build build:* minify:*",

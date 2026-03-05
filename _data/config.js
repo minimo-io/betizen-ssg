@@ -1,6 +1,10 @@
+// _data/config.js
+
+var pkg = require("../package.json");
+
 module.exports = {
   isDev: process.env.NODE_ENV === "dev",
-  version: "2.1.9",
+  version: pkg.version,
   versionDetails: "Nov 27, 2025",
   // Default karma used for voting buttons
   karmaPoints: 21,

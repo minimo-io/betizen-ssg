@@ -5,8 +5,8 @@ layout: layouts/base.njk
 {%- from "macros/reputation-button.njk" import reputationButton with context -%}
 {%- from "macros/karma-button.macro.njk" import karmaButton with context -%}
 
-{%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
-{%- set splashPath -%}{{ metadata.images.binaries }}{{ page.fileSlug }}-splash.webp{%- endset -%}
+{%- set logoPath -%}{{ metadata.images.forex }}{{ page.fileSlug }}-logo.webp{%- endset -%}
+{%- set splashPath -%}{{ metadata.images.forex }}{{ page.fileSlug }}-splash.webp{%- endset -%}
 
 <!-- Casino Review Card -->
 <div class="max-w-6xl mx-auto debug-container">
@@ -21,7 +21,7 @@ layout: layouts/base.njk
                 <div class="w-20 h-20 rounded-xl border-4 border-white flex items-center justify-center shadow-lg">
                     <!-- Brand logo -->
                     <img
-                      src="{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp"
+                      src="{{ metadata.images.forex }}{{ page.fileSlug }}-logo.webp"
                       class="rounded-lg"
                       alt="{{ slugOverride }}"
                       width="300"
@@ -32,7 +32,7 @@ layout: layouts/base.njk
 
             <!-- Casino tag -->
             <div class="absolute top-4 right-6">
-                <a href="{{ '/casinos/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
+                <a href="{{ '/forex/' | locale_url }}" class="bg-gray-600 text-white text-xs px-3 py-1 rounded">
                     {{ languages[page.lang].texts.backToList }}
                 </a>
             </div>
@@ -132,11 +132,19 @@ layout: layouts/base.njk
 
                   {# Left Details #}
                   <div class="md:flex-1 debug-overflow">
+                    
+                    {# Video or Splash - Mobile version #}
+                    <div class="block md:hidden mb-4">
+                        <div class="relative overflow-hidden rounded-lg">
+                            {%- include "components/bz-youtube.njk" -%}
+                        </div>
+                    </div>
+                    
                     {# Ai overview #}
                     {%- include "components/bz-ai-overview.njk" -%}
 
                      {# Details #}
-                    {%- include "components/casinos/casino-details.njk" -%}
+                    {%- include "components/forex/forex-details.njk" -%}
 
                     {# Features #}
                     <div class="block md:hidden pt-3">
@@ -164,6 +172,13 @@ layout: layouts/base.njk
                   {# Right Details - DEBUG STICKY SIDEBAR #}
                   <aside class="md:w-80 md:flex-shrink-0">
                     <div class="sticky top-4 debug-sticky" style="position: sticky !important; top: 16px !important;">
+
+                      {# Site video - Desktop version #}
+                      <div class="hidden md:block mb-4">
+                          <div class="relative overflow-hidden rounded-lg">
+                                {%- include "components/bz-youtube.njk" -%}
+                          </div>
+                      </div>                        
 
                       {# Features #}
                       <div class="hidden md:block mb-4">

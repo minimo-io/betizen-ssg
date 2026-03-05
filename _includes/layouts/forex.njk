@@ -33,7 +33,7 @@ layout: "layouts/base.njk"
             {%- set postsList = collections.forex | forLang( page.lang ) %}
 
             {% if (postsList | length) > 1 %}
-                {% include "components/casinos/casinos-list.njk" %}
+                {% include "components/forex/forex-list.njk" %}
             {% else %} 
                 <div class="my-5 text-center flex flex-col justify-center">
                     {{ languages[page.lang].texts.noItemToList }}

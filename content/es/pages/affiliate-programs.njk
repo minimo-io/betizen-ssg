@@ -58,7 +58,7 @@ slugOverride: programas-de-afiliados
             <div class="join join-vertical w-full mt-10">
               
               {% set programs = [
-                { name: "Playamo Partners", featured: true, logo: "playamo-partners-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "16% - 29%", link: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=1988&redirectURL=https://www.registeramo.com", description: "Playamo Partners tiene una reputación de larga data por pagar correctamente durante muchos años, incluso a los afiliados pequeños. Poseen varias marcas, incluidas National Casino o 20Bet, tienen un rango de participación en los ingresos del 25 al 45% menos los gastos administrativos y no tienen un programa de subafiliación." },
+                { name: "Playamo Partners", featured: true, review: "/blog/playamo-partners-programa-afiliados/", logo: "playamo-partners-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "16% - 29%", link: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=1988&redirectURL=https://www.registeramo.com", description: "Playamo Partners tiene una reputación de larga data por pagar correctamente durante muchos años, incluso a los afiliados pequeños. Poseen varias marcas, incluidas National Casino o 20Bet, tienen un rango de participación en los ingresos del 25 al 45% menos los gastos administrativos y no tienen un programa de subafiliación." },
                 { name: "Groupartners", logo: "groupartners-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "22.76% - 40.97%", link: "https://media.groupartners.com/redirect.aspx?pid=2341&bid=1590", description: "Groupartners es la marca detrás de Tusk Casino. Su sistema de afiliado es Netrefer, y tiene un rango promocional de 25-45% de revenue share, y real de 23 a 41%." },
                 { name: "Betwinner Affiliates", logo: "betwinner-affiliates-logo.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", link: "https://bwredir.com/1t7Y?p=%2Fregistration%3FreturnUrl%3D%2Fslots", description: "El programa de afiliados de Betwinner tiene carryover negativo si configuramos pagos semanales y no arrastra perdidas si en cambio configuramos pagos mensuales. El mínimo de ganancias para retirar es de $30." },
                 { name: "FastPay Affiliates", logo: "fastpay-affiliates.webp", path: metadata.images.affiliatePrograms, commission: "25% - 45%", real_commission: "18% - 33%", link: "https://fastpay-go.com/ae1864538", description: "Fasypay tiene un programa de afiliación multi-marca, con un rango de rev-share de 25% a 45% y una duración de las cookies de 30 dias." },
@@ -94,9 +94,12 @@ slugOverride: programas-de-afiliados
                   </div>
                 </div>
                 <div class="collapse-content prose prose-sm min-w-full prose-p:my-[10px]">
-                  {% if program.featured %}
-                  <div class="badge badge-primary badge-outline mb-2">Destacado</div>
-                  {% endif %}
+                    {% if program.featured %}
+                        <div class="badge badge-primary badge-outline mb-2">Destacado</div>
+                    {% endif %}
+                    {% if program.review %}
+                        <a href="{{ program.review }}" class="badge badge-primary badge-outline mb-2">Blog</a>
+                    {% endif %}                      
                   <p>{{ program.description }}</p>
                   <a href="{{ program.link }}" rel="nofollow noopener noreferrer" target="_blank" class="btn btn-sm btn-primary text-white no-prose">
                       {{ languages[page.lang].texts.visit }}
