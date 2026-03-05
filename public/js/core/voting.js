@@ -109,9 +109,9 @@ window.BZ.voting = {
   },
 
   async handleEarnKarma(button) {
+    const urlToVisit = button.dataset.earnurl.trim();
     // Only apply karma if user is authenticated
     if (window.BZ.state.get("auth.isAuthenticated")) {
-      const urlToVisit = button.dataset.earnurl.trim();
       // console.log("TRIMMED_URL", urlToVisit);
 
       window.BZ.modal.close(); // close other modals if opened
@@ -133,7 +133,7 @@ window.BZ.voting = {
               `${getTranslation("texts.cooldownTime")}: ${
                 response.data.cooldown_hours
               }hrs`,
-              "error"
+              "error",
             );
 
             break;
@@ -143,7 +143,7 @@ window.BZ.voting = {
               `${getTranslation("texts.youEarned")}: ${
                 response.data.karma_granted
               } ${getTranslation("texts.karmaPoints")}`,
-              "success"
+              "success",
             );
             break;
         }
@@ -159,9 +159,8 @@ window.BZ.voting = {
         // window.BZ.state.set("ui.currentModal", "null");
 
         // change modal message
-        document.getElementById(
-          "modal-external-click-message"
-        ).innerHTML = `${getTranslation("texts.karmaEarnRedirecting")}`;
+        document.getElementById("modal-external-click-message").innerHTML =
+          `${getTranslation("texts.karmaEarnRedirecting")}`;
 
         // Finally visit the casino
         // setTimeout(function () {
@@ -172,6 +171,7 @@ window.BZ.voting = {
       }
     } else {
       console.log("Karma not earned, used is logged out.");
+      window.location.href = urlToVisit;
     }
   },
 
