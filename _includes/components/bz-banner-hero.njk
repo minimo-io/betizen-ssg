@@ -5,7 +5,7 @@
                 {{ languages[page.lang].texts.changeBanner }}
         </button>
 
-        <a href="{{languages[page.lang].promo.url}}"
+{#         <a href="{{languages[page.lang].promo.url}}"
         target="_blank"
         rel="nofollow noopener">
             <img
@@ -13,6 +13,20 @@
                 alt="hero-banner"
                 src="{{ languages[page.lang].promo.image }}"
             />
-        </a>
+        </a> #}
+
+        <button
+        data-earnurl="{{languages[page.lang].promo.url}}"
+        class="bz-visit-site-button cursor-pointer"
+        target="_blank"
+        rel="nofollow noopener">
+            <img
+                class="rounded-xl animate__animated animate__pulse animate__infinite infinite"
+                alt="hero-banner"
+                src="{{ languages[page.lang].promo.image }}"
+            />
+        </button>
+
+
     </div>
 {% endif %}
