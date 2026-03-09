@@ -1,3 +1,4 @@
+/* @import "/assets/css/flickity.min.css"; */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 /* @plugin "daisyui"; */

@@ -101,7 +101,8 @@ window.BZ.api = {
 
     // Count link vistit even if the user is not loggeed-in
     countVisit: async (payload) => {
-      console.log("Count +1 visit to this link...");
+      console.log("Trying to count +1 visit to this link...");
+
       const visitCountResult = await window.BZ.api.request(
         "/users/voting/visit-count",
         {
@@ -109,6 +110,7 @@ window.BZ.api = {
           body: JSON.stringify(payload),
         },
       );
+      
       console.log(`Visit count result:`, visitCountResult);
     },
   },

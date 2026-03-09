@@ -8,10 +8,9 @@
             <div class="nested-carousel">
 
                 {# First nested casino #}
-                <a
-                    href="{{ languages[page.lang].promo.casino.url }}"
-                    target="_blank"
-                    class="nested-carousel-cell !w-[136px] !h-[166px]"
+                <button
+                    data-earnurl="{{ languages[page.lang].promo.casino.url }}"
+                    class="bz-visit-site-button nested-carousel-cell !w-[136px] !h-[166px] cursor-pointer"
                 >
                     <div
                         class="w-[136px] h-[136px] bg-[size:136px] rounded-[15px]"
@@ -26,14 +25,13 @@
                     <div class="mt-1 btn bg-(--bz-gold) text-white btn-xs btn-block rounded-2xl">
                         {{ languages[page.lang].texts.visit }}
                     </div>
-                </a>
+                </button>
                 
                 {# Second nested casino #}
                 {% if languages[page.lang].promo.casino2 %}
-                    <a
-                        href="{{ languages[page.lang].promo.casino2.url }}"
-                        target="_blank"
-                        class="nested-carousel-cell"
+                    <button
+                        data-earnurl="{{ languages[page.lang].promo.casino2.url }}"
+                        class="nested-carousel-cell bz-visit-site-button curspor-pointer"
                     >
 
                         <div
@@ -48,7 +46,7 @@
                         <div class="mt-1 btn bg-(--bz-gold) text-white btn-xs btn-block rounded-2xl">
                             {{ languages[page.lang].texts.visit }}
                         </div>
-                    </a>
+                    </button>
                 {% endif %}
 
             </div>

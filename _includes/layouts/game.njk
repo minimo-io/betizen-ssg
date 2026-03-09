@@ -88,14 +88,12 @@ layout: layouts/base.njk
                         <!-- Play game button -->
                         <div class="flex items-center gap-2 text-orange-500">
                           <div class="tooltip" data-tip="{{ languages[page.lang].texts.earn }} +{{ config.karmaPoints }} {{ languages[page.lang].texts.points }}">
-                              <a
-                                href="{{ languages[page.lang].promo.url }}"
-                                rel="nofollow noopener"
-                                target="_blank"
-                                class="btn btn-primary w-full text-white font-semibold">
+                              <button
+                                data-earnurl="{{ languages[page.lang].promo.url }}"
+                                class="btn btn-primary w-full text-white font-semibold bz-visit-site-button">
                                   <i data-lucide="play" strokeWidth={1} class="h-3"></i>
                                   {{ languages[page.lang].texts.realPlay | safe }}
-                              </a>
+                              </button>
                           </div>
                         </div>
                     </div>
@@ -213,9 +211,10 @@ layout: layouts/base.njk
 
                         {# Banner #}
                         <div class="flex justify-center text-center mt-5 relative left-2">
-                            <a href="{{ languages[page.lang].promo.url }}" target="_blank" rel="nofollow noopener">
+                            <button data-earnurl="{{ languages[page.lang].promo.url }}"
+                                    class="bz-visit-site-button cursor-pointer">
                                 <img alt="banner-250x250" src="{{ languages[page.lang].promo.external_250x250 | safe }}" class="w-full rounded-lg" />
-                            </a>
+                            </button>
                         </div>
 
 

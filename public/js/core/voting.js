@@ -171,15 +171,24 @@ window.BZ.voting = {
         // window.open(urlToVisit, "_blank");
       }
     } else {
+      
       console.log("Karma not earned, used is logged out.");
       window.BZ.state.set("ui.currentModal", "external_link_opening");
+
       document.getElementById("modal-external-click-message").innerHTML =
         `${getTranslation("texts.karmaEarnRedirecting")}`;
 
-      const visitCount = await window.BZ.api.voting.countVisit({
-        url: urlToVisit,
-      });
-
+      try{
+        // Try to count the visit to the link
+        const visitCount = await window.BZ.api.voting.countVisit({
+          url: urlToVisit,
+        });
+      }catch (error){
+        // Some api error, log it and redirect
+        console.error(`Error: Cound not count visit, api seems off ${error}`);
+      }
+      
+      /* Visit link anyway, even if api is off */
       window.location.href = urlToVisit;
     }
   },
