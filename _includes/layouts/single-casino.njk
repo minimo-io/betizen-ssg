@@ -9,34 +9,6 @@ layout: layouts/base.njk
 {%- set logoPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-logo.webp{%- endset -%}
 {%- set splashPath -%}{{ metadata.images.casinos }}{{ page.fileSlug }}-splash.webp{%- endset -%}
 
-{# Js code for games #}
-{%- js %}
-    document.addEventListener("DOMContentLoaded", ()=>{
-
-      const originalButton = document.querySelector('.bz-visit-site-button');
-      const fixedButton = document.querySelector('.bz-visit-site-button-fixed');
-
-      if (!originalButton || !fixedButton) return;
-
-      const observer = new IntersectionObserver((entities)=>{
-        entities.forEach(entry =>{
-
-          if (!entry.isIntersecting){
-            fixedButton.classList.remove("hidden");
-            fixedButton.classList.add("fixed");
-            fixedButton.classList.add("animate__animated", "animate__jello");
-          }else{
-            fixedButton.classList.remove("fixed");
-            fixedButton.classList.add("hidden");
-          }
-
-        });
-      }, { threshold: 0 });
-
-      observer.observe(originalButton);
-    });
-{% endjs %}
-
 <!-- Casino Review Card -->
 <div class="max-w-6xl mx-auto debug-container">
     <!-- Casino Review Card -->

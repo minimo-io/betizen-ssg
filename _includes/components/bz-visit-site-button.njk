@@ -17,16 +17,42 @@
 
 {# Fixed button used when scrolling #}
 <div class="hidden bz-visit-site-button-fixed bottom-[30px] md:bottom-[28px] w-fit right-20 md:right-28 flex justify-center z-50">
-  <a
-      href="{{ bonus.link }}"
+  <button
+      data-earnurl="{{ bonus.link }}"
       onclick="gtag('event', 'click', {
           event_category: 'visit-site-button',
           event_label: 'site-{{ page.fileSlug }}',
           value: 1
       });"
-      target="_blank"
-      rel="sponsored noopener noreferrer"
       class="btn btn-primary btn-lg md:btn-xl bz-visit-site-button w-[200px] !rounded-full !text-white font-semibold">
       {{ languages[page.lang].texts.visitSite | safe }}
-  </a>
+  </button>
 </div>
+
+{# Js code for games #}
+{%- js %}
+    document.addEventListener("DOMContentLoaded", ()=>{
+
+      const originalButton = document.querySelector('.bz-visit-site-button');
+      const fixedButton = document.querySelector('.bz-visit-site-button-fixed');
+
+      if (!originalButton || !fixedButton) return;
+
+      const observer = new IntersectionObserver((entities)=>{
+        entities.forEach(entry =>{
+
+          if (!entry.isIntersecting){
+            fixedButton.classList.remove("hidden");
+            fixedButton.classList.add("fixed");
+            fixedButton.classList.add("animate__animated", "animate__jello");
+          }else{
+            fixedButton.classList.remove("fixed");
+            fixedButton.classList.add("hidden");
+          }
+
+        });
+      }, { threshold: 0 });
+
+      observer.observe(originalButton);
+    });
+{% endjs %}
