@@ -26,9 +26,9 @@ module.exports = {
       cta: "👉 ¿100 GIROS GRATIS? AHORA!",
       image: metadata.images.banners + "national-es-1176x264.png",
       carrouselBonus: {
-        image: "/assets/imgs/site/bonus-bg-1.webp",
-        url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
-        cta: "100% hasta $100 USD + 100 giros",
+        image: "/assets/imgs/site/bonus-bg-2-es.png",
+        url: "https://url.hk/i/en/exptf",
+        cta: "Regístrate y obten $5 grátis",
       },
       casino: {
         logo: "/assets/imgs/casinos/national-argentina-logo.webp",
@@ -307,18 +307,31 @@ module.exports = {
       // url: "https://refpaiozdg.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437&r=registration",
       cta: "👉 QUER 150 RODADAS GRÁTIS?",
       image: metadata.images.banners + "national-pt-1176x264.png",
+      // carrouselBonus: {
+      //   image: "/assets/imgs/site/bonus-bg-1.webp",
+      //   url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
+      //   cta: "100% até R$600 + 100 rodadas",
+      // },
       carrouselBonus: {
-        image: "/assets/imgs/site/bonus-bg-1.webp",
-        url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
-        cta: "100% até R$600 + 100 rodadas",
+        image: "/assets/imgs/site/bonus-bg-2-pt.png",
+        url: "https://url.hk/i/en/exptf",
+        cta: "Cadastre-se e ganhe $5 grátis",
       },
+      // casino: {
+      //   logo: metadata.images.casinos + "megapari-logo.webp",
+      //   name: "MEGAPARI",
+      //   title: "ATÉ 150 RODADAS GRÁTIS 🤯 PROMOÇÃO LIMITADA!",
+      //   cta: "RECLAME SUAS 150 RODADAS GRÁTIS HOJE!",
+      //   url: "https://refpazitag.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437",
+      // },
       casino: {
-        logo: metadata.images.casinos + "megapari-logo.webp",
-        name: "MEGAPARI",
-        title: "ATÉ 150 RODADAS GRÁTIS 🤯 PROMOÇÃO LIMITADA!",
-        cta: "RECLAME SUAS 150 RODADAS GRÁTIS HOJE!",
-        url: "https://refpazitag.top/L?tag=d_4136349m_25437c_&site=4136349&ad=25437",
+        logo: "/assets/imgs/casinos/national-argentina-logo.webp",
+        name: "National",
+        title: "ATÉ 100 RODADAS GRÁTIS 🤯 NO NATIONAL!",
+        cta: "ATÉ 100 RODADAS GRÁTIS 🤯 NO NATIONAL!",
+        url: "https://media.toxtren.com/redirect.aspx?pid=101348&bid=2036&redirectURL=https://natregs.com",
       },
+
       external_250x250: metadata.images.banners + "banner_250x250-pt-br.webp",
     },
     categories: {
@@ -581,9 +594,9 @@ module.exports = {
       cta: "👉 CLAIM 100 FREE SPINS?",
       image: metadata.images.banners + "national-en-1176x264.png",
       carrouselBonus: {
-        image: "/assets/imgs/site/bonus-bg-1.webp",
-        url: "https://mu.fastmui.com/redirect.aspx?pid=101348&bid=2036&lpid=502",
-        cta: "100% up to €100 + 100 free-spins",
+        image: "/assets/imgs/site/bonus-bg-2-en.png",
+        url: "https://url.hk/i/en/exptf",
+        cta: "Register and get $5 free",
       },
       casino: {
         logo: "/assets/imgs/casinos/national-argentina-logo.webp",

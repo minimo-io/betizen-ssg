@@ -58,20 +58,20 @@
 
     {# Promo #}
     <div class="carousel-cell !w-[290px] !h-[136px]">
-        <a
-            href="{{ languages[page.lang].promo.carrouselBonus.url }}"
-            target="_blank" rel="nofollow noopener noreferrer">
+        <button
+            data-earnurl="{{ languages[page.lang].promo.carrouselBonus.url }}"
+            class="!w-[290px] cursor-pointer">
             <div
                 class="w-full h-[136px] bg-[size:290px] rounded-[15px]"
                 style="background-image:url('{{ languages[page.lang].promo.carrouselBonus.image }}')"
             ></div>
             <div class="text-white bg-black rounded-[15px] py-[0.1rem] px-[0.3rem] text-xs m-0 leading-tight opacity-85 absolute top-[5px] right-[4px] z-[100]">
-                {{ languages[page.lang].texts.bonus }}
+                WALLET
             </div>
-            <div class="mt-1 btn btn-primary text-white btn-xs btn-block rounded-2xl">
+            <div class="mt-1 btn bg-red-500 text-white btn-xs btn-block rounded-2xl uppercase">
                 {{ languages[page.lang].promo.carrouselBonus.cta }}
             </div>
-        </a>
+        </button>
     </div>    
 
     {# Game 1 #}

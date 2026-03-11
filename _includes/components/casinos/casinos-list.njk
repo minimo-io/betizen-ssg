@@ -69,7 +69,18 @@
 
                             {# Blacklisted #}
                              {% if not post.data.blacklisted %}
-                                {{ reputationButton(post.data.reputation.code, post.data.reputation.text, logoPath, post.data.title, post.data.gradient, post.data.bonus.link, false, "Xd-none Xd-md-block btn-scale") }}
+                                {{ reputationButton(
+                                    post.data.reputation.code, 
+                                    post.data.reputation.text, 
+                                    logoPath, 
+                                    post.data.title, 
+                                    post.data.gradient, 
+                                    post.data.bonus.link, 
+                                    false, 
+                                    "Xd-none Xd-md-block btn-scale", 
+                                    false, 
+                                    post.url) 
+                                }}
                             {% endif %}
 
                             {# Visit / Blacklisted Button #}

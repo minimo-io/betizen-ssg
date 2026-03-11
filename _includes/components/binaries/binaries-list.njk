@@ -77,7 +77,7 @@
                         <div class="flex flex-col md:flex-row justify-center md:justify-end gap-2 items-center">
                              {% if not post.data.blacklisted %}
                                 {# Info #}
-                                {{ reputationButton(post.data.reputation.code, post.data.reputation.text, logoPath, post.data.title, post.data.gradient, post.data.bonus.link, false, "Xd-none Xd-md-block btn-scale") }}
+                                {{ reputationButton(post.data.reputation.code, post.data.reputation.text, logoPath, post.data.title, post.data.gradient, post.data.bonus.link, false, "Xd-none Xd-md-block btn-scale", false, post.url) }}
                             {% endif %}
 
                             {# Visit / Blacklisted Button #}

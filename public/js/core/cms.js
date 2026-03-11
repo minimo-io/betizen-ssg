@@ -18,7 +18,8 @@ window.BZ.cms = {
 
         
 
-        // const entityId = button.dataset.entityId;
+        const entityId = button.dataset.entityId;
+        alert(`${getTranslation("texts.soon")}`);
         // const karma = button.dataset.karma;
     }
 }

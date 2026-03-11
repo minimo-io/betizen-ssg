@@ -84,10 +84,7 @@ layout: layouts/base.njk
                         <!-- Opinion button -->
                         <div class="hidden md:flex items-center gap-2 text-orange-500">
                           <div class="tooltip w-full" data-tip="Gana +{{ config.karmaPoints * 2 }} puntos">                             
-                              <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
-                                  <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
-                                   {{ languages[page.lang].texts.leaveOpinion }}
-                              </button>
+                                {%- include "components/bz-comment-button.njk" -%}
                           </div>
                         </div>                    
                         <!-- Visit site button -->
@@ -109,10 +106,7 @@ layout: layouts/base.njk
                 <!-- Mobile Opinion button -->
                 <div class="md:hidden mb-3 items-center gap-2 text-orange-500">
                     <div class="tooltip w-full" data-tip="Gana +{{ config.karmaPoints * 2 }} puntos">                  
-                      <button onclick="alert('{{languages[page.lang].texts.soon }}')" class="btn btn-soft btn-outline btn-secondary w-full font-semibold">
-                        <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
-                        {{ languages[page.lang].texts.leaveOpinion }}
-                      </button>
+                        {%- include "components/bz-comment-button.njk" -%}
                     </div>
                 </div>                 
 
