@@ -21,8 +21,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (window.BZ?.modal) window.BZ.modal.init();
   if (window.BZ?.auth) await window.BZ.auth.init();
   if (window.BZ?.voting) window.BZ.voting.init();
+  if (window.BZ?.cms) window.BZ.cms.init();
 
-  // Event delegation for login/logout buttons (supports multiple buttons)
+  // Event delegation events for buttons and actions (supports multiple buttons)
   document.addEventListener("click", (e) => {
     // Handle login buttons
     if (e.target.closest(".btn-login")) {
@@ -69,6 +70,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.BZ.voting.handleVote(buttonElement);
       }
     }
+
+    // Handling comment buttons
+    if (e.target.closest(".btn-bz-comment")) {
+      if (window.BZ.cms) {
+        const buttonElement = e.target.closest(".btn-bz-comment");
+
+        // const entityId = buttonElement.dataset.entityId;
+        // const karma = buttonElement.dataset.karma;
+        // console.log(`So u wanna vote ${karma} to ${entityId} eh?`);
+
+        // Pass the button element to your function
+        window.BZ.cms.handleCommenting(buttonElement);
+      }
+    }    
+
   });
 
   // handlers for modal buttons

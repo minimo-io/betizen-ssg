@@ -36,7 +36,7 @@ window.BZ.api = {
     }
   },
 
-  // Auth endpoints
+  // Auth API endpoints
   auth: {
     // login: (credentials) =>
     //   window.BZ.api.request("/auth/login", {
@@ -62,7 +62,7 @@ window.BZ.api = {
       }),
   },
 
-  // Voting endpoints
+  // Voting API endpoints
   voting: {
     vote: async (voteData) => {
       const voteResult = await window.BZ.api.request("/users/voting/vote", {
@@ -114,4 +114,16 @@ window.BZ.api = {
       console.log(`Visit count result:`, visitCountResult);
     },
   },
+
+  // Cms API endpoints
+  cms:{
+    comments:{
+      async create(payload){
+        console.log("Comment created!")
+      },
+      async fetch(query){
+        console.log("Fetch all comments...")
+      }
+    }
+  }
 };
