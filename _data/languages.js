@@ -276,7 +276,8 @@ module.exports = {
       forexSupport: "Soporte al Cliente",
       forexEducation: "Recursos Educativos",
 
-      writeComment: "Escriba su comentario..."
+      writeComment: "Escriba su comentario...",
+      commentPublished: "Comentario publicado con éxito"
     },
   },
   "pt-br": {
@@ -564,7 +565,9 @@ module.exports = {
       forexDemo: "Conta Demo",
       forexSupport: "Suporte ao Cliente",
       forexEducation: "Recursos Educacionais",
-      writeComment: "Escreva seu comentário..."
+
+      writeComment: "Escreva seu comentário...",
+      commentPublished: "Comentário publicado com sucesso"
     },
   },
   en: {
@@ -835,7 +838,9 @@ module.exports = {
       forexDemo: "Demo Account",
       forexSupport: "Customer Support",
       forexEducation: "Educational Resources",
-      writeComment: "Write your comment..."
+
+      writeComment: "Write your comment...",
+      commentPublished: "Comment published successfully"
     },
   },
 };

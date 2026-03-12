@@ -105,6 +105,15 @@ window.BZ.cms = {
                 await window.BZ.api.cms.comments.create(payload);
 
                 window.BZ.modal.close();
+
+                showToast(
+                    getTranslation("texts.commentPublished"),
+                    "success",
+                    5000,
+                    "toast-center",
+                    true
+                );
+
                 console.log(`Comment success for: ${payload.post_slug}`);
 
             } catch (error) {
