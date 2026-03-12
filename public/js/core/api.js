@@ -118,11 +118,19 @@ window.BZ.api = {
   // Cms API endpoints
   cms:{
     comments:{
-      async create(payload){
-        console.log("Comment created!")
+      async create(payload) {
+        // payload: { post_id, body, parent_id }
+        return await window.BZ.api.request("/cms/comments", {
+          method: "POST",
+          body: JSON.stringify(payload),
+        });
       },
-      async fetch(query){
-        console.log("Fetch all comments...")
+      async fetch(query) {
+        // Example implementation for fetching
+        const queryString = new URLSearchParams(query).toString();
+        return await window.BZ.api.request(`/cms/comments?${queryString}`, {
+          method: "GET",
+        });
       }
     }
   }
