@@ -275,6 +275,8 @@ module.exports = {
       forexDemo: "Cuenta Demo",
       forexSupport: "Soporte al Cliente",
       forexEducation: "Recursos Educativos",
+
+      writeComment: "Escriba su comentario..."
     },
   },
   "pt-br": {
@@ -562,6 +564,7 @@ module.exports = {
       forexDemo: "Conta Demo",
       forexSupport: "Suporte ao Cliente",
       forexEducation: "Recursos Educacionais",
+      writeComment: "Escreva seu comentário..."
     },
   },
   en: {
@@ -832,6 +835,7 @@ module.exports = {
       forexDemo: "Demo Account",
       forexSupport: "Customer Support",
       forexEducation: "Educational Resources",
+      writeComment: "Write your comment..."
     },
   },
 };
