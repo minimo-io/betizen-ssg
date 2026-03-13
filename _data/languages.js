@@ -277,7 +277,8 @@ module.exports = {
       forexEducation: "Recursos Educativos",
 
       writeComment: "Escriba su comentario...",
-      commentPublished: "Comentario publicado con éxito"
+      commentPublished: "Comentario publicado con éxito",
+      comments: "Comentarios"
     },
   },
   "pt-br": {
@@ -567,7 +568,8 @@ module.exports = {
       forexEducation: "Recursos Educacionais",
 
       writeComment: "Escreva seu comentário...",
-      commentPublished: "Comentário publicado com sucesso"
+      commentPublished: "Comentário publicado com sucesso",
+      comments: "Comentários"
     },
   },
   en: {
@@ -840,7 +842,8 @@ module.exports = {
       forexEducation: "Educational Resources",
 
       writeComment: "Write your comment...",
-      commentPublished: "Comment published successfully"
+      commentPublished: "Comment published successfully",
+      comments: "Comments"
     },
   },
 };

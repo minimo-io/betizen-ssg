@@ -125,10 +125,14 @@ window.BZ.api = {
           body: JSON.stringify(payload),
         });
       },
-      async fetch(query) {
-        // Example implementation for fetching
-        const queryString = new URLSearchParams(query).toString();
-        return await window.BZ.api.request(`/cms/comments?${queryString}`, {
+      async fetchBySlug(slug) {
+        return await window.BZ.api.request(`/cms/comments/post/slug?slug=${encodeURIComponent(slug)}`, {
+          method: "GET",
+        });
+      },
+      // Keep for future use when postId is available
+      async fetchById(postId) {
+        return await window.BZ.api.request(`/cms/comments/post/id/${encodeURIComponent(postId)}`, {
           method: "GET",
         });
       }

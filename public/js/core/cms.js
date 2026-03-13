@@ -106,6 +106,8 @@ window.BZ.cms = {
 
                 window.BZ.modal.close();
 
+                window.BZ.state.set("cms.comments.lastPost", payload.post_slug);
+
                 showToast(
                     getTranslation("texts.commentPublished"),
                     "success",

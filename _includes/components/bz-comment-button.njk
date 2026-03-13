@@ -1,7 +1,31 @@
-{# Comment button #}
+{# _includes/components/bz-comment-button.njk #}
 <button 
     data-post-slug="{{ page.url }}"
     class="btn-bz-comment btn-bz-modal btn btn-soft btn-outline btn-secondary w-full font-semibold">
         <i data-lucide="pencil-line" strokeWidth={1} class="h-3"></i>
         {{ languages[page.lang].texts.leaveOpinion }}
+        <span id="bz-comment-button-count" class="opacity-60 font-normal text-sm"></span>
 </button>
+
+{% js %}
+document.addEventListener("DOMContentLoaded", () => {
+
+  const countSpan = document.getElementById("bz-comment-button-count");
+  if (!countSpan) return;
+
+  const POST_SLUG = "{{ page.url }}";
+  if (!POST_SLUG) return;
+
+  function updateCount(total) {
+    countSpan.textContent = total > 0 ? `(${total})` : "";
+  }
+
+  // Pick up count if comment box already fetched before this runs
+  const existing = window.BZ.state.get("cms.comments.count." + POST_SLUG);
+  if (existing) updateCount(existing);
+
+  // Subscribe for updates — fires when comment box loads or new comment posted
+  window.BZ.state.subscribe("cms.comments.count." + POST_SLUG, updateCount);
+
+});
+{% endjs %}

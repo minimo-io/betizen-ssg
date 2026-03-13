@@ -1,0 +1,220 @@
+{# _includes/components/bz-comment-box.njk #}
+
+<section id="bz-comment-box" class="mt-10 w-full px-4 mx-auto" 
+  data-post-slug="{{ page.url }}">
+    {# data-post-slug="{{ page.fileSlug }}" #}
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-lg font-semibold flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-5 opacity-70" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      {{ languages[page.lang].texts.comments }}
+      <span id="bz-comment-count" class="badge badge-ghost badge-sm font-mono">…</span>
+    </h2>
+
+    <button
+      id="bz-open-comment-modal"
+      class="btn btn-primary btn-sm text-white gap-1.5"
+      data-post-slug="{{ page.url }}"
+      onclick="window.BZ.cms.handleCommenting(this)">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+      {{ languages[page.lang].texts.leaveOpinion }}
+    </button>
+  </div>
+
+  <div id="bz-comments-list" class="space-y-4 min-h-16">
+
+    <div id="bz-comments-loading" class="space-y-3">
+      {% for _ in range(0, 3) %}
+      <div class="flex gap-3 animate-pulse">
+        <div class="skeleton size-9 rounded-full shrink-0"></div>
+        <div class="flex-1 space-y-2 pt-1">
+          <div class="skeleton h-3 w-32 rounded"></div>
+          <div class="skeleton h-3 w-full rounded"></div>
+          <div class="skeleton h-3 w-4/5 rounded"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div id="bz-comments-empty" class="hidden py-10 text-center text-base-content/50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="size-10 mx-auto mb-3 opacity-30" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <p class="text-sm">{{ getTranslation("texts.noComments") if getTranslation else "No comments yet. Be the first!" }}</p>
+    </div>
+
+    <div id="bz-comments-error" class="hidden">
+      <div class="alert alert-error alert-soft text-sm gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span id="bz-comments-error-msg">
+          {{ getTranslation("texts.commentsError") if getTranslation else "Could not load comments." }}
+        </span>
+      </div>
+    </div>
+
+    <ul id="bz-comments-populated" class="hidden space-y-4" aria-label="Comments"></ul>
+
+  </div>
+
+</section>
+
+<template id="bz-comment-item-tpl">
+  <li class="bz-comment-item flex gap-3">
+    <div class="shrink-0">
+      <div class="avatar placeholder">
+        <div class="bz-avatar-img bg-neutral text-neutral-content rounded-full size-9 text-sm font-bold">
+          <span class="bz-avatar-initials">?</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="flex items-baseline gap-2 flex-wrap">
+        <span class="bz-comment-author text-sm font-semibold truncate max-w-[160px]">Anonymous</span>
+        <time class="bz-comment-date text-xs text-base-content/40"></time>
+      </div>
+      <p class="bz-comment-body mt-1 text-sm text-base-content/80 whitespace-pre-line break-words leading-relaxed"></p>
+    </div>
+  </li>
+</template>
+
+{% js %}
+document.addEventListener("DOMContentLoaded", () => {
+
+  const section     = document.getElementById("bz-comment-box");
+  if (!section) return;
+
+  const loadingEl   = document.getElementById("bz-comments-loading");
+  const emptyEl     = document.getElementById("bz-comments-empty");
+  const errorEl     = document.getElementById("bz-comments-error");
+  const errorMsgEl  = document.getElementById("bz-comments-error-msg");
+  const populatedEl = document.getElementById("bz-comments-populated");
+  const countEl     = document.getElementById("bz-comment-count");
+  const tpl         = document.getElementById("bz-comment-item-tpl");
+  const POST_SLUG   = section.dataset.postSlug || "";
+  let isLoading     = false;
+
+  function setView(name) {
+    [loadingEl, emptyEl, errorEl, populatedEl].forEach(el => el.classList.add("hidden"));
+    if      (name === "loading") loadingEl.classList.remove("hidden");
+    else if (name === "empty")   emptyEl.classList.remove("hidden");
+    else if (name === "error")   errorEl.classList.remove("hidden");
+    else if (name === "list")    populatedEl.classList.remove("hidden");
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return "";
+    try {
+      return new Intl.DateTimeFormat(navigator.language || "en", {
+        year: "numeric", month: "short", day: "numeric"
+      }).format(new Date(dateStr));
+    } catch { return dateStr; }
+  }
+
+  function getInitials(name) {
+    if (!name) return "?";
+    return name.trim().split(/\s+/).slice(0, 2).map(w => w[0].toUpperCase()).join("");
+  }
+
+  const AVATAR_COLORS = [
+    "bg-primary", "bg-secondary", "bg-accent",
+    "bg-info", "bg-success", "bg-warning", "bg-error", "bg-neutral"
+  ];
+  function avatarColor(name) {
+    if (!name) return AVATAR_COLORS[7];
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+    return AVATAR_COLORS[h % AVATAR_COLORS.length];
+  }
+
+  function renderComment(comment) {
+    const clone      = tpl.content.cloneNode(true);
+    const avatarWrap = clone.querySelector(".bz-avatar-img");
+    const initialsEl = clone.querySelector(".bz-avatar-initials");
+    const authorEl   = clone.querySelector(".bz-comment-author");
+    const dateEl     = clone.querySelector(".bz-comment-date");
+    const bodyEl     = clone.querySelector(".bz-comment-body");
+
+    const authorName = comment.author_name || comment.user?.name || comment.user?.email || "Anonymous";
+    avatarWrap.classList.add(avatarColor(authorName));
+    initialsEl.textContent = getInitials(authorName);
+
+    if (comment.author_avatar || comment.user?.picture) {
+      const img = document.createElement("img");
+      img.src = comment.author_avatar || comment.user.picture;
+      img.alt = authorName;
+      img.className = "rounded-full size-9 object-cover";
+      avatarWrap.replaceWith(img);
+    }
+
+    authorEl.textContent = authorName;
+    dateEl.textContent   = formatDate(comment.created_at || comment.createdAt);
+    dateEl.setAttribute("datetime", comment.created_at || comment.createdAt || "");
+    bodyEl.textContent   = comment.body || "";
+    return clone;
+  }
+
+  function appendComments(comments) {
+    const fragment = document.createDocumentFragment();
+    comments.forEach(c => fragment.appendChild(renderComment(c)));
+    populatedEl.appendChild(fragment);
+  }
+
+  async function fetchComments() {
+    if (isLoading) return;
+    isLoading = true;
+    populatedEl.innerHTML = "";
+    setView("loading");
+
+    try {
+      const res = await window.BZ.api.cms.comments.fetchBySlug(POST_SLUG);
+
+      console.log("[bz-comment-box] raw response:", JSON.stringify(res));
+
+      const items = Array.isArray(res.data)
+        ? res.data
+        : (res.data?.items ?? res.data?.comments ?? []);
+
+      const total = res.data?.total ?? res.total ?? items.length;
+      countEl.textContent = total > 0 ? String(total) : "0";
+
+      window.BZ.state.set("cms.comments.count." + POST_SLUG, total);
+
+      if (items.length === 0) { setView("empty"); return; }
+
+      setView("list");
+      appendComments(items);
+
+    } catch (err) {
+      console.error("[bz-comment-box] fetch error:", err);
+      if (errorMsgEl) errorMsgEl.textContent = err?.message || errorMsgEl.textContent;
+      setView("error");
+    } finally {
+      isLoading = false;
+    }
+  }
+
+  if (!POST_SLUG) {
+    console.warn("[bz-comment-box] No post_slug — skipping fetch.");
+    setView("empty");
+    return;
+  }
+
+  // Initial load
+  fetchComments();
+
+  // Re-fetch when a comment is submitted anywhere on this page for this post
+  window.BZ.state.subscribe("cms.comments.lastPost", (slug) => {
+    if (slug === POST_SLUG) fetchComments();
+  });
+
+});
+{% endjs %}
