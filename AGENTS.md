@@ -127,12 +127,57 @@ _includes/             # Nunjucks includes/partials
 public/                # Static assets (copied to /assets/)
   css/app.css
   imgs/
+  js/
+    app.js           # Main entry point, initializes all modules
+    core/            # Core modules
+      state.js      # Global state management
+      api.js        # API client
+      auth.js       # Authentication (login/logout)
+      voting.js     # Karma/voting system
+      cms.js        # Comments system
+    modules/         # Feature modules
+      modal.js      # Modal dialogs
+      toast.js      # Toast notifications
+      casino-search.js  # Casino list search functionality
+```
 
-tools/                 # Import/processing scripts
-  import-casinos.js
-  libs/
-    utils.js
-    scrapping.js
+### JavaScript Architecture
+
+The project uses vanilla JavaScript with a module-based architecture exposed via the global `window.BZ` namespace.
+
+**Core Modules (`public/js/core/`):**
+- `state.js` - Global state management with pub/sub pattern
+- `api.js` - API client for backend communication
+- `auth.js` - Authentication (Google, Nostr)
+- `voting.js` - Karma/voting system
+- `cms.js` - Comments system
+
+**Feature Modules (`public/js/modules/`):**
+- `modal.js` - Modal dialog component
+- `toast.js` - Toast notification component
+- `casino-search.js` - Client-side fuzzy search for casino list
+
+**Initialization Pattern:**
+```javascript
+// In app.js
+window.BZ = window.BZ || {};
+window.BZ.modal.init();
+window.BZ.auth.init();
+window.BZ.voting.init();
+window.BZ.casinoSearch.init();
+```
+
+**Adding a New Module:**
+1. Create `public/js/modules/your-module.js`
+2. Wrap in `window.BZ = window.BZ || {}; window.BZ.yourModule = { ... }`
+3. Include in bundle in `_includes/layouts/base.njk`
+4. Initialize in `app.js` after DOM ready
+
+**CSS Animations:**
+Custom animations are defined in `public/css/app.css`:
+```css
+@keyframes fadeIn { ... }
+@keyframes fadeOut { ... }
 ```
 
 ### Working with Eleventy

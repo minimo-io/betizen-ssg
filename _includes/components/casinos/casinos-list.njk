@@ -5,7 +5,7 @@
 {% include "components/casinos/casinos-filter.njk" %}
 
 {# Casinos table #}
-<table class="table">
+<table id="casinos-list" class="table">
     <tbody>
         {% set counter = 0 -%}
         {% for post in postsList | sortByOrder %} 
