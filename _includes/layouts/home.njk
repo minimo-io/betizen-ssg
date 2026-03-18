@@ -81,6 +81,11 @@ eleventyComputed:
 
             {# Actual casino list #}
             <div class="overflow-x-auto rounded-box border border-base-300 dark:border-gray-700 bg-base-100 p-2 md:px-5 md:mt-6">
+                <div class="flex justify-end mb-2">
+                    <a href="{{ '/casinos/' | locale_url }}" class="btn btn-sm btn-ghost">
+                        {{ languages[page.lang].texts.viewAllCasinos or 'View all casinos' }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
 
                 {%- set postsList = collections.casinos | forLang( page.lang ) | sortByOrder | head(20) %}
                 {% include "components/casinos/casinos-list.njk" %}
