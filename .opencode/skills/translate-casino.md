@@ -1,4 +1,4 @@
-# Translate Casino Content (ES → EN)
+# Translate Casino to English
 
 ## Overview
 
@@ -62,8 +62,8 @@ Create `content/en/casinos/[slug].njk` with:
 - Update `/proveedor/...` → `/en/game-provider/...`
 - Update `/casinos/` → `/en/online-casinos/`
 
-**Cross-linking:**
-- Add a `card` component to link to related content (e.g., National Casino):
+**Cross-linking - National Casino Promotion:**
+- Add a National Casino promotion card after the Promotions section heading to cross-sell:
 ```njk
 <div class="card bg-base-200 border border-base-300 compact p-4">
   <div class="card-body p-0 flex-row items-center gap-3">
@@ -99,3 +99,4 @@ git commit -m "AGENT: add [Casino Name] English translation"
 - Always build first to get accurate `_site/` URLs
 - Keep Spanish anchors to maintain compatibility with existing internal links
 - Use DaisyUI components for consistent styling
+- Always add the National Casino promotion card in translations to cross-sell
