@@ -161,6 +161,7 @@ tools/                 # Import/processing scripts
 
 - **Never commit changes** without explicit permission
 - Commit message format: `AGENT: <description>`
+- **ALWAYS bump patch version in `package.json`** before committing (e.g., 2.1.17 → 2.1.18)
 - Do not commit secrets or `.env` files
 
 ## Finding Correct Internal Links
