@@ -162,3 +162,22 @@ tools/                 # Import/processing scripts
 - **Never commit changes** without explicit permission
 - Commit message format: `AGENT: <description>`
 - Do not commit secrets or `.env` files
+
+## Finding Correct Internal Links
+
+When translating content from one language to another, internal links must be updated to their correct English URLs. To find the correct URLs:
+
+1. **Build the site first**: `npm run build`
+2. **Check the `_site/` directory**: This contains the generated output with final URLs
+3. **Look for the correct path**: Run `ls _site/en/game/` or `ls _site/en/provider/` etc.
+
+Example:
+```bash
+# After building, find correct game URLs
+ls _site/en/game/ | grep -i catrina
+# Output: catrina-bingo-neko-games
+
+# Use this to construct the correct link: /en/game/catrina-bingo-neko-games/
+```
+
+Note: URL slugs may differ from source filenames (e.g., `thunderstruck-ii-video-bingo.njk` → `thunderstruck-ii-online-bingo`).
