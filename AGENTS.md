@@ -206,7 +206,7 @@ Custom animations are defined in `public/css/app.css`:
 
 - **Never commit changes** without explicit permission
 - Commit message format: `AGENT: <description>`
-- **ALWAYS bump patch version in `package.json`** before committing (e.g., 2.1.17 → 2.1.18)
+- **Bump version BEFORE creating each commit** - If a `package.json` exists, bump the patch version by 1 (e.g. `0.7.80` → `0.7.81`) BEFORE creating the commit. This applies to ALL commits — code changes, documentation, refactoring, etc. NEVER create a commit without first bumping the version. If committing code changes separately from the version bump, ensure both commits are pushed together in a single push operation.
 - Do not commit secrets or `.env` files
 
 ## Finding Correct Internal Links

@@ -1,4 +1,7 @@
-# Translate Casino to English
+---
+name: translate-casino-to-english
+description: Workflow for translating casino reviews from Spanish to English in the Betizen SSG project. Includes step-by-step instructions for finding Spanish-only casinos, translating content, updating internal links, and adding cross-sell cards.
+---
 
 ## Overview
 
