@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (window.BZ?.auth) await window.BZ.auth.init();
   if (window.BZ?.voting) window.BZ.voting.init();
   if (window.BZ?.cms) window.BZ.cms.init();
+  if (window.BZ?.leaderboard) window.BZ.leaderboard.init();
 
   // Event delegation events for buttons and actions (supports multiple buttons)
   document.addEventListener("click", (e) => {

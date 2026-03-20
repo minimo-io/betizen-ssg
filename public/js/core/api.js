@@ -115,6 +115,14 @@ window.BZ.api = {
     },
   },
 
+  // Lists API endpoints
+  lists: {
+    listUsers: (params = {}) => {
+      const query = new URLSearchParams(params).toString();
+      return window.BZ.api.request(`/users/list${query ? "?" + query : ""}`);
+    },
+  },
+
   // Cms API endpoints
   cms:{
     comments:{
